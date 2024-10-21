@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, url_for, render_template, request, flash
 
-from modules import connect
+from modules import connect, dump
 
 bp = Blueprint('add_sql_command', __name__)
 
@@ -29,4 +29,5 @@ def add_sql_command():
         else:
             flash('Ошибка сохранения записи!', category='error')
 
+    dump.dump()
     return render_template("sql/add_sql_command.html")

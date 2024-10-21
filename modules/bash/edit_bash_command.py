@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, url_for, render_template, request, flash
 
-from modules import connect
+from modules import connect, dump
 
 bp = Blueprint('edit_bash_command', __name__)
 
@@ -31,4 +31,5 @@ def edit_bash_command(bash_id):
         else:
             flash('Ошибка сохранения записи!', category='error')
 
+    dump.dump()
     return render_template("bash/edit_bash_command.html", edit_bash_command_view=edit_bash_command_view)

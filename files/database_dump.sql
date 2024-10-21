@@ -95,8 +95,10 @@ INSERT INTO "bash" VALUES(99,'#!/bin/bash
 ~/AppData/Local/Programs/Python/Python312/python.exe /p/s.savin/flask-project-full/app.py &','bash-скрипт который запускает три приложения flask
 ');
 INSERT INTO "bash" VALUES(107,'rename "test.xlsx" "test1.xlsx"','Переименование файла в CMD');
-INSERT INTO "bash" VALUES(108,'TestTestTestTestTestTestTestTest','TestTestTestTestTestTestTestTest');
-INSERT INTO "bash" VALUES(111,'hgfhgfhgfhhgfhgfhgfh','hgfhgfhgfhhgfhgfhgfh');
+INSERT INTO "bash" VALUES(112,'mount','Вывод всех подключенных дисков');
+INSERT INTO "bash" VALUES(113,'tar -cf flask-project.tar * && mv flask-project.tar /o','Скрипт архивации файлов и перенос архива на другой диск');
+INSERT INTO "bash" VALUES(114,'tar -cf flask-project.tar *','Создание архива всех файлов в папке');
+INSERT INTO "bash" VALUES(115,'mv flask-project.tar /o','Перенос файла в другой диск');
 CREATE TABLE "links"
 (
     links_id      INTEGER
@@ -118,7 +120,6 @@ INSERT INTO "links" VALUES(21,'Описание библиотеки, которая позволяет работает с
 INSERT INTO "links" VALUES(22,'Документация CLI PowerSHell','https://learn.microsoft.com/ru-ru/powershell/','Документация CLI PowerSHell');
 INSERT INTO "links" VALUES(25,'Blueprint','https://dnmtechs.com/splitting-a-python-flask-app-into-multiple-files/','Разбивка приложения на части');
 INSERT INTO "links" VALUES(28,'Яндекс','https://yandex.ru/','Поисковая система');
-INSERT INTO "links" VALUES(29,'add_links_commandadd_links_commandadd_links_command','add_links_commandadd_links_commandadd_links_command','add_links_commandadd_links_commandadd_links_command');
 CREATE TABLE "python" (
     "python_id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "python_command" TEXT NOT NULL,
@@ -365,7 +366,6 @@ def delete_post_test(test_id):
 
 if __name__ == "__main__":
     app.run(debug=True, host=''0.0.0.0'', port=83)');
-INSERT INTO "python" VALUES(2101,'hgfhgfhgfhhgfhgfhgfhhgfhgfhgfh','hgfhgfhgfhhgfhgfhgfh','hgfhgfhgfhhgfhgfhgfh');
 CREATE TABLE [sql] ( 
   "sql_id" INTEGER PRIMARY KEY AUTOINCREMENT,
   "sql_command" TEXT NOT NULL,
@@ -383,10 +383,9 @@ INSERT INTO "sql" VALUES(9,'ALTER TABLE [train] RENAME COLUMN [train_name] TO [f
 INSERT INTO "sql" VALUES(10,'DROP TABLE [train];','Удаляет таблицу базы данных',NULL);
 INSERT INTO "sql" VALUES(1159,'SELECT DISTINCT field FROM table;','Поиск уникальных значений','DISTINCT ищет и выводит уникальные значения указанного в запросе столбца ');
 INSERT INTO "sql" VALUES(1161,'SELECT * FROM table;','Вывод всех записей таблицы','Вывод всех записей таблицы');
-INSERT INTO "sql" VALUES(1164,'hgfhgfhgfhhgfhgfhgfh','hgfhgfhgfhhgfhgfhgfh','hgfhgfhgfhhgfhgfhgfhhgfhgfhgfh');
 DELETE FROM "sqlite_sequence";
-INSERT INTO "sqlite_sequence" VALUES('bash',111);
-INSERT INTO "sqlite_sequence" VALUES('sql',1164);
-INSERT INTO "sqlite_sequence" VALUES('links',29);
-INSERT INTO "sqlite_sequence" VALUES('python',2101);
+INSERT INTO "sqlite_sequence" VALUES('bash',118);
+INSERT INTO "sqlite_sequence" VALUES('sql',1165);
+INSERT INTO "sqlite_sequence" VALUES('links',30);
+INSERT INTO "sqlite_sequence" VALUES('python',2103);
 COMMIT;

@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, url_for, render_template, request, flash
 
-from modules import connect
+from modules import connect, dump
 
 bp = Blueprint('edit_sql_command', __name__)
 
@@ -31,5 +31,6 @@ def edit_sql_command(sql_id):
             return redirect(url_for("sql_list_commands.sql_list_commands"))
         else:
             flash('Ошибка сохранения записи!', category='error')
-
+    
+    dump.dump()
     return render_template("sql/edit_sql_command.html", edit_sql_command_view=edit_sql_command_view)

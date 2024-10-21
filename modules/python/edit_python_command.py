@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, url_for, render_template, request, flash
 
-from modules import connect
+from modules import connect, dump
 
 bp = Blueprint('edit_python_command', __name__)
 
@@ -31,5 +31,6 @@ def edit_python_command(python_id):
             return redirect(url_for("python_list_commands.python_list_commands"))
         else:
             flash('Ошибка сохранения записи!', category='error')
-
+    
+    dump.dump()
     return render_template("python/edit_python_command.html", edit_python_command_view=edit_python_command_view)

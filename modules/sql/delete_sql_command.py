@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, url_for
 
-from modules import connect
+from modules import connect, dump
 
 bp = Blueprint('delete_sql_command', __name__)
 
@@ -12,4 +12,5 @@ def delete_sql_command(sql_id):
                  (sql_id,))
     conn.commit()
     conn.close()
+    dump.dump()
     return redirect(url_for("sql_list_commands.sql_list_commands"))
