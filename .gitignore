@@ -1,0 +1,4 @@
+*.tar
+venv/
+__pycache__/
+tar_and_mv_project_archive.sh

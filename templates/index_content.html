@@ -1,0 +1,56 @@
+<table class="table">
+   <thead>
+      <tr>
+         <th scope="col">Раздел</th>
+         <th scope="col">Название</th>
+         <th scope="col">Ссылка</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td>Последняя добавленная ссылка</td>
+         <td>{{ last_links.links_name }}</td>
+         <td>
+            <ul class="list-group list-group-horizontal">
+               <li class="list-group-item">
+                  <a href="{{ url_for('links_list_commands.links_list_commands') }}">Перейти ко всем ссылкам</a>
+               </li>
+            </ul>
+         </td>
+      </tr>
+      <tr>
+         <td>Последняя добавленная команда SQL</td>
+         <td>{{ last_sql.sql_name }}</td>
+         <td>
+            <ul class="list-group list-group-horizontal">
+               <li class="list-group-item">
+                  <a href="{{ url_for('sql_list_commands.sql_list_commands') }}">Перейти ко всем командам SQL</a>
+               </li>
+            </ul>
+         </td>
+      </tr>
+      </tr>
+      <tr>
+         <td>Последняя добавленная команда Bash</td>
+         <td>{{ last_bash.bash_name }}</td>
+         <td>
+            <ul class="list-group list-group-horizontal">
+               <li class="list-group-item">
+                  <a href="{{ url_for('bash_list_commands.bash_list_commands') }}">Перейти ко всем командам Bash</a>
+               </li>
+            </ul>
+         </td>
+      </tr>
+      <tr>
+         <td>Последняя добавленная команда Python</td>
+         <td>{{ last_python.python_name }}</td>
+         <td>
+            <ul class="list-group list-group-horizontal">
+               <li class="list-group-item">
+                  <a href="{{ url_for('python_list_commands.python_list_commands') }}">Перейти ко всем командам python</a>
+               </li>
+            </ul>
+         </td>
+      </tr>
+   </tbody>
+</table>

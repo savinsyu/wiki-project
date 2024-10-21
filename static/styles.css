@@ -1,0 +1,22 @@
+* {
+  font-family: consolas;
+  font-size: 1.1rem;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: red;
+}
+
+.nav-link {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+
+article { 
+  padding-top: 2rem;
+}

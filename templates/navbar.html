@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('index.index') }}">Главная</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('links_list_commands.links_list_commands') }}">Ссылки</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('bash_list_commands.bash_list_commands') }}">Bash</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('sql_list_commands.sql_list_commands') }}">SQL</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('python_list_commands.python_list_commands') }}">Python</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

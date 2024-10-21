@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block title %}Ссылки{% endblock %} {% block content %}
+<div class="card mb-3">
+   <div class="card-header">
+      Всего записей в таблице links: <b>{{ links_list_count_print_int }}</b>
+   </div>
+   <div class="card-body">
+      <p class="card-text">
+         <a href="{{ url_for('add_links_command.add_links_command') }}" class="btn btn-outline-dark">Добавить новую запись?</a>
+      </p>
+   </div>
+</div>
+<ul class="list-group">
+   {% for links_list in links_list %}
+   <li class="list-group-item">
+      <a href="{{ url_for('get_post_links_command.get_post_links_command', links_id=links_list['links_id']) }}">{{ links_list['links_name']
+         }}</a>:
+         <a href="{{ links_list['links_command'] }}" target="_blank"><i>{{ links_list['links_command'] }}</i></a>
+   </li>
+   {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block title %}Команды bash{% endblock %}
+{% block content %}
+   <form method="post">
+      <div class="card mb-3">
+         <label for="bash_command" class="card-header">Команда</label>
+         <textarea class="form-control" id="bash_command" name="bash_command" rows="8" placeholder="Введите команду"
+            required></textarea>
+      </div>
+      <div class="card mb-3">
+         <label for="bash_name" class="card-header">Описание команды</label>
+         <textarea class="form-control" id="bash_name" name="bash_name" rows="1" placeholder="Введите описание команды"
+            required></textarea>
+      </div>
+      <div class="btn-group btn-group" role="group" aria-label="...">
+            <a class="btn btn-outline-dark" href="{{ url_for('bash_list_commands.bash_list_commands') }} ">Вернуться к списку</a>
+            <button type="submit" value="" class="btn btn-outline-dark">Сохранить</button>
+      </div>
+   </form>
+
+<div class="container">
+   {% include 'errors.html' %}
+</div>
+{% endblock %}
+
+
