@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, url_for, render_template, request, flash
 
-from modules import connect, dump
+from modules import connect, dump, export_tables_sql_to_xlsx
 
 bp = Blueprint('edit_links_command', __name__)
 
@@ -27,10 +27,12 @@ def edit_links_command(links_id):
                 flash('Ошибка сохранения записи, вы ввели мало символов!', category='error')
             else:
                 flash('Запись успешно сохранена!', category='success')
+                dump.dump()
+                export_tables_sql_to_xlsx.export_tables_sql_to_xlsx()
             # В случае соблюдения условий заполнения полей, произойдёт перенаправление
             return redirect(url_for("links_list_commands.links_list_commands"))
         else:
             flash('Ошибка сохранения записи!', category='error')
     
-    dump.dump()
+    
     return render_template("links/edit_links_command.html", edit_links_command_view=edit_links_command_view)

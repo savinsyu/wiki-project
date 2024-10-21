@@ -384,8 +384,8 @@ INSERT INTO "sql" VALUES(10,'DROP TABLE [train];','Удаляет таблицу базы данных',
 INSERT INTO "sql" VALUES(1159,'SELECT DISTINCT field FROM table;','Поиск уникальных значений','DISTINCT ищет и выводит уникальные значения указанного в запросе столбца ');
 INSERT INTO "sql" VALUES(1161,'SELECT * FROM table;','Вывод всех записей таблицы','Вывод всех записей таблицы');
 DELETE FROM "sqlite_sequence";
-INSERT INTO "sqlite_sequence" VALUES('bash',118);
-INSERT INTO "sqlite_sequence" VALUES('sql',1165);
-INSERT INTO "sqlite_sequence" VALUES('links',30);
-INSERT INTO "sqlite_sequence" VALUES('python',2103);
+INSERT INTO "sqlite_sequence" VALUES('bash',121);
+INSERT INTO "sqlite_sequence" VALUES('sql',1166);
+INSERT INTO "sqlite_sequence" VALUES('links',31);
+INSERT INTO "sqlite_sequence" VALUES('python',2104);
 COMMIT;

@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, url_for
 
-from modules import connect, dump
+from modules import connect, dump, export_tables_sql_to_xlsx
 
 bp = Blueprint('delete_links_command', __name__)
 
@@ -13,4 +13,5 @@ def delete_links_command(links_id):
     conn.commit()
     conn.close()
     dump.dump()
+    export_tables_sql_to_xlsx.export_tables_sql_to_xlsx()
     return redirect(url_for("links_list_commands.links_list_commands"))

@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from modules import export_tables_sql_to_xlsx, index
+from modules import index
 from modules.python import delete_python_command, add_python_command, edit_python_command, get_post_python_command, python_list_commands
 from modules.links import delete_links_command, links_list_commands, add_links_command, edit_links_command, get_post_links_command
 from modules.sql import delete_sql_command, sql_list_commands, edit_sql_command, get_post_sql_command, add_sql_command
@@ -36,9 +36,6 @@ app.secret_key = "secret key"
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
-
-
-export_tables_sql_to_xlsx.export_tables_sql_to_xlsx()
 
 
 if __name__ == "__main__":

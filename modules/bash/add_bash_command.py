@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, url_for, render_template, request, flash
 
-from modules import connect, dump
+from modules import connect, dump, export_tables_sql_to_xlsx
 
 bp = Blueprint('add_bash_command', __name__)
 
@@ -23,11 +23,13 @@ def add_bash_command():
                 flash('Ошибка сохранения записи, Вы ввели слишком мало символов!', category='error')
             else:
                 flash('Запись успешно добавлена!')
+                dump.dump()
+                export_tables_sql_to_xlsx.export_tables_sql_to_xlsx()
             # В случае соблюдения условий заполнения полей, произойдёт перенаправление
             return redirect(url_for("bash_list_commands.bash_list_commands"))
 
         else:
             flash('Ошибка сохранения записи!', category='error')
             
-    dump.dump()
+   
     return render_template("bash/add_bash_command.html")

@@ -3,7 +3,7 @@
       <tr>
          <th scope="col">Раздел</th>
          <th scope="col">Название</th>
-         <th scope="col">Ссылка</th>
+         <th scope="col">Перейти в раздел</th>
       </tr>
    </thead>
    <tbody>
@@ -11,22 +11,14 @@
          <td>Последняя добавленная ссылка</td>
          <td>{{ last_links.links_name }}</td>
          <td>
-            <ul class="list-group list-group-horizontal">
-               <li class="list-group-item">
-                  <a href="{{ url_for('links_list_commands.links_list_commands') }}">Перейти ко всем ссылкам</a>
-               </li>
-            </ul>
+            <a href="{{ url_for('links_list_commands.links_list_commands') }}" class="btn btn-outline-dark" style="width:100px">Ссылки</a>
          </td>
       </tr>
       <tr>
          <td>Последняя добавленная команда SQL</td>
          <td>{{ last_sql.sql_name }}</td>
          <td>
-            <ul class="list-group list-group-horizontal">
-               <li class="list-group-item">
-                  <a href="{{ url_for('sql_list_commands.sql_list_commands') }}">Перейти ко всем командам SQL</a>
-               </li>
-            </ul>
+            <a href="{{ url_for('sql_list_commands.sql_list_commands') }}" class="btn btn-outline-dark" style="width:100px">SQL</a>
          </td>
       </tr>
       </tr>
@@ -34,22 +26,14 @@
          <td>Последняя добавленная команда Bash</td>
          <td>{{ last_bash.bash_name }}</td>
          <td>
-            <ul class="list-group list-group-horizontal">
-               <li class="list-group-item">
-                  <a href="{{ url_for('bash_list_commands.bash_list_commands') }}">Перейти ко всем командам Bash</a>
-               </li>
-            </ul>
+            <a href="{{ url_for('bash_list_commands.bash_list_commands') }}" class="btn btn-outline-dark" style="width:100px">Bash</a>
          </td>
       </tr>
       <tr>
          <td>Последняя добавленная команда Python</td>
          <td>{{ last_python.python_name }}</td>
          <td>
-            <ul class="list-group list-group-horizontal">
-               <li class="list-group-item">
-                  <a href="{{ url_for('python_list_commands.python_list_commands') }}">Перейти ко всем командам python</a>
-               </li>
-            </ul>
+            <a href="{{ url_for('python_list_commands.python_list_commands') }}" class="btn btn-outline-dark" style="width:100px">Python</a>
          </td>
       </tr>
    </tbody>

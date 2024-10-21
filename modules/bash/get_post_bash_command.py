@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, url_for, render_template
 
-from modules import connect, dump
+from modules import connect
 
 bp = Blueprint('get_post_bash_command', __name__)
 
@@ -11,6 +11,5 @@ def get_post_bash_command(bash_id):
     bash_view = conn.execute("SELECT * FROM bash WHERE bash_id = ?",
                              (bash_id,)).fetchone()
     conn.close()
-    dump.dump()
     return render_template("bash/bash_view_command.html",
                            bash_view=bash_view)
