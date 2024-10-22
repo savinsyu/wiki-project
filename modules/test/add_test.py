@@ -13,7 +13,7 @@ def add_test():
             conn = connect.get_db_connection()
             conn.execute(
                 "INSERT INTO test (test_name) VALUES (?)",
-                new_test
+                (new_test,)
             )
             conn.commit()
             conn.close()

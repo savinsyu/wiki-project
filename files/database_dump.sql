@@ -403,10 +403,12 @@ CREATE TABLE test (
                 test_id INTEGER PRIMARY KEY autoincrement, 
                 test_name TEXT not null
         );
+INSERT INTO "test" VALUES(1,'яятрятрятря');
+INSERT INTO "test" VALUES(2,'ртятрятятя');
 DELETE FROM "sqlite_sequence";
 INSERT INTO "sqlite_sequence" VALUES('bash',121);
 INSERT INTO "sqlite_sequence" VALUES('sql',1166);
 INSERT INTO "sqlite_sequence" VALUES('links',31);
 INSERT INTO "sqlite_sequence" VALUES('python',2104);
-INSERT INTO "sqlite_sequence" VALUES('test',15);
+INSERT INTO "sqlite_sequence" VALUES('test',2);
 COMMIT;

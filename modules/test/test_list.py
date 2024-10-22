@@ -5,7 +5,7 @@ from modules import connect
 bp = Blueprint('test_list', __name__)
 
 
-@bp.route("/sql")
+@bp.route("/test")
 def test_list():
     conn = connect.get_db_connection()
     cur = conn.cursor()

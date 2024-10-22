@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from modules import index
 from modules.python import delete_python_command, add_python_command, edit_python_command, get_post_python_command, python_list_commands
-from modules.test import delete_test, test_list, add_test, edit_test, get_post_test
+from modules.test import delete_test, test_list, add_test, edit_test, get_post_test, drop_and_create_table, insert_test
 from modules.links import delete_links_command, links_list_commands, add_links_command, edit_links_command, get_post_links_command
 from modules.sql import delete_sql_command, sql_list_commands, edit_sql_command, get_post_sql_command, add_sql_command
 from modules.bash import add_bash_command, bash_list_commands, delete_bash_command, edit_bash_command, \
@@ -14,9 +14,11 @@ app.register_blueprint(add_links_command.bp)
 app.register_blueprint(edit_links_command.bp)
 app.register_blueprint(get_post_links_command.bp)
 app.register_blueprint(delete_test.bp)
+app.register_blueprint(insert_test.bp)
 app.register_blueprint(test_list.bp)
 app.register_blueprint(add_test.bp)
 app.register_blueprint(edit_test.bp)
+app.register_blueprint(drop_and_create_table.bp)
 app.register_blueprint(get_post_test.bp)
 app.register_blueprint(delete_bash_command.bp)
 app.register_blueprint(delete_sql_command.bp)
