@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% block title %}Ссылки{% endblock %} {% block content %}
+<div class="card mb-3">
+   <div class="card-header">
+      Всего записей в таблице links: <b>{{ test_list_count_print_int }}</b>
+   </div>
+   <div class="card-body">
+      <p class="card-text">
+         <a href="{{ url_for('add_test.add_test') }}" class="btn btn-outline-dark">Добавить новую запись?</a>
+      </p>
+   </div>
+</div>
+<ul class="list-group">
+   {% for test_list in test_list %}
+   <li class="list-group-item">
+      <a href="{{ url_for('get_post_test.get_post_test', test_id=test_list['test_id']) }}">{{ test_list['test_name'] }}</a>
+   </li>
+   {% endfor %}
+</ul>
+{% endblock %}

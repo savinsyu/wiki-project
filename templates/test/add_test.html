@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Добавить запись{% endblock %}
+{% block content %}
+   <form method="post">
+      <div class="card mb-3">
+         <label for="test_name" class="card-header">Cсылка</label>
+         <textarea class="form-control" id="test_name" name="test_name" rows="1" placeholder="Введите название"
+            required></textarea>
+      </div>
+      <div class="btn-group btn-group" role="group" aria-label="...">
+         <a class="btn btn-outline-dark" href="{{ url_for('test_list.test_list') }}">Вернуться к списку</a>
+         <button type="submit" value="" class="btn btn-outline-dark">Сохранить</button>
+      </div>
+   </form>
+<div class="container p-4">
+   {% include 'errors.html' %}
+</div>
+{% endblock %}

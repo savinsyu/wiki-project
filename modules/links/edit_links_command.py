@@ -35,4 +35,4 @@ def edit_links_command(links_id):
             flash('Ошибка сохранения записи!', category='error')
     
     
-    return render_template("links/edit_links_command.html", edit_links_command_view=edit_links_command_view)
+    return render_template("links/edit_test.html", edit_links_command_view=edit_links_command_view)

@@ -71,28 +71,49 @@ INSERT INTO "bash" VALUES(91,'git pull','Скачивание изменения из репозитория на 
 INSERT INTO "bash" VALUES(92,'~/AppData/Local/Programs/Python/Python39/python.exe -m pip install --upgrade pip','Обновление pip');
 INSERT INTO "bash" VALUES(93,'~/AppData/Local/Programs/Python/Python39/python.exe venv/Scripts/pip.exe install pandas','Установка библиотеки Pandas');
 INSERT INTO "bash" VALUES(97,'#!/bin/commands
+
 rm -rf ~/Downloads
+
 mkdir ~/Downloads','Скрипт для удаления папки и её создания
+
 ');
 INSERT INTO "bash" VALUES(98,'#!/bin/bash 
+
 # Задаем переменную DATE, в переменной указываем команду date (для вывода даты и времени) 
+
 DATE=$(date) 
+
 # Задаем переменную TEXT, в переменной указываем текст коммита и добавляем ранее добавленную переменную 
+
 DATE TEXT="Add commit date: $DATE" 
+
 # Добавляем файлы для коммита 
+
 git add . 
+
 # Объявляем коммит с созданной ранее переменной TEXT 
+
 git commit -m "$TEXT" 
+
 # Отправляем коммит на репозиторий 
+
 git push ','bash-скрипт для формирования коммита и отправки его на репозиторий с указанием даты 
+
 ');
 INSERT INTO "bash" VALUES(99,'#!/bin/bash
+
 # Запускается 1-е приложение следующим скриптом. Указывается путь исполняемой программы и путь к самому приложению.
+
 ~/AppData/Local/Programs/Python/Python312/python.exe ~/flask-mysql-project/app.py &
+
 # Затем запускается 2-е приложение
+
 ~/AppData/Local/Programs/Python/Python312/python.exe /p/s.savin/flask-base/app.py &
+
 # И наконец запускается 3-е приложение
+
 ~/AppData/Local/Programs/Python/Python312/python.exe /p/s.savin/flask-project-full/app.py &','bash-скрипт который запускает три приложения flask
+
 ');
 INSERT INTO "bash" VALUES(107,'rename "test.xlsx" "test1.xlsx"','Переименование файла в CMD');
 INSERT INTO "bash" VALUES(112,'mount','Вывод всех подключенных дисков');
@@ -164,25 +185,20 @@ cur = con.cursor()
 res = cur.execute("SELECT * FROM links")
 result = res.fetchall()
 df = pd.DataFrame(result, columns=[c[0] for c in cur.description])');
-INSERT INTO "python" VALUES(2093,'Скрипт добавления таблицы в базу данных','Скрипт добавления таблицы в базу данных','import sqlite3
-
-
-def create_tables():
+INSERT INTO "python" VALUES(2093,'Скрипт добавления таблицы в базу данных','Скрипт добавления таблицы в базу данных','def create_tables():
     sql_statements = [
-        """CREATE TABLE IF NOT EXISTS main.table_name (
-                id INTEGER PRIMARY KEY autoincrement, 
-                table_name TEXT not null,
-                table_content TEXT not null
+        """CREATE TABLE IF NOT EXISTS test (
+                test_id INTEGER PRIMARY KEY autoincrement, 
+                test_name TEXT not null
         );"""]
 
     try:
-        with sqlite3.connect(''/database1.db'') as conn:
+        with conn:
             cursor = conn.cursor()
             for statement in sql_statements:
                 cursor.execute(statement)
-
             conn.commit()
-    except sqlite3.Error as e:
+    except connect.Error as e:
         print(e)
 
 
@@ -383,9 +399,14 @@ INSERT INTO "sql" VALUES(9,'ALTER TABLE [train] RENAME COLUMN [train_name] TO [f
 INSERT INTO "sql" VALUES(10,'DROP TABLE [train];','Удаляет таблицу базы данных',NULL);
 INSERT INTO "sql" VALUES(1159,'SELECT DISTINCT field FROM table;','Поиск уникальных значений','DISTINCT ищет и выводит уникальные значения указанного в запросе столбца ');
 INSERT INTO "sql" VALUES(1161,'SELECT * FROM table;','Вывод всех записей таблицы','Вывод всех записей таблицы');
+CREATE TABLE test (
+                test_id INTEGER PRIMARY KEY autoincrement, 
+                test_name TEXT not null
+        );
 DELETE FROM "sqlite_sequence";
 INSERT INTO "sqlite_sequence" VALUES('bash',121);
 INSERT INTO "sqlite_sequence" VALUES('sql',1166);
 INSERT INTO "sqlite_sequence" VALUES('links',31);
 INSERT INTO "sqlite_sequence" VALUES('python',2104);
+INSERT INTO "sqlite_sequence" VALUES('test',15);
 COMMIT;
