@@ -1,8 +1,6 @@
 {% extends "base.html" %} {% block title %}Команды bash{% endblock %} {% block content %}
 <div class="card mb-3">
-   <div class="card-header">
-      Всего записей в таблице bash: <b>{{ bash_list_count_print_int }}</b>
-   </div>
+   <div class="card-header">Всего записей в таблице bash: <b>{{ bash_list_count_print_int }}</b></div>
    <div class="card-body">
       <p class="card-text">
          <a href="{{ url_for('add_bash_command.add_bash_command') }}" class="btn btn-outline-dark">Добавить новую запись?</a>
@@ -11,8 +9,16 @@
 </div>
 <ul class="list-group">
    {% for bash_list in bash_list %}
-   <li class="list-group-item"><a href="{{ url_for('get_post_bash_command.get_post_bash_command', bash_id=bash_list['bash_id']) }}">{{
-         bash_list['bash_name'] }}</a></li>
+   <li class="list-group-item">{{ bash_list['bash_name'] }}</li>
+   <div class="card-body">
+      <div class="btn-group pb-2" role="group" aria-label="...">
+         <a href="{{ url_for('get_post_bash_command.get_post_bash_command', bash_id=bash_list['bash_id']) }}" class="btn btn-outline-dark">Перейтик записи</a>
+         <a href="{{ url_for('edit_bash_command.edit_bash_command', bash_id=bash_list['bash_id']) }}" class="btn btn-outline-dark">Редактировать запись?</a>
+      </div>
+      <form action="{{ url_for('delete_bash_command.delete_bash_command', bash_id=bash_list['bash_id'])}}" method="POST" class="pb-2">
+         <input type="submit" class="btn btn-outline-danger" value="Удалить запись?" onclick="return confirm('Вы точно уверены что хотите удалить запись?')" />
+      </form>
+   </div>
    {% endfor %}
 </ul>
 {% endblock %}

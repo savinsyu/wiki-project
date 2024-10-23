@@ -101,17 +101,11 @@ git push ','bash-скрипт для формирования коммита и отправки его на репозиторий с
 
 ');
 INSERT INTO "bash" VALUES(99,'#!/bin/bash
-
 # Запускается 1-е приложение следующим скриптом. Указывается путь исполняемой программы и путь к самому приложению.
-
 ~/AppData/Local/Programs/Python/Python312/python.exe ~/flask-mysql-project/app.py &
-
 # Затем запускается 2-е приложение
-
 ~/AppData/Local/Programs/Python/Python312/python.exe /p/s.savin/flask-base/app.py &
-
 # И наконец запускается 3-е приложение
-
 ~/AppData/Local/Programs/Python/Python312/python.exe /p/s.savin/flask-project-full/app.py &','bash-скрипт который запускает три приложения flask
 
 ');
@@ -430,36 +424,10 @@ INSERT INTO "test" VALUES(23,'test10');
 INSERT INTO "test" VALUES(24,'test11');
 INSERT INTO "test" VALUES(25,'test12');
 INSERT INTO "test" VALUES(26,'test13');
-INSERT INTO "test" VALUES(27,'test1');
-INSERT INTO "test" VALUES(28,'test2');
-INSERT INTO "test" VALUES(29,'test3');
-INSERT INTO "test" VALUES(30,'test4');
-INSERT INTO "test" VALUES(31,'test5');
-INSERT INTO "test" VALUES(32,'test6');
-INSERT INTO "test" VALUES(33,'test7');
-INSERT INTO "test" VALUES(34,'test8');
-INSERT INTO "test" VALUES(35,'test9');
-INSERT INTO "test" VALUES(36,'test10');
-INSERT INTO "test" VALUES(37,'test11');
-INSERT INTO "test" VALUES(38,'test12');
-INSERT INTO "test" VALUES(39,'test13');
-INSERT INTO "test" VALUES(40,'test1');
-INSERT INTO "test" VALUES(41,'test2');
-INSERT INTO "test" VALUES(42,'test3');
-INSERT INTO "test" VALUES(43,'test4');
-INSERT INTO "test" VALUES(44,'test5');
-INSERT INTO "test" VALUES(45,'test6');
-INSERT INTO "test" VALUES(46,'test7');
-INSERT INTO "test" VALUES(47,'test8');
-INSERT INTO "test" VALUES(48,'test9');
-INSERT INTO "test" VALUES(49,'test10');
-INSERT INTO "test" VALUES(50,'test11');
-INSERT INTO "test" VALUES(51,'test12');
-INSERT INTO "test" VALUES(52,'test13');
 DELETE FROM "sqlite_sequence";
-INSERT INTO "sqlite_sequence" VALUES('bash',121);
+INSERT INTO "sqlite_sequence" VALUES('bash',122);
 INSERT INTO "sqlite_sequence" VALUES('sql',1166);
 INSERT INTO "sqlite_sequence" VALUES('links',32);
 INSERT INTO "sqlite_sequence" VALUES('python',2104);
-INSERT INTO "sqlite_sequence" VALUES('test',52);
+INSERT INTO "sqlite_sequence" VALUES('test',26);
 COMMIT;
