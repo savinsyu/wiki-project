@@ -15,7 +15,7 @@ def links_list_commands():
     links_list = conn.execute("SELECT * FROM links ORDER BY 1 DESC").fetchall()
     conn.close()
 
-    return render_template("links/test_list.html",
+    return render_template("links/links_list_commands.html",
                            links_list=links_list,
                            links_list_count_print_int=links_list_count_print_int,
                            )
