@@ -16,15 +16,13 @@
       <div class="card-header h5">Что будем дальше делать?</div>
       <div class="card-body">
          <div class="btn-group btn-group" role="group" aria-label="...">
-            <a href="{{ url_for('bash_list_commands.bash_list_commands') }}" class="btn btn-outline-dark">Вернемся к списку команд и скриптов</a>
-            <a href="{{ url_for('add_bash_command.add_bash_command') }}" class="btn btn-outline-dark">Добавим новую запись</a>
+            <a href="{{ url_for('bash_list_commands.bash_list_commands') }}" class="btn btn-outline-dark">Вернемся к
+               списку команд и скриптов</a>
+            <a href="{{ url_for('add_bash_command.add_bash_command') }}" class="btn btn-outline-dark">Добавим новую
+               запись</a>
             <button type="submit" value="" class="btn btn-outline-dark">Сохраним изменения</button>
+            {% include 'errors.html' %}
          </div>
       </div>
 </form>
-</div>
-</div>
-<div class="container">
-   {% include 'errors.html' %}
-</div>
 {% endblock %}

@@ -1,19 +1,35 @@
 {% extends "base.html" %} {% block title %}Команды sql{% endblock %} {% block content %}
-<div class="card mb-3">
-   <div class="card-header">
-      Всего записей в таблице sql: <b>{{ sql_list_count_print_int }}</b>
-   </div>
+<div class="card mb-2">
+   <div class="card-header h3">Список команд и скриптов SQL</div>
    <div class="card-body">
+      <p class="card-text">Всего записей в разделе: <b>{{ sql_list_count_print_int }}</b></p>
       <p class="card-text">
-         <a href="{{ url_for('add_sql_command.add_sql_command') }}" class="btn btn-outline-dark">Добавить новую запись?</a>
+         <a href="{{ url_for('add_sql_command.add_sql_command') }}" class="btn btn-outline-dark">Добавить новую
+            запись?</a>
       </p>
    </div>
 </div>
-<ul class="list-group">
 {% for sql_list in sql_list %}
-<li class="list-group-item"><a href="{{ url_for('get_post_sql_command.get_post_sql_command', sql_id=sql_list['sql_id']) }}">{{
-      sql_list['sql_name']
-      }}</a></li>
+<div class="card mb-2">
+   <div class="card-header">{{ sql_list['sql_name'] }}</div>
+   <div class="card-body">
+      <p class="card-text">
+         <pre class="card p-2">{{ sql_list['sql_command'] }}</pre>
+      </p>
+      <p class="card-text">
+      <div class="btn-group pb-2" role="group" aria-label="...">
+         <a href="{{ url_for('get_post_sql_command.get_post_sql_command', sql_id=sql_list['sql_id']) }}"
+            class="btn btn-outline-dark">Перейтик записи</a>
+         <a href="{{ url_for('edit_sql_command.edit_sql_command', sql_id=sql_list['sql_id']) }}"
+            class="btn btn-outline-dark">Редактировать запись?</a>
+      </div>
+      <form action="{{ url_for('delete_sql_command.delete_sql_command', sql_id=sql_list['sql_id'])}}" method="POST"
+         class="pb-2">
+         <input type="submit" class="btn btn-outline-danger" value="Удалить запись?"
+            onclick="return confirm('Вы точно уверены что хотите удалить запись?')" />
+      </form>
+      </p>
+   </div>
+</div>
 {% endfor %}
-</ul>
 {% endblock %}

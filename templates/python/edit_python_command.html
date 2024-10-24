@@ -8,58 +8,20 @@
          required>{{ edit_python_command_view.python_command }}</textarea>
    </div>
    <div class="card mb-3">
-      <div class="card-header">
-         Исходная команда
-      </div>
-      <div class="card-body">
-         <p class="card-text">
-            <b>
-               <pre>{{ edit_python_command_view.python_command }}</pre>
-            </b>
-         </p>
-      </div>
-   </div>
-   <div class="card mb-3">
       <label for="python_name" class="card-header">Описание команды</label>
       <textarea class="form-control" id="python_name" name="python_name" rows="1" placeholder="Введите описание команды"
          required>{{ edit_python_command_view.python_name }}</textarea>
-   </div>
-   <div class="card mb-3">
-      <div class="card-header">
-         Старое описание команды
-      </div>
-      <div class="card-body">
-         <p class="card-text">
-            <b>
-               {{ edit_python_command_view.python_name }}
-            </b>
-         </p>
-      </div>
    </div>
    <div class="card mb-3">
       <label for="python_description" class="card-header">Подробно</label>
       <textarea class="form-control" id="python_description" name="python_description" rows="8"
          placeholder="Введите описание команды" required>{{ edit_python_command_view.python_description }}</textarea>
    </div>
-   <div class="card mb-3">
-      <div class="card-header">
-         Старые подробности команды
-      </div>
-      <div class="card-body">
-         <p class="card-text">
-            <b>
-               {{ edit_python_command_view.python_description }}
-            </b>
-         </p>
-      </div>
-   </div>
    <div class="btn-group btn-group" role="group" aria-label="...">
       <a href="{{ url_for('python_list_commands.python_list_commands') }}" class="btn btn-outline-dark">Вернуться к списку</a>
       <a href="{{ url_for('add_python_command.add_python_command') }}" class="btn btn-outline-dark">Добавить новую</a>
       <button type="submit" value="" class="btn btn-outline-dark">Сохранить изменения</button>
+      {% include 'errors.html' %}
    </div>
 </form>
-<div class="container p-4">
-   {% include 'errors.html' %}
-</div>
 {% endblock %}

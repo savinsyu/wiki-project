@@ -1,13 +1,17 @@
 from flask import Flask, render_template
-from modules import index
-from modules.python import delete_python_command, add_python_command, edit_python_command, get_post_python_command, python_list_commands
+from modules import index, dump, export_tables_sql_to_xlsx
+from modules.python import delete_python_command, add_python_command, edit_python_command, get_post_python_command, \
+    python_list_commands
 from modules.test import delete_test, test_list, add_test, edit_test, get_post_test, drop_and_create_table, insert_test
-from modules.links import delete_links_command, links_list_commands, add_links_command, edit_links_command, get_post_links_command
+from modules.links import delete_links_command, links_list_commands, add_links_command, edit_links_command, \
+    get_post_links_command
 from modules.sql import delete_sql_command, sql_list_commands, edit_sql_command, get_post_sql_command, add_sql_command
 from modules.bash import add_bash_command, bash_list_commands, delete_bash_command, edit_bash_command, \
     get_post_bash_command
 
 app = Flask(__name__)
+app.register_blueprint(dump.bp)
+app.register_blueprint(export_tables_sql_to_xlsx.bp)
 app.register_blueprint(delete_links_command.bp)
 app.register_blueprint(links_list_commands.bp)
 app.register_blueprint(add_links_command.bp)

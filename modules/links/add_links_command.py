@@ -20,16 +20,16 @@ def add_links_command():
             )
             conn.commit()
             conn.close()
+
             if not new_links_command:
                 flash('Ошибка сохранения записи!', category='error')
             else:
-                flash('Запись успешно добавлена!')
+                flash('Запись успешно добавлена!', category='success')
                 dump.dump()
-                export_tables_sql_to_xlsx.export_tables_sql_to_xlsx()   
-            # В случае соблюдения условий заполнения полей, произойдёт перенаправление
-            return redirect(url_for("links_list_commands.links_list_commands"))
+                export_tables_sql_to_xlsx.export_tables_sql_to_xlsx()
+                # В случае соблюдения условий заполнения полей, произойдёт перенаправление
+            # return redirect(url_for("links_list_commands.links_list_commands"))
         else:
             flash('Ошибка сохранения записи!', category='error')
-    
-    
+
     return render_template("links/add_links_command.html")

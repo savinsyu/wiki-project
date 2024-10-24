@@ -18,12 +18,11 @@
          placeholder="Введите подробное описание" required>{{ edit_links_command_view.links_description }}</textarea>
    </div>
    <div class="btn-group btn-group" role="group" aria-label="...">
-      <a href="{{ url_for('links_list_commands.links_list_commands') }}" class="btn btn-outline-dark">Вернуться к списку</a>
+      <a href="{{ url_for('links_list_commands.links_list_commands') }}" class="btn btn-outline-dark">Вернуться к
+         списку</a>
       <a href="{{ url_for('add_links_command.add_links_command') }}" class="btn btn-outline-dark">Добавить новую</a>
       <button type="submit" value="" class="btn btn-outline-dark">Сохранить изменения</button>
+      {% include 'errors.html' %}
    </div>
 </form>
-<div class="container p-4">
-   {% include 'errors.html' %}
-</div>
 {% endblock %}

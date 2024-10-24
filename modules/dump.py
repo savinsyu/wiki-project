@@ -1,5 +1,8 @@
+from flask import Blueprint, redirect, url_for, render_template
 import io
 from modules import connect
+
+bp = Blueprint("dump", __name__)
 
 
 def dump():
@@ -12,3 +15,4 @@ def dump():
             p.write('%s\n' % line)
     print('Database dump successfully completed!!')
     conn.close()
+

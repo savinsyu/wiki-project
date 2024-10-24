@@ -23,6 +23,7 @@ def edit_links_command(links_id):
             )
             conn.commit()
             conn.close()
+
             if not links_command_edit:
                 flash('Ошибка сохранения записи, вы ввели мало символов!', category='error')
             else:
@@ -30,9 +31,9 @@ def edit_links_command(links_id):
                 dump.dump()
                 export_tables_sql_to_xlsx.export_tables_sql_to_xlsx()
             # В случае соблюдения условий заполнения полей, произойдёт перенаправление
-            return redirect(url_for("links_list_commands.links_list_commands"))
+            # return redirect(url_for("links_list_commands.links_list_commands"))
+
         else:
             flash('Ошибка сохранения записи!', category='error')
-    
-    
+
     return render_template("links/edit_links_command.html", edit_links_command_view=edit_links_command_view)

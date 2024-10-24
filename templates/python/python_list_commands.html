@@ -1,19 +1,36 @@
 {% extends "base.html" %} {% block title %}Команды python{% endblock %} {% block content %}
-<div class="card mb-3">
-   <div class="card-header">
-      Всего записей в таблице python: <b>{{ python_list_count_print_int }}</b>
-   </div>
+<div class="card mb-2">
+   <div class="card-header h3">Список команд и скриптов Python</div>
    <div class="card-body">
+      <p class="card-text">В этом разделе можно найти скрипты и команды Python</p>
+      <p class="card-text">Всего записей в таблице python: <b>{{ python_list_count_print_int }}</b></p>
       <p class="card-text">
-         <a href="{{ url_for('add_python_command.add_python_command') }}" class="btn btn-outline-dark">Добавить новую запись?</a>
+         <a href="{{ url_for('add_python_command.add_python_command') }}" class="btn btn-outline-dark">Добавить новую
+            запись?</a>
       </p>
    </div>
 </div>
-<ul class="list-group">
-   {% for python_list in python_list %}
-   <li class="list-group-item"><a href="{{ url_for('get_post_python_command.get_post_python_command', python_id=python_list['python_id']) }}">{{
-         python_list['python_name']
-         }}</a></li>
-   {% endfor %}
-</ul>
+{% for python_list in python_list %}
+<div class="card mb-2">
+   <div class="card-header">{{ python_list['python_name'] }}</div>
+   <div class="card-body">
+      <p class="card-text">
+      <pre class="card p-2">{{ python_list['python_command'] }}</pre>
+      </p>
+      <p class="card-text">
+      <div class="btn-group pb-2" role="group" aria-label="...">
+         <a href="{{ url_for('get_post_python_command.get_post_python_command', python_id=python_list['python_id']) }}"
+            class="btn btn-outline-dark">Перейти к записи</a>
+         <a href="{{ url_for('edit_python_command.edit_python_command', python_id=python_list['python_id']) }}"
+            class="btn btn-outline-dark">Редактировать запись?</a>
+      </div>
+      <form action="{{ url_for('delete_python_command.delete_python_command', python_id=python_list['python_id'])}}"
+         method="POST" class="pb-2">
+         <input type="submit" class="btn btn-outline-danger" value="Удалить запись?"
+            onclick="return confirm('Вы точно уверены что хотите удалить запись?')" />
+      </form>
+      </p>
+   </div>
+</div>
+{% endfor %}
 {% endblock %}

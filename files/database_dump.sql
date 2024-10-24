@@ -113,7 +113,7 @@ INSERT INTO "bash" VALUES(107,'rename "test.xlsx" "test1.xlsx"','Переименование 
 INSERT INTO "bash" VALUES(112,'mount','Вывод всех подключенных дисков');
 INSERT INTO "bash" VALUES(113,'tar -cf flask-project.tar * && mv flask-project.tar /o','Скрипт архивации файлов и перенос архива на другой диск');
 INSERT INTO "bash" VALUES(114,'tar -cf flask-project.tar *','Создание архива всех файлов в папке');
-INSERT INTO "bash" VALUES(115,'mv flask-project.tar /o','Перенос файла в другой диск');
+INSERT INTO "bash" VALUES(115,'mv flask-project.tar /o','Перенос файла на другой диск');
 CREATE TABLE "links"
 (
     links_id      INTEGER
@@ -134,8 +134,7 @@ INSERT INTO "links" VALUES(20,'Документация по Bootstrap','getbootstrap.com/','Д
 INSERT INTO "links" VALUES(21,'Описание библиотеки, которая позволяет работает с базой mysql','pypi.org/project/PyMySQL/','Описание библиотеки, которая позволяет работает с базой mysql.');
 INSERT INTO "links" VALUES(22,'Документация CLI PowerSHell','learn.microsoft.com/ru-ru/powershell/','Документация CLI PowerSHell');
 INSERT INTO "links" VALUES(25,'Blueprint','dnmtechs.com/splitting-a-python-flask-app-into-multiple-files/','Разбивка приложения на части');
-INSERT INTO "links" VALUES(28,'Яндекс','yandex.ru','Поисковая система');
-INSERT INTO "links" VALUES(32,'Поисковая система Google','google.com','Поисковая система Google');
+INSERT INTO "links" VALUES(33,'Что такое CLI?','ru.wikipedia.org/wiki/Интерфейс_командной_строки','Что такое CLI?');
 CREATE TABLE "python" (
     "python_id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "python_command" TEXT NOT NULL,
@@ -169,214 +168,7 @@ INSERT INTO "python" VALUES(25,'data.max()','Получим максимальные значения в каж
 INSERT INTO "python" VALUES(26,'data_convert = data.astype("int16")','Изменение типа столбца',NULL);
 INSERT INTO "python" VALUES(30,'df = pd.DataFrame(lst, columns=[c[0] for c in cur.description])','Создание датафрейма из базы данных','Команда позволяет создать датафрейм с данными из таблицы базы данных.');
 INSERT INTO "python" VALUES(31,'df = pd.read_excel(''sotr.xlsx'', index_col=0)','Загрузка данных из EXCEL файла',NULL);
-INSERT INTO "python" VALUES(32,'data = pd.read_csv("data.csv")','Загрузка CSV-данных','Метод загружает csv файл с данными.');
-INSERT INTO "python" VALUES(2090,'Тестовое сообщение','Тестовое сообщение','Тестовое сообщение1');
-INSERT INTO "python" VALUES(2092,'Скрипт преобразования данных таблицы в датафрейм','Скрипт преобразования данных таблицы в датафрейм','import sqlite3
-import pandas as pd
-
-
-con = sqlite3.connect("/database1.db")
-cur = con.cursor()
-res = cur.execute("SELECT * FROM links")
-result = res.fetchall()
-df = pd.DataFrame(result, columns=[c[0] for c in cur.description])');
-INSERT INTO "python" VALUES(2093,'Скрипт добавления таблицы в базу данных','Скрипт добавления таблицы в базу данных','def create_tables():
-    sql_statements = [
-        """CREATE TABLE IF NOT EXISTS test (
-                test_id INTEGER PRIMARY KEY autoincrement, 
-                test_name TEXT not null
-        );"""]
-
-    try:
-        with conn:
-            cursor = conn.cursor()
-            for statement in sql_statements:
-                cursor.execute(statement)
-            conn.commit()
-    except connect.Error as e:
-        print(e)
-
-
-if __name__ == ''__main__'':
-    create_tables()');
-INSERT INTO "python" VALUES(2094,'Скрипт удаления из таблицы баз данных определенных id ','Скрипт удаления из таблицы баз данных определенных id ','# Подключаем библиотеку sqlite3
-import sqlite3
-
-# Подключаемся в базе данных
-con = sqlite3.connect("../database1.db")
-
-cur = con.cursor()
-res = cur.execute("DELETE FROM links WHERE id IN (12,13,14)")
-res.fetchall()
-con.commit()');
-INSERT INTO "python" VALUES(2095,'Скрипт очистки таблицы базы данных','Скрипт очистки таблицы базы данных','import sqlite3
-
-
-con = sqlite3.connect("/database1.db")
-cur = con.cursor()
-res = cur.execute("DROP TABLE table_name")
-
-
-con.commit()');
-INSERT INTO "python" VALUES(2096,'Скрипт удаления таблицы','Скрипт удаления таблицы','import sqlite3
-con = sqlite3.connect("/database1.db")
-cur = con.cursor()
-res = cur.execute("DROP TABLE table_name")
-con.commit()');
-INSERT INTO "python" VALUES(2097,'Скрипт вставки значений в таблицу','Скрипт вставки значений в таблицу','# Подключаем библиотеку sqlite3
-import sqlite3
-
-# Подключаемся в базе данных
-con = sqlite3.connect("../database1.db")
-cur = con.cursor()
-data = (
-    {"id": None, "name": "test", "link": "test"},
-    {"id": None, "name": "test", "link": "test"},
-    {"id": None, "name": "test", "link": "test"},
-)
-cur.executemany("INSERT INTO links VALUES(:id,:name, :link)", data)
-con.commit()
-');
-INSERT INTO "python" VALUES(2098,'Экземпляр приложения Flask','Экземпляр приложения Flask с подключением внешней базы данных и пагинацией','import flask
-import pymysql.cursors
-from flask_paginate import Pagination, get_page_args
-
-app = flask.Flask(__name__)
-app.secret_key = "secret key"
-
-
-@app.errorhandler(404)
-def page_not_found(e):
-    return flask.render_template(''404.html''), 404
-
-
-def get_db_connection():
-    conn = pymysql.connect(host=''localhost'',
-                           port=3307,
-                           user=''root'',
-                           password=''1'',
-                           database=''test_base'',
-                           charset=''utf8'',
-                           cursorclass=pymysql.cursors.DictCursor)
-    return conn
-
-
-def close_db_connection(conn):
-    conn.close()
-
-
-@app.route("/")
-def index():
-    conn = get_db_connection()
-    with conn.cursor() as cur:
-        cur.execute("SELECT * FROM test_table")
-        test_list_posts = cur.fetchall()
-    conn.close()
-    page, per_page, offset = get_page_args(page_parameter=''page'',
-                                           per_page_parameter=''per_page'')
-    total = len(test_list_posts)
-
-    def get_test_list_posts(offset=0, per_page=5):
-        return test_list_posts[offset: offset + per_page]
-
-    pagination_test_list_posts = get_test_list_posts(offset=offset, per_page=per_page)
-    pagination = Pagination(page=page, per_page=per_page, total=total,
-                        css_framework=''bootstrap4'',
-                        display_msg="Показано <b>{start} - {end}</b> {record_name} из <b>{total}</b>",
-                        record_name="записей")
-
-    return flask.render_template("test/test_list_posts.html",
-                                 test_list_posts=pagination_test_list_posts, 
-                                                            page=page,
-                           per_page=per_page,
-                           pagination=pagination,)
-
-
-
-@app.route("/view/<int:test_id>")
-def get_post_test_post(test_id):
-    conn = get_db_connection()
-    with conn.cursor() as cur:
-        sql = "SELECT * FROM `test_table` WHERE `test_id` =%s"
-        cur.execute(sql, test_id)
-        test_view_post = cur.fetchone()
-    conn.close()
-    return flask.render_template("test/test_view_post.html",
-                                 test_view_post=test_view_post, )
-
-
-@app.route("/edit/<int:test_id>/", methods=("GET", "POST"))
-def edit_test_post(test_id):
-    conn = get_db_connection()
-    with conn.cursor() as cur:
-        sql = "SELECT * FROM `test_table` WHERE `test_id` =%s"
-        cur.execute(sql, (test_id,))
-        edit_test_view = cur.fetchone()
-    if flask.request.method == "POST":
-        test_edit_post_text = flask.request.form["test_text"]
-        if len(flask.request.form[''test_text'']) > 1:
-            conn = get_db_connection()
-            with conn.cursor() as cur:
-                sql = "UPDATE `test_table` SET `test_text` =%s  WHERE `test_id` =%s"
-                cur.execute(
-                    sql, (test_edit_post_text, test_id),
-                )
-            conn.commit()
-            conn.close()
-            if not test_edit_post_text:
-                flask.flash(''Ошибка сохранения записи, вы ввели мало символов!'', category=''error'')
-            else:
-                flask.flash(''Запись успешно сохранена!'', category=''success'')
-            # В случае соблюдения условий заполнения полей, произойдёт перенаправление
-            return flask.redirect(flask.url_for("index"))
-
-        else:
-            flask.flash(''Ошибка сохранения записи!'', category=''error'')
-
-    return flask.render_template("test/edit_test_post.html", edit_test_view=edit_test_view)
-
-
-@app.route("/new_post", methods=["GET", "POST"])
-def add_test_post():
-    if flask.request.method == "POST":
-        new_test_post = flask.request.form["test_text"]
-        if len(flask.request.form[''test_text'']) > 1:
-            conn = get_db_connection()
-            with conn.cursor() as cur:
-                sql = "INSERT INTO `test_table` (`test_text`) VALUES (%s)"
-                cur.execute(
-                    sql, new_test_post,
-                )
-            conn.commit()
-            conn.close()
-            if not new_test_post:
-                flask.flash(''Ошибка сохранения записи, Вы ввели слишком мало символов!'', category=''error'')
-            else:
-                flask.flash(''Запись успешно добавлена!'')
-            # В случае соблюдения условий заполнения полей, произойдёт перенаправление
-            return flask.redirect(flask.url_for("index"))
-
-        else:
-            flask.flash(''Ошибка сохранения записи!'', category=''error'')
-
-    return flask.render_template("test/add_test_post.html")
-
-
-@app.route("/delete/<int:test_id>/", methods=("POST",))
-def delete_post_test(test_id):
-    conn = get_db_connection()
-    with conn.cursor() as cur:
-        sql = "DELETE FROM `test_table` WHERE `test_id` =%s"
-        cur.execute(
-            sql, test_id,
-        )
-    conn.commit()
-    conn.close()
-    return flask.redirect(flask.url_for("index"))
-
-
-if __name__ == "__main__":
-    app.run(debug=True, host=''0.0.0.0'', port=83)');
+INSERT INTO "python" VALUES(32,'data = pd.read_csv("data.csv")','Загрузка CSV-данных в датафрейм','Метод загружает csv файл с данными.');
 CREATE TABLE [sql] ( 
   "sql_id" INTEGER PRIMARY KEY AUTOINCREMENT,
   "sql_command" TEXT NOT NULL,
@@ -427,7 +219,7 @@ INSERT INTO "test" VALUES(26,'test13');
 DELETE FROM "sqlite_sequence";
 INSERT INTO "sqlite_sequence" VALUES('bash',122);
 INSERT INTO "sqlite_sequence" VALUES('sql',1166);
-INSERT INTO "sqlite_sequence" VALUES('links',32);
+INSERT INTO "sqlite_sequence" VALUES('links',40);
 INSERT INTO "sqlite_sequence" VALUES('python',2104);
 INSERT INTO "sqlite_sequence" VALUES('test',26);
 COMMIT;
