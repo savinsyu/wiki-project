@@ -12,6 +12,4 @@ def delete_python_command(python_id):
                  (python_id,))
     conn.commit()
     conn.close()
-    dump.dump()
-    export_tables_sql_to_xlsx.export_tables_sql_to_xlsx()
     return redirect(url_for("python_list_commands.python_list_commands"))

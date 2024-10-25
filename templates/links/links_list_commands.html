@@ -7,6 +7,7 @@
          <a href="{{ url_for('add_links_command.add_links_command') }}" class="btn btn-outline-dark">Добавить новую
             запись?</a>
       </p>
+      {% include 'errors.html' %}
    </div>
 </div>
 {% for links_list in links_list %}

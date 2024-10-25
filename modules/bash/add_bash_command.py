@@ -20,16 +20,14 @@ def add_bash_command():
             conn.commit()
             conn.close()
             if not new_bash_command:
-                flash('Ошибка сохранения записи, Вы ввели слишком мало символов!', category='error')
+                flash('Ошибка сохранения записи, вы ввели мало символов!', category='danger')
             else:
-                flash('Запись успешно добавлена!')
-                dump.dump()
-                export_tables_sql_to_xlsx.export_tables_sql_to_xlsx()
+                flash('Запись успешно добавлена!', category='success')
             # В случае соблюдения условий заполнения полей, произойдёт перенаправление
             return redirect(url_for("bash_list_commands.bash_list_commands"))
 
         else:
-            flash('Ошибка сохранения записи!', category='error')
+            flash('Ошибка сохранения записи, вы ввели мало символов!', category='danger')
             
    
     return render_template("bash/add_bash_command.html")

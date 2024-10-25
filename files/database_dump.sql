@@ -120,72 +120,72 @@ CREATE TABLE "links"
         primary key autoincrement,
     links_name    TEXT not null,
     links_command TEXT not null
-, links_description TEXT);
-INSERT INTO "links" VALUES(1,'Как сделать скрипт на bash','selectel.ru/blog/tutorials/linux-bash-scripting-guide/','None');
-INSERT INTO "links" VALUES(2,'Как создать и запустить bat-файлы','nic.ru/help/kak-sozdat6-i-zapustit6-bat-fajly_11640.html','None');
-INSERT INTO "links" VALUES(3,'Работа с 7zip из командной строки','dmosk.ru/miniinstruktions.php?mini=7zip-cmd ','None');
-INSERT INTO "links" VALUES(4,'Список команд Windows CMD с описанием и примерами','ab57.ru/cmdlist.html','None');
-INSERT INTO "links" VALUES(5,'Интересный материал про bash','linuxsimply.com/bash-scripting-tutorial/basics/','None');
-INSERT INTO "links" VALUES(15,'Горячие клавиши Bash','selectel.ru/blog/tutorials/linux-terminal-hotkeys/','None');
-INSERT INTO "links" VALUES(16,'Красивый python','sky.pro/media/pep8/','None');
-INSERT INTO "links" VALUES(17,'Работа с gitignore','wiki.merionet.ru/articles/fajl-gitignore-kak-ignorirovat-fajly-i-papki-v-git','None');
-INSERT INTO "links" VALUES(19,'Сайт с документацией по веб-технологиям','developer.mozilla.org/ru/docs/Web','Сайт с документацией по веб-технологиям.');
-INSERT INTO "links" VALUES(20,'Документация по Bootstrap','getbootstrap.com/','Документация по Bootstrap.');
-INSERT INTO "links" VALUES(21,'Описание библиотеки, которая позволяет работает с базой mysql','pypi.org/project/PyMySQL/','Описание библиотеки, которая позволяет работает с базой mysql.');
-INSERT INTO "links" VALUES(22,'Документация CLI PowerSHell','learn.microsoft.com/ru-ru/powershell/','Документация CLI PowerSHell');
-INSERT INTO "links" VALUES(25,'Blueprint','dnmtechs.com/splitting-a-python-flask-app-into-multiple-files/','Разбивка приложения на части');
-INSERT INTO "links" VALUES(33,'Что такое CLI?','ru.wikipedia.org/wiki/Интерфейс_командной_строки','Что такое CLI?');
+);
+INSERT INTO "links" VALUES(1,'Как сделать скрипт на bash','selectel.ru/blog/tutorials/linux-bash-scripting-guide/');
+INSERT INTO "links" VALUES(2,'Как создать и запустить bat-файлы','nic.ru/help/kak-sozdat6-i-zapustit6-bat-fajly_11640.html');
+INSERT INTO "links" VALUES(3,'Работа с 7zip из командной строки','dmosk.ru/miniinstruktions.php?mini=7zip-cmd ');
+INSERT INTO "links" VALUES(4,'Список команд Windows CMD с описанием и примерами','ab57.ru/cmdlist.html');
+INSERT INTO "links" VALUES(5,'Интересный материал про bash','linuxsimply.com/bash-scripting-tutorial/basics/');
+INSERT INTO "links" VALUES(15,'Горячие клавиши Bash','selectel.ru/blog/tutorials/linux-terminal-hotkeys/');
+INSERT INTO "links" VALUES(16,'Красивый python','sky.pro/media/pep8/');
+INSERT INTO "links" VALUES(17,'Работа с gitignore','wiki.merionet.ru/articles/fajl-gitignore-kak-ignorirovat-fajly-i-papki-v-git');
+INSERT INTO "links" VALUES(19,'Сайт с документацией по веб-технологиям','developer.mozilla.org/ru/docs/Web');
+INSERT INTO "links" VALUES(20,'Документация по Bootstrap','getbootstrap.com/');
+INSERT INTO "links" VALUES(21,'Описание библиотеки, которая позволяет работает с базой mysql','pypi.org/project/PyMySQL/');
+INSERT INTO "links" VALUES(22,'Документация CLI PowerSHell','learn.microsoft.com/ru-ru/powershell/');
+INSERT INTO "links" VALUES(25,'Blueprint','dnmtechs.com/splitting-a-python-flask-app-into-multiple-files/');
+INSERT INTO "links" VALUES(33,'Что такое CLI?','ru.wikipedia.org/wiki/Интерфейс_командной_строки');
 CREATE TABLE "python" (
     "python_id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "python_command" TEXT NOT NULL,
     "python_name" TEXT NOT NULL
-  , "python_description" TEXT);
-INSERT INTO "python" VALUES(1,'print(type(count_person))','Выводит тип данных','Выводит тип данных');
-INSERT INTO "python" VALUES(2,'df.to_csv("saved_ratings.csv", index=False))','Экспорт в формат CSV','Метод сохраняет в csv формате данные.');
-INSERT INTO "python" VALUES(3,'data_copy = data.copy(deep=True)','Копирование датафрейма','Копирование датасета.');
-INSERT INTO "python" VALUES(4,'len(data)','Подсчёт количества строк в датафрейме','Подсчёт количества строк в датафрейме.');
-INSERT INTO "python" VALUES(5,'len(data["user_id"].unique())','Подсчёт количества уникальных значений в столбце',NULL);
-INSERT INTO "python" VALUES(6,'data.describe()','Вывод статистических сведений о датафрейме','Вывод статистических сведений о датафрейме.');
-INSERT INTO "python" VALUES(7,'data.type.value_counts()','Для того чтобы подсчитать количество значений в конкретном столбце, можно воспользоваться следующей конструкцие',NULL);
-INSERT INTO "python" VALUES(8,'data.columns.tolist()','Получение списка значений столбцов','Получение списка значений столбцов.');
-INSERT INTO "python" VALUES(9,'data["genre"].tolist()','Создание списка или объекта Series на основе значений столбца',NULL);
-INSERT INTO "python" VALUES(10,'data["train set"] = True','Присоединение к датафрейму нового столбца с заданным значением',NULL);
-INSERT INTO "python" VALUES(11,'data[["name","episodes"]]','Создание нового датафрейма из подмножества столбцов',NULL);
-INSERT INTO "python" VALUES(12,'data.drop(["density"], axis="columns")','Удаление столбца',NULL);
-INSERT INTO "python" VALUES(13,'data_modified.iloc[0:3]','Получение строк по числовым индексам',NULL);
-INSERT INTO "python" VALUES(14,'data[data["type"].isin(["TV", "Movie"])]','Для получения строк датафрейма в ситуации, когда имеется список значений столбцов, можно воспользоваться следующей командой',NULL);
-INSERT INTO "python" VALUES(15,'data[data["rating"] > 8]','Фильтрация по значению',NULL);
-INSERT INTO "python" VALUES(16,'data.sort_values("rating", ascending=False)','Сортировка',NULL);
-INSERT INTO "python" VALUES(17,'data.groupby("type").count()','Функция df.groupby и подсчёт количества записей',NULL);
-INSERT INTO "python" VALUES(18,'data_modified.loc[["Haikyuu!! Second Season","Gintama"]]','Получение строк с нужными индексными значениями',NULL);
-INSERT INTO "python" VALUES(19,'rating.merge(data, left_on=’data_id’, right_on=’data_id’, suffixes=(‘_left’, ‘_right’))','Слияние датафреймов',NULL);
-INSERT INTO "python" VALUES(20,'data.info()','Получение сведений о датафрейм',NULL);
-INSERT INTO "python" VALUES(21,'data.head()','Вывести первые пять строк датасета',NULL);
-INSERT INTO "python" VALUES(22,'data.drop(["density","members"], axis="columns")','Удаление нескольких столбцов',NULL);
-INSERT INTO "python" VALUES(23,'data = data.rename(columns={"Country Code": "country_code"})','Переименование столбца',NULL);
-INSERT INTO "python" VALUES(24,'data.shape','Вывести количество строк и столбцов датасета',NULL);
-INSERT INTO "python" VALUES(25,'data.max()','Получим максимальные значения в каждом столбце',NULL);
-INSERT INTO "python" VALUES(26,'data_convert = data.astype("int16")','Изменение типа столбца',NULL);
-INSERT INTO "python" VALUES(30,'df = pd.DataFrame(lst, columns=[c[0] for c in cur.description])','Создание датафрейма из базы данных','Команда позволяет создать датафрейм с данными из таблицы базы данных.');
-INSERT INTO "python" VALUES(31,'df = pd.read_excel(''sotr.xlsx'', index_col=0)','Загрузка данных из EXCEL файла',NULL);
-INSERT INTO "python" VALUES(32,'data = pd.read_csv("data.csv")','Загрузка CSV-данных в датафрейм','Метод загружает csv файл с данными.');
+  );
+INSERT INTO "python" VALUES(1,'print(type(count_person))','Выводит тип данных');
+INSERT INTO "python" VALUES(2,'df.to_csv("saved_ratings.csv", index=False))','Экспорт в формат CSV');
+INSERT INTO "python" VALUES(3,'data_copy = data.copy(deep=True)','Копирование датафрейма');
+INSERT INTO "python" VALUES(4,'len(data)','Подсчёт количества строк в датафрейме');
+INSERT INTO "python" VALUES(5,'len(data["user_id"].unique())','Подсчёт количества уникальных значений в столбце');
+INSERT INTO "python" VALUES(6,'data.describe()','Вывод статистических сведений о датафрейме');
+INSERT INTO "python" VALUES(7,'data.type.value_counts()','Для того чтобы подсчитать количество значений в конкретном столбце, можно воспользоваться следующей конструкцие');
+INSERT INTO "python" VALUES(8,'data.columns.tolist()','Получение списка значений столбцов');
+INSERT INTO "python" VALUES(9,'data["genre"].tolist()','Создание списка или объекта Series на основе значений столбца');
+INSERT INTO "python" VALUES(10,'data["train set"] = True','Присоединение к датафрейму нового столбца с заданным значением');
+INSERT INTO "python" VALUES(11,'data[["name","episodes"]]','Создание нового датафрейма из подмножества столбцов');
+INSERT INTO "python" VALUES(12,'data.drop(["density"], axis="columns")','Удаление столбца');
+INSERT INTO "python" VALUES(13,'data_modified.iloc[0:3]','Получение строк по числовым индексам');
+INSERT INTO "python" VALUES(14,'data[data["type"].isin(["TV", "Movie"])]','Для получения строк датафрейма в ситуации, когда имеется список значений столбцов, можно воспользоваться следующей командой');
+INSERT INTO "python" VALUES(15,'data[data["rating"] > 8]','Фильтрация по значению');
+INSERT INTO "python" VALUES(16,'data.sort_values("rating", ascending=False)','Сортировка');
+INSERT INTO "python" VALUES(17,'data.groupby("type").count()','Функция df.groupby и подсчёт количества записей');
+INSERT INTO "python" VALUES(18,'data_modified.loc[["Haikyuu!! Second Season","Gintama"]]','Получение строк с нужными индексными значениями');
+INSERT INTO "python" VALUES(19,'rating.merge(data, left_on=’data_id’, right_on=’data_id’, suffixes=(‘_left’, ‘_right’))','Слияние датафреймов');
+INSERT INTO "python" VALUES(20,'data.info()','Получение сведений о датафрейм');
+INSERT INTO "python" VALUES(21,'data.head()','Вывести первые пять строк датасета');
+INSERT INTO "python" VALUES(22,'data.drop(["density","members"], axis="columns")','Удаление нескольких столбцов');
+INSERT INTO "python" VALUES(23,'data = data.rename(columns={"Country Code": "country_code"})','Переименование столбца');
+INSERT INTO "python" VALUES(24,'data.shape','Вывести количество строк и столбцов датасета');
+INSERT INTO "python" VALUES(25,'data.max()','Получим максимальные значения в каждом столбце');
+INSERT INTO "python" VALUES(26,'data_convert = data.astype("int16")','Изменение типа столбца');
+INSERT INTO "python" VALUES(30,'df = pd.DataFrame(lst, columns=[c[0] for c in cur.description])','Создание датафрейма из базы данных');
+INSERT INTO "python" VALUES(31,'df = pd.read_excel(''sotr.xlsx'', index_col=0)','Загрузка данных из EXCEL файла');
+INSERT INTO "python" VALUES(32,'data = pd.read_csv("data.csv")','Загрузка CSV-данных в датафрейм');
 CREATE TABLE [sql] ( 
   "sql_id" INTEGER PRIMARY KEY AUTOINCREMENT,
   "sql_command" TEXT NOT NULL,
   "sql_name" TEXT NOT NULL
-, sql_description TEXT);
-INSERT INTO "sql" VALUES(1,'INSERT INTO git_and_bash (command, name) VALUES (''test'', ''test'')','Добавление новой записи в таблицу',NULL);
-INSERT INTO "sql" VALUES(2,'SELECT * FROM git_and_bash WHERE command LIKE ''%ls%''','Поиск в поле значений по части слова',NULL);
-INSERT INTO "sql" VALUES(3,'SELECT * FROM links ORDER BY id DESC','Сортировка всех записей по убыванию',NULL);
-INSERT INTO "sql" VALUES(4,'SELECT * FROM links ORDER BY id ASC','Сортировка по возрастанию',NULL);
-INSERT INTO "sql" VALUES(5,'DELETE FROM git_and_bash WHERE id = 45','Удаление определенной записи',NULL);
-INSERT INTO "sql" VALUES(6,'DELETE FROM [train];','Очистка таблицы',NULL);
-INSERT INTO "sql" VALUES(7,'UPDATE [sql] SET [name]=''Сортировка всех записей по убыванию'' WHERE ([sql].[id] = 3);','Изменение значения записи определенного поля',NULL);
-INSERT INTO "sql" VALUES(8,'ALTER TABLE [train] ADD [imya] VARCHAR(250) NOT NULL;','Добавление поля в таблицу',NULL);
-INSERT INTO "sql" VALUES(9,'ALTER TABLE [train] RENAME COLUMN [train_name] TO [familia];','Переименование поля таблицы',NULL);
-INSERT INTO "sql" VALUES(10,'DROP TABLE [train];','Удаляет таблицу базы данных',NULL);
-INSERT INTO "sql" VALUES(1159,'SELECT DISTINCT field FROM table;','Поиск уникальных значений','DISTINCT ищет и выводит уникальные значения указанного в запросе столбца ');
-INSERT INTO "sql" VALUES(1161,'SELECT * FROM table;','Вывод всех записей таблицы','Вывод всех записей таблицы');
+);
+INSERT INTO "sql" VALUES(1,'INSERT INTO git_and_bash (command, name) VALUES (''test'', ''test'')','Добавление новой записи в таблицу');
+INSERT INTO "sql" VALUES(2,'SELECT * FROM git_and_bash WHERE command LIKE ''%ls%''','Поиск в поле значений по части слова');
+INSERT INTO "sql" VALUES(3,'SELECT * FROM links ORDER BY id DESC','Сортировка всех записей по убыванию');
+INSERT INTO "sql" VALUES(4,'SELECT * FROM links ORDER BY id ASC','Сортировка по возрастанию');
+INSERT INTO "sql" VALUES(5,'DELETE FROM git_and_bash WHERE id = 45','Удаление определенной записи');
+INSERT INTO "sql" VALUES(6,'DELETE FROM [train];','Очистка таблицы');
+INSERT INTO "sql" VALUES(7,'UPDATE [sql] SET [name]=''Сортировка всех записей по убыванию'' WHERE ([sql].[id] = 3);','Изменение значения записи определенного поля');
+INSERT INTO "sql" VALUES(8,'ALTER TABLE [train] ADD [imya] VARCHAR(250) NOT NULL;','Добавление поля в таблицу');
+INSERT INTO "sql" VALUES(9,'ALTER TABLE [train] RENAME COLUMN [train_name] TO [familia];','Переименование поля таблицы');
+INSERT INTO "sql" VALUES(10,'DROP TABLE [train];','Удаляет таблицу базы данных');
+INSERT INTO "sql" VALUES(1159,'SELECT DISTINCT field FROM table;','Поиск уникальных значений');
+INSERT INTO "sql" VALUES(1161,'SELECT * FROM table;','Вывод всех записей таблицы');
 CREATE TABLE test (
                 test_id INTEGER PRIMARY KEY autoincrement, 
                 test_name TEXT not null
@@ -203,23 +203,11 @@ INSERT INTO "test" VALUES(10,'test10');
 INSERT INTO "test" VALUES(11,'test11');
 INSERT INTO "test" VALUES(12,'test12');
 INSERT INTO "test" VALUES(13,'test13');
-INSERT INTO "test" VALUES(14,'test1');
-INSERT INTO "test" VALUES(15,'test2');
-INSERT INTO "test" VALUES(16,'test3');
-INSERT INTO "test" VALUES(17,'test4');
-INSERT INTO "test" VALUES(18,'test5');
-INSERT INTO "test" VALUES(19,'test6');
-INSERT INTO "test" VALUES(20,'test7');
-INSERT INTO "test" VALUES(21,'test8');
-INSERT INTO "test" VALUES(22,'test9');
-INSERT INTO "test" VALUES(23,'test10');
-INSERT INTO "test" VALUES(24,'test11');
-INSERT INTO "test" VALUES(25,'test12');
-INSERT INTO "test" VALUES(26,'test13');
+INSERT INTO "test" VALUES(14,'dfgdfgdfgfdg');
 DELETE FROM "sqlite_sequence";
-INSERT INTO "sqlite_sequence" VALUES('bash',122);
+INSERT INTO "sqlite_sequence" VALUES('bash',124);
 INSERT INTO "sqlite_sequence" VALUES('sql',1166);
-INSERT INTO "sqlite_sequence" VALUES('links',40);
+INSERT INTO "sqlite_sequence" VALUES('links',49);
 INSERT INTO "sqlite_sequence" VALUES('python',2104);
-INSERT INTO "sqlite_sequence" VALUES('test',26);
+INSERT INTO "sqlite_sequence" VALUES('test',14);
 COMMIT;

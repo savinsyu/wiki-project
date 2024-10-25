@@ -22,16 +22,14 @@ def edit_bash_command(bash_id):
             conn.commit()
             conn.close()
             if not bash_command_edit:
-                flash('Ошибка сохранения записи, вы ввели мало символов!', category='error')
+                flash('Ошибка сохранения записи, вы ввели мало символов!', category='danger')
             else:
-                flash('Запись успешно сохранена!', category='success')
-                dump.dump()
-                export_tables_sql_to_xlsx.export_tables_sql_to_xlsx()
+                flash('Запись успешно добавлена!', category='success')
             # В случае соблюдения условий заполнения полей, произойдёт перенаправление
             return redirect(url_for("bash_list_commands.bash_list_commands"))
 
         else:
-            flash('Ошибка сохранения записи!', category='error')
+            flash('Ошибка сохранения записи, вы ввели мало символов!', category='danger')
 
     
     return render_template("bash/edit_bash_command.html", edit_bash_command_view=edit_bash_command_view)

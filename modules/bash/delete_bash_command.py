@@ -12,6 +12,5 @@ def delete_bash_command(bash_id):
                  (bash_id,))
     conn.commit()
     conn.close()
-    dump.dump()
-    export_tables_sql_to_xlsx.export_tables_sql_to_xlsx()
+
     return redirect(url_for("bash_list_commands.bash_list_commands"))

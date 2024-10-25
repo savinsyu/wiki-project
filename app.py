@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from modules import index, dump, export_tables_sql_to_xlsx
+from modules import index, dump, export_tables_sql_to_xlsx, dump_and_export
 from modules.python import delete_python_command, add_python_command, edit_python_command, get_post_python_command, \
     python_list_commands
 from modules.test import delete_test, test_list, add_test, edit_test, get_post_test, drop_and_create_table, insert_test
@@ -10,6 +10,7 @@ from modules.bash import add_bash_command, bash_list_commands, delete_bash_comma
     get_post_bash_command
 
 app = Flask(__name__)
+app.register_blueprint(dump_and_export.bp)
 app.register_blueprint(dump.bp)
 app.register_blueprint(export_tables_sql_to_xlsx.bp)
 app.register_blueprint(delete_links_command.bp)

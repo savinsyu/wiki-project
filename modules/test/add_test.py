@@ -21,8 +21,6 @@ def add_test():
                 flash('Ошибка сохранения записи!', category='error')
             else:
                 flash('Запись успешно добавлена!')
-                dump.dump()
-                export_tables_sql_to_xlsx.export_tables_sql_to_xlsx()
             # В случае соблюдения условий заполнения полей, произойдёт перенаправление
             return redirect(url_for("test_list.test_list"))
         else:

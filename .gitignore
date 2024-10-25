@@ -1,4 +1,6 @@
 *.tar
 venv/
 __pycache__/
+.ipynb_checkpoints/
+.idea/
 tar_and_mv_project_archive.sh

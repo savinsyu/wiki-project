@@ -12,6 +12,4 @@ def delete_links_command(links_id):
                  (links_id,))
     conn.commit()
     conn.close()
-    dump.dump()
-    export_tables_sql_to_xlsx.export_tables_sql_to_xlsx()
     return redirect(url_for("links_list_commands.links_list_commands"))

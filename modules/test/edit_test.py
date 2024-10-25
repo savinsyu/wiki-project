@@ -24,8 +24,6 @@ def edit_test(test_id):
                 flash('Ошибка сохранения записи, вы ввели мало символов!', category='error')
             else:
                 flash('Запись успешно сохранена!', category='success')
-                dump.dump()
-                export_tables_sql_to_xlsx.export_tables_sql_to_xlsx()
             # В случае соблюдения условий заполнения полей, произойдёт перенаправление
             return redirect(url_for("test_list.test_list"))
         else:

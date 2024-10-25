@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Дамп и экспорт{% endblock %}
+{% block content %}
+<div class="card mb-2">
+   <div class="card-header h3">Выполнен дамп базы данных и экспорт данных в excel файл!</div>
+   <div class="card-body">
+      <a href="{{ url_for('dump_and_export.dump_and_export') }}" class="btn btn-outline-dark">Запустить дамп и экспорт повторно</a>
+   </div>
+</div>
+{% endblock %}

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Добавить команду{% endblock %}
 {% block content %}
+{% include 'errors.html' %}
 <form method="post">
    <div class="card mb-3">
       <label for="links_command" class="card-header">Cсылка</label>
@@ -12,16 +13,10 @@
       <textarea class="form-control" id="links_name" name="links_name" rows="3" placeholder="Введите описание ссылки"
          required></textarea>
    </div>
-   <div class="card mb-3">
-      <label for="links_description" class="card-header">Подробное описание</label>
-      <textarea class="form-control" id="links_description" name="links_description" rows="3"
-         placeholder="Введите подробное описание" required></textarea>
-   </div>
    <div class="btn-group btn-group" role="group" aria-label="...">
       <a class="btn btn-outline-dark" href="{{ url_for('links_list_commands.links_list_commands') }}">Вернуться к
          списку</a>
       <button type="submit" value="" class="btn btn-outline-dark">Сохранить</button>
-      {% include 'errors.html' %}
    </div>
 </form>
 

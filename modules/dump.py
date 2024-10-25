@@ -15,4 +15,3 @@ def dump():
             p.write('%s\n' % line)
     print('Database dump successfully completed!!')
     conn.close()
-

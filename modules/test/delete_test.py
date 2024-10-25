@@ -12,6 +12,4 @@ def delete_test(test_id):
                  (test_id,))
     conn.commit()
     conn.close()
-    dump.dump()
-    export_tables_sql_to_xlsx.export_tables_sql_to_xlsx()
     return redirect(url_for("test_list.test_list"))
