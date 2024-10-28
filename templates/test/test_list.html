@@ -7,6 +7,7 @@
       <p class="card-text">
          <div class="pb-4"><a href="{{ url_for('add_test.add_test') }}" class="btn btn-outline-dark w-25">Добавить новую тестовую запись?</a></div>
          <div class="pb-4"><a href="{{ url_for('insert_test.insert_test') }}" class="btn btn-outline-info w-25">Добавить 20 тестовых записей?</a></div>
+         <div class="pb-4"><a href="{{ url_for('insert_generation_data.insert_generation_data') }}" class="btn btn-outline-success w-25">Добавить 100 случайных записей с названиями корпораций?</a></div>
          <div class="pb-4"><form action="{{ url_for('drop_and_create_table.drop_and_create_table') }}"
          method="POST">
          <input type="submit" class="btn btn-outline-danger  w-25" value="Очистить таблицу?"

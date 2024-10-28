@@ -1,5 +1,5 @@
 from flask import Blueprint, redirect, url_for, render_template, request, flash
-
+import random
 from modules import connect
 
 bp = Blueprint('insert_test', __name__)

@@ -190,30 +190,9 @@ CREATE TABLE test (
                 test_id INTEGER PRIMARY KEY autoincrement, 
                 test_name TEXT not null
         );
-INSERT INTO "test" VALUES(1,'Тестовая запись №1');
-INSERT INTO "test" VALUES(2,'Тестовая запись №2');
-INSERT INTO "test" VALUES(3,'Тестовая запись №3');
-INSERT INTO "test" VALUES(4,'Тестовая запись №4');
-INSERT INTO "test" VALUES(5,'Тестовая запись №5');
-INSERT INTO "test" VALUES(6,'Тестовая запись №6');
-INSERT INTO "test" VALUES(7,'Тестовая запись №7');
-INSERT INTO "test" VALUES(8,'Тестовая запись №8');
-INSERT INTO "test" VALUES(9,'Тестовая запись №9');
-INSERT INTO "test" VALUES(10,'Тестовая запись №10');
-INSERT INTO "test" VALUES(11,'Тестовая запись №11');
-INSERT INTO "test" VALUES(12,'Тестовая запись №12');
-INSERT INTO "test" VALUES(13,'Тестовая запись №13');
-INSERT INTO "test" VALUES(14,'Тестовая запись №14');
-INSERT INTO "test" VALUES(15,'Тестовая запись №15');
-INSERT INTO "test" VALUES(16,'Тестовая запись №16');
-INSERT INTO "test" VALUES(17,'Тестовая запись №17');
-INSERT INTO "test" VALUES(18,'Тестовая запись №18');
-INSERT INTO "test" VALUES(19,'Тестовая запись №19');
-INSERT INTO "test" VALUES(20,'Тестовая запись №20');
 DELETE FROM "sqlite_sequence";
 INSERT INTO "sqlite_sequence" VALUES('bash',124);
 INSERT INTO "sqlite_sequence" VALUES('sql',1166);
 INSERT INTO "sqlite_sequence" VALUES('links',49);
 INSERT INTO "sqlite_sequence" VALUES('python',2104);
-INSERT INTO "sqlite_sequence" VALUES('test',20);
 COMMIT;
