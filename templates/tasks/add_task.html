@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Добавить задачу{% endblock %}
+{% block content %}
+{% include 'errors.html' %}
+<form method="post">
+   <div class="card mb-3">
+      <label for="task_name" class="card-header">Задача</label>
+      <textarea class="form-control" id="task_name" name="task_name" rows="1" placeholder="Введите задачу"
+         required></textarea>
+   </div>
+   <div class="card mb-3">
+      <label for="task_description" class="card-header">Описание задачи</label>
+      <textarea class="form-control" id="task_description" name="task_description" rows="1" placeholder="Введите описание задачи"
+         required></textarea>
+   </div>
+   <div class="btn-group btn-group" role="group" aria-label="...">
+      <a class="btn btn-outline-dark" href="{{ url_for('tasks.tasks') }}">Вернуться к списку</a>
+      <button type="submit" value="" class="btn btn-outline-dark">Сохранить</button>
+   </div>
+</form>
+{% endblock %}

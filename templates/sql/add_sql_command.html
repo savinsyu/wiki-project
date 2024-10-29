@@ -13,11 +13,6 @@
       <textarea class="form-control" id="sql_name" name="sql_name" rows="1" placeholder="Введите описание команды"
          required></textarea>
    </div>
-   <div class="card mb-3">
-      <label for="sql_description" class="card-header">Подробно</label>
-      <textarea class="form-control" id="sql_description" name="sql_description" rows="8"
-         placeholder="Подробно о команде" required></textarea>
-   </div>
    <div class="btn-group btn-group" role="group" aria-label="...">
       <a class="btn btn-outline-dark" href="{{ url_for('sql_list_commands.sql_list_commands') }}">Вернуться к списку</a>
       <button type="submit" value="" class="btn btn-outline-dark">Сохранить</button>

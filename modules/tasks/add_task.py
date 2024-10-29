@@ -1,31 +1,33 @@
 from flask import Blueprint, redirect, url_for, render_template, request, flash
 
-from modules import connect, dump, export_tables_sql_to_xlsx
+from modules import connect
 
-bp = Blueprint('add_sql_command', __name__)
+bp = Blueprint('add_task', __name__)
 
 
-@bp.route("/sql/new_sql_command", methods=["GET", "POST"])
-def add_sql_command():
+@bp.route("/tasks/add_task", methods=["GET", "POST"])
+def add_task():
     if request.method == "POST":
-        new_sql_command = request.form["sql_command"]
-        new_sql_name = request.form["sql_name"]
-        if len(request.form['sql_command']) > 4 and len(request.form['sql_name']) > 10:
+        # Задаем переменные
+        add_task_name = request.form["task_name"]
+        add_task_description = request.form["task_description"]
+        # Прописываем условие при котором название не сохраниться если символов при вводе будет меньше 4
+        if len(request.form['task_name']) > 4:
             conn = connect.get_db_connection()
             conn.execute(
-                "INSERT INTO sql (sql_command, sql_name) VALUES (?, ?)",
-                (new_sql_command, new_sql_name)
+                "INSERT INTO tasks (task_name, task_description) VALUES (?, ?)",
+                (add_task_name, add_task_description)
             )
             conn.commit()
             conn.close()
-            if not new_sql_command:
+            if not add_task_name:
                 flash('Ошибка сохранения записи, вы ввели мало символов!', category='danger')
             else:
                 flash('Запись успешно добавлена!', category='success')
             # В случае соблюдения условий заполнения полей, произойдёт перенаправление
-            return redirect(url_for("sql_list_commands.sql_list_commands"))
+            return redirect(url_for("tasks.tasks"))
         else:
             flash('Ошибка сохранения записи, вы ввели мало символов!', category='danger')
 
   
-    return render_template("sql/add_sql_command.html")
+    return render_template("tasks/add_task.html")

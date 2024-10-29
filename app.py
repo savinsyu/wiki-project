@@ -2,6 +2,7 @@ from flask import Flask, render_template
 from modules import index, dump, export_tables_sql_to_xlsx, dump_and_export
 from modules.python import delete_python_command, add_python_command, edit_python_command, get_post_python_command, \
     python_list_commands
+from modules.tasks import delete_task, add_task, edit_task, get_post_task, tasks
 from modules.test import delete_test, test_list, add_test, edit_test, get_post_test, drop_and_create_table, insert_test, insert_generation_data
 from modules.links import delete_links_command, links_list_commands, add_links_command, edit_links_command, \
     get_post_links_command
@@ -18,6 +19,11 @@ app.register_blueprint(links_list_commands.bp)
 app.register_blueprint(add_links_command.bp)
 app.register_blueprint(edit_links_command.bp)
 app.register_blueprint(get_post_links_command.bp)
+app.register_blueprint(delete_task.bp)
+app.register_blueprint(tasks.bp)
+app.register_blueprint(add_task.bp)
+app.register_blueprint(edit_task.bp)
+app.register_blueprint(get_post_task.bp)
 app.register_blueprint(delete_test.bp)
 app.register_blueprint(insert_test.bp)
 app.register_blueprint(insert_generation_data.bp)

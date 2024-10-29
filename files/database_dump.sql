@@ -169,6 +169,205 @@ INSERT INTO "python" VALUES(26,'data_convert = data.astype("int16")','Изменение 
 INSERT INTO "python" VALUES(30,'df = pd.DataFrame(lst, columns=[c[0] for c in cur.description])','Создание датафрейма из базы данных');
 INSERT INTO "python" VALUES(31,'df = pd.read_excel(''sotr.xlsx'', index_col=0)','Загрузка данных из EXCEL файла');
 INSERT INTO "python" VALUES(32,'data = pd.read_csv("data.csv")','Загрузка CSV-данных в датафрейм');
+INSERT INTO "python" VALUES(2105,'import flask
+import pymysql.cursors
+from flask_paginate import Pagination, get_page_args
+
+app = flask.Flask(__name__)
+app.secret_key = "secret key"
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return flask.render_template(''404.html''), 404
+
+
+def get_db_connection():
+    conn = pymysql.connect(host=''localhost'',
+                           port=3307,
+                           user=''root'',
+                           password=''1'',
+                           database=''test_base'',
+                           charset=''utf8'',
+                           cursorclass=pymysql.cursors.DictCursor)
+    return conn
+
+
+def close_db_connection(conn):
+    conn.close()
+
+
+@app.route("/")
+def index():
+    conn = get_db_connection()
+    with conn.cursor() as cur:
+        cur.execute("SELECT * FROM test_table")
+        test_list_posts = cur.fetchall()
+    conn.close()
+    page, per_page, offset = get_page_args(page_parameter=''page'',
+                                           per_page_parameter=''per_page'')
+    total = len(test_list_posts)
+
+    def get_test_list_posts(offset=0, per_page=5):
+        return test_list_posts[offset: offset + per_page]
+
+    pagination_test_list_posts = get_test_list_posts(offset=offset, per_page=per_page)
+    pagination = Pagination(page=page, per_page=per_page, total=total,
+                        css_framework=''bootstrap4'',
+                        display_msg="Показано <b>{start} - {end}</b> {record_name} из <b>{total}</b>",
+                        record_name="записей")
+
+    return flask.render_template("test/test_list_posts.html",
+                                 test_list_posts=pagination_test_list_posts,
+                                                            page=page,
+                           per_page=per_page,
+                           pagination=pagination,)
+
+
+
+@app.route("/view/<int:test_id>")
+def get_post_test_post(test_id):
+    conn = get_db_connection()
+    with conn.cursor() as cur:
+        sql = "SELECT * FROM `test_table` WHERE `test_id` =%s"
+        cur.execute(sql, test_id)
+        test_view_post = cur.fetchone()
+    conn.close()
+    return flask.render_template("test/test_view_post.html",
+                                 test_view_post=test_view_post, )
+
+
+@app.route("/edit/<int:test_id>/", methods=("GET", "POST"))
+def edit_test_post(test_id):
+    conn = get_db_connection()
+    with conn.cursor() as cur:
+        sql = "SELECT * FROM `test_table` WHERE `test_id` =%s"
+        cur.execute(sql, (test_id,))
+        edit_test_view = cur.fetchone()
+    if flask.request.method == "POST":
+        test_edit_post_text = flask.request.form["test_text"]
+        if len(flask.request.form[''test_text'']) > 1:
+            conn = get_db_connection()
+            with conn.cursor() as cur:
+                sql = "UPDATE `test_table` SET `test_text` =%s  WHERE `test_id` =%s"
+                cur.execute(
+                    sql, (test_edit_post_text, test_id),
+                )
+            conn.commit()
+            conn.close()
+            if not test_edit_post_text:
+                flask.flash(''Ошибка сохранения записи, вы ввели мало символов!'', category=''error'')
+            else:
+                flask.flash(''Запись успешно сохранена!'', category=''success'')
+            # В случае соблюдения условий заполнения полей, произойдёт перенаправление
+            return flask.redirect(flask.url_for("index"))
+
+        else:
+            flask.flash(''Ошибка сохранения записи!'', category=''error'')
+
+    return flask.render_template("test/edit_test_post.html", edit_test_view=edit_test_view)
+
+
+@app.route("/new_post", methods=["GET", "POST"])
+def add_test_post():
+    if flask.request.method == "POST":
+        new_test_post = flask.request.form["test_text"]
+        if len(flask.request.form[''test_text'']) > 1:
+            conn = get_db_connection()
+            with conn.cursor() as cur:
+                sql = "INSERT INTO `test_table` (`test_text`) VALUES (%s)"
+                cur.execute(
+                    sql, new_test_post,
+                )
+            conn.commit()
+            conn.close()
+            if not new_test_post:
+                flask.flash(''Ошибка сохранения записи, Вы ввели слишком мало символов!'', category=''error'')
+            else:
+                flask.flash(''Запись успешно добавлена!'')
+            # В случае соблюдения условий заполнения полей, произойдёт перенаправление
+            return flask.redirect(flask.url_for("index"))
+
+        else:
+            flask.flash(''Ошибка сохранения записи!'', category=''error'')
+
+    return flask.render_template("test/add_test_post.html")
+
+
+@app.route("/delete/<int:test_id>/", methods=("POST",))
+def delete_post_test(test_id):
+    conn = get_db_connection()
+    with conn.cursor() as cur:
+        sql = "DELETE FROM `test_table` WHERE `test_id` =%s"
+        cur.execute(
+            sql, test_id,
+        )
+    conn.commit()
+    conn.close()
+    return flask.redirect(flask.url_for("index"))
+
+
+if __name__ == "__main__":
+    app.run(debug=True, host=''0.0.0.0'', port=83)','Экземляр app.py mysql connect');
+INSERT INTO "python" VALUES(2106,'import sqlite3
+import pandas as pd
+
+con = sqlite3.connect("/database1.db")
+cur = con.cursor()
+res = cur.execute("SELECT * FROM links")
+result = res.fetchall()
+df = pd.DataFrame(result, columns=[c[0] for c in cur.description])','Преобразование данных таблицы в датафрейм');
+INSERT INTO "python" VALUES(2107,'from flask import Blueprint, redirect, url_for, render_template
+
+from modules import connect
+
+conn = connect.get_db_connection()
+
+
+def create_tables():
+    sql_statements = [
+        """CREATE TABLE IF NOT EXISTS tuple (
+        task_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        task_name TEXT NOT NULL,
+        task_description TEXT NOT NULL,
+        task_status TEXT NOT NULL DEFAULT Новая
+        );"""]
+
+    try:
+        with conn:
+            cursor = conn.cursor()
+            for statement in sql_statements:
+                cursor.execute(statement)
+            conn.commit()
+    except connect.Error as e:
+        print(e)
+
+
+if __name__ == ''__main__'':
+    create_tables()
+','Создание таблицы в базе данных');
+INSERT INTO "python" VALUES(2108,'import sqlite3
+
+
+con = sqlite3.connect("/database1.db")
+cur = con.cursor()
+res = cur.execute("DROP TABLE table_name")
+
+
+con.commit()','Удаление таблицы в базе данных');
+INSERT INTO "python" VALUES(2109,'# Подключаем библиотеку sqlite3
+import sqlite3
+
+# Подключаемся в базе данных
+con = sqlite3.connect("../database1.db")
+cur = con.cursor()
+data = (
+    {"id": None, "name": "test", "link": "test"},
+    {"id": None, "name": "test", "link": "test"},
+    {"id": None, "name": "test", "link": "test"},
+)
+cur.executemany("INSERT INTO links VALUES(:id,:name, :link)", data)
+con.commit()','Вставка значений в таблицу базы данных');
 CREATE TABLE [sql] ( 
   "sql_id" INTEGER PRIMARY KEY AUTOINCREMENT,
   "sql_command" TEXT NOT NULL,
@@ -186,13 +385,132 @@ INSERT INTO "sql" VALUES(9,'ALTER TABLE [train] RENAME COLUMN [train_name] TO [f
 INSERT INTO "sql" VALUES(10,'DROP TABLE [train];','Удаляет таблицу базы данных');
 INSERT INTO "sql" VALUES(1159,'SELECT DISTINCT field FROM table;','Поиск уникальных значений');
 INSERT INTO "sql" VALUES(1161,'SELECT * FROM table;','Вывод всех записей таблицы');
+INSERT INTO "sql" VALUES(1167,'CREATE TABLE IF NOT EXISTS tasks (
+  task_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  task_name TEXT NOT NULL,
+  task_description TEXT NOT NULL,
+  task_status TEXT NOT NULL DEFAULT Новая
+);','Создание таблицы в базе данных');
+CREATE TABLE tasks (
+  task_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  task_name TEXT NOT NULL,
+  task_description TEXT NOT NULL,
+  task_status TEXT NOT NULL DEFAULT Новая
+);
+INSERT INTO "tasks" VALUES(1,'Формы','В разделе "Задачи" изменить размер форм ввода. Статус сделать значение 1, описание 8','Новая');
+INSERT INTO "tasks" VALUES(2,'Восстановление из дампа','Написать логику, протестировать в ноутбуке и добавить в проект.','Новая');
+INSERT INTO "tasks" VALUES(3,'Внести в следующий релиз','1) Сделан редизайн проекта, шрифт, hover главного меню','Новая');
+INSERT INTO "tasks" VALUES(4,'Прочитать про деплой проектов на python','Прочитать про деплой проектов на python','Новая');
+INSERT INTO "tasks" VALUES(5,'Прочитать про ролевую модель для Flask','Прочитать про ролевую модель для Flask','Новая');
 CREATE TABLE test (
                 test_id INTEGER PRIMARY KEY autoincrement, 
                 test_name TEXT not null
         );
+INSERT INTO "test" VALUES(1,'AMD');
+INSERT INTO "test" VALUES(2,'AMD');
+INSERT INTO "test" VALUES(3,'Acer');
+INSERT INTO "test" VALUES(4,'Acer');
+INSERT INTO "test" VALUES(5,'HP');
+INSERT INTO "test" VALUES(6,'Acer');
+INSERT INTO "test" VALUES(7,'HP');
+INSERT INTO "test" VALUES(8,'ASUS');
+INSERT INTO "test" VALUES(9,'Intel');
+INSERT INTO "test" VALUES(10,'HP');
+INSERT INTO "test" VALUES(11,'Acer');
+INSERT INTO "test" VALUES(12,'HP');
+INSERT INTO "test" VALUES(13,'Acer');
+INSERT INTO "test" VALUES(14,'Intel');
+INSERT INTO "test" VALUES(15,'Ford');
+INSERT INTO "test" VALUES(16,'Ford');
+INSERT INTO "test" VALUES(17,'Intel');
+INSERT INTO "test" VALUES(18,'Intel');
+INSERT INTO "test" VALUES(19,'ASUS');
+INSERT INTO "test" VALUES(20,'ASUS');
+INSERT INTO "test" VALUES(21,'Toyota');
+INSERT INTO "test" VALUES(22,'Ford');
+INSERT INTO "test" VALUES(23,'Intel');
+INSERT INTO "test" VALUES(24,'HP');
+INSERT INTO "test" VALUES(25,'Ford');
+INSERT INTO "test" VALUES(26,'Acer');
+INSERT INTO "test" VALUES(27,'Samsung');
+INSERT INTO "test" VALUES(28,'Acer');
+INSERT INTO "test" VALUES(29,'Ford');
+INSERT INTO "test" VALUES(30,'Acer');
+INSERT INTO "test" VALUES(31,'Toyota');
+INSERT INTO "test" VALUES(32,'Toyota');
+INSERT INTO "test" VALUES(33,'HP');
+INSERT INTO "test" VALUES(34,'ASUS');
+INSERT INTO "test" VALUES(35,'ASUS');
+INSERT INTO "test" VALUES(36,'Toyota');
+INSERT INTO "test" VALUES(37,'Intel');
+INSERT INTO "test" VALUES(38,'Samsung');
+INSERT INTO "test" VALUES(39,'Samsung');
+INSERT INTO "test" VALUES(40,'Ford');
+INSERT INTO "test" VALUES(41,'Toyota');
+INSERT INTO "test" VALUES(42,'HP');
+INSERT INTO "test" VALUES(43,'Acer');
+INSERT INTO "test" VALUES(44,'Ford');
+INSERT INTO "test" VALUES(45,'Intel');
+INSERT INTO "test" VALUES(46,'Toyota');
+INSERT INTO "test" VALUES(47,'Acer');
+INSERT INTO "test" VALUES(48,'Ford');
+INSERT INTO "test" VALUES(49,'Intel');
+INSERT INTO "test" VALUES(50,'Intel');
+INSERT INTO "test" VALUES(51,'Acer');
+INSERT INTO "test" VALUES(52,'Samsung');
+INSERT INTO "test" VALUES(53,'Toyota');
+INSERT INTO "test" VALUES(54,'Acer');
+INSERT INTO "test" VALUES(55,'Toyota');
+INSERT INTO "test" VALUES(56,'Ford');
+INSERT INTO "test" VALUES(57,'HP');
+INSERT INTO "test" VALUES(58,'Intel');
+INSERT INTO "test" VALUES(59,'HP');
+INSERT INTO "test" VALUES(60,'AMD');
+INSERT INTO "test" VALUES(61,'Samsung');
+INSERT INTO "test" VALUES(62,'Intel');
+INSERT INTO "test" VALUES(63,'Acer');
+INSERT INTO "test" VALUES(64,'ASUS');
+INSERT INTO "test" VALUES(65,'Ford');
+INSERT INTO "test" VALUES(66,'Acer');
+INSERT INTO "test" VALUES(67,'HP');
+INSERT INTO "test" VALUES(68,'Ford');
+INSERT INTO "test" VALUES(69,'ASUS');
+INSERT INTO "test" VALUES(70,'ASUS');
+INSERT INTO "test" VALUES(71,'Samsung');
+INSERT INTO "test" VALUES(72,'Acer');
+INSERT INTO "test" VALUES(73,'ASUS');
+INSERT INTO "test" VALUES(74,'Ford');
+INSERT INTO "test" VALUES(75,'Intel');
+INSERT INTO "test" VALUES(76,'ASUS');
+INSERT INTO "test" VALUES(77,'Samsung');
+INSERT INTO "test" VALUES(78,'Acer');
+INSERT INTO "test" VALUES(79,'ASUS');
+INSERT INTO "test" VALUES(80,'Acer');
+INSERT INTO "test" VALUES(81,'Toyota');
+INSERT INTO "test" VALUES(82,'Acer');
+INSERT INTO "test" VALUES(83,'ASUS');
+INSERT INTO "test" VALUES(84,'Intel');
+INSERT INTO "test" VALUES(85,'Ford');
+INSERT INTO "test" VALUES(86,'Samsung');
+INSERT INTO "test" VALUES(87,'HP');
+INSERT INTO "test" VALUES(88,'Acer');
+INSERT INTO "test" VALUES(89,'ASUS');
+INSERT INTO "test" VALUES(90,'AMD');
+INSERT INTO "test" VALUES(91,'Acer');
+INSERT INTO "test" VALUES(92,'Ford');
+INSERT INTO "test" VALUES(93,'ASUS');
+INSERT INTO "test" VALUES(94,'AMD');
+INSERT INTO "test" VALUES(95,'Toyota');
+INSERT INTO "test" VALUES(96,'HP');
+INSERT INTO "test" VALUES(97,'ASUS');
+INSERT INTO "test" VALUES(98,'AMD');
+INSERT INTO "test" VALUES(99,'HP');
+INSERT INTO "test" VALUES(100,'Ford');
 DELETE FROM "sqlite_sequence";
 INSERT INTO "sqlite_sequence" VALUES('bash',124);
-INSERT INTO "sqlite_sequence" VALUES('sql',1166);
+INSERT INTO "sqlite_sequence" VALUES('sql',1167);
 INSERT INTO "sqlite_sequence" VALUES('links',49);
-INSERT INTO "sqlite_sequence" VALUES('python',2104);
+INSERT INTO "sqlite_sequence" VALUES('python',2109);
+INSERT INTO "sqlite_sequence" VALUES('test',100);
+INSERT INTO "sqlite_sequence" VALUES('tasks',5);
 COMMIT;
