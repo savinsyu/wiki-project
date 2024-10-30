@@ -1,32 +1,42 @@
-<div class="card mb-2">
-   <div class="card-header h3">Последняя добавленная ссылка</div>
-   <div class="card-body">
-      <p class="card-text">
-         {{ last_links.links_name }}</p>
-      <a href="{{ url_for('links_list_commands.links_list_commands') }}" class="btn btn-outline-dark">Перейти в раздел Ссылки</a>
+<div class="container-index-page">
+   <div class="card">
+      <div class="card-header h3">Последняя добавленная ссылка</div>
+      <div class="card-body">
+         <p class="card-text">
+            {{ last_links.links_name }}</p>
+         <a href="{{ url_for('links_list_commands.links_list_commands') }}" class="btn btn-outline-dark">Перейти в раздел Ссылки</a>
+      </div>
    </div>
-</div>
-<div class="card mb-2">
-   <div class="card-header h3">Последняя добавленная команда SQL</div>
-   <div class="card-body">
-      <p class="card-text">
-         {{ last_sql.sql_name }}</p>
-      <a href="{{ url_for('sql_list_commands.sql_list_commands') }}" class="btn btn-outline-dark">Перейти в раздел SQL</a>
+   <div class="card">
+      <div class="card-header h3">Последняя добавленная команда SQL</div>
+      <div class="card-body">
+         <p class="card-text">
+            {{ last_sql.sql_name }}</p>
+         <a href="{{ url_for('sql_list_commands.sql_list_commands') }}" class="btn btn-outline-dark">Перейти в раздел SQL</a>
+      </div>
    </div>
-</div>
-<div class="card mb-2">
-   <div class="card-header h3">Последняя добавленная команда CLI</div>
-   <div class="card-body">
-      <p class="card-text">
-         {{ last_bash.bash_name }}</p>
-      <a href="{{ url_for('bash_list_commands.bash_list_commands') }}" class="btn btn-outline-dark">Перейти в раздел CLI</a>
+   <div class="card">
+      <div class="card-header h3">Последняя добавленная команда CLI</div>
+      <div class="card-body">
+         <p class="card-text">
+            {{ last_bash.bash_name }}</p>
+         <a href="{{ url_for('bash_list_commands.bash_list_commands') }}" class="btn btn-outline-dark">Перейти в раздел CLI</a>
+      </div>
    </div>
-</div>
-<div class="card mb-2">
-   <div class="card-header h3">Последняя добавленная команда Python</div>
-   <div class="card-body">
-      <p class="card-text">
-         {{ last_python.python_name }}</p>
-      <a href="{{ url_for('python_list_commands.python_list_commands') }}" class="btn btn-outline-dark">Перейти в раздел Python</a>
+   <div class="card">
+      <div class="card-header h3">Последняя добавленная команда Python</div>
+      <div class="card-body">
+         <p class="card-text">
+            {{ last_python.python_name }}</p>
+         <a href="{{ url_for('python_list_commands.python_list_commands') }}" class="btn btn-outline-dark">Перейти в раздел Python</a>
+      </div>
    </div>
-</div>
+   <div class="card">
+      <div class="card-header h3">Последняя добавленная задача</div>
+      <div class="card-body">
+         <p class="card-text">
+            {{ last_task.task_name }}</p>
+         <a href="{{ url_for('tasks.tasks') }}" class="btn btn-outline-dark">Перейти к задачам</a>
+      </div>
+   </div>
+   </div>
