@@ -114,6 +114,19 @@ INSERT INTO "bash" VALUES(112,'mount','Вывод всех подключенных дисков');
 INSERT INTO "bash" VALUES(113,'tar -cf flask-project.tar * && mv flask-project.tar /o','Скрипт архивации файлов и перенос архива на другой диск');
 INSERT INTO "bash" VALUES(114,'tar -cf flask-project.tar *','Создание архива всех файлов в папке');
 INSERT INTO "bash" VALUES(115,'mv flask-project.tar /o','Перенос файла на другой диск');
+INSERT INTO "bash" VALUES(125,'#!/bin/bash
+echo Привет, сообщи мне номер релиза?
+read varname
+echo Молодец релиз номер: $varname
+DATE=$(date)
+TEXT="Release#$varname"
+git add .
+git commit -m "$TEXT"
+git push
+time=$(date +%s)
+tar -cf flask-project.tar * && 
+mv flask-project.tar /o 
+echo $(($(date +%s)-$time))','Скрипт отправляет на репозиторий коммит с указанием номера релиза(cli спрашивает у юзера), делает архив проекта и отправляет на другой диск');
 CREATE TABLE "links"
 (
     links_id      INTEGER
@@ -135,6 +148,7 @@ INSERT INTO "links" VALUES(21,'Описание библиотеки, которая позволяет работает с
 INSERT INTO "links" VALUES(22,'Документация CLI PowerSHell','learn.microsoft.com/ru-ru/powershell/');
 INSERT INTO "links" VALUES(25,'Blueprint','dnmtechs.com/splitting-a-python-flask-app-into-multiple-files/');
 INSERT INTO "links" VALUES(33,'Что такое CLI?','ru.wikipedia.org/wiki/Интерфейс_командной_строки');
+INSERT INTO "links" VALUES(50,'Grid сетка','skillbox.ru/media/code/uchimsya-verstat-v-setke-bolshoy-gayd-po-css-grid/');
 CREATE TABLE "python" (
     "python_id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "python_command" TEXT NOT NULL,
@@ -397,11 +411,19 @@ CREATE TABLE tasks (
   task_description TEXT NOT NULL,
   task_status TEXT NOT NULL DEFAULT Новая
 );
-INSERT INTO "tasks" VALUES(1,'Формы','В разделе "Задачи" изменить размер форм ввода. Статус сделать значение 1, описание 8','Новая');
+INSERT INTO "tasks" VALUES(1,'Формы','В разделе "Задачи" изменить размер форм ввода. Статус rows сделать значение 1, описание 8','Готово');
 INSERT INTO "tasks" VALUES(2,'Восстановление из дампа','Написать логику, протестировать в ноутбуке и добавить в проект.','Новая');
-INSERT INTO "tasks" VALUES(3,'Внести в следующий релиз','1) Сделан редизайн проекта, шрифт, hover главного меню','Новая');
+INSERT INTO "tasks" VALUES(3,'Внести в следующий релиз','1) Сделан редизайн проекта, шрифт, hover главного меню
+2) Добавлен блок на главную страницу "последняя задача"
+3) В разделе "Задачи" изменен размер форм ввода','Новая');
 INSERT INTO "tasks" VALUES(4,'Прочитать про деплой проектов на python','Прочитать про деплой проектов на python','Новая');
-INSERT INTO "tasks" VALUES(5,'Прочитать про ролевую модель для Flask','Прочитать про ролевую модель для Flask','Новая');
+INSERT INTO "tasks" VALUES(5,'Разработать ролевую модель для проекта','Разработать ролевую модель для проекта','Новая');
+INSERT INTO "tasks" VALUES(6,'Добавить на главную страницу последнюю задачу','Добавить на главную страницу последнюю задачу','Готово');
+INSERT INTO "tasks" VALUES(7,'Последний bash скрипт который связан с релизом добавить в таблицу bash','Последний bash скрипт который связан с релизом добавить в таблицу bash','Готово');
+INSERT INTO "tasks" VALUES(8,'Переименовать bash script star на архивирование, отправку в облако и на запрос номера релиза','Переименовать bash script star на архивирование, отправку в облако и на запрос номера релиза','Готово');
+INSERT INTO "tasks" VALUES(9,'Нужно решить проблему с дампом базы данных','Чтобы не вспоминать нажать кнопку выполнения дампа нужно сделать вероятнее всего pipeline.
+Pipeline должен делать дамп к примеру каждую минуту.
+Материал скачал со своей финальной работы.','В работе');
 CREATE TABLE test (
                 test_id INTEGER PRIMARY KEY autoincrement, 
                 test_name TEXT not null
@@ -507,10 +529,10 @@ INSERT INTO "test" VALUES(98,'AMD');
 INSERT INTO "test" VALUES(99,'HP');
 INSERT INTO "test" VALUES(100,'Ford');
 DELETE FROM "sqlite_sequence";
-INSERT INTO "sqlite_sequence" VALUES('bash',124);
+INSERT INTO "sqlite_sequence" VALUES('bash',128);
 INSERT INTO "sqlite_sequence" VALUES('sql',1167);
-INSERT INTO "sqlite_sequence" VALUES('links',49);
+INSERT INTO "sqlite_sequence" VALUES('links',50);
 INSERT INTO "sqlite_sequence" VALUES('python',2109);
 INSERT INTO "sqlite_sequence" VALUES('test',100);
-INSERT INTO "sqlite_sequence" VALUES('tasks',5);
+INSERT INTO "sqlite_sequence" VALUES('tasks',9);
 COMMIT;

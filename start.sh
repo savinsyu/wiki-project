@@ -1,2 +1,2 @@
 #!/bin/bash
-venv/Scripts/python.exe app.py &
+~/anaconda3/python.exe app.py &

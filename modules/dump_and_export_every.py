@@ -1,13 +1,23 @@
+from flask import Blueprint
+import schedule
+import time
 import pandas as pd
-from flask import Blueprint, redirect, url_for, render_template
-
+import io
 from modules import connect
 
-bp = Blueprint("export_tables_sql_to_xlsx", __name__)
+
+bp = Blueprint("dump_and_export_every", __name__)
 
 
-def export_tables_sql_to_xlsx() -> object:
+@bp.route("/dump_and_export_every")
+def dump_and_export_every():
     conn = connect.get_db_connection()
+    with io.open("files/database_dump.sql", 'w') as p:
+        # iterdump() function
+        for line in conn.iterdump():
+            p.write('%s\n' % line)
+
+    print('Database dump successfully completed!!')
     bash_list = conn.execute("SELECT * FROM bash").fetchall()
     sql_list = conn.execute("SELECT * FROM sql").fetchall()
     python_list = conn.execute("SELECT * FROM python").fetchall()
@@ -25,3 +35,7 @@ def export_tables_sql_to_xlsx() -> object:
     conn.close()
     print('All tables are uploaded to excel!!')
 
+    schedule.every(1).minutes.do(dump_and_export_every)
+    while True:
+        schedule.run_pending()
+        time.sleep(20)
