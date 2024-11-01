@@ -1,7 +1,6 @@
 from flask import Blueprint, redirect, url_for
 
-from modules import connect, dump, export_tables_sql_to_xlsx
-
+from modules import connect
 bp = Blueprint('delete_test', __name__)
 
 

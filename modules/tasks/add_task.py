@@ -29,5 +29,4 @@ def add_task():
         else:
             flash('Ошибка сохранения записи, вы ввели мало символов!', category='danger')
 
-  
     return render_template("tasks/add_task.html")

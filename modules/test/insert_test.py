@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, url_for, render_template, request, flash
+from flask import Blueprint, redirect, url_for
 import random
 from modules import connect
 

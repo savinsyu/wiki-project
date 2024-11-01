@@ -1,12 +1,12 @@
 import pandas as pd
-from flask import Blueprint, redirect, url_for, render_template
+from flask import Blueprint
 
 from modules import connect
 
 bp = Blueprint("export_tables_sql_to_xlsx", __name__)
 
 
-def export_tables_sql_to_xlsx() -> object:
+def export_tables_sql_to_xlsx():
     conn = connect.get_db_connection()
     bash_list = conn.execute("SELECT * FROM bash").fetchall()
     sql_list = conn.execute("SELECT * FROM sql").fetchall()

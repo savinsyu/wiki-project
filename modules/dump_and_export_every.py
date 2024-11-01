@@ -1,23 +1,26 @@
 from flask import Blueprint
-import schedule
+from schedule import every, repeat, run_pending
 import time
 import pandas as pd
 import io
-from modules import connect
+import sqlite3
+import os.path
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 bp = Blueprint("dump_and_export_every", __name__)
 
 
-@bp.route("/dump_and_export_every")
+@repeat(every(1).minutes)
 def dump_and_export_every():
-    conn = connect.get_db_connection()
+    db_path = os.path.join(BASE_DIR, '../database.db')
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
     with io.open("files/database_dump.sql", 'w') as p:
         # iterdump() function
         for line in conn.iterdump():
             p.write('%s\n' % line)
 
-    print('Database dump successfully completed!!')
     bash_list = conn.execute("SELECT * FROM bash").fetchall()
     sql_list = conn.execute("SELECT * FROM sql").fetchall()
     python_list = conn.execute("SELECT * FROM python").fetchall()
@@ -33,9 +36,7 @@ def dump_and_export_every():
         df_links_list.to_excel(writer, sheet_name='Links', header=False, index=False)
         df_bash_list.to_excel(writer, sheet_name='Bash', header=False, index=False)
     conn.close()
-    print('All tables are uploaded to excel!!')
-
-    schedule.every(1).minutes.do(dump_and_export_every)
+    print('Database dump and all tables are uploaded to excel successfully completed!!')
     while True:
-        schedule.run_pending()
-        time.sleep(20)
+        run_pending()
+        time.sleep(1)

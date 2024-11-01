@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, url_for, render_template, request, flash
 
-from modules import connect, dump, export_tables_sql_to_xlsx
+from modules import connect
 
 bp = Blueprint('add_python_command', __name__)
 

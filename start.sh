@@ -1,2 +1,2 @@
 #!/bin/bash
-~/anaconda3/python.exe app.py &
+~/AppData/Local/Programs/Python/Python313/python.exe app.py &

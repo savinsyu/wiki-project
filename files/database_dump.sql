@@ -53,7 +53,7 @@ INSERT INTO "bash" VALUES(73,'kill -9 $(ps | grep python)','Завершить работы все
 INSERT INTO "bash" VALUES(74,'Get-Process python','Вывод всех процессов Windows по имени');
 INSERT INTO "bash" VALUES(75,'Stop-Process -Name "python" ','Остановка процессов по имени');
 INSERT INTO "bash" VALUES(76,'Remove-Item -LiteralPath ''.\Polarity Portable\'' -Recurse','Удаление папки с файлами в PowerShell');
-INSERT INTO "bash" VALUES(77,'~/AppData/Local/Programs/Python/Python312/python.exe venv/Scripts/pip.exe freeze > requirements.txt','Создание файла с пакетами');
+INSERT INTO "bash" VALUES(77,'python -m  pip freeze > requirements.txt','Создание файла с пакетами');
 INSERT INTO "bash" VALUES(78,'~/AppData/Local/Programs/Python/Python312/python.exe venv/Scripts/pip.exe install -r requirements.txt','Устанавливает из файла все пакеты');
 INSERT INTO "bash" VALUES(79,'mv ReferenceCard.pdf ../','Перемещение файла из текущей папки в вышестоящий раздел');
 INSERT INTO "bash" VALUES(80,'mv *.sh virtual_machine_scripts/','Перемещение нескольких файлов в другую папку с определенным расширением');

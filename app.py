@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+import flask
+
 from modules import index, dump, export_tables_sql_to_xlsx, dump_and_export, dump_and_export_every
 from modules.python import delete_python_command, add_python_command, edit_python_command, get_post_python_command, \
     python_list_commands
@@ -11,7 +12,7 @@ from modules.sql import delete_sql_command, sql_list_commands, edit_sql_command,
 from modules.bash import add_bash_command, bash_list_commands, delete_bash_command, edit_bash_command, \
     get_post_bash_command
 
-app = Flask(__name__)
+app = flask.Flask(__name__)
 app.register_blueprint(dump_and_export.bp)
 app.register_blueprint(dump.bp)
 app.register_blueprint(dump_and_export_every.bp)
@@ -57,7 +58,7 @@ app.secret_key = "secret key"
 # ENG Handling 404 Error in Flask
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('404.html'), 404
+    return flask.render_template('404.html'), 404
 
 # Запускаем задачу делать дамп базы данных и выгрузку таблиц в excel каждую минуту
 

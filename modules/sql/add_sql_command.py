@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, url_for, render_template, request, flash
 
-from modules import connect, dump, export_tables_sql_to_xlsx
+from modules import connect
 
 bp = Blueprint('add_sql_command', __name__)
 
@@ -27,5 +27,4 @@ def add_sql_command():
         else:
             flash('Ошибка сохранения записи, вы ввели мало символов!', category='danger')
 
-  
     return render_template("sql/add_sql_command.html")

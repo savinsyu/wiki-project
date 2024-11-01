@@ -1,8 +1,8 @@
-from flask import Blueprint, redirect, url_for, render_template
+import flask
 import io
 from modules import connect
 
-bp = Blueprint("dump", __name__)
+bp = flask.Blueprint("dump", __name__)
 
 
 def dump():

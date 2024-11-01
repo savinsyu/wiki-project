@@ -1,8 +1,8 @@
-from flask import Blueprint, redirect, url_for, render_template
+import flask
 
 from modules import connect
 
-bp = Blueprint("index", __name__)
+bp = flask.Blueprint("index", __name__)
 
 
 @bp.route("/")
@@ -13,10 +13,10 @@ def index():
     last_bash = conn.execute("SELECT * FROM bash ORDER BY 1 DESC").fetchone()
     last_python = conn.execute("SELECT * FROM python ORDER BY 1 DESC").fetchone()
     last_task = conn.execute("SELECT * FROM tasks ORDER BY 1 DESC").fetchone()
-    return render_template("index.html",
-                           last_links=last_links,
-                           last_sql=last_sql,
-                           last_bash=last_bash,
-                           last_python=last_python,
-                           last_task=last_task,
-                           )
+    return flask.render_template("index.html",
+                                 last_links=last_links,
+                                 last_sql=last_sql,
+                                 last_bash=last_bash,
+                                 last_python=last_python,
+                                 last_task=last_task,
+                                 )

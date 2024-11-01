@@ -9,7 +9,7 @@ bp = Blueprint('edit_task', __name__)
 def edit_task(task_id):
     conn = connect.get_db_connection()
     edit_task_view = conn.execute("SELECT * FROM tasks WHERE task_id = ?",
-                                         (task_id,)).fetchone()
+                                  (task_id,)).fetchone()
     if request.method == "POST":
         # Задаем переменные
         edit_task_name = request.form["task_name"]
@@ -32,6 +32,5 @@ def edit_task(task_id):
             return redirect(url_for("tasks.tasks"))
         else:
             flash('Ошибка сохранения записи, вы ввели мало символов!', category='danger')
-    
-    
+
     return render_template("tasks/edit_task.html", edit_task_view=edit_task_view)
