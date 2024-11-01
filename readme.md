@@ -23,3 +23,4 @@ git clone https://github.com/savinsyu/flask-project.git
 ```
 3. Переходим в папку flask-project 
 4. Запускаем скрипт start.sh
+5. И переходим по адресу http://127.0.0.1:82/
