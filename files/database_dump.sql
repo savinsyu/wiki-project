@@ -411,19 +411,6 @@ CREATE TABLE tasks (
   task_description TEXT NOT NULL,
   task_status TEXT NOT NULL DEFAULT Новая
 );
-INSERT INTO "tasks" VALUES(1,'Формы','В разделе "Задачи" изменить размер форм ввода. Статус rows сделать значение 1, описание 8','Готово');
-INSERT INTO "tasks" VALUES(2,'Восстановление из дампа','Написать логику, протестировать в ноутбуке и добавить в проект.','Новая');
-INSERT INTO "tasks" VALUES(3,'Внести в следующий релиз','1) Сделан редизайн проекта, шрифт, hover главного меню
-2) Добавлен блок на главную страницу "последняя задача"
-3) В разделе "Задачи" изменен размер форм ввода','Новая');
-INSERT INTO "tasks" VALUES(4,'Прочитать про деплой проектов на python','Прочитать про деплой проектов на python','Новая');
-INSERT INTO "tasks" VALUES(5,'Разработать ролевую модель для проекта','Разработать ролевую модель для проекта','Новая');
-INSERT INTO "tasks" VALUES(6,'Добавить на главную страницу последнюю задачу','Добавить на главную страницу последнюю задачу','Готово');
-INSERT INTO "tasks" VALUES(7,'Последний bash скрипт который связан с релизом добавить в таблицу bash','Последний bash скрипт который связан с релизом добавить в таблицу bash','Готово');
-INSERT INTO "tasks" VALUES(8,'Переименовать bash script star на архивирование, отправку в облако и на запрос номера релиза','Переименовать bash script star на архивирование, отправку в облако и на запрос номера релиза','Готово');
-INSERT INTO "tasks" VALUES(9,'Нужно решить проблему с дампом базы данных','Чтобы не вспоминать нажать кнопку выполнения дампа нужно сделать вероятнее всего pipeline.
-Pipeline должен делать дамп к примеру каждую минуту.
-Материал скачал со своей финальной работы.','В работе');
 CREATE TABLE test (
                 test_id INTEGER PRIMARY KEY autoincrement, 
                 test_name TEXT not null
@@ -532,7 +519,7 @@ DELETE FROM "sqlite_sequence";
 INSERT INTO "sqlite_sequence" VALUES('bash',128);
 INSERT INTO "sqlite_sequence" VALUES('sql',1167);
 INSERT INTO "sqlite_sequence" VALUES('links',50);
-INSERT INTO "sqlite_sequence" VALUES('python',2109);
+INSERT INTO "sqlite_sequence" VALUES('python',2110);
 INSERT INTO "sqlite_sequence" VALUES('test',100);
 INSERT INTO "sqlite_sequence" VALUES('tasks',9);
 COMMIT;

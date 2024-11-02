@@ -233,6 +233,29 @@ cp -r ~/dbeaver-ce-24.0.4-win32.win32.x86_64/dbeaver/bases* /p/s.savin/Work/
 ./dump_database.sh && ./commit.sh
 
 
+~/anaconda3/Scripts/pip.exe -m uninstall schedule
 
+
+
+C:\Users\vital\anaconda3\Scripts\pip.exe
+
+schedule.every(1).minutes.do(dump_and_export)
+
+
+
+pip install --upgrade -r requirements.txt
+python -m pip install --upgrade -r requirements.txt
+
+python -m  pip freeze > requirements.txt
+
+python -m pip install numpy --user
+
+python -m pip uninstall -r requirements.txt -y
+
+python -m pip install --user pipx
+
+pip install --upgrade -r requirements.txt
+
+python -m pip install threading
 
 
