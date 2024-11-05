@@ -6,5 +6,7 @@ ECHO "Проверяем последнюю версию pip и обновлен
 #Устанавливаем последние обновления модулей python
 python -m pip install --upgrade pip
 python -m pip install --upgrade -r requirements.txt
+ECHO "Запускаем приложение"
 ./app.sh
+ECHO "Запускаем крон-задание для создания дампа и таблиц"
 ./dump_export_every.sh
