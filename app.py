@@ -1,5 +1,4 @@
 import flask
-import sqlite3
 import os
 from modules import index, dump, export_tables_sql_to_xlsx, dump_and_export, dump_full
 
@@ -15,22 +14,11 @@ from modules.bash import add_bash_command, bash_list_commands, delete_bash_comma
     get_post_bash_command
 
 
-
 path_to_check = "database.db"
 if os.path.exists(path_to_check):
-    print("Файл или директория существует, приступаем к созданию дампа")
+    print("Файл базы данных существует")
 else:
-    print("Файл или директория не существует.")
-
-conn = sqlite3.connect('database.db')
-b_conn = sqlite3.connect('files/backup.db')
-
-conn.backup(b_conn)
-
-b_conn.close()
-conn.close()
-
-print('Полный дамп готов!!')
+    print("Файл базы данных не существует.")
 
 app = flask.Flask(__name__)
 app.register_blueprint(dump_and_export.bp)

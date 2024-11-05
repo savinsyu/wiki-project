@@ -34,7 +34,6 @@ def dump_and_export_every():
         df_links_list.to_excel(writer, sheet_name='Links', header=False, index=False)
         df_bash_list.to_excel(writer, sheet_name='Bash', header=False, index=False)
     conn.close()
-    print('Создан дамп базы данных и выгружены таблицы!!')
 
 
 while True:
