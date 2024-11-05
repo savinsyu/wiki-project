@@ -128,127 +128,15 @@ def upload_file():
             flash('Allowed file types are txt, pdf, png, jpg, jpeg, gif, py, docx')
             return redirect(request.url)
 
-# Own styles 
-To connect your css file, you need to write the following code in base.html
-
-<link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
-
-# Drop-down menu
-
-<li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-    aria-expanded="false">
-    Сервисы
-  </a>
-  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-    <li><a class="dropdown-item" href="{{ url_for('dump') }}">Дамп базы данных</a></li>
-    <li><a class="dropdown-item" href="{{ url_for('xlsx') }}">Выгрузка таблиц баз данных в ексель</a></li>
-  </ul>
-</li>
-
-# Handling 404 Error in Flask
-It often happens that the user accidentally incorrectly specifies a link in the address bar. In order for the error to be displayed correctly, you need to register page 404.
-
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html'), 404
-
-404.html
-
-{% extends "base.html" %}
-{% block title %}Page Not Found{% endblock %}
-{% block content %}
-  <h1>Page Not Found</h1>
-  <p>What you were looking for is just not there.
-  <p><a href="{{ url_for('index') }}">go somewhere nice</a>
-{% endblock %}
-
-# Creating a database backup
-Creating an application file dump.py
-
-import sqlite3
-import io
-
-conn = sqlite3.connect('database.db')
-
-# Open() function
-with io.open('database_dump.sql', 'w') as p:
-    # iterdump() function
-    for line in conn.iterdump():
-        p.write('%s\n' % line)
-print(' Backup performed successfully!')
-print(' Data Saved as backupdatabase_dump.sql')
-conn.close()
-
-In the bash or cmd of the project's working directory, write the command:
-
-python dump.py
-
-After that, a dump of the database is created in the working directory.
-# Port work
-If you need to work with other projects on the local machine, you must specify different ports:
-http://127.0.0.1:82
-http://127.0.0.1:81
-Specifies the port in this line of the application file:
-if name == "main":
-app.run(debug=True, host='0.0.0.0', port=81)
-
-# Bash scripts
-Below described scripts are given as an example, it is necessary to take into account the placement of catalogs in the system
-## Creating a database dump
-
-venv/scripts/python.exe dump.py
-
-
-## Copy sql scripts to the sql-scripts folder from the dbeaver workspace
-
-cp ~/dbeaver-ce-24.0.4-win32.win32.x86_64/dbeaver/bases/work/Scripts/Flask.sql /p/s.savin/flask_project/sql-scripts
-
-
-## Launch the application
-
-venv/scripts/python.exe app.py
-
 
 ## The app opens in the default browser
 
 venv/scripts/python.exe -m webbrowser http://127.0.0.1:82
 
 
-## Creating and sending a commit
-
-set text= "Reserve Copy: %date%   %time% "
-git add .
-git commit -m %text%
-git push
-
-
-## Copy the DBeaver configuration
-
-cp -r ~/dbeaver-ce-24.0.4-win32.win32.x86_64/dbeaver/bases* /p/s.savin/Work/
-
-
-## Running two bash scripts in sequence
-
-./dump_database.sh && ./commit.sh
-
-
-~/anaconda3/Scripts/pip.exe -m uninstall schedule
-
-
-
-C:\Users\vital\anaconda3\Scripts\pip.exe
-
-schedule.every(1).minutes.do(dump_and_export)
-
-
-
-pip install --upgrade -r requirements.txt
 python -m pip install --upgrade -r requirements.txt
 
 python -m  pip freeze > requirements.txt
-
-python -m pip install numpy --user
 
 python -m pip uninstall -r requirements.txt -y
 

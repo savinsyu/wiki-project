@@ -14,6 +14,6 @@ def dump():
         for line in conn.iterdump():
             p.write('%s\n' % line)
 
-    print('Database dump successfully completed!!')
+    print('Дамп готов!!')
 
     conn.close()

@@ -15,7 +15,7 @@
    <div class="card-header">{{ links_list['links_name'] }}</div>
    <div class="card-body">
       <p class="card-text">
-         <a href="https://{{ links_list['links_command'] }}" target="_blank"><i>{{ links_list['links_command']
+         <a href="{{ links_list['links_command'] }}" target="_blank"><i>{{ links_list['links_command']
                }}</i></a>
       <div class="btn-group pb-2" role="group" aria-label="...">
          <a href="{{ url_for('get_post_links_command.get_post_links_command', links_id=links_list['links_id']) }}"

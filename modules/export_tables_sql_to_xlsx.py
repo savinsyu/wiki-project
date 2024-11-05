@@ -23,5 +23,5 @@ def export_tables_sql_to_xlsx():
         df_links_list.to_excel(writer, sheet_name='Links', header=False, index=False)
         df_bash_list.to_excel(writer, sheet_name='Bash', header=False, index=False)
     conn.close()
-    print('All tables are uploaded to excel!!')
+    print('Выгружены таблицы excel!!')
 

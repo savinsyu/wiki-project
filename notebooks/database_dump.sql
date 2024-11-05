@@ -134,22 +134,21 @@ CREATE TABLE "links"
     links_name    TEXT not null,
     links_command TEXT not null
 );
-INSERT INTO "links" VALUES(1,'Как сделать скрипт на bash','https://selectel.ru/blog/tutorials/linux-bash-scripting-guide/');
-INSERT INTO "links" VALUES(2,'Как создать и запустить bat-файлы','https://nic.ru/help/kak-sozdat6-i-zapustit6-bat-fajly_11640.html');
-INSERT INTO "links" VALUES(3,'Работа с 7zip из командной строки','https://dmosk.ru/miniinstruktions.php?mini=7zip-cmd ');
-INSERT INTO "links" VALUES(4,'Список команд Windows CMD с описанием и примерами','https://ab57.ru/cmdlist.html');
-INSERT INTO "links" VALUES(5,'Интересный материал про bash','https://linuxsimply.com/bash-scripting-tutorial/basics/');
-INSERT INTO "links" VALUES(15,'Горячие клавиши Bash','https://selectel.ru/blog/tutorials/linux-terminal-hotkeys/');
-INSERT INTO "links" VALUES(16,'Красивый python','https://sky.pro/media/pep8/');
-INSERT INTO "links" VALUES(17,'Работа с gitignore','https://wiki.merionet.ru/articles/fajl-gitignore-kak-ignorirovat-fajly-i-papki-v-git');
-INSERT INTO "links" VALUES(19,'Сайт с документацией по веб-технологиям','https://developer.mozilla.org/ru/docs/Web');
-INSERT INTO "links" VALUES(20,'Документация по Bootstrap','https://getbootstrap.com/');
-INSERT INTO "links" VALUES(21,'Описание библиотеки, которая позволяет работает с базой mysql','https://pypi.org/project/PyMySQL/');
-INSERT INTO "links" VALUES(22,'Документация CLI PowerSHell','https://learn.microsoft.com/ru-ru/powershell/');
-INSERT INTO "links" VALUES(25,'Blueprint','https://dnmtechs.com/splitting-a-python-flask-app-into-multiple-files/');
-INSERT INTO "links" VALUES(33,'Что такое CLI?','https://ru.wikipedia.org/wiki/Интерфейс_командной_строки');
-INSERT INTO "links" VALUES(50,'Grid сетка','https://skillbox.ru/media/code/uchimsya-verstat-v-setke-bolshoy-gayd-po-css-grid/');
-INSERT INTO "links" VALUES(51,'Полезная страница с методами работы с файлами в Python.','https://victor-komlev.ru/rabota-s-operatsionnoj-i-fajlovoj-sistemoj-v-python-pathlib-os-shutil/');
+INSERT INTO "links" VALUES(1,'Как сделать скрипт на bash','selectel.ru/blog/tutorials/linux-bash-scripting-guide/');
+INSERT INTO "links" VALUES(2,'Как создать и запустить bat-файлы','nic.ru/help/kak-sozdat6-i-zapustit6-bat-fajly_11640.html');
+INSERT INTO "links" VALUES(3,'Работа с 7zip из командной строки','dmosk.ru/miniinstruktions.php?mini=7zip-cmd ');
+INSERT INTO "links" VALUES(4,'Список команд Windows CMD с описанием и примерами','ab57.ru/cmdlist.html');
+INSERT INTO "links" VALUES(5,'Интересный материал про bash','linuxsimply.com/bash-scripting-tutorial/basics/');
+INSERT INTO "links" VALUES(15,'Горячие клавиши Bash','selectel.ru/blog/tutorials/linux-terminal-hotkeys/');
+INSERT INTO "links" VALUES(16,'Красивый python','sky.pro/media/pep8/');
+INSERT INTO "links" VALUES(17,'Работа с gitignore','wiki.merionet.ru/articles/fajl-gitignore-kak-ignorirovat-fajly-i-papki-v-git');
+INSERT INTO "links" VALUES(19,'Сайт с документацией по веб-технологиям','developer.mozilla.org/ru/docs/Web');
+INSERT INTO "links" VALUES(20,'Документация по Bootstrap','getbootstrap.com/');
+INSERT INTO "links" VALUES(21,'Описание библиотеки, которая позволяет работает с базой mysql','pypi.org/project/PyMySQL/');
+INSERT INTO "links" VALUES(22,'Документация CLI PowerSHell','learn.microsoft.com/ru-ru/powershell/');
+INSERT INTO "links" VALUES(25,'Blueprint','dnmtechs.com/splitting-a-python-flask-app-into-multiple-files/');
+INSERT INTO "links" VALUES(33,'Что такое CLI?','ru.wikipedia.org/wiki/Интерфейс_командной_строки');
+INSERT INTO "links" VALUES(50,'Grid сетка','skillbox.ru/media/code/uchimsya-verstat-v-setke-bolshoy-gayd-po-css-grid/');
 CREATE TABLE "python" (
     "python_id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "python_command" TEXT NOT NULL,
@@ -519,7 +518,7 @@ INSERT INTO "test" VALUES(100,'Ford');
 DELETE FROM "sqlite_sequence";
 INSERT INTO "sqlite_sequence" VALUES('bash',128);
 INSERT INTO "sqlite_sequence" VALUES('sql',1167);
-INSERT INTO "sqlite_sequence" VALUES('links',51);
+INSERT INTO "sqlite_sequence" VALUES('links',50);
 INSERT INTO "sqlite_sequence" VALUES('python',2110);
 INSERT INTO "sqlite_sequence" VALUES('test',100);
 INSERT INTO "sqlite_sequence" VALUES('tasks',9);
