@@ -412,6 +412,7 @@ CREATE TABLE tasks (
   task_description TEXT NOT NULL,
   task_status TEXT NOT NULL DEFAULT Новая
 );
+INSERT INTO "tasks" VALUES(10,'Добавить оставшиеся разделы к выгрузке дампа и таблиц','Добавить оставшиеся разделы к выгрузке дампа и таблиц','Новая');
 CREATE TABLE test (
                 test_id INTEGER PRIMARY KEY autoincrement, 
                 test_name TEXT not null
@@ -521,6 +522,6 @@ INSERT INTO "sqlite_sequence" VALUES('bash',128);
 INSERT INTO "sqlite_sequence" VALUES('sql',1167);
 INSERT INTO "sqlite_sequence" VALUES('links',51);
 INSERT INTO "sqlite_sequence" VALUES('python',2110);
-INSERT INTO "sqlite_sequence" VALUES('tasks',9);
+INSERT INTO "sqlite_sequence" VALUES('tasks',10);
 INSERT INTO "sqlite_sequence" VALUES('test',100);
 COMMIT;
