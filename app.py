@@ -1,6 +1,6 @@
 import flask
 import os
-from modules import index, dump, export_tables_sql_to_xlsx, dump_and_export, dump_full
+from modules import index, dump, export_tables_sql_to_xlsx, dump_and_export, dump_full, analytics
 
 from modules.python import delete_python_command, add_python_command, edit_python_command, get_post_python_command, \
     python_list_commands
@@ -21,6 +21,7 @@ else:
     print("Файл базы данных не существует.")
 
 app = flask.Flask(__name__)
+app.register_blueprint(analytics.bp)
 app.register_blueprint(dump_and_export.bp)
 app.register_blueprint(dump.bp)
 app.register_blueprint(export_tables_sql_to_xlsx.bp)

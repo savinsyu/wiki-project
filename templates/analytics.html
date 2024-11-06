@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block title %}Аналитика{% endblock %} {% block content %}
+<div class="container-index-page">
+   <div class="card">
+      <div class="card-header h3">Записей в разделах</div>
+      <div class="card-body">
+         <p class="card-text">SLI: {{ bash_list_count }}</p>
+         <p class="card-text">SQL: {{ sql_list_count }}</p>
+         <p class="card-text">Задачи: {{ task_list_count }}</p>
+         <p class="card-text">Python: {{ python_list_count }}</p>
+         <p class="card-text">Ссылки: {{ links_list_count }}</p>
+         <p class="card-text">Тестовый раздел: {{ test_list_count }}</p>
+         <p class="card-text">Всего записей: {{ sum_count }}</p>
+
+      </div>
+   </div>
+   </div>
+{% endblock %}

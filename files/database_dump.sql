@@ -413,6 +413,13 @@ CREATE TABLE tasks (
   task_status TEXT NOT NULL DEFAULT Новая
 );
 INSERT INTO "tasks" VALUES(10,'Добавить оставшиеся разделы к выгрузке дампа и таблиц','Добавить оставшиеся разделы к выгрузке дампа и таблиц','Новая');
+INSERT INTO "tasks" VALUES(11,'Создать раздел Аналитика','Создать раздел Аналитика.
+Таблица не нужна.
+В разделе отобразить статистику по каждому разделу.
+Количество по каждому разделу.
+Общее количество записей.
+В перспективе эту статистику отправлять в таблицу некую с указанием даты добавления.','Готово');
+INSERT INTO "tasks" VALUES(12,'Переключатель','Подумать как в разделе задачи сделать переключатель между выполненными задачами и в работе.','Новая');
 CREATE TABLE test (
                 test_id INTEGER PRIMARY KEY autoincrement, 
                 test_name TEXT not null
@@ -517,11 +524,31 @@ INSERT INTO "test" VALUES(97,'HP');
 INSERT INTO "test" VALUES(98,'ASUS');
 INSERT INTO "test" VALUES(99,'Samsung');
 INSERT INTO "test" VALUES(100,'Toyota');
+INSERT INTO "test" VALUES(101,'Тестовая запись №1');
+INSERT INTO "test" VALUES(102,'Тестовая запись №2');
+INSERT INTO "test" VALUES(103,'Тестовая запись №3');
+INSERT INTO "test" VALUES(104,'Тестовая запись №4');
+INSERT INTO "test" VALUES(105,'Тестовая запись №5');
+INSERT INTO "test" VALUES(106,'Тестовая запись №6');
+INSERT INTO "test" VALUES(107,'Тестовая запись №7');
+INSERT INTO "test" VALUES(108,'Тестовая запись №8');
+INSERT INTO "test" VALUES(109,'Тестовая запись №9');
+INSERT INTO "test" VALUES(110,'Тестовая запись №10');
+INSERT INTO "test" VALUES(111,'Тестовая запись №11');
+INSERT INTO "test" VALUES(112,'Тестовая запись №12');
+INSERT INTO "test" VALUES(113,'Тестовая запись №13');
+INSERT INTO "test" VALUES(114,'Тестовая запись №14');
+INSERT INTO "test" VALUES(115,'Тестовая запись №15');
+INSERT INTO "test" VALUES(116,'Тестовая запись №16');
+INSERT INTO "test" VALUES(117,'Тестовая запись №17');
+INSERT INTO "test" VALUES(118,'Тестовая запись №18');
+INSERT INTO "test" VALUES(119,'Тестовая запись №19');
+INSERT INTO "test" VALUES(120,'Тестовая запись №20');
 DELETE FROM "sqlite_sequence";
 INSERT INTO "sqlite_sequence" VALUES('bash',128);
 INSERT INTO "sqlite_sequence" VALUES('sql',1167);
 INSERT INTO "sqlite_sequence" VALUES('links',51);
 INSERT INTO "sqlite_sequence" VALUES('python',2110);
-INSERT INTO "sqlite_sequence" VALUES('tasks',10);
-INSERT INTO "sqlite_sequence" VALUES('test',100);
+INSERT INTO "sqlite_sequence" VALUES('tasks',12);
+INSERT INTO "sqlite_sequence" VALUES('test',120);
 COMMIT;

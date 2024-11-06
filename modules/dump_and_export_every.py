@@ -14,7 +14,6 @@ def dump_and_export_every():
     conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
     with io.open("files/database_dump.sql", 'w') as p:
-        # iterdump() function
         for line in conn.iterdump():
             p.write('%s\n' % line)
     bash_list = conn.execute("SELECT * FROM bash").fetchall()
