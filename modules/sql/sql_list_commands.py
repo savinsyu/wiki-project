@@ -9,12 +9,10 @@ bp = Blueprint('sql_list_commands', __name__)
 def sql_list_commands():
     conn = connect.get_db_connection()
     cur = conn.cursor()
-    sql_list_count = cur.execute("SELECT COUNT(*) FROM sql")
-    sql_list_count_print = sql_list_count.fetchone()
-    sql_list_count_print_int = int(sql_list_count_print[0])
+    sql_list_count = int(cur.execute("SELECT COUNT(*) FROM sql").fetchone()[0])
     sql_list = conn.execute("SELECT * FROM sql ORDER BY 1 DESC").fetchall()
     conn.close()
     return render_template("sql/sql_list_commands.html",
                            sql_list=sql_list,
-                           sql_list_count_print_int=sql_list_count_print_int,
+                           sql_list_count=sql_list_count,
                            )
