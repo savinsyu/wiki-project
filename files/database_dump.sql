@@ -127,6 +127,13 @@ time=$(date +%s)
 tar -cf flask-project.tar * && 
 mv flask-project.tar /o 
 echo $(($(date +%s)-$time))','Скрипт отправляет на репозиторий коммит с указанием номера релиза(cli спрашивает у юзера), делает архив проекта и отправляет на другой диск');
+INSERT INTO "bash" VALUES(129,'~/AppData/Local/Programs/Python/Python313/python.exe -m webbrowser http://127.0.0.1:82','Запуск приложения в браузере');
+INSERT INTO "bash" VALUES(130,'Set-ExecutionPolicy RemoteSigned','Разрешение запуска сценариев powershell');
+INSERT INTO "bash" VALUES(131,'where powershell','Как найти исполняемый файл powershell в системе?
+Ввести в cmd команду!');
+INSERT INTO "bash" VALUES(132,'python -m pip uninstall -r requirements.txt -y','Принудительное деинсталляция пакетов из файла requirements.txt ');
+INSERT INTO "bash" VALUES(133,'#!/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe
+Stop-Process -Name "python"','Скрипт powershell, который убивает все python запущенные процессы');
 CREATE TABLE "links"
 (
     links_id      INTEGER
@@ -150,6 +157,8 @@ INSERT INTO "links" VALUES(25,'Blueprint','https://dnmtechs.com/splitting-a-pyth
 INSERT INTO "links" VALUES(33,'Что такое CLI?','https://ru.wikipedia.org/wiki/Интерфейс_командной_строки');
 INSERT INTO "links" VALUES(50,'Grid сетка','https://skillbox.ru/media/code/uchimsya-verstat-v-setke-bolshoy-gayd-po-css-grid/');
 INSERT INTO "links" VALUES(51,'Полезная страница с методами работы с файлами в Python.','https://victor-komlev.ru/rabota-s-operatsionnoj-i-fajlovoj-sistemoj-v-python-pathlib-os-shutil/');
+INSERT INTO "links" VALUES(52,'Ссылка на очень удобную программу Samsung Dex. 
+Программа предназначена на для трансляции экрана телефона Samsung на ПК.','https://www.samsung.com/ru/apps/samsung-dex/');
 CREATE TABLE "python" (
     "python_id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "python_command" TEXT NOT NULL,
@@ -383,6 +392,14 @@ data = (
 )
 cur.executemany("INSERT INTO links VALUES(:id,:name, :link)", data)
 con.commit()','Вставка значений в таблицу базы данных');
+CREATE TABLE releases (
+  release_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  release_name TEXT NOT NULL,
+  release_number TEXT NOT NULL,
+  release_description TEXT NOT NULL,
+  release_status TEXT NOT NULL
+);
+INSERT INTO "releases" VALUES(1,'TestTestTestTestTest','TestTestTestTestTest','TestTestTestTestTest','TestTestTestTestTest');
 CREATE TABLE [sql] ( 
   "sql_id" INTEGER PRIMARY KEY AUTOINCREMENT,
   "sql_command" TEXT NOT NULL,
@@ -420,6 +437,8 @@ INSERT INTO "tasks" VALUES(11,'Создать раздел Аналитика','Создать раздел Аналити
 Общее количество записей.
 В перспективе эту статистику отправлять в таблицу некую с указанием даты добавления.','Готово');
 INSERT INTO "tasks" VALUES(12,'Переключатель','Подумать как в разделе задачи сделать переключатель между выполненными задачами и в работе.','Новая');
+INSERT INTO "tasks" VALUES(13,'Раздел релизы','Создать раздел релизы. Последний номер взять с Github.
+В этом разделе вносить информацию об обновлениях и о статусе релиза(опубликован или нет)','Новая');
 CREATE TABLE test (
                 test_id INTEGER PRIMARY KEY autoincrement, 
                 test_name TEXT not null
@@ -544,11 +563,112 @@ INSERT INTO "test" VALUES(117,'Тестовая запись №17');
 INSERT INTO "test" VALUES(118,'Тестовая запись №18');
 INSERT INTO "test" VALUES(119,'Тестовая запись №19');
 INSERT INTO "test" VALUES(120,'Тестовая запись №20');
+INSERT INTO "test" VALUES(121,'AMD');
+INSERT INTO "test" VALUES(122,'Samsung');
+INSERT INTO "test" VALUES(123,'Intel');
+INSERT INTO "test" VALUES(124,'ASUS');
+INSERT INTO "test" VALUES(125,'ASUS');
+INSERT INTO "test" VALUES(126,'HP');
+INSERT INTO "test" VALUES(127,'HP');
+INSERT INTO "test" VALUES(128,'Samsung');
+INSERT INTO "test" VALUES(129,'Ford');
+INSERT INTO "test" VALUES(130,'Intel');
+INSERT INTO "test" VALUES(131,'Acer');
+INSERT INTO "test" VALUES(132,'Intel');
+INSERT INTO "test" VALUES(133,'Ford');
+INSERT INTO "test" VALUES(134,'Ford');
+INSERT INTO "test" VALUES(135,'Ford');
+INSERT INTO "test" VALUES(136,'HP');
+INSERT INTO "test" VALUES(137,'Toyota');
+INSERT INTO "test" VALUES(138,'AMD');
+INSERT INTO "test" VALUES(139,'AMD');
+INSERT INTO "test" VALUES(140,'Acer');
+INSERT INTO "test" VALUES(141,'ASUS');
+INSERT INTO "test" VALUES(142,'Acer');
+INSERT INTO "test" VALUES(143,'ASUS');
+INSERT INTO "test" VALUES(144,'Toyota');
+INSERT INTO "test" VALUES(145,'Ford');
+INSERT INTO "test" VALUES(146,'Intel');
+INSERT INTO "test" VALUES(147,'Samsung');
+INSERT INTO "test" VALUES(148,'Toyota');
+INSERT INTO "test" VALUES(149,'ASUS');
+INSERT INTO "test" VALUES(150,'Intel');
+INSERT INTO "test" VALUES(151,'Intel');
+INSERT INTO "test" VALUES(152,'HP');
+INSERT INTO "test" VALUES(153,'Samsung');
+INSERT INTO "test" VALUES(154,'Intel');
+INSERT INTO "test" VALUES(155,'Samsung');
+INSERT INTO "test" VALUES(156,'Toyota');
+INSERT INTO "test" VALUES(157,'Intel');
+INSERT INTO "test" VALUES(158,'Ford');
+INSERT INTO "test" VALUES(159,'Acer');
+INSERT INTO "test" VALUES(160,'Acer');
+INSERT INTO "test" VALUES(161,'Intel');
+INSERT INTO "test" VALUES(162,'Samsung');
+INSERT INTO "test" VALUES(163,'Acer');
+INSERT INTO "test" VALUES(164,'Intel');
+INSERT INTO "test" VALUES(165,'ASUS');
+INSERT INTO "test" VALUES(166,'Ford');
+INSERT INTO "test" VALUES(167,'Toyota');
+INSERT INTO "test" VALUES(168,'AMD');
+INSERT INTO "test" VALUES(169,'Toyota');
+INSERT INTO "test" VALUES(170,'ASUS');
+INSERT INTO "test" VALUES(171,'Toyota');
+INSERT INTO "test" VALUES(172,'Ford');
+INSERT INTO "test" VALUES(173,'Acer');
+INSERT INTO "test" VALUES(174,'Intel');
+INSERT INTO "test" VALUES(175,'HP');
+INSERT INTO "test" VALUES(176,'Acer');
+INSERT INTO "test" VALUES(177,'Toyota');
+INSERT INTO "test" VALUES(178,'ASUS');
+INSERT INTO "test" VALUES(179,'ASUS');
+INSERT INTO "test" VALUES(180,'HP');
+INSERT INTO "test" VALUES(181,'Ford');
+INSERT INTO "test" VALUES(182,'Acer');
+INSERT INTO "test" VALUES(183,'Intel');
+INSERT INTO "test" VALUES(184,'Acer');
+INSERT INTO "test" VALUES(185,'Toyota');
+INSERT INTO "test" VALUES(186,'Samsung');
+INSERT INTO "test" VALUES(187,'HP');
+INSERT INTO "test" VALUES(188,'ASUS');
+INSERT INTO "test" VALUES(189,'Intel');
+INSERT INTO "test" VALUES(190,'Acer');
+INSERT INTO "test" VALUES(191,'ASUS');
+INSERT INTO "test" VALUES(192,'Acer');
+INSERT INTO "test" VALUES(193,'Intel');
+INSERT INTO "test" VALUES(194,'Ford');
+INSERT INTO "test" VALUES(195,'Toyota');
+INSERT INTO "test" VALUES(196,'Intel');
+INSERT INTO "test" VALUES(197,'Samsung');
+INSERT INTO "test" VALUES(198,'Intel');
+INSERT INTO "test" VALUES(199,'HP');
+INSERT INTO "test" VALUES(200,'ASUS');
+INSERT INTO "test" VALUES(201,'HP');
+INSERT INTO "test" VALUES(202,'Ford');
+INSERT INTO "test" VALUES(203,'Toyota');
+INSERT INTO "test" VALUES(204,'Ford');
+INSERT INTO "test" VALUES(205,'Intel');
+INSERT INTO "test" VALUES(206,'AMD');
+INSERT INTO "test" VALUES(207,'Toyota');
+INSERT INTO "test" VALUES(208,'Acer');
+INSERT INTO "test" VALUES(209,'Samsung');
+INSERT INTO "test" VALUES(210,'Ford');
+INSERT INTO "test" VALUES(211,'Acer');
+INSERT INTO "test" VALUES(212,'Samsung');
+INSERT INTO "test" VALUES(213,'Toyota');
+INSERT INTO "test" VALUES(214,'Samsung');
+INSERT INTO "test" VALUES(215,'HP');
+INSERT INTO "test" VALUES(216,'Intel');
+INSERT INTO "test" VALUES(217,'AMD');
+INSERT INTO "test" VALUES(218,'HP');
+INSERT INTO "test" VALUES(219,'ASUS');
+INSERT INTO "test" VALUES(220,'ASUS');
 DELETE FROM "sqlite_sequence";
-INSERT INTO "sqlite_sequence" VALUES('bash',128);
+INSERT INTO "sqlite_sequence" VALUES('bash',133);
 INSERT INTO "sqlite_sequence" VALUES('sql',1167);
-INSERT INTO "sqlite_sequence" VALUES('links',51);
+INSERT INTO "sqlite_sequence" VALUES('links',52);
 INSERT INTO "sqlite_sequence" VALUES('python',2110);
-INSERT INTO "sqlite_sequence" VALUES('tasks',12);
-INSERT INTO "sqlite_sequence" VALUES('test',120);
+INSERT INTO "sqlite_sequence" VALUES('tasks',13);
+INSERT INTO "sqlite_sequence" VALUES('test',220);
+INSERT INTO "sqlite_sequence" VALUES('releases',1);
 COMMIT;

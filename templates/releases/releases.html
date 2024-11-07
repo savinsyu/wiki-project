@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block title %}Релизы{% endblock %} {% block content %}
+<div class="card mb-2">
+   <div class="card-header h3">Список релизов</div>
+   <div class="card-body">
+      <p class="card-text">В этом разделе можно отображены тккущие релизы и готовящееся</p>
+      <p class="card-text">
+         Всего записей в таблице releases: <b>{{ releases_count }}</b></p>
+      <a href="{{ url_for('add_release.add_release') }}" class="btn btn-outline-dark">Добавить новую
+         запись?</a>
+         <p class="card-text">{% include 'errors.html' %}</p>
+   </div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Название</th>
+      <th scope="col">Номер</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for releases_list in releases_list %}
+    <tr>
+      <td>{{ releases_list['release_name'] }}</td>
+      <td>{{ releases_list['release_number'] }}</td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+{% endblock %}

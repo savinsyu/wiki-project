@@ -18,5 +18,7 @@ ECHO "Создаем requirements.txt"
 python -m  pip freeze > requirements.txt
 ECHO "Запускаем приложение"
 ./app.sh
+ECHO "Приложение открываем в браузере"
+~/AppData/Local/Programs/Python/Python313/python.exe -m webbrowser http://127.0.0.1:82
 ECHO "Запускаем крон-задание для создания дампа и таблиц"
 ./dump_export_every.sh

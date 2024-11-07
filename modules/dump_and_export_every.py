@@ -20,7 +20,7 @@ def dump_and_export_every():
     sql_list = conn.execute("SELECT * FROM sql").fetchall()
     python_list = conn.execute("SELECT * FROM python").fetchall()
     links_list = conn.execute("SELECT * FROM links").fetchall()
-    b_conn = sqlite3.connect('backup.db')
+    b_conn = sqlite3.connect('files/backup.db')
     conn.backup(b_conn)
     b_conn.close()
     df_sql_list = pd.DataFrame(sql_list)

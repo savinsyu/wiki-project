@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Редактировать запись{% endblock %}
+{% block content %}
+<form method="post">
+   <div class="card mb-3">
+      <label for="release_name" class="card-header">Название</label>
+      <textarea class="form-control" id="release_name" name="release_name" rows="8"
+         placeholder="Введите название" required>{{ edit_view_release.release_name }}<</textarea>
+   </div>
+      <div class="card mb-3">
+      <label for="release_number" class="card-header">Введите номер релиза</label>
+      <textarea class="form-control" id="release_number" name="release_number" rows="8"
+         placeholder="Введите номер релиза" required>{{ edit_view_release.release_number }}</textarea>
+   </div>
+   <div class="card mb-3">
+      <label for="release_description" class="card-header">Описание релиза</label>
+      <textarea class="form-control" id="release_description" name="release_description" rows="2"
+         placeholder="Введите описание релиза" required>{{ edit_view_release.release_description }}</textarea>
+   </div>
+      <div class="card mb-3">
+      <label for="release_status" class="card-header">Статус релиза</label>
+      <textarea class="form-control" id="release_status" name="release_status" rows="2"
+         placeholder="Введите статус релиза" required>{{ edit_view_release.release_status }}</textarea>
+   </div>
+   <div class="card text-dark bg-light mb-3">
+      <div class="card-header h5">Что будем дальше делать?</div>
+      <div class="card-body">
+         <div class="btn-group btn-group" role="group" aria-label="...">
+            <a href="{{ url_for('releases.releases') }}" class="btn btn-outline-dark">Вернемся к списку</a>
+            <a href="{{ url_for('add_release.add_release') }}" class="btn btn-outline-dark">Добавим новую
+               запись</a>
+            <button type="submit" value="" class="btn btn-outline-dark">Сохраним изменения</button>
+            {% include 'errors.html' %}
+         </div>
+      </div>
+</form>
+{% endblock %}

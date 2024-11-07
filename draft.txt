@@ -1,45 +1,10 @@
-*Read this in other languages: [Russian](readme.ru.md)*
-
-# File generation requirements
-## Saving dependencies
-
 python -m pip freeze > requirements.txt
 
 ## Running dependencies from a file
 
 pip install -r requirements.txt
 
-# Creating tables 
 
-CREATE TABLE
-  IF NOT EXISTS tasks (
-    id_task INTEGER PRIMARY KEY AUTOINCREMENT,
-    datetime_task datetime default CURRENT_TIMESTAMP,
-    title_task TEXT NOT NULL,
-    content TEXT NOT NULL,
-    status_task BOOLEAN
-  )
-
-CREATE TABLE
-  IF NOT EXISTS posts (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    title TEXT NOT NULL,
-    content TEXT NOT NULL
-  )
-  
-create table sandbox
-(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    content  text
-);  
-
-
-CREATE TABLE
-  IF NOT EXISTS git_and_bash (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    command TEXT NOT NULL,
-    name TEXT NOT NULL
-  )
   
 
 # Creating routes
@@ -136,14 +101,5 @@ venv/scripts/python.exe -m webbrowser http://127.0.0.1:82
 
 python -m pip install --upgrade -r requirements.txt
 
-python -m  pip freeze > requirements.txt
-
-python -m pip uninstall -r requirements.txt -y
-
-python -m pip install --user pipx
 
 pip install --upgrade -r requirements.txt
-
-python -m pip install threading
-
-
