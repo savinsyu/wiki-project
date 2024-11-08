@@ -400,6 +400,7 @@ CREATE TABLE releases (
   release_status TEXT NOT NULL
 );
 INSERT INTO "releases" VALUES(1,'TestTestTestTestTest','TestTestTestTestTest','TestTestTestTestTest','TestTestTestTestTest');
+INSERT INTO "releases" VALUES(2,'TestTestTestTestTest<','TestTestTestTestTest','TestTestTestTestTest','TestTestTestTestTest');
 CREATE TABLE [sql] ( 
   "sql_id" INTEGER PRIMARY KEY AUTOINCREMENT,
   "sql_command" TEXT NOT NULL,
@@ -670,5 +671,5 @@ INSERT INTO "sqlite_sequence" VALUES('links',52);
 INSERT INTO "sqlite_sequence" VALUES('python',2110);
 INSERT INTO "sqlite_sequence" VALUES('tasks',13);
 INSERT INTO "sqlite_sequence" VALUES('test',220);
-INSERT INTO "sqlite_sequence" VALUES('releases',1);
+INSERT INTO "sqlite_sequence" VALUES('releases',2);
 COMMIT;

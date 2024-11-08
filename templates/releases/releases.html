@@ -15,6 +15,8 @@
     <tr>
       <th scope="col">Название</th>
       <th scope="col">Номер</th>
+      <th scope="col">Статус</th>
+      <th scope="col">Действие</th>
     </tr>
   </thead>
   <tbody>
@@ -22,6 +24,15 @@
     <tr>
       <td>{{ releases_list['release_name'] }}</td>
       <td>{{ releases_list['release_number'] }}</td>
+      <td>{{ releases_list['release_status'] }}</td>
+      <td>
+            <div class="btn-group pb-2" role="group" aria-label="...">
+         <a href="{{ url_for('view_release.view_release', release_id=releases_list['release_id']) }}"
+            class="btn btn-outline-dark">Перейти к записи</a>
+         <a href="{{ url_for('edit_release.edit_release', release_id=releases_list['release_id']) }}"
+            class="btn btn-outline-dark">Редактировать запись?</a>
+      </div>  
+    </td>
     </tr>
 {% endfor %}
   </tbody>

@@ -5,7 +5,7 @@ from modules import connect
 bp = Blueprint('delete_release', __name__)
 
 
-@bp.route("/releases/delete/<int:releases_id>/", methods=("POST",))
+@bp.route("/releases/delete/<int:release_id>/", methods=("POST",))
 def delete_release(release_id):
     conn = connect.get_db_connection()
     conn.execute("DELETE FROM releases WHERE release_id = ?",
