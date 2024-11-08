@@ -16,7 +16,8 @@ def analytics():
     python_list_count = int(cur.execute("SELECT COUNT(*) FROM python").fetchone()[0])
     test_list_count = int(cur.execute("SELECT COUNT(*) FROM test").fetchone()[0])
     links_list_count = int(cur.execute("SELECT COUNT(*) FROM links").fetchone()[0])
-    sum_count = bash_list_count + sql_list_count + task_list_count + python_list_count + links_list_count + test_list_count
+    releases_list_count = int(cur.execute("SELECT COUNT(*) FROM releases").fetchone()[0])
+    sum_count = bash_list_count + sql_list_count + task_list_count + python_list_count + links_list_count + test_list_count + releases_list_count
     conn.close()
 
     return render_template("analytics.html",
@@ -26,5 +27,6 @@ def analytics():
                            python_list_count=python_list_count,
                            test_list_count=test_list_count,
                            links_list_count=links_list_count,
+                           releases_list_count=releases_list_count,
                            sum_count=sum_count,
                            )

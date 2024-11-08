@@ -1,16 +1,16 @@
 {% extends "base.html" %} {% block title %}Релизы{% endblock %} {% block content %}
 <div class="card mb-2">
-   <div class="card-header h3">Список релизов</div>
-   <div class="card-body">
-      <p class="card-text">В этом разделе можно отображены тккущие релизы и готовящееся</p>
-      <p class="card-text">
-         Всего записей в таблице releases: <b>{{ releases_count }}</b></p>
-      <a href="{{ url_for('add_release.add_release') }}" class="btn btn-outline-dark">Добавить новую
-         запись?</a>
-         <p class="card-text">{% include 'errors.html' %}</p>
-   </div>
+  <div class="card-header h3">Список релизов</div>
+  <div class="card-body">
+    <p class="card-text">В этом разделе отображены текущие релизы и готовящееся.</p>
+    <p class="card-text">
+      Всего записей в таблице releases: <b>{{ releases_count }}</b></p>
+    <a href="{{ url_for('add_release.add_release') }}" class="btn btn-outline-dark">Добавить новую
+      запись?</a>
+    <p class="card-text">{% include 'errors.html' %}</p>
+  </div>
 </div>
-<table class="table">
+<table class="table table-responsive">
   <thead>
     <tr>
       <th scope="col">Название</th>
@@ -20,21 +20,22 @@
     </tr>
   </thead>
   <tbody>
-{% for releases_list in releases_list %}
+    {% for releases_list in releases_list %}
     <tr>
       <td>{{ releases_list['release_name'] }}</td>
       <td>{{ releases_list['release_number'] }}</td>
       <td>{{ releases_list['release_status'] }}</td>
-      <td>
-            <div class="btn-group pb-2" role="group" aria-label="...">
-         <a href="{{ url_for('view_release.view_release', release_id=releases_list['release_id']) }}"
-            class="btn btn-outline-dark">Перейти к записи</a>
-         <a href="{{ url_for('edit_release.edit_release', release_id=releases_list['release_id']) }}"
-            class="btn btn-outline-dark">Редактировать запись?</a>
-      </div>  
-    </td>
+      <td><div class="card"><a href="{{ url_for('view_release.view_release', release_id=releases_list['release_id']) }}"
+          class="btn btn-outline-dark">Подробно</a></div>
+          <div class="card"><a href="{{ url_for('edit_release.edit_release', release_id=releases_list['release_id']) }}"
+          class="btn btn-outline-dark">Редактировать</a></div>
+         <form action="{{ url_for('delete_release.delete_release', release_id=releases_list['release_id'])}}"
+          method="POST" class="card">
+          <input type="submit" class="btn btn-outline-danger " value="Удалить"
+            onclick="return confirm('Вы точно уверены что хотите удалить запись?')" />
+        </form></td>
     </tr>
-{% endfor %}
+    {% endfor %}
   </tbody>
 </table>
 {% endblock %}

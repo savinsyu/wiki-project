@@ -39,4 +39,20 @@
          <a href="{{ url_for('tasks.tasks') }}" class="btn btn-outline-dark">Перейти к задачам</a>
       </div>
    </div>
+      <div class="card">
+      <div class="card-header h3">Последняя тестовая запись</div>
+      <div class="card-body">
+         <p class="card-text">
+            {{ last_test.test_name }}</p>
+         <a href="{{ url_for('test_list.test_list') }}" class="btn btn-outline-dark">Перейти к тестовым записям</a>
+      </div>
+   </div>
+      <div class="card">
+      <div class="card-header h3">Последний релиз</div>
+      <div class="card-body">
+         <p class="card-text">
+            {{ last_releases.release_name }}</p>
+         <a href="{{ url_for('releases.releases') }}" class="btn btn-outline-dark">Перейти к релизам</a>
+      </div>
+   </div>
    </div>

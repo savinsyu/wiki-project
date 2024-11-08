@@ -399,8 +399,7 @@ CREATE TABLE releases (
   release_description TEXT NOT NULL,
   release_status TEXT NOT NULL
 );
-INSERT INTO "releases" VALUES(1,'TestTestTestTestTest','TestTestTestTestTest','TestTestTestTestTest','TestTestTestTestTest');
-INSERT INTO "releases" VALUES(2,'TestTestTestTestTest<','TestTestTestTestTest','TestTestTestTestTest','TestTestTestTestTest');
+INSERT INTO "releases" VALUES(2,'Релизы','3.6','Добавлен раздел "Релизы" на проект','В работе');
 CREATE TABLE [sql] ( 
   "sql_id" INTEGER PRIMARY KEY AUTOINCREMENT,
   "sql_command" TEXT NOT NULL,
@@ -439,7 +438,7 @@ INSERT INTO "tasks" VALUES(11,'Создать раздел Аналитика','Создать раздел Аналити
 В перспективе эту статистику отправлять в таблицу некую с указанием даты добавления.','Готово');
 INSERT INTO "tasks" VALUES(12,'Переключатель','Подумать как в разделе задачи сделать переключатель между выполненными задачами и в работе.','Новая');
 INSERT INTO "tasks" VALUES(13,'Раздел релизы','Создать раздел релизы. Последний номер взять с Github.
-В этом разделе вносить информацию об обновлениях и о статусе релиза(опубликован или нет)','Новая');
+В этом разделе вносить информацию об обновлениях и о статусе релиза(опубликован или нет)','Готово');
 CREATE TABLE test (
                 test_id INTEGER PRIMARY KEY autoincrement, 
                 test_name TEXT not null
@@ -671,5 +670,5 @@ INSERT INTO "sqlite_sequence" VALUES('links',52);
 INSERT INTO "sqlite_sequence" VALUES('python',2110);
 INSERT INTO "sqlite_sequence" VALUES('tasks',13);
 INSERT INTO "sqlite_sequence" VALUES('test',220);
-INSERT INTO "sqlite_sequence" VALUES('releases',2);
+INSERT INTO "sqlite_sequence" VALUES('releases',3);
 COMMIT;
