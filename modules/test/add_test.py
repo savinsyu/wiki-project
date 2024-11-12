@@ -18,12 +18,12 @@ def add_test():
             conn.commit()
             conn.close()
             if not new_test:
-                flash('Ошибка сохранения записи!', category='error')
+                flash('Ошибка сохранения записи!', category='danger')
             else:
                 flash('Запись успешно добавлена!')
             # В случае соблюдения условий заполнения полей, произойдёт перенаправление
             return redirect(url_for("test_list.test_list"))
         else:
-            flash('Ошибка сохранения записи!', category='error')
+            flash('Ошибка сохранения записи!', category='success')
 
     return render_template("test/add_test.html")
