@@ -54,7 +54,10 @@ INSERT INTO "bash" VALUES(74,'Get-Process python','Вывод всех процессов Windows 
 INSERT INTO "bash" VALUES(75,'Stop-Process -Name "python" ','Остановка процессов по имени');
 INSERT INTO "bash" VALUES(76,'Remove-Item -LiteralPath ''.\Polarity Portable\'' -Recurse','Удаление папки с файлами в PowerShell');
 INSERT INTO "bash" VALUES(77,'python -m  pip freeze > requirements.txt','Создание файла с пакетами');
-INSERT INTO "bash" VALUES(78,'~/AppData/Local/Programs/Python/Python312/python.exe venv/Scripts/pip.exe install -r requirements.txt','Устанавливает из файла все пакеты');
+INSERT INTO "bash" VALUES(78,'Вариант использования с виртуальным окружением:
+~/AppData/Local/Programs/Python/Python312/python.exe venv/Scripts/pip.exe install -r requirements.txt
+Вариант использования установленным систему PATH:
+pip install -r requirements.txt','Устанавливает из файла все пакеты');
 INSERT INTO "bash" VALUES(79,'mv ReferenceCard.pdf ../','Перемещение файла из текущей папки в вышестоящий раздел');
 INSERT INTO "bash" VALUES(80,'mv *.sh virtual_machine_scripts/','Перемещение нескольких файлов в другую папку с определенным расширением');
 INSERT INTO "bash" VALUES(81,'p:/virtual_machine_scripts/start_apps.sh','Запуск bash скрипта из любой директории');
@@ -134,6 +137,23 @@ INSERT INTO "bash" VALUES(131,'where powershell','Как найти исполняемый файл pow
 INSERT INTO "bash" VALUES(132,'python -m pip uninstall -r requirements.txt -y','Принудительное деинсталляция пакетов из файла requirements.txt ');
 INSERT INTO "bash" VALUES(133,'#!/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe
 Stop-Process -Name "python"','Скрипт powershell, который убивает все python запущенные процессы');
+INSERT INTO "bash" VALUES(134,'pip install --upgrade -r requirements.txt','Проверка обновлений библиотек');
+CREATE TABLE "css_wiki" (
+  css_wiki_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  css_wiki_name TEXT NOT NULL,
+  css_wiki_description TEXT NOT NULL,
+  css_wiki_date_add TEXT NOT NULL,
+  css_wiki_date_edit TEXT
+);
+INSERT INTO "css_wiki" VALUES(1,'test','test','2024-11-13 10:58:04','');
+CREATE TABLE "html_wiki" (
+  html_wiki_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  html_wiki_name TEXT NOT NULL,
+  html_wiki_description TEXT NOT NULL,
+  html_wiki_date_add TEXT NOT NULL,
+  html_wiki_date_edit TEXT
+);
+INSERT INTO "html_wiki" VALUES(1,'test','test','2024-11-13 08:40:02','');
 CREATE TABLE "links"
 (
     links_id      INTEGER
@@ -392,16 +412,64 @@ data = (
 )
 cur.executemany("INSERT INTO links VALUES(:id,:name, :link)", data)
 con.commit()','Вставка значений в таблицу базы данных');
-CREATE TABLE releases (
-  release_id INTEGER PRIMARY KEY AUTOINCREMENT,
-  release_name TEXT NOT NULL,
-  release_number TEXT NOT NULL,
-  release_description TEXT NOT NULL,
-  release_status TEXT NOT NULL
-);
-INSERT INTO "releases" VALUES(2,'Релизы','3.6',' - Добавлен раздел "Релизы" на проект;
- - Во все скрипты создания дампа и создания таблиц занесены все разделы;
-','Опубликован');
+INSERT INTO "python" VALUES(2111,'UPLOAD_FOLDER = ''static''
+# расширения файлов, которые разрешено загружать
+ALLOWED_EXTENSIONS = {''txt'', ''pdf'', ''png'', ''jpg'', ''jpeg'', ''gif''}
+
+# конфигурируем
+app.config[''UPLOAD_FOLDER''] = UPLOAD_FOLDER
+app.secret_key = "secret key"
+
+@app.route("/upload")
+def upload_images():
+    return render_template("upload.html")
+
+
+@app.route(''/'', methods=[''POST''])
+def upload_file():
+    if request.method == ''POST'':
+        # check if the post request has the file part
+        if ''file'' not in request.files:
+            flash(''No file part'')
+            return redirect(request.url)
+        file = request.files[''file'']
+        if file.filename == '''':
+            flash(''No file selected for uploading'')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config[''UPLOAD_FOLDER''], filename))
+            flash(''File successfully uploaded'')
+            return redirect(''/upload'')
+        else:
+            flash(''Allowed file types are txt, pdf, png, jpg, jpeg, gif, py, docx'')
+            return redirect(request.url)
+
+
+<title>Python Flask File Upload Example</title>
+<h2>Select a file to upload</h4>
+<p>
+   {% with messages = get_flashed_messages() %}
+     {% if messages %}
+      <ul class=flashes>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+     {% endif %}
+   {% endwith %}
+</p>
+<form method="post" action="/" enctype="multipart/form-data">
+    <dl>
+      <p>
+         <input type="file" name="file" autocomplete="off" required>
+      </p>
+    </dl>
+    <p>
+      <input type="submit" value="Submit">
+   </p>
+</form>
+','Логика и представление загрузки картинки в приложение');
 CREATE TABLE [sql] ( 
   "sql_id" INTEGER PRIMARY KEY AUTOINCREMENT,
   "sql_command" TEXT NOT NULL,
@@ -425,12 +493,6 @@ INSERT INTO "sql" VALUES(1167,'CREATE TABLE IF NOT EXISTS tasks (
   task_description TEXT NOT NULL,
   task_status TEXT NOT NULL DEFAULT Новая
 );','Создание таблицы в базе данных');
-CREATE TABLE tasks (
-  task_id INTEGER PRIMARY KEY AUTOINCREMENT,
-  task_name TEXT NOT NULL,
-  task_description TEXT NOT NULL,
-  task_status TEXT NOT NULL DEFAULT Новая
-);
 CREATE TABLE test (
                 test_id INTEGER PRIMARY KEY autoincrement, 
                 test_name TEXT not null
@@ -559,11 +621,11 @@ INSERT INTO "test" VALUES(121,'Тестовая запись №19');
 INSERT INTO "test" VALUES(122,'Тестовая запись №20');
 INSERT INTO "test" VALUES(123,'option3');
 DELETE FROM "sqlite_sequence";
-INSERT INTO "sqlite_sequence" VALUES('bash',133);
+INSERT INTO "sqlite_sequence" VALUES('bash',134);
 INSERT INTO "sqlite_sequence" VALUES('sql',1167);
 INSERT INTO "sqlite_sequence" VALUES('links',52);
-INSERT INTO "sqlite_sequence" VALUES('python',2110);
-INSERT INTO "sqlite_sequence" VALUES('tasks',14);
-INSERT INTO "sqlite_sequence" VALUES('releases',3);
+INSERT INTO "sqlite_sequence" VALUES('python',2115);
 INSERT INTO "sqlite_sequence" VALUES('test',123);
+INSERT INTO "sqlite_sequence" VALUES('html_wiki',1);
+INSERT INTO "sqlite_sequence" VALUES('css_wiki',1);
 COMMIT;

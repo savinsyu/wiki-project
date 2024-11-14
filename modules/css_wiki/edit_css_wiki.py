@@ -2,31 +2,34 @@ from flask import Blueprint, redirect, url_for, render_template, request, flash
 
 from modules import connect
 
-bp = Blueprint('add_task', __name__)
+bp = Blueprint('edit_css_wiki', __name__)
 
 
-@bp.route("/tasks/add_task", methods=["GET", "POST"])
-def add_task():
+@bp.route("/css_wiki/edit/<int:css_wiki_id>/", methods=("GET", "POST"))
+def edit_css_wiki(css_wiki_id):
+    conn = connect.get_db_connection()
+    edit_css_wiki_view = conn.execute("SELECT * FROM css_wiki WHERE css_wiki_id = ?",
+                                  (css_wiki_id,)).fetchone()
     if request.method == "POST":
         # Задаем переменные
-        add_task_name = request.form["task_name"]
-        add_task_description = request.form["task_description"]
+        edit_css_wiki_name = request.form["css_wiki_name"]
+        edit_css_wiki_description = request.form["css_wiki_description"]
         # Прописываем условие при котором название не сохраниться если символов при вводе будет меньше 4
-        if len(request.form['task_name']) > 4:
+        if len(request.form['css_wiki_name']) > 4:
             conn = connect.get_db_connection()
             conn.execute(
-                "INSERT INTO tasks (task_name, task_description) VALUES (?, ?)",
-                (add_task_name, add_task_description)
+                "UPDATE css_wiki SET css_wiki_name = ?, css_wiki_description = ? WHERE css_wiki_id = ?",
+                (edit_css_wiki_name, edit_css_wiki_description, css_wiki_id),
             )
             conn.commit()
             conn.close()
-            if not add_task_name:
+            if not edit_css_wiki_name:
                 flash('Ошибка сохранения записи, вы ввели мало символов!', category='danger')
             else:
                 flash('Запись успешно добавлена!', category='success')
             # В случае соблюдения условий заполнения полей, произойдёт перенаправление
-            return redirect(url_for("tasks.tasks"))
+            return redirect(url_for("css_wiki.css_wiki"))
         else:
             flash('Ошибка сохранения записи, вы ввели мало символов!', category='danger')
 
-    return render_template("tasks/add_task.html")
+    return render_template("css_wiki/edit_css_wiki.html", edit_css_wiki_view=edit_css_wiki_view)

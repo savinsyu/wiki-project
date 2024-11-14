@@ -4,8 +4,8 @@
   <div class="card-body">
     <p class="card-text">В этом разделе отображены текущие релизы и готовящееся.</p>
     <p class="card-text">
-      Всего записей в таблице releases: <b>{{ releases_count }}</b></p>
-    <a href="{{ url_for('add_release.add_release') }}" class="btn btn-outline-dark">Добавить новую
+      Всего записей в таблице html_wiki: <b>{{ html_wiki_count }}</b></p>
+    <a href="{{ url_for('add_html_wiki.add_html_wiki') }}" class="btn btn-outline-dark">Добавить новую
       запись?</a>
     <p class="card-text">{% include 'errors.html' %}</p>
   </div>
@@ -14,22 +14,18 @@
   <thead>
     <tr>
       <th scope="col">Название</th>
-      <th scope="col">Номер</th>
-      <th scope="col">Статус</th>
       <th scope="col">Действие</th>
     </tr>
   </thead>
   <tbody>
-    {% for releases_list in releases_list %}
+    {% for html_wiki_list in html_wiki_list %}
     <tr>
-      <td>{{ releases_list['release_name'] }}</td>
-      <td>{{ releases_list['release_number'] }}</td>
-      <td>{{ releases_list['release_status'] }}</td>
-      <td><div class="card"><a href="{{ url_for('view_release.view_release', release_id=releases_list['release_id']) }}"
+      <td>{{ html_wiki_list['html_wiki_name'] }}</td>
+      <td><div class="card"><a href="{{ url_for('view_html_wiki.view_html_wiki', html_wiki_id=html_wiki_list['html_wiki_id']) }}"
           class="btn btn-outline-dark">Подробно</a></div>
-          <div class="card"><a href="{{ url_for('edit_release.edit_release', release_id=releases_list['release_id']) }}"
+          <div class="card"><a href="{{ url_for('edit_html_wiki.edit_html_wiki', html_wiki_id=html_wiki_list['html_wiki_id']) }}"
           class="btn btn-outline-dark">Редактировать</a></div>
-         <form action="{{ url_for('delete_release.delete_release', release_id=releases_list['release_id'])}}"
+         <form action="{{ url_for('delete_html_wiki.delete_html_wiki', html_wiki_id=html_wiki_list['html_wiki_id'])}}"
           method="POST" class="card">
           <input type="submit" class="btn btn-outline-danger " value="Удалить"
             onclick="return confirm('Вы точно уверены что хотите удалить запись?')" />

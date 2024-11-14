@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Добавить задачу{% endblock %}
+{% block content %}
+{% include 'errors.html' %}
+<form method="post">
+   <div class="card mb-3">
+      <label for="css_wiki_name" class="card-header">Задача</label>
+      <textarea class="form-control" id="css_wiki_name" name="css_wiki_name" rows="1" placeholder="Введите задачу"
+         required></textarea>
+   </div>
+   <div class="card mb-3">
+      <label for="css_wiki_description" class="card-header">Описание задачи</label>
+      <textarea class="form-control" id="css_wiki_description" name="css_wiki_description" rows="8" placeholder="Введите описание задачи"
+         required></textarea>
+   </div>
+   <div class="btn-group btn-group" role="group" aria-label="...">
+      <a class="btn btn-outline-dark" href="{{ url_for('css_wiki.css_wiki') }}">Вернуться к списку</a>
+      <button type="submit" value="" class="btn btn-outline-dark">Сохранить</button>
+   </div>
+</form>
+{% endblock %}

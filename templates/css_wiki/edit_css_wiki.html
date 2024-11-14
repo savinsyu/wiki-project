@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Редактировать запись{% endblock %}
+{% block content %}
+{% include 'errors.html' %}
+<form method="post">
+   <div class="card mb-3">
+      <label for="css_wiki_name" class="card-header">Задача</label>
+      <textarea class="form-control" id="css_wiki_name" name="css_wiki_name" rows="1" placeholder="Введите задачу"
+         required>{{ edit_css_wiki_view.css_wiki_name }}</textarea>
+   </div>
+   <div class="card mb-3">
+      <label for="css_wiki_description" class="card-header">Описание задачи</label>
+      <textarea class="form-control" id="css_wiki_description" name="css_wiki_description" rows="8" placeholder="Введите описание задачи"
+         required>{{ edit_css_wiki_view.css_wiki_description }}</textarea>
+   </div>
+   <div class="card mb-3">
+      <label for="css_wiki_status" class="card-header">Статус</label>
+      <textarea class="form-control" id="css_wiki_status" name="css_wiki_status" rows="1"
+         placeholder="Статус" required>{{ edit_css_wiki_view.css_wiki_status }}</textarea>
+   </div>
+   <div class="btn-group btn-group" role="group" aria-label="...">
+      <a href="{{ url_for('css_wiki.css_wiki') }}" class="btn btn-outline-dark">Вернуться к списку</a>
+      <a href="{{ url_for('add_css_wiki.add_css_wiki') }}" class="btn btn-outline-dark">Добавить новую</a>
+      <button type="submit" value="" class="btn btn-outline-dark">Сохранить изменения</button>
+   </div>
+</form>
+{% endblock %}
