@@ -1,85 +1,87 @@
 BEGIN TRANSACTION;
-CREATE TABLE "bash" (
-    bash_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    bash_command TEXT NOT NULL,
-    bash_name TEXT NOT NULL
-  );
-INSERT INTO "bash" VALUES(1,'CTRL + U','Удаление последней набранной строки');
-INSERT INTO "bash" VALUES(2,'CTRL + R','Поиск текста в истории');
-INSERT INTO "bash" VALUES(3,'cp bash_and_git.txt ~/draft-project','Копирование файлов');
-INSERT INTO "bash" VALUES(4,'clear','Очистка экрана');
-INSERT INTO "bash" VALUES(5,'kill 666','Завершает процесс');
-INSERT INTO "bash" VALUES(6,'history','История команд');
-INSERT INTO "bash" VALUES(7,'ps','Выводит список процессов');
-INSERT INTO "bash" VALUES(8,'pwd','Показывает текущий путь к папке');
-INSERT INTO "bash" VALUES(9,'cd ..','Возврат в вышестоящую директорию');
-INSERT INTO "bash" VALUES(10,'cd ../..','Возврат на две папки выше');
-INSERT INTO "bash" VALUES(11,'cd ~','Переход в корневую папку');
-INSERT INTO "bash" VALUES(12,'ls','Вывод содержимого каталога(файлов и папок)');
-INSERT INTO "bash" VALUES(13,'cd -','Вернуться назад');
-INSERT INTO "bash" VALUES(14,'cd Users/','Переход  в оперделенную папку');
-INSERT INTO "bash" VALUES(15,'ls -f','Показать файлы в данной папке, включая и скрытые');
-INSERT INTO "bash" VALUES(16,'ls -d */','Вывод папок раздела');
-INSERT INTO "bash" VALUES(17,'mkdir folder','Создание папки или папок(несколько папок через пробел нужно указать)');
-INSERT INTO "bash" VALUES(18,'mv intro manual/chap1','Файл intro перенесется в папку manual под именем chap1');
-INSERT INTO "bash" VALUES(19,'mv chap3 manual','Файл chap3 перенесется в папку manual');
-INSERT INTO "bash" VALUES(20,'mv appendix apndx.a','Файл appendix переименуется в apndx.a');
-INSERT INTO "bash" VALUES(21,'cat id_ed25519.pub','Чтение указанного файла');
-INSERT INTO "bash" VALUES(22,'rm myfile','Удаление файла');
-INSERT INTO "bash" VALUES(23,'rm -R GitHub/','Удаление папки с содержанием');
-INSERT INTO "bash" VALUES(24,'rm -f -R GitHub/','Удаление папки с содержанием принудительно');
-INSERT INTO "bash" VALUES(25,'exit','Выход из командной строки');
-INSERT INTO "bash" VALUES(26,'nslookup test.ru','Запрос DNS определенного адреса');
-INSERT INTO "bash" VALUES(27,'flask_project_lite_version/venv/scripts/python.exe flask_project_lite_version/app.py &','Запуск процесса в фоновом режиме');
-INSERT INTO "bash" VALUES(28,'ssh-keygen','Генерация ssh-ключа');
-INSERT INTO "bash" VALUES(29,'python -m venv venv','Создание виртуального окружения Python');
-INSERT INTO "bash" VALUES(30,'touch bash.sh','Создание файла скрипта bash.sh');
-INSERT INTO "bash" VALUES(31,'nano bash.sh','Открытие файла встроенным bash редактором');
-INSERT INTO "bash" VALUES(32,'./bash.sh','Запуск скрипта bash');
-INSERT INTO "bash" VALUES(33,'cmod +x bash.sh','Настройка прав на файл скрипта');
-INSERT INTO "bash" VALUES(46,'ls -l','Выводит списокм папки и файлы текущего раздела с датой изменения, размером и правами доступа');
-INSERT INTO "bash" VALUES(47,'rm *','Удаляет все файлы в текущей директории');
-INSERT INTO "bash" VALUES(48,'history -c','Удаляет все команды из истории');
-INSERT INTO "bash" VALUES(50,'date','Вывод текущей даты и времени');
-INSERT INTO "bash" VALUES(52,'mkdir test1 test2','Создаем две папки в текущем каталоге');
-INSERT INTO "bash" VALUES(53,'rm -R *','Удаление всех папок текущей директории');
-INSERT INTO "bash" VALUES(54,'~/AppData/Local/Programs/Python/Python312/python.exe venv/Scripts/pip.exe install flask-paginate','Установки нужной библиотеки');
-INSERT INTO "bash" VALUES(55,'cd /p/s.savin/flask-project-full/','Переход из текущего раздела в другой раздел с определенной папкой');
-INSERT INTO "bash" VALUES(56,'ls *.sh','Выводит на экран все файлы с указанным расширением');
-INSERT INTO "bash" VALUES(69,'cd','Вернуться в корневую папку');
-INSERT INTO "bash" VALUES(71,'cp -r ~/dbeaver-ce-24.0.4-win32.win32.x86_64/dbeaver/bases* /p/home/','Копирование всех файлов в другую папку');
-INSERT INTO "bash" VALUES(72,'ps | grep python','Поиск процесса по имени');
-INSERT INTO "bash" VALUES(73,'kill -9 $(ps | grep python)','Завершить работы всех приложений python');
-INSERT INTO "bash" VALUES(74,'Get-Process python','Вывод всех процессов Windows по имени');
-INSERT INTO "bash" VALUES(75,'Stop-Process -Name "python" ','Остановка процессов по имени');
-INSERT INTO "bash" VALUES(76,'Remove-Item -LiteralPath ''.\Polarity Portable\'' -Recurse','Удаление папки с файлами в PowerShell');
-INSERT INTO "bash" VALUES(77,'python -m  pip freeze > requirements.txt','Создание файла с пакетами');
+CREATE TABLE "bash" (
+  [bash_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [bash_command] TEXT NOT NULL,
+  [bash_name] TEXT NOT NULL,
+  [bash_date_add] TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  [bash_date_edit] TEXT
+);
+INSERT INTO "bash" VALUES(1,'CTRL + U','Удаление последней набранной строки','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(2,'CTRL + R','Поиск текста в истории','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(3,'cp bash_and_git.txt ~/draft-project','Копирование файлов','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(4,'clear','Очистка экрана','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(5,'kill 666','Завершает процесс','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(6,'history','История команд','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(7,'ps','Выводит список процессов','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(8,'pwd','Показывает текущий путь к папке','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(9,'cd ..','Возврат в вышестоящую директорию','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(10,'cd ../..','Возврат на две папки выше','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(11,'cd ~','Переход в корневую папку','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(12,'ls','Вывод содержимого каталога(файлов и папок)','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(13,'cd -','Вернуться назад','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(14,'cd Users/','Переход  в оперделенную папку','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(15,'ls -f','Показать файлы в данной папке, включая и скрытые','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(16,'ls -d */','Вывод папок раздела','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(17,'mkdir folder','Создание папки или папок(несколько папок через пробел нужно указать)','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(18,'mv intro manual/chap1','Файл intro перенесется в папку manual под именем chap1','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(19,'mv chap3 manual','Файл chap3 перенесется в папку manual','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(20,'mv appendix apndx.a','Файл appendix переименуется в apndx.a','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(21,'cat id_ed25519.pub','Чтение указанного файла','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(22,'rm myfile','Удаление файла','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(23,'rm -R GitHub/','Удаление папки с содержанием','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(24,'rm -f -R GitHub/','Удаление папки с содержанием принудительно','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(25,'exit','Выход из командной строки','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(26,'nslookup test.ru','Запрос DNS определенного адреса','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(27,'flask_project_lite_version/venv/scripts/python.exe flask_project_lite_version/app.py &','Запуск процесса в фоновом режиме','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(28,'ssh-keygen','Генерация ssh-ключа','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(29,'python -m venv venv','Создание виртуального окружения Python','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(30,'touch bash.sh','Создание файла скрипта bash.sh','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(31,'nano bash.sh','Открытие файла встроенным bash редактором','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(32,'./bash.sh','Запуск скрипта bash','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(33,'cmod +x bash.sh','Настройка прав на файл скрипта','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(46,'ls -l','Выводит списокм папки и файлы текущего раздела с датой изменения, размером и правами доступа','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(47,'rm *','Удаляет все файлы в текущей директории','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(48,'history -c','Удаляет все команды из истории','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(50,'date','Вывод текущей даты и времени','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(52,'mkdir test1 test2','Создаем две папки в текущем каталоге','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(53,'rm -R *','Удаление всех папок текущей директории','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(54,'~/AppData/Local/Programs/Python/Python312/python.exe venv/Scripts/pip.exe install flask-paginate','Установки нужной библиотеки','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(55,'cd /p/s.savin/flask-project-full/','Переход из текущего раздела в другой раздел с определенной папкой','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(56,'ls *.sh','Выводит на экран все файлы с указанным расширением','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(69,'cd','Вернуться в корневую папку','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(71,'cp -r ~/dbeaver-ce-24.0.4-win32.win32.x86_64/dbeaver/bases* /p/home/','Копирование всех файлов в другую папку','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(72,'ps | grep python','Поиск процесса по имени','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(73,'kill -9 $(ps | grep python)','Завершить работы всех приложений python','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(74,'Get-Process python','Вывод всех процессов Windows по имени','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(75,'Stop-Process -Name "python" ','Остановка процессов по имени','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(76,'Remove-Item -LiteralPath ''.\Polarity Portable\'' -Recurse','Удаление папки с файлами в PowerShell','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(77,'python -m  pip freeze > requirements.txt','Создание файла с пакетами','2024-11-15 13:18:16','');
 INSERT INTO "bash" VALUES(78,'Вариант использования с виртуальным окружением:
 ~/AppData/Local/Programs/Python/Python312/python.exe venv/Scripts/pip.exe install -r requirements.txt
 Вариант использования установленным систему PATH:
-pip install -r requirements.txt','Устанавливает из файла все пакеты');
-INSERT INTO "bash" VALUES(79,'mv ReferenceCard.pdf ../','Перемещение файла из текущей папки в вышестоящий раздел');
-INSERT INTO "bash" VALUES(80,'mv *.sh virtual_machine_scripts/','Перемещение нескольких файлов в другую папку с определенным расширением');
-INSERT INTO "bash" VALUES(81,'p:/virtual_machine_scripts/start_apps.sh','Запуск bash скрипта из любой директории');
-INSERT INTO "bash" VALUES(82,'git config --global user.email "s.savin1@gitlab.plagate.ru"','Назначение git глобальной почты');
-INSERT INTO "bash" VALUES(83,'git config --global user.name "s.savin1"','Назначение git глобального имени');
-INSERT INTO "bash" VALUES(84,'git clone адрес ссылки','Клонирование удаленного репозитория');
-INSERT INTO "bash" VALUES(85,'git status','Статус изменений');
-INSERT INTO "bash" VALUES(86,'git config --list','Вывод конфигурации git');
-INSERT INTO "bash" VALUES(87,'git add .','Подготовка файлов для коммита');
-INSERT INTO "bash" VALUES(88,'git commit -m "test"','Подготовка коммита');
-INSERT INTO "bash" VALUES(89,'git push','Отправка изменений на репозиторий');
-INSERT INTO "bash" VALUES(90,'git init','Инициализация git в папке');
-INSERT INTO "bash" VALUES(91,'git pull','Скачивание изменения из репозитория на локальную машину');
-INSERT INTO "bash" VALUES(92,'~/AppData/Local/Programs/Python/Python39/python.exe -m pip install --upgrade pip','Обновление pip');
-INSERT INTO "bash" VALUES(93,'~/AppData/Local/Programs/Python/Python39/python.exe venv/Scripts/pip.exe install pandas','Установка библиотеки Pandas');
+pip install -r requirements.txt','Устанавливает из файла все пакеты','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(79,'mv ReferenceCard.pdf ../','Перемещение файла из текущей папки в вышестоящий раздел','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(80,'mv *.sh virtual_machine_scripts/','Перемещение нескольких файлов в другую папку с определенным расширением','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(81,'p:/virtual_machine_scripts/start_apps.sh','Запуск bash скрипта из любой директории','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(82,'git config --global user.email "s.savin1@gitlab.plagate.ru"','Назначение git глобальной почты','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(83,'git config --global user.name "s.savin1"','Назначение git глобального имени','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(84,'git clone адрес ссылки','Клонирование удаленного репозитория','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(85,'git status','Статус изменений','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(86,'git config --list','Вывод конфигурации git','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(87,'git add .','Подготовка файлов для коммита','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(88,'git commit -m "test"','Подготовка коммита','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(89,'git push','Отправка изменений на репозиторий','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(90,'git init','Инициализация git в папке','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(91,'git pull','Скачивание изменения из репозитория на локальную машину','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(92,'~/AppData/Local/Programs/Python/Python39/python.exe -m pip install --upgrade pip','Обновление pip','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(93,'~/AppData/Local/Programs/Python/Python39/python.exe venv/Scripts/pip.exe install pandas','Установка библиотеки Pandas','2024-11-15 13:18:16','');
 INSERT INTO "bash" VALUES(97,'#!/bin/commands
 
 rm -rf ~/Downloads
 
 mkdir ~/Downloads','Скрипт для удаления папки и её создания
 
-');
+','2024-11-15 13:18:16','');
 INSERT INTO "bash" VALUES(98,'#!/bin/bash 
 
 # Задаем переменную DATE, в переменной указываем команду date (для вывода даты и времени) 
@@ -102,7 +104,7 @@ git commit -m "$TEXT"
 
 git push ','bash-скрипт для формирования коммита и отправки его на репозиторий с указанием даты 
 
-');
+','2024-11-15 13:18:16','');
 INSERT INTO "bash" VALUES(99,'#!/bin/bash
 # Запускается 1-е приложение следующим скриптом. Указывается путь исполняемой программы и путь к самому приложению.
 ~/AppData/Local/Programs/Python/Python312/python.exe ~/flask-mysql-project/app.py &
@@ -111,12 +113,12 @@ INSERT INTO "bash" VALUES(99,'#!/bin/bash
 # И наконец запускается 3-е приложение
 ~/AppData/Local/Programs/Python/Python312/python.exe /p/s.savin/flask-project-full/app.py &','bash-скрипт который запускает три приложения flask
 
-');
-INSERT INTO "bash" VALUES(107,'rename "test.xlsx" "test1.xlsx"','Переименование файла в CMD');
-INSERT INTO "bash" VALUES(112,'mount','Вывод всех подключенных дисков');
-INSERT INTO "bash" VALUES(113,'tar -cf flask-project.tar * && mv flask-project.tar /o','Скрипт архивации файлов и перенос архива на другой диск');
-INSERT INTO "bash" VALUES(114,'tar -cf flask-project.tar *','Создание архива всех файлов в папке');
-INSERT INTO "bash" VALUES(115,'mv flask-project.tar /o','Перенос файла на другой диск');
+','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(107,'rename "test.xlsx" "test1.xlsx"','Переименование файла в CMD','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(112,'mount','Вывод всех подключенных дисков','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(113,'tar -cf flask-project.tar * && mv flask-project.tar /o','Скрипт архивации файлов и перенос архива на другой диск','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(114,'tar -cf flask-project.tar *','Создание архива всех файлов в папке','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(115,'mv flask-project.tar /o','Перенос файла на другой диск','2024-11-15 13:18:16','');
 INSERT INTO "bash" VALUES(125,'#!/bin/bash
 echo Привет, сообщи мне номер релиза?
 read varname
@@ -129,15 +131,15 @@ git push
 time=$(date +%s)
 tar -cf flask-project.tar * && 
 mv flask-project.tar /o 
-echo $(($(date +%s)-$time))','Скрипт отправляет на репозиторий коммит с указанием номера релиза(cli спрашивает у юзера), делает архив проекта и отправляет на другой диск');
-INSERT INTO "bash" VALUES(129,'~/AppData/Local/Programs/Python/Python313/python.exe -m webbrowser http://127.0.0.1:82','Запуск приложения в браузере');
-INSERT INTO "bash" VALUES(130,'Set-ExecutionPolicy RemoteSigned','Разрешение запуска сценариев powershell');
+echo $(($(date +%s)-$time))','Скрипт отправляет на репозиторий коммит с указанием номера релиза(cli спрашивает у юзера), делает архив проекта и отправляет на другой диск','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(129,'~/AppData/Local/Programs/Python/Python313/python.exe -m webbrowser http://127.0.0.1:82','Запуск приложения в браузере','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(130,'Set-ExecutionPolicy RemoteSigned','Разрешение запуска сценариев powershell','2024-11-15 13:18:16','');
 INSERT INTO "bash" VALUES(131,'where powershell','Как найти исполняемый файл powershell в системе?
-Ввести в cmd команду!');
-INSERT INTO "bash" VALUES(132,'python -m pip uninstall -r requirements.txt -y','Принудительное деинсталляция пакетов из файла requirements.txt ');
+Ввести в cmd команду!','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(132,'python -m pip uninstall -r requirements.txt -y','Принудительное деинсталляция пакетов из файла requirements.txt ','2024-11-15 13:18:16','');
 INSERT INTO "bash" VALUES(133,'#!/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe
-Stop-Process -Name "python"','Скрипт powershell, который убивает все python запущенные процессы');
-INSERT INTO "bash" VALUES(134,'pip install --upgrade -r requirements.txt','Проверка обновлений библиотек');
+Stop-Process -Name "python"','Скрипт powershell, который убивает все python запущенные процессы','2024-11-15 13:18:16','');
+INSERT INTO "bash" VALUES(134,'pip install --upgrade -r requirements.txt','Проверка обновлений библиотек','2024-11-15 13:18:16','');
 CREATE TABLE "css_wiki" (
   css_wiki_id INTEGER PRIMARY KEY AUTOINCREMENT,
   css_wiki_name TEXT NOT NULL,
@@ -638,10 +640,10 @@ INSERT INTO "test" VALUES(121,'Тестовая запись №19');
 INSERT INTO "test" VALUES(122,'Тестовая запись №20');
 INSERT INTO "test" VALUES(123,'option3');
 DELETE FROM "sqlite_sequence";
-INSERT INTO "sqlite_sequence" VALUES('bash',134);
 INSERT INTO "sqlite_sequence" VALUES('sql',1167);
 INSERT INTO "sqlite_sequence" VALUES('links',53);
 INSERT INTO "sqlite_sequence" VALUES('test',123);
 INSERT INTO "sqlite_sequence" VALUES('css_wiki',4);
 INSERT INTO "sqlite_sequence" VALUES('python',2116);
+INSERT INTO "sqlite_sequence" VALUES('bash',134);
 COMMIT;
