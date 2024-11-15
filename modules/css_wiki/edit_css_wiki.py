@@ -1,5 +1,5 @@
 from flask import Blueprint, redirect, url_for, render_template, request, flash
-
+import datetime
 from modules import connect
 
 bp = Blueprint('edit_css_wiki', __name__)
@@ -14,12 +14,15 @@ def edit_css_wiki(css_wiki_id):
         # Задаем переменные
         edit_css_wiki_name = request.form["css_wiki_name"]
         edit_css_wiki_description = request.form["css_wiki_description"]
+        # Объявляем переменную css_wiki_date_edit, в которой применяем метод now() для вывода текущей даты и времени, также переводим.
+        # Также переводим сформированную дату и время в формат год, месяц, день, время без секунд.
+        css_wiki_date_edit = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S') 
         # Прописываем условие при котором название не сохраниться если символов при вводе будет меньше 4
         if len(request.form['css_wiki_name']) > 4:
             conn = connect.get_db_connection()
             conn.execute(
-                "UPDATE css_wiki SET css_wiki_name = ?, css_wiki_description = ? WHERE css_wiki_id = ?",
-                (edit_css_wiki_name, edit_css_wiki_description, css_wiki_id),
+                "UPDATE css_wiki SET css_wiki_name = ?, css_wiki_description = ?, css_wiki_date_edit = ? WHERE css_wiki_id = ?",
+                (edit_css_wiki_name, edit_css_wiki_description, css_wiki_date_edit, css_wiki_id),
             )
             conn.commit()
             conn.close()

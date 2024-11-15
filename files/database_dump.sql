@@ -142,18 +142,28 @@ CREATE TABLE "css_wiki" (
   css_wiki_id INTEGER PRIMARY KEY AUTOINCREMENT,
   css_wiki_name TEXT NOT NULL,
   css_wiki_description TEXT NOT NULL,
-  css_wiki_date_add TEXT NOT NULL,
+  css_wiki_date_add TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   css_wiki_date_edit TEXT
 );
-INSERT INTO "css_wiki" VALUES(1,'test','test','2024-11-13 10:58:04','');
+INSERT INTO "css_wiki" VALUES(3,'Первая запись в CSS11','Первая запись в CSS11','2024-11-15 10:41:09','2024-11-15 14:16:23');
+INSERT INTO "css_wiki" VALUES(4,'Свойство border-radius','/* Свойство задает округление элементу HTML */
+border-radius: 10px;
+
+/* top-left-and-bottom-right | top-right-and-bottom-left */
+border-radius: 10px 5%;
+
+/* top-left | top-right-and-bottom-left | bottom-right */
+border-radius: 2px 4px 2px;
+
+/* top-left | top-right | bottom-right | bottom-left */
+border-radius: 1px 0 3px 4px;','2024-11-15 11:23:21',NULL);
 CREATE TABLE "html_wiki" (
   html_wiki_id INTEGER PRIMARY KEY AUTOINCREMENT,
   html_wiki_name TEXT NOT NULL,
   html_wiki_description TEXT NOT NULL,
-  html_wiki_date_add TEXT NOT NULL,
+  html_wiki_date_add TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   html_wiki_date_edit TEXT
 );
-INSERT INTO "html_wiki" VALUES(1,'test','test','2024-11-13 08:40:02','');
 CREATE TABLE "links"
 (
     links_id      INTEGER
@@ -179,40 +189,43 @@ INSERT INTO "links" VALUES(50,'Grid сетка','https://skillbox.ru/media/code/uchim
 INSERT INTO "links" VALUES(51,'Полезная страница с методами работы с файлами в Python.','https://victor-komlev.ru/rabota-s-operatsionnoj-i-fajlovoj-sistemoj-v-python-pathlib-os-shutil/');
 INSERT INTO "links" VALUES(52,'Ссылка на очень удобную программу Samsung Dex. 
 Программа предназначена на для трансляции экрана телефона Samsung на ПК.','https://www.samsung.com/ru/apps/samsung-dex/');
-CREATE TABLE "python" (
-    "python_id" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "python_command" TEXT NOT NULL,
-    "python_name" TEXT NOT NULL
-  );
-INSERT INTO "python" VALUES(1,'print(type(count_person))','Выводит тип данных');
-INSERT INTO "python" VALUES(2,'df.to_csv("saved_ratings.csv", index=False))','Экспорт в формат CSV');
-INSERT INTO "python" VALUES(3,'data_copy = data.copy(deep=True)','Копирование датафрейма');
-INSERT INTO "python" VALUES(4,'len(data)','Подсчёт количества строк в датафрейме');
-INSERT INTO "python" VALUES(5,'len(data["user_id"].unique())','Подсчёт количества уникальных значений в столбце');
-INSERT INTO "python" VALUES(6,'data.describe()','Вывод статистических сведений о датафрейме');
-INSERT INTO "python" VALUES(7,'data.type.value_counts()','Для того чтобы подсчитать количество значений в конкретном столбце, можно воспользоваться следующей конструкцие');
-INSERT INTO "python" VALUES(8,'data.columns.tolist()','Получение списка значений столбцов');
-INSERT INTO "python" VALUES(9,'data["genre"].tolist()','Создание списка или объекта Series на основе значений столбца');
-INSERT INTO "python" VALUES(10,'data["train set"] = True','Присоединение к датафрейму нового столбца с заданным значением');
-INSERT INTO "python" VALUES(11,'data[["name","episodes"]]','Создание нового датафрейма из подмножества столбцов');
-INSERT INTO "python" VALUES(12,'data.drop(["density"], axis="columns")','Удаление столбца');
-INSERT INTO "python" VALUES(13,'data_modified.iloc[0:3]','Получение строк по числовым индексам');
-INSERT INTO "python" VALUES(14,'data[data["type"].isin(["TV", "Movie"])]','Для получения строк датафрейма в ситуации, когда имеется список значений столбцов, можно воспользоваться следующей командой');
-INSERT INTO "python" VALUES(15,'data[data["rating"] > 8]','Фильтрация по значению');
-INSERT INTO "python" VALUES(16,'data.sort_values("rating", ascending=False)','Сортировка');
-INSERT INTO "python" VALUES(17,'data.groupby("type").count()','Функция df.groupby и подсчёт количества записей');
-INSERT INTO "python" VALUES(18,'data_modified.loc[["Haikyuu!! Second Season","Gintama"]]','Получение строк с нужными индексными значениями');
-INSERT INTO "python" VALUES(19,'rating.merge(data, left_on=’data_id’, right_on=’data_id’, suffixes=(‘_left’, ‘_right’))','Слияние датафреймов');
-INSERT INTO "python" VALUES(20,'data.info()','Получение сведений о датафрейм');
-INSERT INTO "python" VALUES(21,'data.head()','Вывести первые пять строк датасета');
-INSERT INTO "python" VALUES(22,'data.drop(["density","members"], axis="columns")','Удаление нескольких столбцов');
-INSERT INTO "python" VALUES(23,'data = data.rename(columns={"Country Code": "country_code"})','Переименование столбца');
-INSERT INTO "python" VALUES(24,'data.shape','Вывести количество строк и столбцов датасета');
-INSERT INTO "python" VALUES(25,'data.max()','Получим максимальные значения в каждом столбце');
-INSERT INTO "python" VALUES(26,'data_convert = data.astype("int16")','Изменение типа столбца');
-INSERT INTO "python" VALUES(30,'df = pd.DataFrame(lst, columns=[c[0] for c in cur.description])','Создание датафрейма из базы данных');
-INSERT INTO "python" VALUES(31,'df = pd.read_excel(''sotr.xlsx'', index_col=0)','Загрузка данных из EXCEL файла');
-INSERT INTO "python" VALUES(32,'data = pd.read_csv("data.csv")','Загрузка CSV-данных в датафрейм');
+INSERT INTO "links" VALUES(53,'Работа с датами в python','https://pythonru.com/primery/kak-ispolzovat-modul-datetime-v-python');
+CREATE TABLE "python" (
+  [python_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [python_command] TEXT NOT NULL,
+  [python_name] TEXT NOT NULL,
+  [python_date_add] TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  [python_date_edit] TEXT
+);
+INSERT INTO "python" VALUES(1,'print(type(count_person))','Выводит тип данных','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(2,'df.to_csv("saved_ratings.csv", index=False))','Экспорт в формат CSV','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(3,'data_copy = data.copy(deep=True)','Копирование датафрейма','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(4,'len(data)','Подсчёт количества строк в датафрейме','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(5,'len(data["user_id"].unique())','Подсчёт количества уникальных значений в столбце','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(6,'data.describe()','Вывод статистических сведений о датафрейме','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(7,'data.type.value_counts()','Для того чтобы подсчитать количество значений в конкретном столбце, можно воспользоваться следующей конструкцие','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(8,'data.columns.tolist()','Получение списка значений столбцов','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(9,'data["genre"].tolist()','Создание списка или объекта Series на основе значений столбца','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(10,'data["train set"] = True','Присоединение к датафрейму нового столбца с заданным значением','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(11,'data[["name","episodes"]]','Создание нового датафрейма из подмножества столбцов','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(12,'data.drop(["density"], axis="columns")','Удаление столбца','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(13,'data_modified.iloc[0:3]','Получение строк по числовым индексам','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(14,'data[data["type"].isin(["TV", "Movie"])]','Для получения строк датафрейма в ситуации, когда имеется список значений столбцов, можно воспользоваться следующей командой','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(15,'data[data["rating"] > 8]','Фильтрация по значению','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(16,'data.sort_values("rating", ascending=False)','Сортировка','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(17,'data.groupby("type").count()','Функция df.groupby и подсчёт количества записей','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(18,'data_modified.loc[["Haikyuu!! Second Season","Gintama"]]','Получение строк с нужными индексными значениями','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(19,'rating.merge(data, left_on=’data_id’, right_on=’data_id’, suffixes=(‘_left’, ‘_right’))','Слияние датафреймов','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(20,'data.info()','Получение сведений о датафрейм','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(21,'data.head()','Вывести первые пять строк датасета','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(22,'data.drop(["density","members"], axis="columns")','Удаление нескольких столбцов','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(23,'data = data.rename(columns={"Country Code": "country_code"})','Переименование столбца','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(24,'data.shape','Вывести количество строк и столбцов датасета','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(25,'data.max()','Получим максимальные значения в каждом столбце','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(26,'data_convert = data.astype("int16")','Изменение типа столбца','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(30,'df = pd.DataFrame(lst, columns=[c[0] for c in cur.description])','Создание датафрейма из базы данных','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(31,'df = pd.read_excel(''sotr.xlsx'', index_col=0)','Загрузка данных из EXCEL файла','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(32,'data = pd.read_csv("data.csv")','Загрузка CSV-данных в датафрейм','2024-11-15 13:09:33','');
 INSERT INTO "python" VALUES(2105,'import flask
 import pymysql.cursors
 from flask_paginate import Pagination, get_page_args
@@ -352,7 +365,7 @@ def delete_post_test(test_id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host=''0.0.0.0'', port=83)','Экземляр app.py mysql connect');
+    app.run(debug=True, host=''0.0.0.0'', port=83)','Экземляр app.py mysql connect','2024-11-15 13:09:33','');
 INSERT INTO "python" VALUES(2106,'import sqlite3
 import pandas as pd
 
@@ -360,7 +373,7 @@ con = sqlite3.connect("/database1.db")
 cur = con.cursor()
 res = cur.execute("SELECT * FROM links")
 result = res.fetchall()
-df = pd.DataFrame(result, columns=[c[0] for c in cur.description])','Преобразование данных таблицы в датафрейм');
+df = pd.DataFrame(result, columns=[c[0] for c in cur.description])','Преобразование данных таблицы в датафрейм','2024-11-15 13:09:33','');
 INSERT INTO "python" VALUES(2107,'from flask import Blueprint, redirect, url_for, render_template
 
 from modules import connect
@@ -389,7 +402,7 @@ def create_tables():
 
 if __name__ == ''__main__'':
     create_tables()
-','Создание таблицы в базе данных');
+','Создание таблицы в базе данных','2024-11-15 13:09:33','');
 INSERT INTO "python" VALUES(2108,'import sqlite3
 
 
@@ -398,7 +411,7 @@ cur = con.cursor()
 res = cur.execute("DROP TABLE table_name")
 
 
-con.commit()','Удаление таблицы в базе данных');
+con.commit()','Удаление таблицы в базе данных','2024-11-15 13:09:33','');
 INSERT INTO "python" VALUES(2109,'# Подключаем библиотеку sqlite3
 import sqlite3
 
@@ -411,7 +424,7 @@ data = (
     {"id": None, "name": "test", "link": "test"},
 )
 cur.executemany("INSERT INTO links VALUES(:id,:name, :link)", data)
-con.commit()','Вставка значений в таблицу базы данных');
+con.commit()','Вставка значений в таблицу базы данных','2024-11-15 13:09:33','');
 INSERT INTO "python" VALUES(2111,'UPLOAD_FOLDER = ''static''
 # расширения файлов, которые разрешено загружать
 ALLOWED_EXTENSIONS = {''txt'', ''pdf'', ''png'', ''jpg'', ''jpeg'', ''gif''}
@@ -469,7 +482,11 @@ def upload_file():
       <input type="submit" value="Submit">
    </p>
 </form>
-','Логика и представление загрузки картинки в приложение');
+','Логика и представление загрузки картинки в приложение','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(2116,'import datetime
+
+dt_now = datetime.datetime.now()
+print(dt_now)','Вывод текущей латы и времени','2024-11-15 13:09:33','');
 CREATE TABLE [sql] ( 
   "sql_id" INTEGER PRIMARY KEY AUTOINCREMENT,
   "sql_command" TEXT NOT NULL,
@@ -623,9 +640,8 @@ INSERT INTO "test" VALUES(123,'option3');
 DELETE FROM "sqlite_sequence";
 INSERT INTO "sqlite_sequence" VALUES('bash',134);
 INSERT INTO "sqlite_sequence" VALUES('sql',1167);
-INSERT INTO "sqlite_sequence" VALUES('links',52);
-INSERT INTO "sqlite_sequence" VALUES('python',2115);
+INSERT INTO "sqlite_sequence" VALUES('links',53);
 INSERT INTO "sqlite_sequence" VALUES('test',123);
-INSERT INTO "sqlite_sequence" VALUES('html_wiki',1);
-INSERT INTO "sqlite_sequence" VALUES('css_wiki',1);
+INSERT INTO "sqlite_sequence" VALUES('css_wiki',4);
+INSERT INTO "sqlite_sequence" VALUES('python',2116);
 COMMIT;
