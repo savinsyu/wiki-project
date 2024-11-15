@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
-{% block title %}Добавить задачу{% endblock %}
+{% block title %}Добавить запись{% endblock %}
 {% block content %}
 {% include 'errors.html' %}
 <form method="post">
    <div class="card mb-3">
-      <label for="css_wiki_name" class="card-header">Задача</label>
-      <textarea class="form-control" id="css_wiki_name" name="css_wiki_name" rows="1" placeholder="Введите задачу"
+      <label for="css_wiki_name" class="card-header">Название</label>
+      <textarea class="form-control" id="css_wiki_name" name="css_wiki_name" rows="1" placeholder="Введите название"
          required></textarea>
    </div>
    <div class="card mb-3">
-      <label for="css_wiki_description" class="card-header">Описание задачи</label>
-      <textarea class="form-control" id="css_wiki_description" name="css_wiki_description" rows="8" placeholder="Введите описание задачи"
+      <label for="css_wiki_description" class="card-header">Описание</label>
+      <textarea class="form-control" id="css_wiki_description" name="css_wiki_description" rows="8" placeholder="Введите описание"
          required></textarea>
    </div>
    <div class="btn-group btn-group" role="group" aria-label="...">

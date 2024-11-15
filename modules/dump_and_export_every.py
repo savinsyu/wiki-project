@@ -30,7 +30,6 @@ def dump_and_export_every():
     df_html_wiki_list = pd.DataFrame(html_wiki_list)
     df_css_wiki_list = pd.DataFrame(css_wiki_list)
     df_bash_list = pd.DataFrame(bash_list)
-    df_tasks_list = pd.DataFrame(tasks_list)
     df_test_list = pd.DataFrame(test_list)
     with pd.ExcelWriter('files/database_tables.xlsx') as writer:
         df_sql_list.to_excel(writer, sheet_name='SQL', header=False, index=False)
@@ -38,7 +37,6 @@ def dump_and_export_every():
         df_html_wiki_list.to_excel(writer, sheet_name='HTML', header=False, index=False)
         df_bash_list.to_excel(writer, sheet_name='Bash', header=False, index=False)
         df_css_wiki_list.to_excel(writer, sheet_name='CSS', header=False, index=False)
-        df_tasks_list.to_excel(writer, sheet_name='Tasks', header=False, index=False)
         df_test_list.to_excel(writer, sheet_name='Test', header=False, index=False)
     conn.close()
 

@@ -16,7 +16,7 @@ def add_css_wiki():
             conn = connect.get_db_connection()
             conn.execute(
                 "INSERT INTO css_wiki (css_wiki_name, css_wiki_description) VALUES (?, ?)",
-                (add_css_wiki_name, add_css_wiki_description)
+                (add_css_wiki_name, add_css_wiki_description),
             )
             conn.commit()
             conn.close()
