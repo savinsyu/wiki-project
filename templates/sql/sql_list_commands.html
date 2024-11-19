@@ -13,6 +13,14 @@
 <div class="card mb-2">
    <div class="card-header">{{ sql_list['sql_name'] }}</div>
    <div class="card-body">
+      <h4>Дата добавления</h4>
+      <p class="card-text">
+         {{ sql_list['sql_date_add'] }}
+      </p>
+      <h4>Дата редактирования</h4>
+      <p class="card-text">
+         {{ sql_list['sql_date_edit'] }}
+      </p>
       <p class="card-text">
          <pre class="card p-2">{{ sql_list['sql_command'] }}</pre>
       </p>

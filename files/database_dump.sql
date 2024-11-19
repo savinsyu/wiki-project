@@ -166,32 +166,32 @@ CREATE TABLE "html_wiki" (
   html_wiki_date_add TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   html_wiki_date_edit TEXT
 );
-CREATE TABLE "links"
-(
-    links_id      INTEGER
-        primary key autoincrement,
-    links_name    TEXT not null,
-    links_command TEXT not null
+CREATE TABLE "links" (
+  [links_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [links_name] TEXT NOT NULL,
+  [links_command] TEXT NOT NULL,
+  [links_date_add] TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  [links_date_edit] TEXT
 );
-INSERT INTO "links" VALUES(1,'Как сделать скрипт на bash','https://selectel.ru/blog/tutorials/linux-bash-scripting-guide/');
-INSERT INTO "links" VALUES(2,'Как создать и запустить bat-файлы','https://nic.ru/help/kak-sozdat6-i-zapustit6-bat-fajly_11640.html');
-INSERT INTO "links" VALUES(3,'Работа с 7zip из командной строки','https://dmosk.ru/miniinstruktions.php?mini=7zip-cmd ');
-INSERT INTO "links" VALUES(4,'Список команд Windows CMD с описанием и примерами','https://ab57.ru/cmdlist.html');
-INSERT INTO "links" VALUES(5,'Интересный материал про bash','https://linuxsimply.com/bash-scripting-tutorial/basics/');
-INSERT INTO "links" VALUES(15,'Горячие клавиши Bash','https://selectel.ru/blog/tutorials/linux-terminal-hotkeys/');
-INSERT INTO "links" VALUES(16,'Красивый python','https://sky.pro/media/pep8/');
-INSERT INTO "links" VALUES(17,'Работа с gitignore','https://wiki.merionet.ru/articles/fajl-gitignore-kak-ignorirovat-fajly-i-papki-v-git');
-INSERT INTO "links" VALUES(19,'Сайт с документацией по веб-технологиям','https://developer.mozilla.org/ru/docs/Web');
-INSERT INTO "links" VALUES(20,'Документация по Bootstrap','https://getbootstrap.com/');
-INSERT INTO "links" VALUES(21,'Описание библиотеки, которая позволяет работает с базой mysql','https://pypi.org/project/PyMySQL/');
-INSERT INTO "links" VALUES(22,'Документация CLI PowerSHell','https://learn.microsoft.com/ru-ru/powershell/');
-INSERT INTO "links" VALUES(25,'Blueprint','https://dnmtechs.com/splitting-a-python-flask-app-into-multiple-files/');
-INSERT INTO "links" VALUES(33,'Что такое CLI?','https://ru.wikipedia.org/wiki/Интерфейс_командной_строки');
-INSERT INTO "links" VALUES(50,'Grid сетка','https://skillbox.ru/media/code/uchimsya-verstat-v-setke-bolshoy-gayd-po-css-grid/');
-INSERT INTO "links" VALUES(51,'Полезная страница с методами работы с файлами в Python.','https://victor-komlev.ru/rabota-s-operatsionnoj-i-fajlovoj-sistemoj-v-python-pathlib-os-shutil/');
+INSERT INTO "links" VALUES(1,'Как сделать скрипт на bash','https://selectel.ru/blog/tutorials/linux-bash-scripting-guide/','2024-11-19 14:05:04','');
+INSERT INTO "links" VALUES(2,'Как создать и запустить bat-файлы','https://nic.ru/help/kak-sozdat6-i-zapustit6-bat-fajly_11640.html','2024-11-19 14:05:04','');
+INSERT INTO "links" VALUES(3,'Работа с 7zip из командной строки','https://dmosk.ru/miniinstruktions.php?mini=7zip-cmd ','2024-11-19 14:05:04','');
+INSERT INTO "links" VALUES(4,'Список команд Windows CMD с описанием и примерами','https://ab57.ru/cmdlist.html','2024-11-19 14:05:04','');
+INSERT INTO "links" VALUES(5,'Интересный материал про bash','https://linuxsimply.com/bash-scripting-tutorial/basics/','2024-11-19 14:05:04','');
+INSERT INTO "links" VALUES(15,'Горячие клавиши Bash','https://selectel.ru/blog/tutorials/linux-terminal-hotkeys/','2024-11-19 14:05:04','');
+INSERT INTO "links" VALUES(16,'Красивый python','https://sky.pro/media/pep8/','2024-11-19 14:05:04','');
+INSERT INTO "links" VALUES(17,'Работа с gitignore','https://wiki.merionet.ru/articles/fajl-gitignore-kak-ignorirovat-fajly-i-papki-v-git','2024-11-19 14:05:04','');
+INSERT INTO "links" VALUES(19,'Сайт с документацией по веб-технологиям','https://developer.mozilla.org/ru/docs/Web','2024-11-19 14:05:04','');
+INSERT INTO "links" VALUES(20,'Документация по Bootstrap','https://getbootstrap.com/','2024-11-19 14:05:04','');
+INSERT INTO "links" VALUES(21,'Описание библиотеки, которая позволяет работает с базой mysql','https://pypi.org/project/PyMySQL/','2024-11-19 14:05:04','');
+INSERT INTO "links" VALUES(22,'Документация CLI PowerSHell','https://learn.microsoft.com/ru-ru/powershell/','2024-11-19 14:05:04','');
+INSERT INTO "links" VALUES(25,'Blueprint','https://dnmtechs.com/splitting-a-python-flask-app-into-multiple-files/','2024-11-19 14:05:04','');
+INSERT INTO "links" VALUES(33,'Что такое CLI?','https://ru.wikipedia.org/wiki/Интерфейс_командной_строки','2024-11-19 14:05:04','');
+INSERT INTO "links" VALUES(50,'Grid сетка','https://skillbox.ru/media/code/uchimsya-verstat-v-setke-bolshoy-gayd-po-css-grid/','2024-11-19 14:05:04','');
+INSERT INTO "links" VALUES(51,'Полезная страница с методами работы с файлами в Python.','https://victor-komlev.ru/rabota-s-operatsionnoj-i-fajlovoj-sistemoj-v-python-pathlib-os-shutil/','2024-11-19 14:05:04','');
 INSERT INTO "links" VALUES(52,'Ссылка на очень удобную программу Samsung Dex. 
-Программа предназначена на для трансляции экрана телефона Samsung на ПК.','https://www.samsung.com/ru/apps/samsung-dex/');
-INSERT INTO "links" VALUES(53,'Работа с датами в python','https://pythonru.com/primery/kak-ispolzovat-modul-datetime-v-python');
+Программа предназначена на для трансляции экрана телефона Samsung на ПК.','https://www.samsung.com/ru/apps/samsung-dex/','2024-11-19 14:05:04','');
+INSERT INTO "links" VALUES(53,'Работа с датами в python','https://pythonru.com/primery/kak-ispolzovat-modul-datetime-v-python','2024-11-19 14:05:04','');
 CREATE TABLE "python" (
   [python_id] INTEGER PRIMARY KEY AUTOINCREMENT,
   [python_command] TEXT NOT NULL,
@@ -489,29 +489,31 @@ INSERT INTO "python" VALUES(2116,'import datetime
 
 dt_now = datetime.datetime.now()
 print(dt_now)','Вывод текущей латы и времени','2024-11-15 13:09:33','');
-CREATE TABLE [sql] ( 
-  "sql_id" INTEGER PRIMARY KEY AUTOINCREMENT,
-  "sql_command" TEXT NOT NULL,
-  "sql_name" TEXT NOT NULL
+CREATE TABLE "sql" (
+  [sql_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [sql_name] TEXT NOT NULL,
+  [sql_command] TEXT NOT NULL,
+  [sql_date_add] TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  [sql_date_edit] TEXT
 );
-INSERT INTO "sql" VALUES(1,'INSERT INTO git_and_bash (command, name) VALUES (''test'', ''test'')','Добавление новой записи в таблицу');
-INSERT INTO "sql" VALUES(2,'SELECT * FROM git_and_bash WHERE command LIKE ''%ls%''','Поиск в поле значений по части слова');
-INSERT INTO "sql" VALUES(3,'SELECT * FROM links ORDER BY id DESC','Сортировка всех записей по убыванию');
-INSERT INTO "sql" VALUES(4,'SELECT * FROM links ORDER BY id ASC','Сортировка по возрастанию');
-INSERT INTO "sql" VALUES(5,'DELETE FROM git_and_bash WHERE id = 45','Удаление определенной записи');
-INSERT INTO "sql" VALUES(6,'DELETE FROM [train];','Очистка таблицы');
-INSERT INTO "sql" VALUES(7,'UPDATE [sql] SET [name]=''Сортировка всех записей по убыванию'' WHERE ([sql].[id] = 3);','Изменение значения записи определенного поля');
-INSERT INTO "sql" VALUES(8,'ALTER TABLE [train] ADD [imya] VARCHAR(250) NOT NULL;','Добавление поля в таблицу');
-INSERT INTO "sql" VALUES(9,'ALTER TABLE [train] RENAME COLUMN [train_name] TO [familia];','Переименование поля таблицы');
-INSERT INTO "sql" VALUES(10,'DROP TABLE [train];','Удаляет таблицу базы данных');
-INSERT INTO "sql" VALUES(1159,'SELECT DISTINCT field FROM table;','Поиск уникальных значений');
-INSERT INTO "sql" VALUES(1161,'SELECT * FROM table;','Вывод всех записей таблицы');
-INSERT INTO "sql" VALUES(1167,'CREATE TABLE IF NOT EXISTS tasks (
+INSERT INTO "sql" VALUES(1,'Добавление новой записи в таблицу','INSERT INTO git_and_bash (command, name) VALUES (''test'', ''test'')','2024-11-19 13:58:50','');
+INSERT INTO "sql" VALUES(2,'Поиск в поле значений по части слова','SELECT * FROM git_and_bash WHERE command LIKE ''%ls%''','2024-11-19 13:58:50','');
+INSERT INTO "sql" VALUES(3,'Сортировка всех записей по убыванию','SELECT * FROM links ORDER BY id DESC','2024-11-19 13:58:50','');
+INSERT INTO "sql" VALUES(4,'Сортировка по возрастанию','SELECT * FROM links ORDER BY id ASC','2024-11-19 13:58:50','');
+INSERT INTO "sql" VALUES(5,'Удаление определенной записи','DELETE FROM git_and_bash WHERE id = 45','2024-11-19 13:58:50','');
+INSERT INTO "sql" VALUES(6,'Очистка таблицы','DELETE FROM [train];','2024-11-19 13:58:50','');
+INSERT INTO "sql" VALUES(7,'Изменение значения записи определенного поля','UPDATE [sql] SET [name]=''Сортировка всех записей по убыванию'' WHERE ([sql].[id] = 3);','2024-11-19 13:58:50','');
+INSERT INTO "sql" VALUES(8,'Добавление поля в таблицу','ALTER TABLE [train] ADD [imya] VARCHAR(250) NOT NULL;','2024-11-19 13:58:50','');
+INSERT INTO "sql" VALUES(9,'Переименование поля таблицы','ALTER TABLE [train] RENAME COLUMN [train_name] TO [familia];','2024-11-19 13:58:50','');
+INSERT INTO "sql" VALUES(10,'Удаляет таблицу базы данных','DROP TABLE [train];','2024-11-19 13:58:50','');
+INSERT INTO "sql" VALUES(1159,'Поиск уникальных значений','SELECT DISTINCT field FROM table;','2024-11-19 13:58:50','');
+INSERT INTO "sql" VALUES(1161,'Вывод всех записей таблицы','SELECT * FROM table;','2024-11-19 13:58:50','');
+INSERT INTO "sql" VALUES(1167,'Создание таблицы в базе данных','CREATE TABLE IF NOT EXISTS tasks (
   task_id INTEGER PRIMARY KEY AUTOINCREMENT,
   task_name TEXT NOT NULL,
   task_description TEXT NOT NULL,
   task_status TEXT NOT NULL DEFAULT Новая
-);','Создание таблицы в базе данных');
+);','2024-11-19 13:58:50','');
 CREATE TABLE test (
                 test_id INTEGER PRIMARY KEY autoincrement, 
                 test_name TEXT not null
@@ -640,10 +642,10 @@ INSERT INTO "test" VALUES(121,'Тестовая запись №19');
 INSERT INTO "test" VALUES(122,'Тестовая запись №20');
 INSERT INTO "test" VALUES(123,'option3');
 DELETE FROM "sqlite_sequence";
-INSERT INTO "sqlite_sequence" VALUES('sql',1167);
-INSERT INTO "sqlite_sequence" VALUES('links',53);
 INSERT INTO "sqlite_sequence" VALUES('test',123);
 INSERT INTO "sqlite_sequence" VALUES('css_wiki',4);
 INSERT INTO "sqlite_sequence" VALUES('python',2116);
 INSERT INTO "sqlite_sequence" VALUES('bash',134);
+INSERT INTO "sqlite_sequence" VALUES('sql',1167);
+INSERT INTO "sqlite_sequence" VALUES('links',53);
 COMMIT;

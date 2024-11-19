@@ -1,8 +1,7 @@
-{% extends "base.html" %} {% block title %}Релизы{% endblock %} {% block content %}
+{% extends "base.html" %} {% block title %}HTML{% endblock %} {% block content %}
 <div class="card mb-2">
-  <div class="card-header h3">Список релизов</div>
+  <div class="card-header h3">HTML</div>
   <div class="card-body">
-    <p class="card-text">В этом разделе отображены текущие релизы и готовящееся.</p>
     <p class="card-text">
       Всего записей в таблице html_wiki: <b>{{ html_wiki_count }}</b></p>
     <a href="{{ url_for('add_html_wiki.add_html_wiki') }}" class="btn btn-outline-dark">Добавить новую
@@ -10,18 +9,13 @@
     <p class="card-text">{% include 'errors.html' %}</p>
   </div>
 </div>
-<table class="table table-responsive">
-  <thead>
-    <tr>
-      <th scope="col">Название</th>
-      <th scope="col">Действие</th>
-    </tr>
-  </thead>
-  <tbody>
     {% for html_wiki_list in html_wiki_list %}
-    <tr>
-      <td>{{ html_wiki_list['html_wiki_name'] }}</td>
-      <td><div class="card"><a href="{{ url_for('view_html_wiki.view_html_wiki', html_wiki_id=html_wiki_list['html_wiki_id']) }}"
+<div class="card mb-2">
+   <div class="card-header">
+      <h3>{{ html_wiki_list['html_wiki_name'] }}</h3>
+         </div>
+         <div class="card-body">
+      <div class="card"><a href="{{ url_for('view_html_wiki.view_html_wiki', html_wiki_id=html_wiki_list['html_wiki_id']) }}"
           class="btn btn-outline-dark">Подробно</a></div>
           <div class="card"><a href="{{ url_for('edit_html_wiki.edit_html_wiki', html_wiki_id=html_wiki_list['html_wiki_id']) }}"
           class="btn btn-outline-dark">Редактировать</a></div>
@@ -29,9 +23,8 @@
           method="POST" class="card">
           <input type="submit" class="btn btn-outline-danger " value="Удалить"
             onclick="return confirm('Вы точно уверены что хотите удалить запись?')" />
-        </form></td>
-    </tr>
+        </form>
+      </div>
     {% endfor %}
-  </tbody>
-</table>
+
 {% endblock %}

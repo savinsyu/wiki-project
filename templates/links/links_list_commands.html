@@ -14,6 +14,14 @@
 <div class="card mb-2">
    <div class="card-header">{{ links_list['links_name'] }}</div>
    <div class="card-body">
+               <h4>Дата добавления</h4>
+      <p class="card-text">
+         {{ links_list['links_date_add'] }}
+      </p>
+      <h4>Дата редактирования</h4>
+      <p class="card-text">
+         {{ links_list['links_date_edit'] }}
+      </p>
       <p class="card-text">
          <a href="{{ links_list['links_command'] }}" target="_blank"><i>{{ links_list['links_command']
                }}</i></a>

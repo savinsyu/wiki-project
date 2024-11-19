@@ -13,7 +13,7 @@ def add_html_wiki():
         if len(request.form['html_wiki_name']) > 4 and len(request.form['html_wiki_description']) > 10:
             conn = connect.get_db_connection()
             conn.execute(
-                "INSERT INTO html_wiki (html_wiki_name, html_wiki_description, html_wiki_status) VALUES (?, ?, ?, ?)",
+                "INSERT INTO html_wiki (html_wiki_name, html_wiki_description) VALUES (?, ?)",
                 (new_html_wiki_name, new_html_wiki_description)
             )
             conn.commit()
@@ -23,7 +23,7 @@ def add_html_wiki():
             else:
                 flash('Запись успешно добавлена!', category='success')
             # В случае соблюдения условий заполнения полей, произойдёт перенаправление
-            return redirect(url_for("html_wikis.html_wikis"))
+            return redirect(url_for("html_wiki.html_wiki"))
 
         else:
             flash('Ошибка сохранения записи, вы ввели мало символов!', category='danger')
