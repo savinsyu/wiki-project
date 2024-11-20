@@ -138,8 +138,8 @@ INSERT INTO "bash" VALUES(131,'where powershell','Как найти исполняемый файл pow
 Ввести в cmd команду!','2024-11-15 13:18:16','');
 INSERT INTO "bash" VALUES(132,'python -m pip uninstall -r requirements.txt -y','Принудительное деинсталляция пакетов из файла requirements.txt ','2024-11-15 13:18:16','');
 INSERT INTO "bash" VALUES(133,'#!/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe
-Stop-Process -Name "python"','Скрипт powershell, который убивает все python запущенные процессы','2024-11-15 13:18:16','');
-INSERT INTO "bash" VALUES(134,'pip install --upgrade -r requirements.txt','Проверка обновлений библиотек','2024-11-15 13:18:16','');
+Stop-Process -Name "python"','Скрипт powershell, который убивает все python запущенные процессы.','2024-11-15 13:18:16','2024-11-20 16:21:09');
+INSERT INTO "bash" VALUES(134,'pip install --upgrade -r requirements.txt','Проверка обновлений библиотек!!','2024-11-15 13:18:16','2024-11-20 12:36:21');
 CREATE TABLE "css_wiki" (
   css_wiki_id INTEGER PRIMARY KEY AUTOINCREMENT,
   css_wiki_name TEXT NOT NULL,
@@ -166,6 +166,7 @@ CREATE TABLE "html_wiki" (
   html_wiki_date_add TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   html_wiki_date_edit TEXT
 );
+INSERT INTO "html_wiki" VALUES(3,'Тег h1','Тег h1 - заголовок первого уровня. Пример написания: <h1></h1>','2024-11-20 09:36:48','2024-11-20 13:47:03');
 CREATE TABLE "links" (
   [links_id] INTEGER PRIMARY KEY AUTOINCREMENT,
   [links_name] TEXT NOT NULL,
@@ -191,7 +192,7 @@ INSERT INTO "links" VALUES(50,'Grid сетка','https://skillbox.ru/media/code/uchim
 INSERT INTO "links" VALUES(51,'Полезная страница с методами работы с файлами в Python.','https://victor-komlev.ru/rabota-s-operatsionnoj-i-fajlovoj-sistemoj-v-python-pathlib-os-shutil/','2024-11-19 14:05:04','');
 INSERT INTO "links" VALUES(52,'Ссылка на очень удобную программу Samsung Dex. 
 Программа предназначена на для трансляции экрана телефона Samsung на ПК.','https://www.samsung.com/ru/apps/samsung-dex/','2024-11-19 14:05:04','');
-INSERT INTO "links" VALUES(53,'Работа с датами в python','https://pythonru.com/primery/kak-ispolzovat-modul-datetime-v-python','2024-11-19 14:05:04','');
+INSERT INTO "links" VALUES(53,'Работа с датами в python.','https://pythonru.com/primery/kak-ispolzovat-modul-datetime-v-python','2024-11-19 14:05:04','2024-11-20 12:33:41');
 CREATE TABLE "python" (
   [python_id] INTEGER PRIMARY KEY AUTOINCREMENT,
   [python_command] TEXT NOT NULL,
@@ -488,7 +489,7 @@ def upload_file():
 INSERT INTO "python" VALUES(2116,'import datetime
 
 dt_now = datetime.datetime.now()
-print(dt_now)','Вывод текущей латы и времени','2024-11-15 13:09:33','');
+print(dt_now)','Вывод текущей даты и времени.','2024-11-15 13:09:33','2024-11-20 12:26:54');
 CREATE TABLE "sql" (
   [sql_id] INTEGER PRIMARY KEY AUTOINCREMENT,
   [sql_name] TEXT NOT NULL,
@@ -508,144 +509,143 @@ INSERT INTO "sql" VALUES(9,'Переименование поля таблицы','ALTER TABLE [train] RE
 INSERT INTO "sql" VALUES(10,'Удаляет таблицу базы данных','DROP TABLE [train];','2024-11-19 13:58:50','');
 INSERT INTO "sql" VALUES(1159,'Поиск уникальных значений','SELECT DISTINCT field FROM table;','2024-11-19 13:58:50','');
 INSERT INTO "sql" VALUES(1161,'Вывод всех записей таблицы','SELECT * FROM table;','2024-11-19 13:58:50','');
-INSERT INTO "sql" VALUES(1167,'Создание таблицы в базе данных','CREATE TABLE IF NOT EXISTS tasks (
+INSERT INTO "sql" VALUES(1167,'Создание таблицы в базе данных.','CREATE TABLE IF NOT EXISTS tasks (
   task_id INTEGER PRIMARY KEY AUTOINCREMENT,
   task_name TEXT NOT NULL,
   task_description TEXT NOT NULL,
   task_status TEXT NOT NULL DEFAULT Новая
-);','2024-11-19 13:58:50','');
+);','2024-11-19 13:58:50','2024-11-20 12:29:35');
 CREATE TABLE test (
                 test_id INTEGER PRIMARY KEY autoincrement, 
                 test_name TEXT not null
         );
-INSERT INTO "test" VALUES(1,'option2');
-INSERT INTO "test" VALUES(2,'option3');
-INSERT INTO "test" VALUES(3,'Intel');
-INSERT INTO "test" VALUES(4,'AMD');
-INSERT INTO "test" VALUES(5,'HP');
-INSERT INTO "test" VALUES(6,'Ford');
+INSERT INTO "test" VALUES(1,'Samsung');
+INSERT INTO "test" VALUES(2,'AMD');
+INSERT INTO "test" VALUES(3,'ASUS');
+INSERT INTO "test" VALUES(4,'Acer');
+INSERT INTO "test" VALUES(5,'ASUS');
+INSERT INTO "test" VALUES(6,'ASUS');
 INSERT INTO "test" VALUES(7,'ASUS');
-INSERT INTO "test" VALUES(8,'Acer');
-INSERT INTO "test" VALUES(9,'Samsung');
-INSERT INTO "test" VALUES(10,'Toyota');
-INSERT INTO "test" VALUES(11,'ASUS');
+INSERT INTO "test" VALUES(8,'Samsung');
+INSERT INTO "test" VALUES(9,'Toyota');
+INSERT INTO "test" VALUES(10,'ASUS');
+INSERT INTO "test" VALUES(11,'HP');
 INSERT INTO "test" VALUES(12,'Ford');
-INSERT INTO "test" VALUES(13,'HP');
-INSERT INTO "test" VALUES(14,'Intel');
+INSERT INTO "test" VALUES(13,'Intel');
+INSERT INTO "test" VALUES(14,'AMD');
 INSERT INTO "test" VALUES(15,'ASUS');
-INSERT INTO "test" VALUES(16,'AMD');
-INSERT INTO "test" VALUES(17,'AMD');
-INSERT INTO "test" VALUES(18,'Ford');
-INSERT INTO "test" VALUES(19,'Samsung');
-INSERT INTO "test" VALUES(20,'Acer');
+INSERT INTO "test" VALUES(16,'Acer');
+INSERT INTO "test" VALUES(17,'Toyota');
+INSERT INTO "test" VALUES(18,'HP');
+INSERT INTO "test" VALUES(19,'Toyota');
+INSERT INTO "test" VALUES(20,'HP');
 INSERT INTO "test" VALUES(21,'Acer');
-INSERT INTO "test" VALUES(22,'Toyota');
+INSERT INTO "test" VALUES(22,'Ford');
 INSERT INTO "test" VALUES(23,'Acer');
-INSERT INTO "test" VALUES(24,'Intel');
-INSERT INTO "test" VALUES(25,'ASUS');
+INSERT INTO "test" VALUES(24,'AMD');
+INSERT INTO "test" VALUES(25,'Ford');
 INSERT INTO "test" VALUES(26,'HP');
-INSERT INTO "test" VALUES(27,'Toyota');
-INSERT INTO "test" VALUES(28,'AMD');
-INSERT INTO "test" VALUES(29,'Samsung');
-INSERT INTO "test" VALUES(30,'Acer');
-INSERT INTO "test" VALUES(31,'Acer');
-INSERT INTO "test" VALUES(32,'HP');
-INSERT INTO "test" VALUES(33,'Ford');
-INSERT INTO "test" VALUES(34,'Ford');
-INSERT INTO "test" VALUES(35,'Intel');
-INSERT INTO "test" VALUES(36,'HP');
-INSERT INTO "test" VALUES(37,'HP');
-INSERT INTO "test" VALUES(38,'Intel');
-INSERT INTO "test" VALUES(39,'Ford');
-INSERT INTO "test" VALUES(40,'ASUS');
-INSERT INTO "test" VALUES(41,'HP');
-INSERT INTO "test" VALUES(42,'AMD');
-INSERT INTO "test" VALUES(43,'Toyota');
+INSERT INTO "test" VALUES(27,'Intel');
+INSERT INTO "test" VALUES(28,'HP');
+INSERT INTO "test" VALUES(29,'Acer');
+INSERT INTO "test" VALUES(30,'HP');
+INSERT INTO "test" VALUES(31,'ASUS');
+INSERT INTO "test" VALUES(32,'Acer');
+INSERT INTO "test" VALUES(33,'Samsung');
+INSERT INTO "test" VALUES(34,'Toyota');
+INSERT INTO "test" VALUES(35,'Toyota');
+INSERT INTO "test" VALUES(36,'AMD');
+INSERT INTO "test" VALUES(37,'Acer');
+INSERT INTO "test" VALUES(38,'Ford');
+INSERT INTO "test" VALUES(39,'HP');
+INSERT INTO "test" VALUES(40,'Intel');
+INSERT INTO "test" VALUES(41,'Ford');
+INSERT INTO "test" VALUES(42,'Acer');
+INSERT INTO "test" VALUES(43,'ASUS');
 INSERT INTO "test" VALUES(44,'Samsung');
-INSERT INTO "test" VALUES(45,'Intel');
-INSERT INTO "test" VALUES(46,'Samsung');
-INSERT INTO "test" VALUES(47,'AMD');
+INSERT INTO "test" VALUES(45,'HP');
+INSERT INTO "test" VALUES(46,'Intel');
+INSERT INTO "test" VALUES(47,'Samsung');
 INSERT INTO "test" VALUES(48,'Intel');
-INSERT INTO "test" VALUES(49,'AMD');
-INSERT INTO "test" VALUES(50,'ASUS');
+INSERT INTO "test" VALUES(49,'Acer');
+INSERT INTO "test" VALUES(50,'Ford');
 INSERT INTO "test" VALUES(51,'Acer');
-INSERT INTO "test" VALUES(52,'ASUS');
+INSERT INTO "test" VALUES(52,'Acer');
 INSERT INTO "test" VALUES(53,'AMD');
-INSERT INTO "test" VALUES(54,'Acer');
-INSERT INTO "test" VALUES(55,'AMD');
-INSERT INTO "test" VALUES(56,'Acer');
-INSERT INTO "test" VALUES(57,'Intel');
-INSERT INTO "test" VALUES(58,'Intel');
+INSERT INTO "test" VALUES(54,'Samsung');
+INSERT INTO "test" VALUES(55,'Samsung');
+INSERT INTO "test" VALUES(56,'Ford');
+INSERT INTO "test" VALUES(57,'Acer');
+INSERT INTO "test" VALUES(58,'Acer');
 INSERT INTO "test" VALUES(59,'Intel');
-INSERT INTO "test" VALUES(60,'HP');
-INSERT INTO "test" VALUES(61,'AMD');
-INSERT INTO "test" VALUES(62,'HP');
-INSERT INTO "test" VALUES(63,'Intel');
-INSERT INTO "test" VALUES(64,'Intel');
-INSERT INTO "test" VALUES(65,'Toyota');
-INSERT INTO "test" VALUES(66,'HP');
-INSERT INTO "test" VALUES(67,'AMD');
-INSERT INTO "test" VALUES(68,'Acer');
+INSERT INTO "test" VALUES(60,'Ford');
+INSERT INTO "test" VALUES(61,'Toyota');
+INSERT INTO "test" VALUES(62,'Ford');
+INSERT INTO "test" VALUES(63,'Samsung');
+INSERT INTO "test" VALUES(64,'HP');
+INSERT INTO "test" VALUES(65,'Intel');
+INSERT INTO "test" VALUES(66,'Intel');
+INSERT INTO "test" VALUES(67,'Toyota');
+INSERT INTO "test" VALUES(68,'AMD');
 INSERT INTO "test" VALUES(69,'AMD');
-INSERT INTO "test" VALUES(70,'Ford');
-INSERT INTO "test" VALUES(71,'Intel');
-INSERT INTO "test" VALUES(72,'Acer');
-INSERT INTO "test" VALUES(73,'Samsung');
-INSERT INTO "test" VALUES(74,'AMD');
-INSERT INTO "test" VALUES(75,'AMD');
-INSERT INTO "test" VALUES(76,'Ford');
-INSERT INTO "test" VALUES(77,'ASUS');
-INSERT INTO "test" VALUES(78,'HP');
-INSERT INTO "test" VALUES(79,'HP');
-INSERT INTO "test" VALUES(80,'Toyota');
-INSERT INTO "test" VALUES(81,'ASUS');
-INSERT INTO "test" VALUES(82,'Ford');
-INSERT INTO "test" VALUES(83,'ASUS');
-INSERT INTO "test" VALUES(84,'Toyota');
-INSERT INTO "test" VALUES(85,'Toyota');
-INSERT INTO "test" VALUES(86,'Intel');
-INSERT INTO "test" VALUES(87,'Acer');
+INSERT INTO "test" VALUES(70,'Intel');
+INSERT INTO "test" VALUES(71,'Acer');
+INSERT INTO "test" VALUES(72,'Toyota');
+INSERT INTO "test" VALUES(73,'Intel');
+INSERT INTO "test" VALUES(74,'Intel');
+INSERT INTO "test" VALUES(75,'Ford');
+INSERT INTO "test" VALUES(76,'ASUS');
+INSERT INTO "test" VALUES(77,'Intel');
+INSERT INTO "test" VALUES(78,'Ford');
+INSERT INTO "test" VALUES(79,'ASUS');
+INSERT INTO "test" VALUES(80,'ASUS');
+INSERT INTO "test" VALUES(81,'AMD');
+INSERT INTO "test" VALUES(82,'Acer');
+INSERT INTO "test" VALUES(83,'HP');
+INSERT INTO "test" VALUES(84,'HP');
+INSERT INTO "test" VALUES(85,'AMD');
+INSERT INTO "test" VALUES(86,'ASUS');
+INSERT INTO "test" VALUES(87,'AMD');
 INSERT INTO "test" VALUES(88,'AMD');
-INSERT INTO "test" VALUES(89,'HP');
-INSERT INTO "test" VALUES(90,'AMD');
-INSERT INTO "test" VALUES(91,'HP');
-INSERT INTO "test" VALUES(92,'ASUS');
-INSERT INTO "test" VALUES(93,'AMD');
-INSERT INTO "test" VALUES(94,'Toyota');
-INSERT INTO "test" VALUES(95,'Toyota');
-INSERT INTO "test" VALUES(96,'Samsung');
-INSERT INTO "test" VALUES(97,'AMD');
-INSERT INTO "test" VALUES(98,'HP');
-INSERT INTO "test" VALUES(99,'Acer');
-INSERT INTO "test" VALUES(100,'HP');
-INSERT INTO "test" VALUES(101,'ASUS');
-INSERT INTO "test" VALUES(102,'Toyota');
-INSERT INTO "test" VALUES(103,'Тестовая запись №1');
-INSERT INTO "test" VALUES(104,'Тестовая запись №2');
-INSERT INTO "test" VALUES(105,'Тестовая запись №3');
-INSERT INTO "test" VALUES(106,'Тестовая запись №4');
-INSERT INTO "test" VALUES(107,'Тестовая запись №5');
-INSERT INTO "test" VALUES(108,'Тестовая запись №6');
-INSERT INTO "test" VALUES(109,'Тестовая запись №7');
-INSERT INTO "test" VALUES(110,'Тестовая запись №8');
-INSERT INTO "test" VALUES(111,'Тестовая запись №9');
-INSERT INTO "test" VALUES(112,'Тестовая запись №10');
-INSERT INTO "test" VALUES(113,'Тестовая запись №11');
-INSERT INTO "test" VALUES(114,'Тестовая запись №12');
-INSERT INTO "test" VALUES(115,'Тестовая запись №13');
-INSERT INTO "test" VALUES(116,'Тестовая запись №14');
-INSERT INTO "test" VALUES(117,'Тестовая запись №15');
-INSERT INTO "test" VALUES(118,'Тестовая запись №16');
-INSERT INTO "test" VALUES(119,'Тестовая запись №17');
-INSERT INTO "test" VALUES(120,'Тестовая запись №18');
-INSERT INTO "test" VALUES(121,'Тестовая запись №19');
-INSERT INTO "test" VALUES(122,'Тестовая запись №20');
-INSERT INTO "test" VALUES(123,'option3');
+INSERT INTO "test" VALUES(89,'Acer');
+INSERT INTO "test" VALUES(90,'Samsung');
+INSERT INTO "test" VALUES(91,'Toyota');
+INSERT INTO "test" VALUES(92,'Ford');
+INSERT INTO "test" VALUES(93,'Samsung');
+INSERT INTO "test" VALUES(94,'HP');
+INSERT INTO "test" VALUES(95,'ASUS');
+INSERT INTO "test" VALUES(96,'ASUS');
+INSERT INTO "test" VALUES(97,'Acer');
+INSERT INTO "test" VALUES(98,'Toyota');
+INSERT INTO "test" VALUES(99,'Toyota');
+INSERT INTO "test" VALUES(100,'Intel');
+INSERT INTO "test" VALUES(101,'Тестовая запись №1');
+INSERT INTO "test" VALUES(102,'Тестовая запись №2');
+INSERT INTO "test" VALUES(103,'Тестовая запись №3');
+INSERT INTO "test" VALUES(104,'Тестовая запись №4');
+INSERT INTO "test" VALUES(105,'Тестовая запись №5');
+INSERT INTO "test" VALUES(106,'Тестовая запись №6');
+INSERT INTO "test" VALUES(107,'Тестовая запись №7');
+INSERT INTO "test" VALUES(108,'Тестовая запись №8');
+INSERT INTO "test" VALUES(109,'Тестовая запись №9');
+INSERT INTO "test" VALUES(110,'Тестовая запись №10');
+INSERT INTO "test" VALUES(111,'Тестовая запись №11');
+INSERT INTO "test" VALUES(112,'Тестовая запись №12');
+INSERT INTO "test" VALUES(113,'Тестовая запись №13');
+INSERT INTO "test" VALUES(114,'Тестовая запись №14');
+INSERT INTO "test" VALUES(115,'Тестовая запись №15');
+INSERT INTO "test" VALUES(116,'Тестовая запись №16');
+INSERT INTO "test" VALUES(117,'Тестовая запись №17');
+INSERT INTO "test" VALUES(118,'Тестовая запись №18');
+INSERT INTO "test" VALUES(119,'Тестовая запись №19');
+INSERT INTO "test" VALUES(120,'Тестовая запись №20');
+INSERT INTO "test" VALUES(121,'option3');
 DELETE FROM "sqlite_sequence";
-INSERT INTO "sqlite_sequence" VALUES('test',123);
 INSERT INTO "sqlite_sequence" VALUES('css_wiki',4);
 INSERT INTO "sqlite_sequence" VALUES('python',2116);
 INSERT INTO "sqlite_sequence" VALUES('bash',134);
 INSERT INTO "sqlite_sequence" VALUES('sql',1167);
 INSERT INTO "sqlite_sequence" VALUES('links',53);
+INSERT INTO "sqlite_sequence" VALUES('html_wiki',3);
+INSERT INTO "sqlite_sequence" VALUES('test',121);
 COMMIT;

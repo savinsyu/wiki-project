@@ -1,7 +1,7 @@
 from flask import Blueprint, redirect, url_for, render_template, request, flash
 
 from modules import connect
-
+import datetime
 bp = Blueprint('edit_links_command', __name__)
 
 
@@ -13,11 +13,14 @@ def edit_links_command(links_id):
     if request.method == "POST":
         links_command_edit = request.form["links_command"]
         links_name_edit = request.form["links_name"]
+        # Объявляем переменную, в которой применяем метод now() для вывода текущей даты и времени, также переводим.
+        # Также переводим сформированную дату и время в формат год, месяц, день, время без секунд.
+        links_date_edit = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         if len(request.form['links_command']) > 4 and len(request.form['links_name']) > 4:
             conn = connect.get_db_connection()
             conn.execute(
-                "UPDATE links SET links_command = ?, links_name = ? WHERE links_id = ?",
-                (links_command_edit, links_name_edit, links_id),
+                "UPDATE links SET links_command = ?, links_name = ?, links_date_edit = ? WHERE links_id = ?",
+                (links_command_edit, links_name_edit, links_date_edit, links_id),
             )
             conn.commit()
             conn.close()

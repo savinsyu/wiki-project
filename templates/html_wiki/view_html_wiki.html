@@ -8,7 +8,19 @@
    </div>
 </div>
 <div class="card text-dark bg-light mb-3">
-   <div class="card-header h5">Название релиза</div>
+   <div class="card-header h5">Дата редактирования записи</div>
+   <div class="card-body">
+      <p class="card-text">{{ html_wiki_view['html_wiki_date_edit'] }}</p>
+   </div>
+</div>
+<div class="card text-dark bg-light mb-3">
+   <div class="card-header h5">Дата добавления записи</div>
+   <div class="card-body">
+      <p class="card-text">{{ html_wiki_view['html_wiki_date_add'] }}</p>
+   </div>
+</div>
+<div class="card text-dark bg-light mb-3">
+   <div class="card-header h5">Название</div>
    <div class="card-body">
       <p class="card-text">{{ html_wiki_view['html_wiki_name'] }}</p>
    </div>
@@ -25,9 +37,9 @@
       <div class="btn-group btn-group pb-2" role="group" aria-label="...">
          <a href="{{ url_for('html_wiki.html_wiki') }}" class="btn btn-outline-dark">Вернемся к списку релизов
             </a>
-         <a href="{{ url_for('add_html_wiki.add_html_wiki') }}" class="btn btn-outline-dark">Добавим новый релиз</a>
+         <a href="{{ url_for('add_html_wiki.add_html_wiki') }}" class="btn btn-outline-dark">Добавим новую</a>
          <a href="{{ url_for('edit_html_wiki.edit_html_wiki', html_wiki_id=html_wiki_view['html_wiki_id']) }}"
-            class="btn btn-outline-dark">Отредактируем текущий релиз</a>
+            class="btn btn-outline-dark">Отредактируем текущую запись</a>
       </div>
       <form action="{{ url_for('delete_html_wiki.delete_html_wiki', html_wiki_id=html_wiki_view['html_wiki_id'])}}" method="POST"
          class="pb-2">

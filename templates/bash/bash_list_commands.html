@@ -7,14 +7,14 @@
          Всего записей в таблице bash: <b>{{ bash_list_count }}</b></p>
       <a href="{{ url_for('add_bash_command.add_bash_command') }}" class="btn btn-outline-dark">Добавить новую
          запись?</a>
-         <p class="card-text">{% include 'errors.html' %}</p>
+      <p class="card-text">{% include 'errors.html' %}</p>
    </div>
 </div>
 {% for bash_list in bash_list %}
 <div class="card mb-2">
    <div class="card-header">{{ bash_list['bash_name'] }}</div>
    <div class="card-body">
-         <h4>Дата добавления</h4>
+      <h4>Дата добавления</h4>
       <p class="card-text">
          {{ bash_list['bash_date_add'] }}
       </p>
@@ -23,7 +23,7 @@
          {{ bash_list['bash_date_edit'] }}
       </p>
       <p class="card-text">
-         <pre class="card p-2">{{ bash_list['bash_command'] }}</pre>
+      <pre class="card p-2">{{ bash_list['bash_command'] }}</pre>
       </p>
       <p class="card-text">
       <div class="btn-group pb-2" role="group" aria-label="...">

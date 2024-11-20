@@ -12,7 +12,7 @@ def export_tables_sql_to_xlsx():
     sql_list = conn.execute("SELECT * FROM sql").fetchall()
     python_list = conn.execute("SELECT * FROM python").fetchall()
     links_list = conn.execute("SELECT * FROM links").fetchall()
-    html_wiki_list = conn.execute("SELECT * FROM html_wiki_").fetchall()
+    html_wiki_list = conn.execute("SELECT * FROM html_wiki").fetchall()
     css_wiki_list = conn.execute("SELECT * FROM css_wiki").fetchall()
     test_list = conn.execute("SELECT * FROM test").fetchall()
     conn.close()

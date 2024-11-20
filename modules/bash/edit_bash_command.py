@@ -1,7 +1,7 @@
 from flask import Blueprint, redirect, url_for, render_template, request, flash
 
 from modules import connect
-
+import datetime
 bp = Blueprint('edit_bash_command', __name__)
 
 
@@ -13,11 +13,14 @@ def edit_bash_command(bash_id):
     if request.method == "POST":
         bash_command_edit = request.form["bash_command"]
         bash_name_edit = request.form["bash_name"]
+        # Объявляем переменную, в которой применяем метод now() для вывода текущей даты и времени, также переводим.
+        # Также переводим сформированную дату и время в формат год, месяц, день, время без секунд.
+        bash_date_edit = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         if len(request.form['bash_command']) > 1 and len(request.form['bash_name']) > 10:
             conn = connect.get_db_connection()
             conn.execute(
-                "UPDATE bash SET bash_command = ?, bash_name = ?  WHERE bash_id = ?",
-                (bash_command_edit, bash_name_edit, bash_id),
+                "UPDATE bash SET bash_command = ?, bash_name = ?, bash_date_edit = ?  WHERE bash_id = ?",
+                (bash_command_edit, bash_name_edit, bash_date_edit, bash_id),
             )
             conn.commit()
             conn.close()
