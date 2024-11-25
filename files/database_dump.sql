@@ -515,6 +515,7 @@ INSERT INTO "sql" VALUES(1167,'ׁמחהאםטו עאבכטצû ג באחו האםםûץ.','CREATE TABLE IF
   task_description TEXT NOT NULL,
   task_status TEXT NOT NULL DEFAULT ֽמגאÿ
 );','2024-11-19 13:58:50','2024-11-20 12:29:35');
+INSERT INTO "sql" VALUES(1168,'פגפגûפגפגûפג1','פûגפûגûפגûפגפגפ1','2024-11-25 13:22:54','2024-11-25 16:28:26');
 CREATE TABLE test (
                 test_id INTEGER PRIMARY KEY autoincrement, 
                 test_name TEXT not null
@@ -644,7 +645,7 @@ DELETE FROM "sqlite_sequence";
 INSERT INTO "sqlite_sequence" VALUES('css_wiki',4);
 INSERT INTO "sqlite_sequence" VALUES('python',2116);
 INSERT INTO "sqlite_sequence" VALUES('bash',134);
-INSERT INTO "sqlite_sequence" VALUES('sql',1167);
+INSERT INTO "sqlite_sequence" VALUES('sql',1168);
 INSERT INTO "sqlite_sequence" VALUES('links',53);
 INSERT INTO "sqlite_sequence" VALUES('html_wiki',3);
 INSERT INTO "sqlite_sequence" VALUES('test',121);
