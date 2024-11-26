@@ -644,7 +644,7 @@ INSERT INTO "test" VALUES(121,'option3');
 DELETE FROM "sqlite_sequence";
 INSERT INTO "sqlite_sequence" VALUES('css_wiki',4);
 INSERT INTO "sqlite_sequence" VALUES('python',2116);
-INSERT INTO "sqlite_sequence" VALUES('bash',134);
+INSERT INTO "sqlite_sequence" VALUES('bash',135);
 INSERT INTO "sqlite_sequence" VALUES('sql',1168);
 INSERT INTO "sqlite_sequence" VALUES('links',53);
 INSERT INTO "sqlite_sequence" VALUES('html_wiki',3);
