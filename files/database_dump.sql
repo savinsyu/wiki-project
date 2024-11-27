@@ -489,7 +489,7 @@ def upload_file():
 INSERT INTO "python" VALUES(2116,'import datetime
 
 dt_now = datetime.datetime.now()
-print(dt_now)','Вывод текущей даты и времени.','2024-11-15 13:09:33','2024-11-20 12:26:54');
+print(dt_now)','Вывод текущей даты и времени.','2024-11-15 13:09:33','2024-11-27 11:11:41');
 CREATE TABLE "sql" (
   [sql_id] INTEGER PRIMARY KEY AUTOINCREMENT,
   [sql_name] TEXT NOT NULL,
