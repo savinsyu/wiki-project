@@ -1,6 +1,6 @@
 * {
-  font-size: 1rem;
-  font-family:consolas;
+  font-size: 14px;
+  font-family:verdana;
 }
 
 body {
@@ -29,10 +29,10 @@ article {
 
 .navbar-dark .navbar-nav .nav-link {
   text-transform: uppercase;
-  color: white;
+  color: grey;
   margin-right: 14px;
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 15px;
 }
 
 .container-index-page {
