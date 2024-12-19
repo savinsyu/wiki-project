@@ -24,7 +24,7 @@ then
   sleep 5
   ECHO "Приложение открываем в браузере"
   # Запускаем приложение в браузере
-  python -m webbrowser http://127.0.0.1:82
+  python -m webbrowser http://127.0.0.1:83
 else
   ECHO -e "${ERROR_COLOR}Нет интернета!${RESET_COLOR}"
 fi

@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block title %}Записи{% endblock %} {% block content %}
+<div class="card mb-2">
+   <div class="card-header h3">Записи</div>
+   <div class="card-body">
+      <p class="card-text">В этом разделе можно найти скрипты и команды таких CLI как Powershell, Git Bash, CMD</p>
+      <p class="card-text">
+         Всего записей в таблице: <b>{{ list_count }}</b></p>
+<!--      <a href="{{ url_for('add.add_post') }}" class="btn btn-outline-dark">Добавить новую-->
+         запись?</a>
+      <p class="card-text">{% include 'errors.html' %}</p>
+   </div>
+</div>
+<table>
+     <tr>
+    <th>id</th>
+    <th>name</th>
+    <th>description</th>
+    <th>date_edit</th>
+    <th>date_add</th>
+  </tr>
+   {% for list_posts in list_posts %}
+   <tr>
+      <td>{{ list_posts['id'] }}</td>
+      <td>{{ list_posts['name'] }}</td>
+      <td>{{ list_posts['description'] }}</td>
+      <td>{{ list_posts['date_edit'] }}</td>
+      <td>{{ list_posts['date_add'] }}</td>
+   </tr>
+
+   {% endfor %}
+</table>
+{% endblock %}
