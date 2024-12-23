@@ -2,10 +2,10 @@ from flask import Blueprint, redirect, url_for, render_template, request, flash
 
 from modules import connect
 
-bp = Blueprint('add', __name__)
+bp = Blueprint('add_post', __name__)
 
 
-@bp.route("/add", methods=["GET", "POST"])
+@bp.route("/add_post", methods=["GET", "POST"])
 def add_post():
     if request.method == "POST":
         name = request.form["name"]
@@ -24,9 +24,9 @@ def add_post():
             else:
                 flash('Запись успешно добавлена!', category='success')
             # В случае соблюдения условий заполнения полей, произойдёт перенаправление
-            return redirect(url_for("list.list"))
+            return redirect(url_for("list.get_list_posts"))
 
         else:
             flash('Ошибка сохранения записи, вы ввели мало символов!', category='danger')
 
-    return render_template("main/add.html")
+    return render_template("main/add_post.html")
