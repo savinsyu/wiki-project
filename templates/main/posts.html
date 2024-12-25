@@ -18,6 +18,7 @@
          <th scope="col">description</th>
          <th scope="col">date_edit</th>
          <th scope="col">date_add</th>
+         <th scope="col">delete?</th>
       </tr>
    </thead>
    <tbody>
@@ -28,6 +29,11 @@
          <td>{{ list_posts['description'] }}</td>
          <td>{{ list_posts['date_edit'] }}</td>
          <td>{{ list_posts['date_add'] }}</td>
+         <td>         <form action="{{ url_for('delete.delete', id=list_posts['id'])}}"
+            method="POST" class="pb-2">
+            <input type="submit" class="btn btn-outline-danger" value="Удалить запись?"
+               onclick="return confirm('Вы точно уверены что хотите удалить запись?')" />
+         </form></td>
       </tr>
       {% endfor %}
    </tbody>

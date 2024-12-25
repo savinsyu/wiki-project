@@ -8,9 +8,11 @@ bp = Blueprint('delete', __name__)
 @bp.route("/delete/<int:id>/", methods=("POST",))
 def delete(id):
     conn = connect.get_db_connection()
-    conn.execute("DELETE FROM main WHERE id = ?",
-                 (id,))
-    conn.commit()
-    conn.close()
-
-    return redirect(url_for("list.list"))
+    try:
+        with conn.cursor() as cursor:
+            cursor.execute("DELETE FROM main WHERE `id` = %s",
+                         (id,))
+        conn.commit()
+    finally:
+        conn.close()
+    return redirect(url_for("posts.posts"))

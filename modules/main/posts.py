@@ -9,7 +9,7 @@ bp = Blueprint("posts", __name__)
 def posts():
     conn = connect.get_db_connection()
     cur = conn.cursor()
-    cur.execute("SELECT * FROM main")
+    cur.execute("SELECT * FROM main ORDER BY id DESC")
     list_posts = cur.fetchall()
     conn.close()
     conn_count = connect.get_db_connection()

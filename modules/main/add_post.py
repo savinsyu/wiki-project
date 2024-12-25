@@ -10,21 +10,22 @@ def add_post():
     if request.method == "POST":
         name = request.form["name"]
         description = request.form["description"]
-
-        if len(request.form['name']) > 1 and len(request.form['description']) > 10:
+        category = request.form["category"]
+        if len(request.form['name']) > 5 and len(request.form['description']) > 5:
             conn = connect.get_db_connection()
-            conn.execute(
-                "INSERT INTO main (name, description) VALUES (?, ?)",
-                (name, description)
-            )
-            conn.commit()
-            conn.close()
+            try:
+                with conn.cursor() as cursor:
+                    sql = "INSERT INTO main (`name`, `description`, `category`) VALUES (%s, %s, %s)"
+                    cursor.execute(sql, (name, description, category))
+                conn.commit()
+            finally:
+                conn.close()
             if not name:
                 flash('Ошибка сохранения записи, вы ввели мало символов!', category='danger')
             else:
                 flash('Запись успешно добавлена!', category='success')
             # В случае соблюдения условий заполнения полей, произойдёт перенаправление
-            return redirect(url_for("list.get_list_posts"))
+            return redirect(url_for("posts.posts"))
 
         else:
             flash('Ошибка сохранения записи, вы ввели мало символов!', category='danger')
