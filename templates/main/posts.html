@@ -16,6 +16,7 @@
          <th scope="col">id</th>
          <th scope="col">name</th>
          <th scope="col">description</th>
+         <th scope="col">category</th>
          <th scope="col">date_edit</th>
          <th scope="col">date_add</th>
          <th scope="col">delete?</th>
@@ -27,6 +28,7 @@
          <td>{{ list_posts['id'] }}</td>
          <td>{{ list_posts['name'] }}</td>
          <td>{{ list_posts['description'] }}</td>
+         <td>{{ list_posts['category'] }}</td>
          <td>{{ list_posts['date_edit'] }}</td>
          <td>{{ list_posts['date_add'] }}</td>
          <td>         <form action="{{ url_for('delete.delete', id=list_posts['id'])}}"

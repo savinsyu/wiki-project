@@ -13,6 +13,7 @@ def edit(id):
     if request.method == "POST":
         edit_name = request.form["name"]
         edit_description = request.form["description"]
+        category = request.form["category"]
         # Объявляем переменную, в которой применяем метод now() для вывода текущей даты и времени, также переводим.
         # Также переводим сформированную дату и время в формат год, месяц, день, время без секунд.
         date_edit = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
