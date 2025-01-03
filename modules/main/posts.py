@@ -14,7 +14,7 @@ def posts():
     conn.close()
     conn_count = connect.get_db_connection()
     cur_count = conn_count.cursor()
-    cur_count.execute("SELECT COUNT(*) AS 'Записей' FROM main")
+    cur_count.execute("SELECT COUNT(*) AS 'Всего записей:' FROM main")
     list_count = cur_count.fetchone()
     conn_count.close()
     return render_template("main/posts.html",
