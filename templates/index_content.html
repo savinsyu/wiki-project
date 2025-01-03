@@ -1,6 +1,16 @@
-<div class="card mb-2">
-   <div class="card-header h3">Добро пожаловать на проект WIKI</div>
-   <div class="card-body">
-      <p class="card-text">На этом проекте Вы найдете полезные ссылки и наработки в области программирования и системного администрирования</p>
-   </div>
-</div>
+<main class="cd__main">
+  <!-- Start DEMO HTML (Use the following code into your project)-->
+  <div class="jumbotron text-center">
+    <h1 class="display-3">Добро пожаловать на проект WIKI</h1>
+    <p class="lead">На этом проекте Вы найдете полезные ссылки и наработки в области программирования и системного
+      администрирования</p>
+    <hr>
+    <p>
+      Заметили ошибку на сайте? <a href="mailto:vital_and_mortal@mail.ru"> Пишите на почту E-mail</a>
+    </p>
+    <p class="lead">
+      <a class="btn btn-primary btn-sm" href="{{ url_for('posts.posts') }}" role="button">Перейти к записям</a>
+    </p>
+  </div>
+  <!-- END EDMO HTML (Happy Coding!)-->
+</main>
