@@ -8,8 +8,10 @@ bp = Blueprint('get_post_main', __name__)
 @bp.route("/view/<int:id>")
 def get_post_main(id):
     conn = connect.get_db_connection()
-    view = conn.execute("SELECT * FROM main WHERE id = ?",
-                             (id,)).fetchone()
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM main WHERE `id` = %s",
+                                          (id,))
+    view = cur.fetchone()
     conn.close()
     return render_template("main/view.html",
                            view=view)
