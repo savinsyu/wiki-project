@@ -2,7 +2,7 @@ import secrets
 
 import flask
 
-from modules import index, export_tables_sql_to_xlsx, export
+from modules import index, export_tables_sql_to_xlsx, export, about
 from modules.main import add_post, delete, edit_post, view, posts
 
 secret = secrets.token_urlsafe(32)
@@ -17,6 +17,7 @@ app.register_blueprint(edit_post.bp)
 app.register_blueprint(add_post.bp)
 app.register_blueprint(delete.bp)
 app.register_blueprint(index.bp)
+app.register_blueprint(about.bp)
 
 
 # RUS Пишем логику для отображения страницы с 404 ошибкой
