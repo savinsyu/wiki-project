@@ -20,7 +20,7 @@ def edit_post(id):
         # Объявляем переменную, в которой применяем метод now() для вывода текущей даты и времени, также переводим.
         # Также переводим сформированную дату и время в формат год, месяц, день, время без секунд.
         date_edit = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        if len(request.form['name']) > 1 and len(request.form['description']) > 10:
+        if len(request.form['name']) >= 1 and len(request.form['description']) >= 10:
             conn = connect.get_db_connection()
             try:
                 with conn.cursor() as cursor:

@@ -11,7 +11,7 @@ def add_post():
         name = request.form["name"]
         description = request.form["description"]
         category = request.form["category"]
-        if len(request.form['name']) > 5 and len(request.form['description']) > 5:
+        if len(request.form['name']) >= 5 and len(request.form['description']) >= 5:
             conn = connect.get_db_connection()
             try:
                 with conn.cursor() as cursor:
