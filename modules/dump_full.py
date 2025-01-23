@@ -5,7 +5,7 @@ import sqlite3
 def dump_full():
     today = datetime.datetime.today()
     conn = connect.get_db_connection()
-    b_conn = sqlite3.connect('files/backup.db')
+    b_conn = sqlite3.connect('../files/backup.db')
     conn.backup(b_conn)
     b_conn.close()
     conn.close()
