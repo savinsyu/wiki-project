@@ -2,6 +2,7 @@ import connect
 import datetime
 import sqlite3
 
+
 def dump_full():
     today = datetime.datetime.today()
     conn = connect.get_db_connection()
@@ -9,5 +10,7 @@ def dump_full():
     conn.backup(b_conn)
     b_conn.close()
     conn.close()
-    print('Полный дамп от', (today.strftime("%Y-%m-%d %H.%M.%S")),' готов!!')
-    dump_full()
+    print('Полный дамп от', (today.strftime("%Y-%m-%d %H.%M.%S")), ' готов!!')
+
+
+dump_full()
