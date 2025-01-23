@@ -1,4 +1,4 @@
-from modules import connect
+import connect
 import datetime
 import sqlite3
 
