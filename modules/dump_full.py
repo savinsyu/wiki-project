@@ -9,3 +9,6 @@ def dump_full():
     b_conn.close()
     conn.close()
     print('Полный дамп от', (today.strftime("%Y-%m-%d %H.%M.%S")),' готов!!')
+
+
+dump_full()
