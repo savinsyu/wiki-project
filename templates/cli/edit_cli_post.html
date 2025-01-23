@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Редактировать запись{% endblock %}
+{% block content %}
+<form method="post">
+   <div class="container-index-page">
+      <div class="card">
+         <label for="cli_command" class="card-header">Команда или скрипт</label>
+         <textarea class="form-control" id="cli_command" name="cli_command" rows="8"
+            placeholder="Введите команду или скрипт" required>{{ edit_cli_post_view.cli_command }}</textarea>
+      </div>
+      <div class="card">
+         <label for="cli_name" class="card-header">Описание</label>
+         <textarea class="form-control" id="cli_name" name="cli_name" rows="8"
+            placeholder="Введите описание команды или скрипта"
+            required>{{ edit_cli_post_view.cli_name }}</textarea>
+      </div>
+      <div class="card text-dark bg-light">
+         <div class="card-header h5">Операции</div>
+         <div class="card-body">
+            <div class="btn-group btn-group" role="group" aria-label="...">
+               <!-- Вернуться к списку записей -->
+               <a href="{{ url_for('cli_posts.cli_posts') }}" class="btn btn-outline-dark">Назад</a>
+                <!-- Добавить новую запись -->
+               <a href="{{ url_for('add_cli_post.add_cli_post') }}" class="btn btn-outline-dark">Добавим</a>
+               <button type="submit" value="" class="btn btn-outline-dark">Сохранимся</button>
+               <!-- Блок с ошибками -->
+               {% include 'errors.html' %}
+            </div>
+         </div>
+      </div>
+      <div class="card text-dark bg-light">
+         <div class="card-header h5">Информация о записи</div>
+         <ul>
+            <li>id записи: <b>{{ edit_cli_post_view.cli_id }}</b></li>
+            <li>Дата редактирования записи: <b>{{ edit_cli_post_view.cli_date_edit }}</b></li>
+            <li>Дата добавления записи: <b>{{ edit_cli_post_view.cli_date_add }}</li>
+         </ul>
+      </div>
+   </div>
+</form>
+{% endblock %}

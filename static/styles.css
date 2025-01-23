@@ -32,13 +32,6 @@ article {
 
 .container-index-page {
     display: grid;
-    grid-template-columns: 50% 50%;
-    column-gap: 1%;
-    row-gap: 1%;
-}
-
-.card {
-  margin-top: 0.50rem;
 }
 
 .bg-dark {

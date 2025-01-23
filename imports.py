@@ -2,23 +2,34 @@ import secrets
 
 import flask
 
-from modules import index, export_tables_sql_to_xlsx, export, about
-from modules.main import add_post, delete, edit_post, view, posts
+from modules import index, about
+from modules.cli import delete_cli_post, cli_posts, edit_cli_post, add_cli_post, get_view_cli_post
+from modules.sql import delete_sql_command, sql_list_commands, edit_sql_command, get_post_sql_command, add_sql_command
+from modules.python import delete_python_command, add_python_command, edit_python_command, get_post_python_command, \
+    python_list_commands
+
 
 secret = secrets.token_urlsafe(32)
 
 app = flask.Flask(__name__)
 app.secret_key = secret
-app.register_blueprint(export.bp)
-app.register_blueprint(export_tables_sql_to_xlsx.bp)
-app.register_blueprint(view.bp)
-app.register_blueprint(posts.bp)
-app.register_blueprint(edit_post.bp)
-app.register_blueprint(add_post.bp)
-app.register_blueprint(delete.bp)
+app.register_blueprint(delete_sql_command.bp)
+app.register_blueprint(sql_list_commands.bp)
+app.register_blueprint(edit_sql_command.bp)
+app.register_blueprint(get_post_sql_command.bp)
+app.register_blueprint(add_sql_command.bp)
+app.register_blueprint(delete_python_command.bp)
+app.register_blueprint(add_python_command.bp)
+app.register_blueprint(edit_python_command.bp)
+app.register_blueprint(get_post_python_command.bp)
+app.register_blueprint(python_list_commands.bp)
+app.register_blueprint(cli_posts.bp)
+app.register_blueprint(get_view_cli_post.bp)
+app.register_blueprint(delete_cli_post.bp)
+app.register_blueprint(edit_cli_post.bp)
+app.register_blueprint(add_cli_post.bp)
 app.register_blueprint(index.bp)
 app.register_blueprint(about.bp)
-
 
 # RUS Пишем логику для отображения страницы с 404 ошибкой
 # ENG Handling 404 Error in Flask

@@ -1,4 +1,4 @@
-from  imports import *
+from imports import *
 
 
 if __name__ == "__main__":

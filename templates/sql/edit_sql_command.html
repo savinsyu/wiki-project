@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Редактировать запись{% endblock %}
+{% block content %}
+{% include 'errors.html' %}
+<form method="post">
+   <div class="container-index-page">
+      <div class="card">
+      <label for="sql_command" class="card-header">Команда</label>
+         <textarea class="form-control" id="sql_command" name="sql_command" rows="8" placeholder="Введите команду"
+            required>{{ edit_sql_command_view.sql_command }}</textarea>
+      </div>
+      <div class="card">
+      <label for=" sql_name" class="card-header">Описание команды</label>
+         <textarea class="form-control" id="sql_name" name="sql_name" rows="8" placeholder="Введите описание команды"
+            required>{{ edit_sql_command_view.sql_name }}</textarea>
+      </div>
+      <div class="card text-dark bg-light">
+         <div class="card-header h5">Операции</div>
+         <div class="card-body">
+            <div class="btn-group btn-group" role="group" aria-label="...">
+               <a href="{{ url_for('sql_list_commands.sql_list_commands') }}" class="btn btn-outline-dark">Назад</a>
+               <a href="{{ url_for('add_sql_command.add_sql_command') }}" class="btn btn-outline-dark">Добавим</a>
+               <button type="submit" value="" class="btn btn-outline-dark">Сохранимся</button>
+            </div>
+         </div>
+      </div>
+      <div class="card text-dark bg-light">
+         <div class="card-header h5">Информация о записи</div>
+         <ul>
+            <li>id записи: <b>{{ edit_sql_command_view.sql_id }}</b></li>
+            <li>Дата редактирования записи: <b>{{ edit_sql_command_view.sql_date_edit }}</b></li>
+            <li>Дата добавления записи: <b>{{ edit_sql_command_view.sql_date_add }}</li>
+         </ul>
+      </div>
+</form>
+{% endblock %}

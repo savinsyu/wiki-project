@@ -10,14 +10,18 @@
           <a class="nav-link" href="{{ url_for('index.index') }}">Главная</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('posts.posts') }}">Посты</a>
-        </li>
-         <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('export.export') }}">Экспорт</a>
+          <a class="nav-link" href="{{ url_for('cli_posts.cli_posts') }}">CLI</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('sql_list_commands.sql_list_commands') }}">SQL</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('python_list_commands.python_list_commands') }}">Python</a>
+        </li>
+                <li class="nav-item">
           <a class="nav-link" href="{{ url_for('about.about') }}">О проекте</a>
         </li>
+
       </ul>
     </div>
   </div>

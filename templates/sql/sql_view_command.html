@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Страница записи{% endblock %}
+{% block content %}
+<div class="card">
+   <div class="card-body">
+      <h5 class="card-title">ID</h5>
+      <p class="card-text">{{ sql_view['sql_id'] }}</p>
+      <h5 class="card-title">Дата редактирования записи</h5>
+      <p class="card-text">{{ sql_view['sql_date_edit'] }}</p>
+      <h5 class="card-title">Дата добавления записи</h5>
+      <p class="card-text">{{ sql_view['sql_date_add'] }}</p>
+      <h5 class="card-title">Название</h5>
+      <p class="card-text">{{ sql_view['sql_name'] }}</p>
+      <h5 class="card-title">Команда</h5>
+      <p class="card-text">{{ sql_view['sql_command'] }}</p>
+      <h5 class="card-title">Операции</h5>
+      <div class="btn-group btn-group pb-2" role="group" aria-label="...">
+         <a href="{{ url_for('sql_list_commands.sql_list_commands') }}" class="btn btn-outline-dark">Назад</a>
+            <a href="{{ url_for('add_sql_command.add_sql_command') }}" class="btn btn-outline-dark">Добавим</a>
+            <a href="{{ url_for('edit_sql_command.edit_sql_command', sql_id=sql_view['sql_id']) }}"
+               class="btn btn-outline-dark">Отредактируем</a>
+      </div>
+      <form action="{{ url_for('delete_sql_command.delete_sql_command', sql_id=sql_view['sql_id'])}}" method="POST"
+         class="pb-2">
+         <input type="submit" class="btn btn-outline-danger" value="Удалим запись?"
+            onclick="return confirm('Вы уверены что хотите удалить запись?')" />
+      </form>
+   </div>
+</div>
+{% endblock %}
