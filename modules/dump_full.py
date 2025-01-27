@@ -2,7 +2,6 @@ import sqlite3
 import io
 import os.path
 
-
 def dump_full():
     path_to_check = "../database.db"
     if os.path.exists(path_to_check):
@@ -26,3 +25,5 @@ def dump_full():
         conn.close()
     else:
         print("Файл базы данных не существует.")
+
+dump_full()

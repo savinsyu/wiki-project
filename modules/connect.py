@@ -1,11 +1,6 @@
 import sqlite3
 import os.path
 
-path_to_check = "../database.db"
-if os.path.exists(path_to_check):
-    print("Файл базы данных существует")
-else:
-    print("Файл базы данных не существует.")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
