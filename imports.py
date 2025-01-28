@@ -2,7 +2,7 @@ import secrets
 
 import flask
 
-from modules import index, about, services
+from modules import index, about, dump_and_excel_download
 from modules.cli import delete_cli_post, cli_posts, edit_cli_post, add_cli_post, get_view_cli_post
 from modules.sql import delete_sql_command, sql_list_commands, edit_sql_command, get_post_sql_command, add_sql_command
 from modules.python import delete_python_command, add_python_command, edit_python_command, get_post_python_command, \
@@ -29,7 +29,7 @@ app.register_blueprint(edit_cli_post.bp)
 app.register_blueprint(add_cli_post.bp)
 app.register_blueprint(index.bp)
 app.register_blueprint(about.bp)
-app.register_blueprint(services.bp)
+app.register_blueprint(dump_and_excel_download.bp)
 
 
 # RUS Пишем логику для отображения страницы с 404 ошибкой
