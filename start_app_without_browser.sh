@@ -12,6 +12,8 @@ then
     ECHO "Создаем requirements.txt"
     python -m  pip freeze > requirements.txt
   fi
+  ECHO "Обновим если нужно версию менеджера пакетов pip."
+  python -m pip install --upgrade pip
   # Устанавливаем последние обновления модулей python
   ECHO "Проверяем последнюю версию pip и обновления библиотек Python"
   python -m pip install --upgrade -r requirements.txt
