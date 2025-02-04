@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Сервисы{% endblock %}
+{% block content %}
+<div class="card mb-2">
+   <div class="card-body">
+    <h1>Бэкап базы данных</h1>
+    <form action="/backup" method="post">
+        <button type="submit" class="btn btn-success">Создать бэкап</button>
+    </form>
+   </div>
+</div>
+{% endblock %}

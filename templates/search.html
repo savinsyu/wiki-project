@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Сервисы{% endblock %}
+{% block content %}
+<h1>Поиск записей</h1>
+    <form action="/search" method="post">
+        <label for="search_term">Поиск:</label>
+        <input type="text" id="search_term" name="search_term" required>
+        <button type="submit">Искать</button>
+    </form>
+    <br>
+    <a href="/">Добавить запись</a>
+    <br><br>
+    {% if results %}
+        <h2>Результаты поиска:</h2>
+        <ul>
+            {% for result in results %}
+                <li>
+                    <strong>{{ result[1] }}</strong><br>
+                    {{ result[2] }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Нет результатов.</p>
+    {% endif %}
+{% endblock %}
