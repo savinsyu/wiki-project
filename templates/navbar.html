@@ -25,9 +25,13 @@
           <a class="nav-link" href="{{ url_for('services.services') }}">Дамп</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('search.search') }}">Поиск записей</a>
+          <a class="nav-link" href="{{ url_for('search.search') }}">Поиск</a>
         </li>
       </ul>
     </div>
+    <form class="d-flex" action="/search" method="post" role="search">
+      <input class="form-control me-2" type="text" placeholder="Поиск" aria-label="Search" name="search_term" id="search_term" required>
+      <button class="btn btn-outline-light" type="submit">Искать</button>
+    </form>
   </div>
 </nav>
