@@ -8,8 +8,23 @@
       <a href="{{ url_for('add_cli_post.add_cli_post') }}" class="btn btn-outline-dark">Добавить новую
          запись?</a>
       <p class="card-text">{% include 'errors.html' %}</p>
+
+      <div class="pagination">
+         {% if page > 1 %}
+             <a href="{{ url_for('cli_posts.cli_posts', page=page-1) }}" class="btn btn-outline-dark">Предыдущая</a>
+         {% endif %}
+         
+         {% for p in range(1, total_pages + 1) %}
+             <a href="{{ url_for('cli_posts.cli_posts', page=p) }}" class="btn btn-outline-dark {% if p == page %}active{% endif %}">{{ p }}</a>
+         {% endfor %}
+         
+         {% if page < total_pages %}
+             <a href="{{ url_for('cli_posts.cli_posts', page=page+1) }}" class="btn btn-outline-dark">Следующая</a>
+         {% endif %}
+      </div>
    </div>
 </div>
+
 <div class="container-index-page">
    {% for cli_list in cli_list %}
    <div class="card mb-2">
