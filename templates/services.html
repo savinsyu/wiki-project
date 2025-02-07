@@ -2,11 +2,12 @@
 {% block title %}Сервисы{% endblock %}
 {% block content %}
 <div class="card mb-2">
-   <div class="card-body">
-    <h1>Бэкап базы данных</h1>
-    <form action="/backup" method="post">
-        <button type="submit" class="btn btn-success">Создать бэкап</button>
-    </form>
-   </div>
+    <div class="card-header h3">Сервисы</div>
+    <div class="card-body">
+        <h4>Бэкап базы данных</h4>
+        <form action="/backup" method="post">
+            <button type="submit" class="btn btn-outline-dark">Создать бэкап</button>
+        </form>
+    </div>
 </div>
 {% endblock %}
