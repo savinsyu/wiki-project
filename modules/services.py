@@ -4,8 +4,27 @@ import sqlite3
 import pandas as pd
 import flask
 from modules import connect
+from flask import Flask, render_template, request, redirect, url_for
+
 
 bp = flask.Blueprint("services", __name__)
+
+
+BACKUP_DIR = 'backups'
+
+
+# Создаем папку для бэкапов, если она не существует
+if not os.path.exists(BACKUP_DIR):
+    os.makedirs(BACKUP_DIR)
+
+
+@bp.route('/backup/<filename>')
+def delete_file(filename):
+    # Удаляем файл
+    file_path = os.path.join(BACKUP_DIR, filename)
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    return redirect(url_for('services.services'))
 
 
 @bp.route("/services")
@@ -22,14 +41,9 @@ def services():
     #     df_sql_list.to_excel(writer, sheet_name='SQL', header=False, index=False)
     #     df_python_list.to_excel(writer, sheet_name='Python', header=False, index=False)
     #     df_cli_list.to_excel(writer, sheet_name='CLI', header=False, index=False)
+    files = os.listdir(BACKUP_DIR)
+    return flask.render_template("services.html", files=files)
 
-    return flask.render_template("services.html")
-
-BACKUP_DIR = 'backups'
-
-# Создаем папку для бэкапов, если она не существует
-if not os.path.exists(BACKUP_DIR):
-    os.makedirs(BACKUP_DIR)
 
 @bp.route("/backup", methods=['POST'])
 def backup():
@@ -43,7 +57,7 @@ def backup():
             with open(backup_path, 'w') as f:
                 for line in conn.iterdump():
                     f.write(f'{line}\n')
-        return f"Backup created successfully: {backup_filename}"
+        return redirect(url_for('services.services'))
 
     except Exception as e:
         return f"Error creating backup: {e}"

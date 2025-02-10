@@ -113,7 +113,7 @@ INSERT INTO "python" VALUES(15,'data[data["rating"] > 8]','‘ильтраци€ по значени
 INSERT INTO "python" VALUES(16,'data.sort_values("rating", ascending=False)','—ортировка','2024-11-15 13:09:33','');
 INSERT INTO "python" VALUES(17,'data.groupby("type").count()','‘ункци€ df.groupby и подсчЄт количества записей','2024-11-15 13:09:33','');
 INSERT INTO "python" VALUES(18,'data_modified.loc[["Haikyuu!! Second Season","Gintama"]]','ѕолучение строк с нужными индексными значени€ми','2024-11-15 13:09:33','');
-INSERT INTO "python" VALUES(19,'rating.merge(data, left_on=Тdata_idТ, right_on=Тdata_idТ, suffixes=(С_leftТ, С_rightТ))','—ли€ние датафреймов','2024-11-15 13:09:33','');
+INSERT INTO "python" VALUES(19,'merged_df = pd.merge(df, df_sample_submission, on=''id'', how=''inner'')','—ли€ние датафреймов по id','2024-11-15 13:09:33','2025-02-04 13:43:42');
 INSERT INTO "python" VALUES(20,'data.info()','ѕолучение сведений о датафрейм','2024-11-15 13:09:33','');
 INSERT INTO "python" VALUES(21,'data.head()','¬ывести первые п€ть строк датасета','2024-11-15 13:09:33','');
 INSERT INTO "python" VALUES(22,'data.drop(["density","members"], axis="columns")','”даление нескольких столбцов','2024-11-15 13:09:33','');
