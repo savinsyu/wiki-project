@@ -29,31 +29,29 @@ def delete_file(filename):
 
 @bp.route("/services")
 def services():
-    # conn = connect.get_db_connection()
-    # cli_list = conn.execute("SELECT * FROM cli").fetchall()
-    # sql_list = conn.execute("SELECT * FROM sql").fetchall()
-    # python_list = conn.execute("SELECT * FROM python").fetchall()
-    # conn.close()
-    # df_cli_list = pd.DataFrame(cli_list)
-    # df_python_list = pd.DataFrame(python_list)
-    # df_sql_list = pd.DataFrame(sql_list)
-    # with pd.ExcelWriter('backups/database_tables.xlsx') as writer:
-    #     df_sql_list.to_excel(writer, sheet_name='SQL', header=False, index=False)
-    #     df_python_list.to_excel(writer, sheet_name='Python', header=False, index=False)
-    #     df_cli_list.to_excel(writer, sheet_name='CLI', header=False, index=False)
     files = os.listdir(BACKUP_DIR)
     return flask.render_template("services.html", files=files)
 
 
 @bp.route("/backup", methods=['POST'])
 def backup():
-    # Генерируем имя файла с текущей датой и временем
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
     backup_filename = f'db_backup_{timestamp}.sql'
+    backup_filename_tables = f'db_tables_{timestamp}.xlsx'
     backup_path = os.path.join(BACKUP_DIR, backup_filename)
     # Создаем дамп базы данных
     try:
         with sqlite3.connect('database.db') as conn:
+            # cli_list = conn.execute("SELECT * FROM cli").fetchall()
+            # sql_list = conn.execute("SELECT * FROM sql").fetchall()
+            # python_list = conn.execute("SELECT * FROM python").fetchall()
+            # df_cli_list = pd.DataFrame(cli_list)
+            # df_python_list = pd.DataFrame(python_list)
+            # df_sql_list = pd.DataFrame(sql_list)
+            # with pd.ExcelWriter(backup_filename_tables, 'w') as writer:
+            #     df_sql_list.to_excel(sheet_name='SQL', header=False, index=False)
+            #     df_python_list.to_excel(sheet_name='Python', header=False, index=False)
+            #     df_cli_list.to_excel(sheet_name='CLI', header=False, index=False)
             with open(backup_path, 'w') as f:
                 for line in conn.iterdump():
                     f.write(f'{line}\n')
