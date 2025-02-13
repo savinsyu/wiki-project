@@ -1,0 +1,35 @@
+@bp.route("/add_about_name", methods=["GET", "POST"])
+def add_about_name():
+    if request.method == "POST":
+        new_about_name = request.form["about_name"]
+        if len(request.form['about_name']) > 4:
+            conn = connect.get_db_connection()
+            conn.execute(
+                "INSERT INTO about (about_name) VALUES (?)",
+                new_about_name
+            )
+            conn.commit()
+            conn.close()
+            if not new_about_name:
+                flash('Ошибка сохранения записи, вы ввели мало символов!', category='danger')
+            else:
+                flash('Запись успешно добавлена!', category='success')
+            # В случае соблюдения условий заполнения полей, произойдёт перенаправление
+            return redirect(url_for("about_list.about_list"))
+        else:
+            flash('Ошибка сохранения записи, вы ввели мало символов!', category='danger')
+
+    return render_template("about/about.html")
+
+{% block content %}
+<form method="post">
+   <div class="card mb-3">
+      <label for="about_name" class="card-header">Описание команды</label>
+      <textarea class="form-control" id="about_name" name="about_name" rows="5" placeholder="Введите описание"
+         required></textarea>
+   </div>
+   <div class="btn-group btn-group" role="group" aria-label="...">
+      <button type="submit" value="" class="btn btn-outline-dark">Сохранить</button>
+   </div>
+</form>
+{% endblock %}

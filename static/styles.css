@@ -12,6 +12,12 @@ a:hover {
   color: red;
 }
 
+.btn-dark {
+  border-radius: 50%;
+  padding: 0.25rem 0.5rem;
+  font-size: 1.2rem;
+  line-height: 1;
+}
 
 .navbar-dark .navbar-nav .nav-link:focus,
 .navbar-dark .navbar-nav .nav-link:hover {
@@ -31,11 +37,5 @@ article {
 }
 
 .container-index-page {
-    display: grid;
-}
-
-.bg-dark {
-    background-color: #212529!important;
-    border-radius: .25rem;
-    margin-top: 0.50rem;
+  display: grid;
 }

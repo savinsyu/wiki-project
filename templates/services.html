@@ -4,19 +4,20 @@
 <div class="card mb-2">
     <div class="card-header h3">Сервисы</div>
     <div class="card-body">
-        <div class="card-header h4">Бэкап базы данных</div>
+        <div class="card-header h4">Создание бэкапов баз данных и выгрузка таблиц баз данных в файл Excel</div>
         <p>
         <form action="/backup" method="post">
-            <button type="submit" class="btn btn-outline-dark">Создать бэкап</button>
+            <button type="submit" class="btn btn-outline-dark">Выполнить операцию</button>
         </form>
         </p>
-        <div class="card-header h4">Список бэкапов</div>
+        <div class="card-header h4">Список созданных файлов</div>
         <ul class="list-group">
             {% for file in files %}
             <li class="list-group-item">
                 {{ file }}
-                <a href="{{ url_for('services.delete_file', filename=file) }}" class="btn btn-outline-danger"
-                    onclick="return confirm('Вы уверены, что хотите удалить этот файл?')">Удалить бэкап?</a>
+                <a href="{{ url_for('services.delete_file', filename=file) }}" class="btn btn-outline-dark"
+                    onclick="return confirm('Вы уверены, что хотите удалить этот файл?')">Удалить файл</a>
+                <a href="{{ url_for('services.download_file', filename=file) }}" class="btn btn-outline-dark">Скачать файл</a>
             </li>
             {% endfor %}
         </ul>

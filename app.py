@@ -1,7 +1,7 @@
 import secrets
 
 import flask
-from modules import index, about, services, search
+from modules import index, services, search, about
 from modules.cli import delete_cli_post, cli_posts, edit_cli_post, add_cli_post, get_view_cli_post
 from modules.sql import delete_sql_command, sql_list_commands, edit_sql_command, get_post_sql_command, add_sql_command
 from modules.python import delete_python_command, add_python_command, edit_python_command, get_post_python_command, \
