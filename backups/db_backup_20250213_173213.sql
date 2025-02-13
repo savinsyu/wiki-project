@@ -1,4 +1,18 @@
 BEGIN TRANSACTION;
+CREATE TABLE about (
+	about_id INTEGER PRIMARY KEY AUTOINCREMENT,
+	about_name TEXT NOT NULL,
+	about_date_add TIMESTAMP DEFAULT (CURRENT_TIMESTAMP)
+);
+INSERT INTO "about" VALUES(1,'Python-приложение на основе фреймфорка Flask;','2025-02-10 14:47:34');
+INSERT INTO "about" VALUES(2,'База данных SQLite (локальный файл базы данных);','2025-02-10 14:47:34');
+INSERT INTO "about" VALUES(3,'Реализован поиск по всем разделам, которые имеют записи (разделы cli, sql, python);','2025-02-10 14:47:34');
+INSERT INTO "about" VALUES(4,'Реализована пагинация страниц с разбивкой по 10 записей на страницу(разделы cli, sql, python);','2025-02-10 14:47:34');
+INSERT INTO "about" VALUES(5,'В разделе Сервисы есть возможность сделать дамп базы данных;','2025-02-10 14:47:34');
+INSERT INTO "about" VALUES(6,'В разделе Сервисы реализован вывод списка файлов созданных бэкапов, а также возможность их удалить;','2025-02-10 14:47:34');
+INSERT INTO "about" VALUES(7,'В разделе Сервисы реализована возможность выгружать данные таблиц баз данных в файл excel;','2025-02-11 14:47:34');
+INSERT INTO "about" VALUES(8,'В разделе Сервисы реализована возможность скачать файлы бэкапа и excel;','2025-02-11 14:47:34');
+INSERT INTO "about" VALUES(12,'В разделе «О проекте» реализована логика добавления и удаления записей, создана таблица в базе данных, соответствующая;','2025-02-13 06:45:42');
 CREATE TABLE "cli" (
   "cli_id" INTEGER PRIMARY KEY AUTOINCREMENT,
   "cli_command" TEXT NOT NULL,
@@ -149,8 +163,11 @@ INSERT INTO "sql" VALUES(1167,'Создание таблицы в базе данных.','CREATE TABLE IF
   task_description TEXT NOT NULL,
   task_status TEXT NOT NULL DEFAULT Новая
 );','2024-11-19 13:58:50','2024-11-20 12:29:35');
+INSERT INTO "sql" VALUES(1170,'Выводит названия всех таблиц базы данных SQLite ','SELECT name FROM sqlite_master WHERE type=''table'' AND name NOT LIKE ''sqlite_%'';','2025-02-13 14:17:15',NULL);
+INSERT INTO "sql" VALUES(1171,'Вывести названия полей определенной таблицы SQLite','PRAGMA table_info(python);','2025-02-13 14:32:10',NULL);
 DELETE FROM "sqlite_sequence";
 INSERT INTO "sqlite_sequence" VALUES('python',2117);
 INSERT INTO "sqlite_sequence" VALUES('cli',220);
-INSERT INTO "sqlite_sequence" VALUES('sql',1169);
+INSERT INTO "sqlite_sequence" VALUES('sql',1171);
+INSERT INTO "sqlite_sequence" VALUES('about',12);
 COMMIT;
