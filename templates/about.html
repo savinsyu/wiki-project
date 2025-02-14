@@ -1,74 +1,77 @@
 {% extends "base.html" %}
 {% block title %}О проекте{% endblock %}
 {% block content %}
+<div class="container mt-4">
+   <div class="card mb-2">
+      <div class="card-header h3">О проекте</div>
+      <div class="card-body">
+         <p>Проект первоначально разрабатывался в качестве практики в python, sql, css, html и постепенно перерос в
+            полноценное приложение.</p>
+         <p>Ниже формы добавления записи отображена таблица со всеми изменениями или добавлениями функционала.</p>
 
-<div class="card mb-2">
-   <div class="card-header h3">О проекте</div>
-   <div class="card-body">
-      <p>Проект первоначально разрабатывался в качестве практики в python, sql, css, html и постепенно перерос в
-         полноценное приложение.</p>
-      <p>Ниже формы добавления записи отображена таблица со всеми изменениями или добавлениями функционала.</p>
+         <!-- Форма для добавления новой записи -->
 
-      <!-- Форма для добавления новой записи -->
+         <form method="POST" action="{{ url_for('about.add_about_name') }}" class="mb-4">
+            <div class="form-group">
+               <input type="text" class="form-control mb-2" id="about_name" name="about_name"
+                  placeholder="Введите содержание записи" required>
+            </div>
+            <button type="submit" class="btn btn-outline-dark">Добавить запись</button>
+         </form>
 
-      <form method="POST" action="{{ url_for('about.add_about_name') }}" class="mb-4" >
-         <div class="form-group">
-            <input type="text" class="form-control mb-2" id="about_name" name="about_name" placeholder="Введите содержание записи" required>
+         <!-- Отображение сообщений об ошибках или успехе -->
+
+         {% with messages = get_flashed_messages(with_categories=true) %}
+         {% if messages %}
+         {% for category, message in messages %}
+         <div class="alert alert-{{ category }}">
+            {{ message }}
          </div>
-         <button type="submit" class="btn btn-outline-dark">Добавить запись</button>
-      </form>
+         {% endfor %}
+         {% endif %}
+         {% endwith %}
 
-      <!-- Отображение сообщений об ошибках или успехе -->
-
-      {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-      {% for category, message in messages %}
-      <div class="alert alert-{{ category }}">
-         {{ message }}
       </div>
-      {% endfor %}
-      {% endif %}
-      {% endwith %}
-
-      <!-- Таблица для отображения списка записей -->
-
-      <table class="table">
+   </div>
+   <!-- Таблица для отображения списка записей -->
+   <div class="container-index-page">
+      <table class="table-custom">
          <thead>
             <tr>
-               <th scope="col">ID</th>
-               <th scope="col">Дата добавления</th>
-               <th scope="col">Название</th>
-               <th scope="col">Действия</th>
+               <!-- <th>ID</th>
+               <th>Дата добавления</th> -->
+               <th>Название</th>
+               <!-- <th>Действия</th> -->
             </tr>
          </thead>
          <tbody>
             {% for post in about_list_posts %}
             <tr>
-               <th scope="row">{{ post.about_id }}</th>
-               <th scope="row">{{ post.about_date_add }}</th>
+               <!-- <th>{{ post.about_id }}</th>
+               <th>{{ post.about_date_add }}</th> -->
                <td>{{ post.about_name }}</td>
-               <td>
-                  <form action="{{ url_for('about.delete_about', about_id=post.about_id) }}" method="POST" style="display:inline;">
+               <!-- <td>
+                  <form action="{{ url_for('about.delete_about', about_id=post.about_id) }}" method="POST"
+                     style="display:inline;">
                      <button type="submit" class="btn btn-outline-dark btn-sm">×</button>
                   </form>
-               </td>
+               </td> -->
             </tr>
             {% endfor %}
          </tbody>
       </table>
-      <script>
-         document.addEventListener('DOMContentLoaded', function() {
-             const deleteButtons = document.querySelectorAll('.btn-outline-dark btn-sm');
-             deleteButtons.forEach(button => {
-                 button.addEventListener('click', function(event) {
-                     if (!confirm('Вы уверены, что хотите удалить эту запись?')) {
-                         event.preventDefault();
-                     }
-                 });
-             });
-         });
-         </script>
    </div>
 </div>
-
+<script>
+   document.addEventListener('DOMContentLoaded', function () {
+      const deleteButtons = document.querySelectorAll('.btn-outline-dark btn-sm');
+      deleteButtons.forEach(button => {
+         button.addEventListener('click', function (event) {
+            if (!confirm('Вы уверены, что хотите удалить эту запись?')) {
+               event.preventDefault();
+            }
+         });
+      });
+   });
+</script>
 {% endblock %}

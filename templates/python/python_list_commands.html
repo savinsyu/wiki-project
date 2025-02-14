@@ -1,59 +1,69 @@
-{% extends "base.html" %} {% block title %}Команды python{% endblock %} {% block content %}
-<div class="card mb-2">
-   <div class="card-header h3">Список команд и скриптов Python</div>
-   <div class="card-body">
-      <p class="card-text">В этом разделе можно найти скрипты и команды Python</p>
-      <p class="card-text">Всего записей в таблице python: <b>{{ python_list_count }}</b></p>
-      <p class="card-text">
-         <a href="{{ url_for('add_python_command.add_python_command') }}" class="btn btn-outline-dark">Добавить новую
-            запись?</a>
-      </p>
-      <div class="pagination">
-         {% if page > 1 %}
-             <a href="{{ url_for('python_list_commands.python_list_commands', page=page-1) }}" class="btn btn-outline-dark">Предыдущая</a>
-         {% endif %}
-         
-         {% for p in range(1, total_pages + 1) %}
-             <a href="{{ url_for('python_list_commands.python_list_commands', page=p) }}" class="btn btn-outline-dark {% if p == page %}active{% endif %}">{{ p }}</a>
-         {% endfor %}
-         
-         {% if page < total_pages %}
-             <a href="{{ url_for('python_list_commands.python_list_commands', page=page+1) }}" class="btn btn-outline-dark">Следующая</a>
-         {% endif %}
-      </div>
-   </div>
-</div>
-<div class="container-index-page">
-   {% for python_list in python_list %}
-   <div class="card mb-2">
-      <div class="card-header">{{ python_list['python_name'] }}</div>
-      <div class="card-body">
-         <h4>Дата добавления</h4>
-         <p class="card-text">
-            {{ python_list['python_date_add'] }}
-         </p>
-         <h4>Дата редактирования</h4>
-         <p class="card-text">
-            {{ python_list['python_date_edit'] }}
-         </p>
-         <p class="card-text">
-         <pre class="card p-2">{{ python_list['python_command'] }}</pre>
-         </p>
-         <p class="card-text">
-         <div class="btn-group pb-2" role="group" aria-label="...">
-            <a href="{{ url_for('get_post_python_command.get_post_python_command', python_id=python_list['python_id']) }}"
-               class="btn btn-outline-dark">Перейти к записи</a>
-            <a href="{{ url_for('edit_python_command.edit_python_command', python_id=python_list['python_id']) }}"
-               class="btn btn-outline-dark">Редактировать запись?</a>
-         </div>
-         <form action="{{ url_for('delete_python_command.delete_python_command', python_id=python_list['python_id'])}}"
-            method="POST" class="pb-2">
-            <input type="submit" class="btn btn-outline-danger" value="Удалить запись?"
-               onclick="return confirm('Вы точно уверены что хотите удалить запись?')" />
-         </form>
-         </p>
-      </div>
-   </div>
-   {% endfor %}
+{% extends "base.html" %}
+
+{% block title %}Команды Python{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card mb-4">
+        <div class="card-header h3">Список команд и скриптов python</div>
+        <div class="card-body">
+            <p class="card-text">Всего записей в разделе: <b>{{ python_list_count }}</b></p>
+            <p class="card-text">
+                <a href="{{ url_for('add_python_command.add_python_command') }}" class="btn btn-outline-dark">Добавить новую запись</a>
+            </p>
+            <div class="pagination">
+                {% if page > 1 %}
+                <a href="{{ url_for('python_list_commands.python_list_commands', page=page-1) }}" class="btn btn-outline-dark">Предыдущая</a>
+                {% endif %}
+
+                {% for p in range(1, total_pages + 1) %}
+                <a href="{{ url_for('python_list_commands.python_list_commands', page=p) }}" class="btn btn-outline-dark {% if p == page %}active{% endif %}">{{ p }}</a>
+                {% endfor %}
+
+                {% if page < total_pages %}
+                <a href="{{ url_for('python_list_commands.python_list_commands', page=page+1) }}" class="btn btn-outline-dark">Следующая</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="container-index-page">
+        <table class="table-custom">
+            <thead>
+                <tr>
+                    <th>Имя</th>
+                    <th>Дата добавления</th>
+                    <th>Дата редактирования</th>
+                    <th>Команда</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for python_list in python_list %}
+                <tr>
+                    <td>{{ python_list['python_name'] }}</td>
+                    <td>{{ python_list['python_date_add'] }}</td>
+                    <td>{{ python_list['python_date_edit'] }}</td>
+                    <td>{{ python_list['python_command'] }}</td>
+                    <td>
+                        <div class="btn-group-vertical" role="group" aria-label="Действия">
+                            <a href="{{ url_for('get_post_python_command.get_post_python_command', python_id=python_list['python_id']) }}" class="btn btn-outline-dark btn-sm">
+                                <i class="bi bi-eye"></i>
+                            </a>
+                            <a href="{{ url_for('edit_python_command.edit_python_command', python_id=python_list['python_id']) }}" class="btn btn-outline-dark btn-sm">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+                        </div>
+                            <form action="{{ url_for('delete_python_command.delete_python_command', python_id=python_list['python_id']) }}" method="POST" class="d-inline">
+                                <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Вы точно уверены что хотите удалить запись?')">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </form>                       
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 {% endblock %}

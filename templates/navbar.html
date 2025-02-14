@@ -1,37 +1,37 @@
-<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('index.index') }}">Главная</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('cli_posts.cli_posts') }}">CLI</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('sql_list_commands.sql_list_commands') }}">SQL</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('python_list_commands.python_list_commands') }}">Python</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('about.about_list') }}">О проекте</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('services.services') }}">Сервисы</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('search.search') }}">Поиск</a>
-        </li>
-      </ul>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('index.index') }}">Главная</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('cli_posts.cli_posts') }}">CLI</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('sql_list_commands.sql_list_commands') }}">SQL</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('python_list_commands.python_list_commands') }}">Python</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('about.about_list') }}">О проекте</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('services.services') }}">Сервисы</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('search.search') }}">Поиск</a>
+          </li>
+        </ul>
+      </div>
+      <form class="d-flex" action="/search" method="post" role="search">
+        <input class="form-control me-2" type="text" placeholder="Поиск" aria-label="Search" name="search_term" id="search_term" required>
+        <button class="btn btn-outline-light" type="submit">Искать</button>
+      </form>
     </div>
-    <form class="d-flex" action="/search" method="post" role="search">
-      <input class="form-control me-2" type="text" placeholder="Поиск" aria-label="Search" name="search_term" id="search_term" required>
-      <button class="btn btn-outline-light" type="submit">Искать</button>
-    </form>
-  </div>
-</nav>
+  </nav>

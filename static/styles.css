@@ -1,41 +1,137 @@
+/* Основные стили для body */
 body {
-  width: 90%;
-  margin: auto;
+  background-color: #fff;
+  color: #000;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-a {
-  color: black;
-  text-decoration: none;
+/* Стили для карточек */
+.card {
+  border: 1px solid #000;
+  border-radius: 8px;
+  margin-bottom: 20px;
 }
 
-a:hover {
-  color: red;
+.card-header {
+  background-color: #000;
+  color: #fff;
+  border-bottom: 1px solid #000;
+  padding: 10px 15px;
 }
 
-.btn-dark {
-  border-radius: 50%;
-  padding: 0.25rem 0.5rem;
-  font-size: 1.2rem;
-  line-height: 1;
+/* Стили для кнопок */
+.btn-outline-dark {
+  border-color: #000;
+  color: #000;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.navbar-dark .navbar-nav .nav-link:focus,
-.navbar-dark .navbar-nav .nav-link:hover {
-  color: red;
+.btn-outline-dark:hover {
+  background-color: #000;
+  color: #fff;
 }
 
-article {
-  padding-top: 2rem;
+.btn-outline-light {
+  border-color: #ffffff;
+  color: #ffffff;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.navbar-dark .navbar-nav .nav-link {
-  text-transform: uppercase;
-  color: grey;
-  margin-right: 14px;
-  font-weight: 700;
-  font-size: 15px;
+.btn-outline-light:hover {
+  background-color: #ffffff;
+  color: #000000;
 }
 
-.container-index-page {
-  display: grid;
+/* Стили для форм */
+.form-control {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
+  padding: 10px;
+  border-radius: 4px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #000000;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Стили для теней */
+.shadow-sm {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+/* Стили для навигационной панели */
+.navbar {
+  background-color: #000000 !important;
+  border-bottom: 1px solid #333333;
+  padding: 10px 0;
+}
+
+.navbar-nav .nav-link {
+  color: #ffffff !important;
+  transition: color 0.3s ease;
+  padding: 10px 15px;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #cccccc !important;
+}
+
+.navbar-toggler-icon {
+  background-color: #ffffff;
+}
+
+/* Стили для контейнера */
+.container-fluid {
+  padding: 20px;
+}
+
+/* Дополнительные стили для улучшения отступов и выравнивания */
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+ /* Кастомные стили для таблицы */
+ .table-custom {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table-custom thead th {
+  background-color: #000;
+  color: #fff;
+  border-bottom: 2px solid #fff;
+  padding: 12px;
+}
+
+.table-custom tbody td {
+  background-color: #fff;
+  color: #000;
+  border-bottom: 1px solid #000;
+  padding: 10px;
+}
+
+.table-custom tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table-custom tbody tr:hover td {
+  background-color: #f1f1f1;
+  transition: background-color 0.3s ease;
 }

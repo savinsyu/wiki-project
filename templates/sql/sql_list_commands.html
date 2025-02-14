@@ -1,58 +1,70 @@
-{% extends "base.html" %} {% block title %}Команды sql{% endblock %} {% block content %}
-<div class="card mb-2">
-   <div class="card-header h3">Список команд и скриптов SQL</div>
-   <div class="card-body">
-      <p class="card-text">Всего записей в разделе: <b>{{ sql_list_count }}</b></p>
-      <p class="card-text">
-         <a href="{{ url_for('add_sql_command.add_sql_command') }}" class="btn btn-outline-dark">Добавить новую
-            запись?</a>
-      </p>
-      <div class="pagination">
-         {% if page > 1 %}
-             <a href="{{ url_for('sql_list_commands.sql_list_commands', page=page-1) }}" class="btn btn-outline-dark">Предыдущая</a>
-         {% endif %}
-         
-         {% for p in range(1, total_pages + 1) %}
-             <a href="{{ url_for('sql_list_commands.sql_list_commands', page=p) }}" class="btn btn-outline-dark {% if p == page %}active{% endif %}">{{ p }}</a>
-         {% endfor %}
-         
-         {% if page < total_pages %}
-             <a href="{{ url_for('sql_list_commands.sql_list_commands', page=page+1) }}" class="btn btn-outline-dark">Следующая</a>
-         {% endif %}
-      </div>
-   </div>
-</div>
-<div class="container-index-page">
-   {% for sql_list in sql_list %}
-   <div class="card mb-2">
-      <div class="card-header">{{ sql_list['sql_name'] }}</div>
-      <div class="card-body">
-         <h4>Дата добавления</h4>
-         <p class="card-text">
-            {{ sql_list['sql_date_add'] }}
-         </p>
-         <h4>Дата редактирования</h4>
-         <p class="card-text">
-            {{ sql_list['sql_date_edit'] }}
-         </p>
-         <p class="card-text">
-         <pre class="card p-2">{{ sql_list['sql_command'] }}</pre>
-         </p>
-         <p class="card-text">
-         <div class="btn-group pb-2" role="group" aria-label="...">
-            <a href="{{ url_for('get_post_sql_command.get_post_sql_command', sql_id=sql_list['sql_id']) }}"
-               class="btn btn-outline-dark">Перейти к записи</a>
-            <a href="{{ url_for('edit_sql_command.edit_sql_command', sql_id=sql_list['sql_id']) }}"
-               class="btn btn-outline-dark">Редактировать запись?</a>
-         </div>
-         <form action="{{ url_for('delete_sql_command.delete_sql_command', sql_id=sql_list['sql_id'])}}" method="POST"
-            class="pb-2">
-            <input type="submit" class="btn btn-outline-danger" value="Удалить запись?"
-               onclick="return confirm('Вы точно уверены что хотите удалить запись?')" />
-         </form>
-         </p>
-      </div>
-   </div>
-   {% endfor %}
+{% extends "base.html" %}
+
+{% block title %}Команды SQL{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card mb-4">
+        <div class="card-header h3">Список команд и скриптов SQL</div>
+        <div class="card-body">
+            <p class="card-text">Всего записей в разделе: <b>{{ sql_list_count }}</b></p>
+            <p class="card-text">
+                <a href="{{ url_for('add_sql_command.add_sql_command') }}" class="btn btn-outline-dark">Добавить новую запись</a>
+            </p>
+            <div class="pagination">
+                {% if page > 1 %}
+                <a href="{{ url_for('sql_list_commands.sql_list_commands', page=page-1) }}" class="btn btn-outline-dark">Предыдущая</a>
+                {% endif %}
+
+                {% for p in range(1, total_pages + 1) %}
+                <a href="{{ url_for('sql_list_commands.sql_list_commands', page=p) }}" class="btn btn-outline-dark {% if p == page %}active{% endif %}">{{ p }}</a>
+                {% endfor %}
+
+                {% if page < total_pages %}
+                <a href="{{ url_for('sql_list_commands.sql_list_commands', page=page+1) }}" class="btn btn-outline-dark">Следующая</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="container-index-page">
+        <table class="table-custom">
+            <thead>
+                <tr>
+                    <th>Имя</th>
+                    <th>Дата добавления</th>
+                    <th>Дата редактирования</th>
+                    <th>Команда</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sql_list in sql_list %}
+                <tr>
+                    <td>{{ sql_list['sql_name'] }}</td>
+                    <td>{{ sql_list['sql_date_add'] }}</td>
+                    <td>{{ sql_list['sql_date_edit'] }}</td>
+                    <td>{{ sql_list['sql_command'] }}</td>
+                    <td>
+                        <div class="btn-group-vertical" role="group" aria-label="Действия">
+                            <a href="{{ url_for('get_post_sql_command.get_post_sql_command', sql_id=sql_list['sql_id']) }}" class="btn btn-outline-dark btn-sm">
+                                <i class="bi bi-eye"></i>
+                            </a>
+                            <a href="{{ url_for('edit_sql_command.edit_sql_command', sql_id=sql_list['sql_id']) }}" class="btn btn-outline-dark btn-sm">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+                        </div>
+                            <form action="{{ url_for('delete_sql_command.delete_sql_command', sql_id=sql_list['sql_id']) }}" method="POST" class="d-inline">
+                                <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Вы точно уверены что хотите удалить запись?')">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 {% endblock %}

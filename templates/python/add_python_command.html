@@ -1,22 +1,42 @@
 {% extends 'base.html' %}
+
 {% block title %}Добавить команду{% endblock %}
+
 {% block content %}
-{% include 'errors.html' %}
-<form method="post">
-   <div class="card mb-3">
-      <label for="python_command" class="card-header">Команда</label>
-      <textarea class="form-control" id="python_command" name="python_command" rows="1" placeholder="Введите команду"
-         required></textarea>
-   </div>
-   <div class="card mb-3">
-      <label for="python_name" class="card-header">Описание команды</label>
-      <textarea class="form-control" id="python_name" name="python_name" rows="1" placeholder="Введите описание команды"
-         required></textarea>
-   </div>
-   <div class="btn-group btn-group" role="group" aria-label="...">
-      <a class="btn btn-outline-dark" href="{{ url_for('python_list_commands.python_list_commands') }}">Вернуться к
-         списку</a>
-      <button type="submit" value="" class="btn btn-outline-dark">Сохранить</button>
-   </div>
-</form>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="text-center mb-4">Добавить команду</h2>
+            {% include 'errors.html' %}
+            <form method="post">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header bg-dark text-white">
+                        <label for="python_command">Команда</label>
+                    </div>
+                    <div class="card-body">
+                        <textarea class="form-control" id="python_command" name="python_command" rows="3" placeholder="Введите команду" required></textarea>
+                    </div>
+                </div>
+
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header bg-dark text-white">
+                        <label for="python_name">Описание команды</label>
+                    </div>
+                    <div class="card-body">
+                        <textarea class="form-control" id="python_name" name="python_name" rows="3" placeholder="Введите описание команды" required></textarea>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a class="btn btn-outline-dark" href="{{ url_for('python_list_commands.python_list_commands') }}">
+                        <i class="fas fa-arrow-left"></i> Вернуться к списку
+                    </a>
+                    <button type="submit" class="btn btn-dark">
+                        <i class="fas fa-save"></i> Сохранить
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
