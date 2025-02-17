@@ -2,43 +2,9 @@
 {% block title %}Редактировать запись{% endblock %}
 {% block content %}
 <div class="container mt-5">
-   <form method="post">
-       <!-- Команда -->
-       <div class="card mb-4 shadow-sm">
-           <div class="card-header bg-dark text-white">
-               <label for="cli_command" class="h5 mb-0">Команда</label>
-           </div>
-           <div class="card-body">
-               <textarea class="form-control bg-light text-dark" id="cli_command" name="cli_command" rows="8"
-                   placeholder="Введите команду" required>{{ edit_cli_post_view.cli_command }}</textarea>
-           </div>
-       </div>
-       <!-- Описание команды -->
-       <div class="card mb-4 shadow-sm">
-           <div class="card-header bg-dark text-white">
-               <label for="cli_name" class="h5 mb-0">Описание команды</label>
-           </div>
-           <div class="card-body">
-               <textarea class="form-control bg-light text-dark" id="cli_name" name="cli_name" rows="8"
-                   placeholder="Введите описание команды" required>{{ edit_cli_post_view.cli_name }}</textarea>
-           </div>
-       </div>
-       <!-- Операции -->
-       <div class="card mb-4 shadow-sm">
-           <div class="card-header bg-dark text-white">
-               <div class="h5 mb-0">Операции</div>
-           </div>
-           <div class="card-body">
-               <div class="btn-group" role="group">
-                   <a href="{{ url_for('cli_posts.cli_posts') }}" class="btn btn-outline-dark">Назад</a>
-                   <a href="{{ url_for('add_cli_post.add_cli_post') }}" class="btn btn-outline-dark">Добавить</a>
-                   <button type="submit" class="btn btn-outline-dark">Сохранить</button>
-               </div>
-           </div>
-       </div>
-      </form>
-      <!-- Информация о записи -->
-      <div class="card mb-4 shadow-sm">
+    <form method="post">
+        <!-- Информация о записи -->
+        <!-- <div class="card mb-4 shadow-sm">
          <div class="card-header bg-dark text-white">
             <div class="h5 mb-0">Информация о записи</div>
          </div>
@@ -49,7 +15,55 @@
                <li>Дата добавления записи: <b>{{ edit_cli_post_view.cli_date_add }}</li>
             </ul>
          </div>
-      </div>
-   </div>
+      </div> -->
+        <!-- Команда -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-dark text-white">
+                <label for="cli_command" class="h5 mb-0">Редактировать команду CLI</label>
+            </div>
+            <div class="card-body">
+                <textarea class="form-control bg-light text-dark" id="cli_command" name="cli_command" rows="3"
+                    placeholder="Введите команду" required>{{ edit_cli_post_view.cli_command }}</textarea>
+            </div>
+        </div>
+        <!-- Описание команды -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-dark text-white">
+                <label for="cli_name" class="h5 mb-0">Описание команды</label>
+            </div>
+            <div class="card-body">
+                <textarea class="form-control bg-light text-dark" id="cli_name" name="cli_name" rows="3"
+                    placeholder="Введите описание команды" required>{{ edit_cli_post_view.cli_name }}</textarea>
+            </div>
+        </div>
+        <!-- Операции -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-dark text-white">
+                <div class="h5 mb-0">Операции</div>
+            </div>
+            <div class="card-body">
+                <a href="{{ url_for('cli_posts.cli_posts') }}" class="btn btn-outline-dark"><i class="fas fa-list"></i>
+                    Вернуться к списку
+                </a>
+                <a href="{{ url_for('add_cli_post.add_cli_post') }}" class="btn btn-outline-dark"><i
+                        class="fas fa-plus"></i> Добавить</a>
+                <button type="submit" class="btn btn-outline-dark"><i class="fas fa-save"></i> Сохранить</button>
+            </div>
+        </div>
+    </form>
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-dark text-white">
+            <div class="h5 mb-0">Удаление записи</div>
+        </div>
+        <div class="card-body">
+            <form action="{{ url_for('delete_cli_post.delete_cli_post', cli_id=edit_cli_post_view['cli_id'])}}"
+                method="POST" class="mt-3">
+                <button type="submit" class="btn btn-outline-danger"
+                    onclick="return confirm('Вы уверены что хотите удалить запись?')">
+                    <i class="bi bi-trash"></i> Удалить запись?
+                </button>
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock %}

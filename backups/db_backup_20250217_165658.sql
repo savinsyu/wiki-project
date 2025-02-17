@@ -166,8 +166,8 @@ INSERT INTO "sql" VALUES(1167,'—оздание таблицы в базе данных.','CREATE TABLE IF
 INSERT INTO "sql" VALUES(1170,'¬ыводит названи€ всех таблиц базы данных SQLite ','SELECT name FROM sqlite_master WHERE type=''table'' AND name NOT LIKE ''sqlite_%'';','2025-02-13 14:17:15',NULL);
 INSERT INTO "sql" VALUES(1171,'¬ывести названи€ полей определенной таблицы SQLite','PRAGMA table_info(python);','2025-02-13 14:32:10',NULL);
 DELETE FROM "sqlite_sequence";
-INSERT INTO "sqlite_sequence" VALUES('python',2121);
-INSERT INTO "sqlite_sequence" VALUES('cli',225);
-INSERT INTO "sqlite_sequence" VALUES('sql',1175);
+INSERT INTO "sqlite_sequence" VALUES('python',2131);
+INSERT INTO "sqlite_sequence" VALUES('cli',227);
+INSERT INTO "sqlite_sequence" VALUES('sql',1179);
 INSERT INTO "sqlite_sequence" VALUES('about',13);
 COMMIT;

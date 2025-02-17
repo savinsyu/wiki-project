@@ -1,7 +1,7 @@
 /* Основные стили для body */
 body {
-  background-color: #fff;
-  color: #000;
+  background-color: #121212; /* Темный фон */
+  color: #ffffff; /* Белый текст */
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
@@ -9,80 +9,81 @@ body {
 
 /* Стили для карточек */
 .card {
-  border: 1px solid #000;
+  border: 1px solid #333333; /* Темная граница */
   border-radius: 8px;
   margin-bottom: 20px;
+  background-color: #1e1e1e; /* Темный фон карточки */
 }
 
 .card-header {
-  background-color: #000;
-  color: #fff;
-  border-bottom: 1px solid #000;
+  background-color: #333333; /* Темный фон заголовка */
+  color: #ffffff; /* Белый текст */
+  border-bottom: 1px solid #444444; /* Темная граница */
   padding: 10px 15px;
 }
 
 /* Стили для кнопок */
 .btn-outline-dark {
-  border-color: #000;
-  color: #000;
+  border-color: #ffffff; /* Белая граница */
+  color: #ffffff; /* Белый текст */
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .btn-outline-dark:hover {
-  background-color: #000;
-  color: #fff;
+  background-color: #ffffff; /* Белый фон при наведении */
+  color: #000000; /* Черный текст при наведении */
 }
 
 .btn-outline-light {
-  border-color: #ffffff;
-  color: #ffffff;
+  border-color: #ffffff; /* Белая граница */
+  color: #ffffff; /* Белый текст */
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .btn-outline-light:hover {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #ffffff; /* Белый фон при наведении */
+  color: #000000; /* Черный текст при наведении */
 }
 
 /* Стили для форм */
 .form-control {
-  background-color: #ffffff;
-  color: #000000;
-  border: 1px solid #000000;
+  background-color: #1e1e1e; /* Темный фон */
+  color: #ffffff; /* Белый текст */
+  border: 1px solid #333333; /* Темная граница */
   padding: 10px;
   border-radius: 4px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-control:focus {
-  border-color: #000000;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  border-color: #ffffff; /* Белая граница при фокусе */
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.3); /* Белая тень при фокусе */
 }
 
 /* Стили для теней */
 .shadow-sm {
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  box-shadow: 0 0.125rem 0.25rem rgba(255, 255, 255, 0.075); /* Белая тень */
 }
 
 /* Стили для навигационной панели */
 .navbar {
-  background-color: #000000 !important;
-  border-bottom: 1px solid #333333;
+  background-color: #1e1e1e !important; /* Темный фон */
+  border-bottom: 1px solid #333333; /* Темная граница */
   padding: 10px 0;
 }
 
 .navbar-nav .nav-link {
-  color: #ffffff !important;
+  color: #ffffff !important; /* Белый текст */
   transition: color 0.3s ease;
   padding: 10px 15px;
 }
 
 .navbar-nav .nav-link:hover {
-  color: #cccccc !important;
+  color: #cccccc !important; /* Светло-серый текст при наведении */
 }
 
 .navbar-toggler-icon {
-  background-color: #ffffff;
+  background-color: #ffffff; /* Белый цвет иконки */
 }
 
 /* Стили для контейнера */
@@ -103,27 +104,28 @@ body {
   text-align: center;
 }
 
- /* Кастомные стили для таблицы */
- .table-custom {
+/* Кастомные стили для таблицы */
+.table-custom {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  border: 1px solid #000;
+  border: 1px solid #333333; /* Темная граница */
   border-radius: 8px;
   overflow: hidden;
+  background-color: #1e1e1e; /* Темный фон таблицы */
 }
 
 .table-custom thead th {
-  background-color: #000;
-  color: #fff;
-  border-bottom: 2px solid #fff;
+  background-color: #333333; /* Темный фон заголовка */
+  color: #ffffff; /* Белый текст */
+  border-bottom: 2px solid #444444; /* Темная граница */
   padding: 12px;
 }
 
 .table-custom tbody td {
-  background-color: #fff;
-  color: #000;
-  border-bottom: 1px solid #000;
+  background-color: #1e1e1e; /* Темный фон ячеек */
+  color: #ffffff; /* Белый текст */
+  border-bottom: 1px solid #333333; /* Темная граница */
   padding: 10px;
 }
 
@@ -132,6 +134,6 @@ body {
 }
 
 .table-custom tbody tr:hover td {
-  background-color: #f1f1f1;
+  background-color: #333333; /* Темный фон при наведении */
   transition: background-color 0.3s ease;
 }

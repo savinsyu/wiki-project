@@ -9,46 +9,42 @@
             <h4 class="card-title mb-0">Детали записи</h4>
         </div>
         <div class="card-body">
+            {% set fields = [
+            {'title': 'ID', 'value': sql_view['sql_id'], 'class': 'col-md-6'},
+            {'title': 'Дата редактирования записи', 'value': sql_view['sql_date_edit'], 'class': 'col-md-6'},
+            {'title': 'Дата добавления записи', 'value': sql_view['sql_date_add'], 'class': 'col-md-6'},
+            {'title': 'Название', 'value': sql_view['sql_name'], 'class': 'col-md-6'},
+            {'title': 'Команда', 'value': sql_view['sql_command'], 'class': 'col-md-12'}
+            ] %}
+
+            {% for field in fields %}
             <div class="row mb-3">
-                <div class="col-md-6">
-                    <h5 class="card-title">ID</h5>
-                    <p class="card-text">{{ sql_view['sql_id'] }}</p>
-                </div>
-                <div class="col-md-6">
-                    <h5 class="card-title">Дата редактирования записи</h5>
-                    <p class="card-text">{{ sql_view['sql_date_edit'] }}</p>
+                <div class="{{ field.class }}">
+                    <h5 class="card-title">{{ field.title }}</h5>
+                    <p class="card-text">{{ field.value }}</p>
                 </div>
             </div>
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <h5 class="card-title">Дата добавления записи</h5>
-                    <p class="card-text">{{ sql_view['sql_date_add'] }}</p>
-                </div>
-                <div class="col-md-6">
-                    <h5 class="card-title">Название</h5>
-                    <p class="card-text">{{ sql_view['sql_name'] }}</p>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-12">
-                    <h5 class="card-title">Команда</h5>
-                    <p class="card-text">{{ sql_view['sql_command'] }}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <h5 class="card-title">Операции</h5>
-                    <div class="btn-group btn-group-lg" role="group" aria-label="Операции">
-                        <a href="{{ url_for('sql_list_commands.sql_list_commands') }}" class="btn btn-outline-dark">Назад</a>
-                        <a href="{{ url_for('add_sql_command.add_sql_command') }}" class="btn btn-outline-dark">Добавим</a>
-                        <a href="{{ url_for('edit_sql_command.edit_sql_command', sql_id=sql_view['sql_id']) }}" class="btn btn-outline-dark">Отредактируем</a>
-                    </div>
-                    <form action="{{ url_for('delete_sql_command.delete_sql_command', sql_id=sql_view['sql_id'])}}" method="POST" class="mt-3">
-                        <input type="submit" class="btn btn-outline-danger btn-lg" value="Удалим запись?"
-                            onclick="return confirm('Вы уверены что хотите удалить запись?')" />
-                    </form>
-                </div>
-            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-dark text-white">
+            <div class="h5 mb-0">Операции</div>
+        </div>
+        <div class="card-body">
+            <a href="{{ url_for('sql_list_commands.sql_list_commands') }}" class="btn btn-outline-dark"><i
+                    class="fas fa-list"></i> Вернуться к списку</a>
+            <a href="{{ url_for('add_sql_command.add_sql_command') }}" class="btn btn-outline-dark"><i
+                    class="fas fa-plus"></i> Добавить новую запись</a>
+            <a href="{{ url_for('edit_sql_command.edit_sql_command', sql_id=sql_view['sql_id']) }}"
+                class="btn btn-outline-dark"><i class="fas fa-pen"></i> Редактировать запись</a>
+            <form action="{{ url_for('delete_sql_command.delete_sql_command', sql_id=sql_view['sql_id'])}}"
+                method="POST" class="mt-3">
+                <button type="submit" class="btn btn-outline-danger"
+                    onclick="return confirm('Вы уверены что хотите удалить запись?')">
+                    <i class="bi bi-trash"></i> Удалить запись?
+                </button>
+            </form>
         </div>
     </div>
 </div>

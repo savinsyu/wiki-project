@@ -9,7 +9,8 @@
         <div class="card-body">
             <p class="card-text">Всего записей в разделе: <b>{{ sql_list_count }}</b></p>
             <p class="card-text">
-                <a href="{{ url_for('add_sql_command.add_sql_command') }}" class="btn btn-outline-dark">Добавить новую запись</a>
+                <a href="{{ url_for('add_sql_command.add_sql_command') }}" class="btn btn-outline-dark"><i
+                    class="fas fa-plus"></i> Добавить новую запись</a>
             </p>
             <div class="pagination">
                 {% if page > 1 %}
@@ -32,8 +33,8 @@
             <thead>
                 <tr>
                     <th>Имя</th>
-                    <th>Дата добавления</th>
-                    <th>Дата редактирования</th>
+                    <!-- <th>Дата добавления</th>
+                    <th>Дата редактирования</th> -->
                     <th>Команда</th>
                     <th>Действия</th>
                 </tr>
@@ -42,8 +43,8 @@
                 {% for sql_list in sql_list %}
                 <tr>
                     <td>{{ sql_list['sql_name'] }}</td>
-                    <td>{{ sql_list['sql_date_add'] }}</td>
-                    <td>{{ sql_list['sql_date_edit'] }}</td>
+                    <!-- <td>{{ sql_list['sql_date_add'] }}</td>
+                    <td>{{ sql_list['sql_date_edit'] }}</td> -->
                     <td>{{ sql_list['sql_command'] }}</td>
                     <td>
                         <div class="btn-group-vertical" role="group" aria-label="Действия">

@@ -5,11 +5,12 @@
 {% block content %}
 <div class="container mt-4">
     <div class="card mb-4">
-        <div class="card-header h3">Список команд и скриптов python</div>
+        <div class="card-header h3">Список команд и скриптов на языке программирования Python</div>
         <div class="card-body">
             <p class="card-text">Всего записей в разделе: <b>{{ python_list_count }}</b></p>
             <p class="card-text">
-                <a href="{{ url_for('add_python_command.add_python_command') }}" class="btn btn-outline-dark">Добавить новую запись</a>
+                <a href="{{ url_for('add_python_command.add_python_command') }}" class="btn btn-outline-dark"><i
+                    class="fas fa-plus"></i> Добавить новую запись</a>
             </p>
             <div class="pagination">
                 {% if page > 1 %}
@@ -32,8 +33,8 @@
             <thead>
                 <tr>
                     <th>Имя</th>
-                    <th>Дата добавления</th>
-                    <th>Дата редактирования</th>
+                    <!-- <th>Дата добавления</th>
+                    <th>Дата редактирования</th> -->
                     <th>Команда</th>
                     <th>Действия</th>
                 </tr>
@@ -42,8 +43,8 @@
                 {% for python_list in python_list %}
                 <tr>
                     <td>{{ python_list['python_name'] }}</td>
-                    <td>{{ python_list['python_date_add'] }}</td>
-                    <td>{{ python_list['python_date_edit'] }}</td>
+                    <!-- <td>{{ python_list['python_date_add'] }}</td>
+                    <td>{{ python_list['python_date_edit'] }}</td> -->
                     <td>{{ python_list['python_command'] }}</td>
                     <td>
                         <div class="btn-group-vertical" role="group" aria-label="Действия">

@@ -5,7 +5,8 @@
       <div class="card-body">
          <p class="card-text">
             Всего записей в таблице cli: <b>{{ cli_list_count }}</b></p>
-         <a href="{{ url_for('add_cli_post.add_cli_post') }}" class="btn btn-outline-dark">Добавить новую
+         <a href="{{ url_for('add_cli_post.add_cli_post') }}" class="btn btn-outline-dark"><i
+            class="fas fa-plus"></i> Добавить новую
             запись?</a>
          <p class="card-text">{% include 'errors.html' %}</p>
 
@@ -30,8 +31,8 @@
          <thead>
             <tr>
                <th>Имя</th>
-               <th>Дата добавления</th>
-               <th>Дата редактирования</th>
+               <!-- <th>Дата добавления</th>
+               <th>Дата редактирования</th> -->
                <th>Команда</th>
                <th>Действия</th>
             </tr>
@@ -40,8 +41,8 @@
             {% for cli_list in cli_list %}
             <tr>
                <td>{{ cli_list['cli_name'] }}</td>
-               <td>{{ cli_list['cli_date_add'] }}</td>
-               <td>{{ cli_list['cli_date_edit'] }}</td>
+               <!-- <td>{{ cli_list['cli_date_add'] }}</td>
+               <td>{{ cli_list['cli_date_edit'] }}</td> -->
                <td>{{ cli_list['cli_command'] }}</td>
                <td>
                   <div class="btn-group-vertical" role="group" aria-label="Действия">
