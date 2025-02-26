@@ -102,6 +102,10 @@ INSERT INTO "cli" VALUES(214,'git remote set-url origin git@github.com:savinsyu/
 INSERT INTO "cli" VALUES(215,'echo $RANDOM','Генерация случайных чисел с терминала','2024-12-23 10:01:25',NULL);
 INSERT INTO "cli" VALUES(216,'sleep 1m','Задержка в терминале, в данном случае на 1 минуту, s - секунды по умолчанию, m - минуты, h - час, d - день','2024-12-23 10:01:25',NULL);
 INSERT INTO "cli" VALUES(217,'echo "Hello world!" >> hello_world.txt','Создается текстовый файл с текстом Hello World','2024-12-24 14:43:34',NULL);
+INSERT INTO "cli" VALUES(228,'pip show django','Проверка установленной библиотеки, в данном примере библиотеки django','2025-02-18 11:03:11',NULL);
+INSERT INTO "cli" VALUES(229,'django-admin startproject movie_project','Команда django, которая создает папку movie_project с экземпляром приложения','2025-02-18 11:20:38',NULL);
+INSERT INTO "cli" VALUES(230,'mv Облако\ Mail/ Mail_Disk','Переименование папки в linux. В данном случае папка "Облако Mail" переименовывается в папку Mail_Disk.','2025-02-21 08:52:26',NULL);
+INSERT INTO "cli" VALUES(231,'cp -r Google_Disk Mail_Disk /g','Данная команда копирует две папки на другой диск.','2025-02-24 13:16:39',NULL);
 CREATE TABLE "python" (
   [python_id] INTEGER PRIMARY KEY AUTOINCREMENT,
   [python_command] TEXT NOT NULL,
@@ -167,7 +171,7 @@ INSERT INTO "sql" VALUES(1170,'Выводит названия всех таблиц базы данных SQLite '
 INSERT INTO "sql" VALUES(1171,'Вывести названия полей определенной таблицы SQLite','PRAGMA table_info(python);','2025-02-13 14:32:10',NULL);
 DELETE FROM "sqlite_sequence";
 INSERT INTO "sqlite_sequence" VALUES('python',2131);
-INSERT INTO "sqlite_sequence" VALUES('cli',227);
+INSERT INTO "sqlite_sequence" VALUES('cli',231);
 INSERT INTO "sqlite_sequence" VALUES('sql',1179);
 INSERT INTO "sqlite_sequence" VALUES('about',13);
 COMMIT;

@@ -5,6 +5,7 @@ import pandas as pd
 import flask
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 import logging
+from git import Repo  # Импортируем Repo из gitpython
 
 # Настройка логирования
 logging.basicConfig(level=logging.INFO)
@@ -78,3 +79,29 @@ def backup():
 def download_file(filename):
     # Скачивание файла
     return send_from_directory(BACKUP_DIR, filename, as_attachment=True)
+
+
+@bp.route('/commit_and_push', methods=['POST'])
+def commit_and_push():
+    try:
+        # Путь к локальному репозиторию
+        repo_path = '.'  # Укажите путь к вашему репозиторию, если он отличается
+        repo = Repo(repo_path)
+
+        # Добавляем все изменения
+        repo.git.add(A=True)
+
+        # Создаем коммит
+        commit_message = "Auto-commit from Flask app"
+        repo.index.commit(commit_message)
+
+        # Отправляем изменения на удаленный репозиторий
+        origin = repo.remote(name='origin')
+        origin.push()
+
+        logger.info("Changes committed and pushed successfully.")
+        return redirect(url_for('services.services'))
+
+    except Exception as e:
+        logger.error(f"Error committing and pushing changes: {e}")
+        return f"Error committing and pushing changes: {e}"
