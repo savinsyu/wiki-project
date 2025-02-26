@@ -13,6 +13,7 @@ INSERT INTO "about" VALUES(6,'В разделе Сервисы реализован вывод списка файлов с
 INSERT INTO "about" VALUES(7,'В разделе Сервисы реализована возможность выгружать данные таблиц баз данных в файл excel;','2025-02-11 14:47:34');
 INSERT INTO "about" VALUES(8,'В разделе Сервисы реализована возможность скачать файлы бэкапа и excel;','2025-02-11 14:47:34');
 INSERT INTO "about" VALUES(12,'В разделе «О проекте» реализована логика добавления и удаления записей, создана таблица в базе данных, соответствующая;','2025-02-13 06:45:42');
+INSERT INTO "about" VALUES(14,'Добавлена возможность отправки коммита на репозиторий с кнопки в разделе "Сервисы"','2025-02-26 13:31:40');
 CREATE TABLE "cli" (
   "cli_id" INTEGER PRIMARY KEY AUTOINCREMENT,
   "cli_command" TEXT NOT NULL,
@@ -173,5 +174,5 @@ DELETE FROM "sqlite_sequence";
 INSERT INTO "sqlite_sequence" VALUES('python',2131);
 INSERT INTO "sqlite_sequence" VALUES('cli',231);
 INSERT INTO "sqlite_sequence" VALUES('sql',1179);
-INSERT INTO "sqlite_sequence" VALUES('about',13);
+INSERT INTO "sqlite_sequence" VALUES('about',14);
 COMMIT;

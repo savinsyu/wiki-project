@@ -5,13 +5,20 @@
     <div class="card mb-2">
         <div class="card-header h3">Сервисы</div>
         <div class="card-body">
+            <ul>
+                <li>Бэкапы</li>
+                <li>Github</li>
+            </ul>
+        </div>
+    </div>
+    <div class="card mb-2">
+        <div class="card-header h4">Бэкапы</div>
+        <div class="card-body">
             <p>Создание бэкапов баз данных и выгрузка таблиц баз данных в файл Excel.</p>
             <form action="/backup" method="post">
                 <button type="submit" class="btn btn-outline-dark">Выполнить бэкапы</button>
             </form>
         </div>
-    </div>
-    <div class="container-index-page">
         <table class="table-custom">
             <tbody>
                 {% for file in files %}
@@ -25,8 +32,16 @@
                 {% endfor %}
             </tbody>
         </table>
-        <form action="{{ url_for('services.commit_and_push') }}" method="post">
-            <button type="submit">Commit and Push</button>
-        </form>
     </div>
-    {% endblock %}
+
+    <div class="card mb-2">
+        <div class="card-header h4">Github</div>
+        <div class="card-body">
+            <p>Формирование и отправка коммита на репозиторий приложени.</p>
+            <form action="{{ url_for('services.commit_and_push') }}" method="post">
+                <button type="submit" class="btn btn-outline-dark">Выполнить</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

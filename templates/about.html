@@ -38,8 +38,8 @@
       <table class="table-custom">
          <thead>
             <tr>
-               <!-- <th>ID</th>
-               <th>Дата добавления</th> -->
+               <!-- <th>ID</th> -->
+               <th>Дата добавления</th>
                <th>Название</th>
                <!-- <th>Действия</th> -->
             </tr>
@@ -47,8 +47,8 @@
          <tbody>
             {% for post in about_list_posts %}
             <tr>
-               <!-- <th>{{ post.about_id }}</th>
-               <th>{{ post.about_date_add }}</th> -->
+               <!-- <th>{{ post.about_id }}</th> -->
+               <td>{{ post.about_date_add }}</td>
                <td>{{ post.about_name }}</td>
                <!-- <td>
                   <form action="{{ url_for('about.delete_about', about_id=post.about_id) }}" method="POST"
