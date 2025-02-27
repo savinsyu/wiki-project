@@ -57,15 +57,19 @@ def backup():
             cli_list = conn.execute("SELECT * FROM cli").fetchall()
             sql_list = conn.execute("SELECT * FROM sql").fetchall()
             python_list = conn.execute("SELECT * FROM python").fetchall()
+            about_list = conn.execute("SELECT * FROM about").fetchall()
+
 
             df_cli_list = pd.DataFrame(cli_list)
             df_python_list = pd.DataFrame(python_list)
             df_sql_list = pd.DataFrame(sql_list)
+            df_about_list = pd.DataFrame(about_list)
 
             with pd.ExcelWriter(backup_tables_path, engine='openpyxl') as writer:
                 df_sql_list.to_excel(writer, sheet_name='SQL', header=False, index=False)
                 df_python_list.to_excel(writer, sheet_name='Python', header=False, index=False)
                 df_cli_list.to_excel(writer, sheet_name='CLI', header=False, index=False)
+                df_about_list.to_excel(writer, sheet_name='About', header=False, index=False)
 
             logger.info(f"Backup created successfully: {backup_filename} and {backup_filename_tables}")
         return redirect(url_for('services.services'))
