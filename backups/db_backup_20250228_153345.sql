@@ -4,16 +4,15 @@ CREATE TABLE about (
 	about_name TEXT NOT NULL,
 	about_date_add TIMESTAMP DEFAULT (CURRENT_TIMESTAMP)
 );
-INSERT INTO "about" VALUES(1,'Python-приложение на основе фреймфорка Flask;','2025-02-10 14:47:34');
-INSERT INTO "about" VALUES(2,'База данных SQLite (локальный файл базы данных);','2025-02-10 14:47:34');
 INSERT INTO "about" VALUES(3,'Реализован поиск по всем разделам, которые имеют записи (разделы cli, sql, python);','2025-02-10 14:47:34');
 INSERT INTO "about" VALUES(4,'Реализована пагинация страниц с разбивкой по 10 записей на страницу(разделы cli, sql, python);','2025-02-10 14:47:34');
-INSERT INTO "about" VALUES(5,'В разделе Сервисы есть возможность сделать дамп базы данных;','2025-02-10 14:47:34');
-INSERT INTO "about" VALUES(6,'В разделе Сервисы реализован вывод списка файлов созданных бэкапов, а также возможность их удалить;','2025-02-10 14:47:34');
-INSERT INTO "about" VALUES(7,'В разделе Сервисы реализована возможность выгружать данные таблиц баз данных в файл excel;','2025-02-11 14:47:34');
-INSERT INTO "about" VALUES(8,'В разделе Сервисы реализована возможность скачать файлы бэкапа и excel;','2025-02-11 14:47:34');
+INSERT INTO "about" VALUES(5,'В разделе "Сервисы" есть возможность сделать дамп базы данных;','2025-02-10 14:47:34');
+INSERT INTO "about" VALUES(6,'В разделе "Сервисы" реализован вывод списка файлов созданных бэкапов, а также возможность их удалить;','2025-02-10 14:47:34');
+INSERT INTO "about" VALUES(7,'В разделе "Сервисы" реализована возможность выгружать данные таблиц баз данных в файл excel;','2025-02-11 14:47:34');
+INSERT INTO "about" VALUES(8,'В разделе "Сервисы" реализована возможность скачать файлы бэкапа и excel;','2025-02-11 14:47:34');
 INSERT INTO "about" VALUES(12,'В разделе «О проекте» реализована логика добавления и удаления записей, создана таблица в базе данных, соответствующая;','2025-02-13 06:45:42');
-INSERT INTO "about" VALUES(14,'Добавлена возможность отправки коммита на репозиторий с кнопки в разделе "Сервисы"','2025-02-26 13:31:40');
+INSERT INTO "about" VALUES(14,'Добавлена возможность отправки коммита на репозиторий с кнопки в разделе "Сервисы";','2025-02-26 13:31:40');
+INSERT INTO "about" VALUES(15,'Добавлен сервис генерации пароля в разделе "Сервисы";','2025-02-28 12:19:51');
 CREATE TABLE "cli" (
   "cli_id" INTEGER PRIMARY KEY AUTOINCREMENT,
   "cli_command" TEXT NOT NULL,
@@ -174,5 +173,5 @@ DELETE FROM "sqlite_sequence";
 INSERT INTO "sqlite_sequence" VALUES('python',2131);
 INSERT INTO "sqlite_sequence" VALUES('cli',231);
 INSERT INTO "sqlite_sequence" VALUES('sql',1179);
-INSERT INTO "sqlite_sequence" VALUES('about',14);
+INSERT INTO "sqlite_sequence" VALUES('about',15);
 COMMIT;

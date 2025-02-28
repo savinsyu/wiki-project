@@ -8,6 +8,10 @@
          <p>Проект первоначально разрабатывался в качестве практики в python, sql, css, html и постепенно перерос в
             полноценное приложение.</p>
          <p>Ниже формы добавления записи отображена таблица со всеми изменениями или добавлениями функционала.</p>
+         <ul>
+            <li>Python-приложение на основе фреймфорка Flask;</li>
+            <li>База данных SQLite (локальный файл базы данных);</li>
+         </ul>
 
          <!-- Форма для добавления новой записи -->
 
@@ -18,6 +22,32 @@
             </div>
             <button type="submit" class="btn btn-outline-dark">Добавить запись</button>
          </form>
+         <!-- Таблица для отображения списка записей -->
+         <table class="table-custom">
+            <thead>
+               <tr>
+                  <!-- <th>ID</th> -->
+                  <!--               <th>Дата добавления</th>-->
+                  <!--               <th>Название</th>-->
+                  <!-- <th>Действия</th> -->
+               </tr>
+            </thead>
+            <tbody>
+               {% for post in about_list_posts %}
+               <tr>
+                  <!-- <th>{{ post.about_id }}</th> -->
+                  <!--               <td>{{ post.about_date_add }}</td>-->
+                  <td>{{ post.about_name }}</td>
+                  <!-- <td>
+                  <form action="{{ url_for('about.delete_about', about_id=post.about_id) }}" method="POST"
+                     style="display:inline;">
+                     <button type="submit" class="btn btn-outline-dark btn-sm">×</button>
+                  </form>
+               </td> -->
+               </tr>
+               {% endfor %}
+            </tbody>
+         </table>
 
          <!-- Отображение сообщений об ошибках или успехе -->
 
@@ -32,34 +62,6 @@
          {% endwith %}
 
       </div>
-   </div>
-   <!-- Таблица для отображения списка записей -->
-   <div class="container-index-page">
-      <table class="table-custom">
-         <thead>
-            <tr>
-               <!-- <th>ID</th> -->
-               <th>Дата добавления</th>
-               <th>Название</th>
-               <!-- <th>Действия</th> -->
-            </tr>
-         </thead>
-         <tbody>
-            {% for post in about_list_posts %}
-            <tr>
-               <!-- <th>{{ post.about_id }}</th> -->
-               <td>{{ post.about_date_add }}</td>
-               <td>{{ post.about_name }}</td>
-               <!-- <td>
-                  <form action="{{ url_for('about.delete_about', about_id=post.about_id) }}" method="POST"
-                     style="display:inline;">
-                     <button type="submit" class="btn btn-outline-dark btn-sm">×</button>
-                  </form>
-               </td> -->
-            </tr>
-            {% endfor %}
-         </tbody>
-      </table>
    </div>
 </div>
 <script>

@@ -6,6 +6,8 @@ import flask
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 import logging
 from git import Repo  # Импортируем Repo из gitpython
+import secrets
+import string
 
 # Настройка логирования
 logging.basicConfig(level=logging.INFO)
@@ -35,7 +37,8 @@ def delete_file(filename):
 @bp.route("/services")
 def services():
     files = os.listdir(BACKUP_DIR)
-    return flask.render_template("services.html", files=files)
+    password = request.args.get('password', None)
+    return flask.render_template("services.html", files=files, password=password)
 
 
 @bp.route("/backup", methods=['POST'])
@@ -58,7 +61,6 @@ def backup():
             sql_list = conn.execute("SELECT * FROM sql").fetchall()
             python_list = conn.execute("SELECT * FROM python").fetchall()
             about_list = conn.execute("SELECT * FROM about").fetchall()
-
 
             df_cli_list = pd.DataFrame(cli_list)
             df_python_list = pd.DataFrame(python_list)
@@ -109,3 +111,11 @@ def commit_and_push():
     except Exception as e:
         logger.error(f"Error committing and pushing changes: {e}")
         return f"Error committing and pushing changes: {e}"
+
+
+@bp.route('/generate_password', methods=['POST'])
+def generate_password():
+    # Генерация случайного пароля
+    alphabet = string.ascii_letters + string.digits + string.punctuation
+    password = ''.join(secrets.choice(alphabet) for i in range(16))  # Генерация пароля длиной 16 символов
+    return redirect(url_for('services.services', password=password))

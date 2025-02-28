@@ -5,43 +5,89 @@
     <div class="card mb-2">
         <div class="card-header h3">Сервисы</div>
         <div class="card-body">
-            <ul>
-                <li>Бэкапы</li>
-                <li>Github</li>
-            </ul>
+            <div class="accordion " id="accordionExample">
+                <!-- Генерация пароля -->
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-outline-dark" type="button" data-toggle="collapse"
+                                data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Генерация пароля
+                            </button>
+                        </h2>
+                    </div>
+        
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p>Сгенерировать случайный пароль.</p>
+                            <form action="{{ url_for('services.generate_password') }}" method="post">
+                                <button type="submit" class="btn btn-outline-dark">Сгенерировать пароль</button>
+                            </form>
+                            {% if password %}
+                            <div class="mt-3">
+                                <strong>Сгенерированный пароль:</strong> {{ password }}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Бэкапы -->
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-outline-dark collapsed" type="button" data-toggle="collapse"
+                                data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Бэкапы
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p>Создание бэкапов баз данных и выгрузка таблиц баз данных в файл Excel.</p>
+                            <form action="/backup" method="post">
+                                <button type="submit" class="btn btn-outline-dark">Выполнить бэкапы</button>
+                            </form>
+                            <table class="table-custom">
+                                <tbody>
+                                    {% for file in files %}
+                                    <tr>
+                                        <td>{{ file }}</td>
+                                        <td> <a href="{{ url_for('services.delete_file', filename=file) }}"
+                                                class="btn btn-outline-dark"
+                                                onclick="return confirm('Вы уверены, что хотите удалить этот файл?')">Удалить
+                                                файл</a></td>
+                                        <td> <a href="{{ url_for('services.download_file', filename=file) }}"
+                                                class="btn btn-outline-dark">Скачать файл</a></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Github -->
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h2 class="mb-0">
+                            <button class="btn btn-outline-dark collapsed" type="button" data-toggle="collapse"
+                                data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Github
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p>Формирование и отправка коммита на репозиторий приложения.</p>
+                            <form action="{{ url_for('services.commit_and_push') }}" method="post">
+                                <button type="submit" class="btn btn-outline-dark">Выполнить</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="card mb-2">
-        <div class="card-header h4">Бэкапы</div>
-        <div class="card-body">
-            <p>Создание бэкапов баз данных и выгрузка таблиц баз данных в файл Excel.</p>
-            <form action="/backup" method="post">
-                <button type="submit" class="btn btn-outline-dark">Выполнить бэкапы</button>
-            </form>
-        </div>
-        <table class="table-custom">
-            <tbody>
-                {% for file in files %}
-                <tr>
-                    <td>{{ file }}</td>
-                    <td> <a href="{{ url_for('services.delete_file', filename=file) }}" class="btn btn-outline-dark"
-                            onclick="return confirm('Вы уверены, что хотите удалить этот файл?')">Удалить файл</a></td>
-                    <td> <a href="{{ url_for('services.download_file', filename=file) }}"
-                            class="btn btn-outline-dark">Скачать файл</a></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
-    <div class="card mb-2">
-        <div class="card-header h4">Github</div>
-        <div class="card-body">
-            <p>Формирование и отправка коммита на репозиторий приложени.</p>
-            <form action="{{ url_for('services.commit_and_push') }}" method="post">
-                <button type="submit" class="btn btn-outline-dark">Выполнить</button>
-            </form>
-        </div>
-    </div>
+     </div>
 </div>
 {% endblock %}
