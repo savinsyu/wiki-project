@@ -19,7 +19,10 @@ then
   ECHO "Проверяем последнюю версию pip и обновления библиотек Python"
   python -m pip install --upgrade -r requirements.txt
   ECHO "Запускаем приложение"
-  python app.py webbrowser http://127.0.0.1:83
+  ./app.sh
+  # Делаем паузу 5 секунд для того чтобы приложение запустилось
+  sleep 5
+  python -m webbrowser -t "http://127.0.0.1:83"
   # Делаем паузу 5 секунд для того чтобы приложение запустилось
   sleep 5
   ECHO "Приложение открываем в браузере"
