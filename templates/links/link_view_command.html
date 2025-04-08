@@ -10,11 +10,9 @@
     </div>
     <div class="card-body">
         {% set fields = [
-        {'title': 'ID', 'value': sql_view['sql_id'], 'class': 'col-md-6'},
-        {'title': 'Дата редактирования записи', 'value': sql_view['sql_date_edit'], 'class': 'col-md-6'},
-        {'title': 'Дата добавления записи', 'value': sql_view['sql_date_add'], 'class': 'col-md-6'},
-        {'title': 'Название', 'value': sql_view['sql_name'], 'class': 'col-md-6'},
-        {'title': 'Команда', 'value': sql_view['sql_command'], 'class': 'col-md-12'}
+        {'title': 'ID', 'value': link_view['link_id'], 'class': 'col-md-6'},
+        {'title': 'Название', 'value': link_view['link_name'], 'class': 'col-md-6'},
+        {'title': 'Команда', 'value': link_view['link_command'], 'class': 'col-md-12'}
         ] %}
 
         {% for field in fields %}
@@ -33,13 +31,13 @@
     </div>
     <div class="card-body">
         <div class="btn-group" role="group" aria-label="Действия">
-        <a href="{{ url_for('sql_list_commands.sql_list_commands') }}" class="btn btn-outline-dark">Вернуться к списку</a>
-        <a href="{{ url_for('add_sql_command.add_sql_command') }}" class="btn btn-outline-dark">Добавить новую запись</a>
-        <a href="{{ url_for('edit_sql_command.edit_sql_command', sql_id=sql_view['sql_id']) }}"
+        <a href="{{ url_for('link_list_commands.link_list_commands') }}" class="btn btn-outline-dark">Вернуться к списку</a>
+        <a href="{{ url_for('add_link_command.add_link_command') }}" class="btn btn-outline-dark">Добавить новую запись</a>
+        <a href="{{ url_for('edit_link_command.edit_link_command', link_id=link_view['link_id']) }}"
             class="btn btn-outline-dark">Редактировать запись</a>
 
         </div>
-        <form action="{{ url_for('delete_sql_command.delete_sql_command', sql_id=sql_view['sql_id'])}}"
+        <form action="{{ url_for('delete_link_command.delete_link_command', link_id=link_view['link_id'])}}"
             method="POST" class="mt-3">
             <button type="submit" class="btn btn-outline-danger"
                 onclick="return confirm('Вы уверены что хотите удалить запись?')">

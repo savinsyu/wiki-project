@@ -1,30 +1,30 @@
 {% extends "base.html" %}
 {% block title %}Сервисы{% endblock %}
 {% block content %}
-<div class="container mt-4">
-    <div class="card mb-2">
-        <div class="card-header h3">Поиск записей</div>
-        <div class="card-body">
-            <form class="d-flex mb-1" action="/search" method="post" role="search">
-                <input class="form-control me-2" type="text" placeholder="Поиск" aria-label="Search" name="search_term"
-                    id="search_term" required>
-                <button class="btn btn-outline-dark" type="submit">Искать</button>
-            </form>
-            <!-- Блок поиска -->
-            {% if results %}
-            <h4>Результаты поиска:</h4>
-            <ul>
-                {% for result in results %}
-                <li>
-                    <strong>{{ result[1] }}</strong><br>
-                    {{ result[2] }}
-                </li>
-                {% endfor %}
-            </ul>
-            {% else %}
-            <p>Нет результатов.</p>
-            {% endif %}
-        </div>
+
+<div class="card mb-2">
+    <div class="card-header h3">Поиск записей</div>
+    <div class="card-body">
+        <form class="d-flex mb-1" action="/search" method="post" role="search">
+            <input class="form-control me-2" type="text" placeholder="Поиск" aria-label="Search" name="search_term"
+                id="search_term" required>
+            <button class="btn btn-outline-dark" type="submit">Искать</button>
+        </form>
+        <!-- Блок поиска -->
+        {% if results %}
+        <h4>Результаты поиска:</h4>
+        <ul>
+            {% for result in results %}
+            <li>
+                <strong>{{ result[1] }}</strong><br>
+                {{ result[2] }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>Нет результатов.</p>
+        {% endif %}
     </div>
 </div>
+
 {% endblock %}

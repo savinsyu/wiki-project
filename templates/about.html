@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}О проекте{% endblock %}
 {% block content %}
-<div class="container mt-4">
+
    <div class="card mb-2">
       <div class="card-header h3">О проекте</div>
       <div class="card-body">
@@ -24,26 +24,10 @@
          </form>
          <!-- Таблица для отображения списка записей -->
          <table class="table-custom">
-            <thead>
-               <tr>
-                  <!-- <th>ID</th> -->
-                  <!--               <th>Дата добавления</th>-->
-                  <!--               <th>Название</th>-->
-                  <!-- <th>Действия</th> -->
-               </tr>
-            </thead>
             <tbody>
                {% for post in about_list_posts %}
                <tr>
-                  <!-- <th>{{ post.about_id }}</th> -->
-                  <!--               <td>{{ post.about_date_add }}</td>-->
                   <td>{{ post.about_name }}</td>
-                  <!-- <td>
-                  <form action="{{ url_for('about.delete_about', about_id=post.about_id) }}" method="POST"
-                     style="display:inline;">
-                     <button type="submit" class="btn btn-outline-dark btn-sm">×</button>
-                  </form>
-               </td> -->
                </tr>
                {% endfor %}
             </tbody>
@@ -63,17 +47,4 @@
 
       </div>
    </div>
-</div>
-<script>
-   document.addEventListener('DOMContentLoaded', function () {
-      const deleteButtons = document.querySelectorAll('.btn-outline-dark btn-sm');
-      deleteButtons.forEach(button => {
-         button.addEventListener('click', function (event) {
-            if (!confirm('Вы уверены, что хотите удалить эту запись?')) {
-               event.preventDefault();
-            }
-         });
-      });
-   });
-</script>
 {% endblock %}

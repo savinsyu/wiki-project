@@ -24,11 +24,3 @@ def add_about_name():
             flash('Ошибка сохранения записи, вы ввели мало символов!', category='danger')
 
     return render_template("about.html")
-
-@bp.route("/delete_about/<int:about_id>", methods=["POST"])
-def delete_about(about_id):
-    with connect.get_db_connection() as conn:
-        conn.execute("DELETE FROM about WHERE about_id = ?", (about_id,))
-        conn.commit()
-    flash('Запись успешно удалена!', category='success')
-    return redirect(url_for("about.about_list"))

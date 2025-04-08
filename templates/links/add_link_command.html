@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Добавить команду SQL{% endblock %}
+{% block title %}Добавить ссылку{% endblock %}
 
 {% block content %}
 
@@ -8,21 +8,21 @@
 <form method="post">
     <div class="card mb-4 shadow-sm">
         <div class="card-header bg-dark text-white">
-            <label for="sql_command" class="h5 mb-0">Добавить команду SQL</label>
+            <label for="link_command" class="h5 mb-0">Добавить ссылку</label>
         </div>
         <div class="card-body">
-            <textarea class="form-control" id="sql_command" name="sql_command" rows="3"
-                placeholder="Введите команду SQL" required></textarea>
+            <textarea class="form-control" id="link_command" name="link_command" rows="3"
+                placeholder="Введите ссылку (желательно с https://, а не просто .ru, .com ...)" required></textarea>
         </div>
     </div>
 
     <div class="card mb-4 shadow-sm">
         <div class="card-header bg-dark text-white">
-            <label for="sql_name" class="h5 mb-0">Описание команды</label>
+            <label for="link_name" class="h5 mb-0">Описание ресурса</label>
         </div>
         <div class="card-body">
-            <textarea class="form-control" id="sql_name" name="sql_name" rows="3"
-                placeholder="Введите описание команды" required></textarea>
+            <textarea class="form-control" id="link_name" name="link_name" rows="3"
+                placeholder="Введите описание ресурса" required></textarea>
         </div>
     </div>
     <!-- Операции -->
@@ -32,10 +32,10 @@
         </div>
         <div class="card-body">
             <div class="btn-group" role="group" aria-label="Действия">
-            <a href="{{ url_for('sql_list_commands.sql_list_commands') }}" class="btn btn-outline-dark">
+            <a href="{{ url_for('link_list_commands.link_list_commands') }}" class="btn btn-outline-dark">
                      Вернуться к списку
             </a>
-            <a href="{{ url_for('add_sql_command.add_sql_command') }}" class="btn btn-outline-dark">
+            <a href="{{ url_for('add_link_command.add_link_command') }}" class="btn btn-outline-dark">
                     Добавить</a>
             <button type="submit" class="btn btn-outline-dark"> Сохранить</button>
         </div>

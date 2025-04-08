@@ -3,24 +3,9 @@
 {% block title %}Редактировать запись{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
+
     {% include 'errors.html' %}
     <form method="post">
-
-        <!-- Информация о записи -->
-        <!--         <div class="card mb-4 shadow-sm">
-            <div class="card-header bg-dark text-white">
-                <div class="h5 mb-0">Информация о записи</div>
-            </div>
-            <div class="card-body">
-                <ul class="list-unstyled">
-                    <li><strong>ID записи:</strong> {{ edit_python_command_view.python_id }}</li>
-                    <li><strong>Дата редактирования:</strong> {{ edit_python_command_view.python_date_edit }}</li>
-                    <li><strong>Дата добавления:</strong> {{ edit_python_command_view.python_date_add }}</li>
-                </ul>
-            </div>
-        </div> -->
-
         <!-- Команда -->
         <div class="card mb-4 shadow-sm">
             <div class="card-header bg-dark text-white">
@@ -50,15 +35,15 @@
                 <div class="h5 mb-0">Операции</div>
             </div>
             <div class="card-body">
-                <a href="{{ url_for('python_list_commands.python_list_commands') }}" class="btn btn-outline-dark"><i
-                        class="fas fa-list"></i> Вернуться к списку
+                <a href="{{ url_for('python_list_commands.python_list_commands') }}" class="btn btn-outline-dark">
+                         Вернуться к списку
                 </a>
-                <a href="{{ url_for('add_python_command.add_python_command') }}" class="btn btn-outline-dark"><i
-                        class="fas fa-plus"></i> Добавить</a>
-                <button type="submit" class="btn btn-outline-dark"><i class="fas fa-save"></i> Сохранить</button>
+                <a href="{{ url_for('add_python_command.add_python_command') }}" class="btn btn-outline-dark">
+                        Добавить</a>
+                <button type="submit" class="btn btn-outline-dark"> Сохранить</button>
             </div>
+        </div>
     </form>
-</div>
 <div class="card mb-4 shadow-sm">
     <div class="card-header bg-dark text-white">
         <div class="h5 mb-0">Удаление записи</div>
@@ -69,7 +54,7 @@
             method="POST" class="mt-3">
             <button type="submit" class="btn btn-outline-danger"
                 onclick="return confirm('Вы уверены что хотите удалить запись?')">
-                <i class="bi bi-trash"></i> Удалить запись?
+                 Удалить запись?
             </button>
         </form>
     </div>

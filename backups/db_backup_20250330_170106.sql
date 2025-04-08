@@ -13,6 +13,7 @@ INSERT INTO "about" VALUES(8,'В разделе "Сервисы" реализована возможность скачат
 INSERT INTO "about" VALUES(12,'В разделе «О проекте» реализована логика добавления и удаления записей, создана таблица в базе данных, соответствующая;','2025-02-13 06:45:42');
 INSERT INTO "about" VALUES(14,'Добавлена возможность отправки коммита на репозиторий с кнопки в разделе "Сервисы";','2025-02-26 13:31:40');
 INSERT INTO "about" VALUES(15,'Добавлен сервис генерации пароля в разделе "Сервисы";','2025-02-28 12:19:51');
+INSERT INTO "about" VALUES(16,'Активировано виртуальное окружение, для изоляции от внешнего интерпретатора;','2025-03-03 08:38:57');
 CREATE TABLE "cli" (
   "cli_id" INTEGER PRIMARY KEY AUTOINCREMENT,
   "cli_command" TEXT NOT NULL,
@@ -108,6 +109,8 @@ INSERT INTO "cli" VALUES(230,'mv Облако\ Mail/ Mail_Disk','Переименование папки 
 INSERT INTO "cli" VALUES(231,'cp -r Google_Disk Mail_Disk /g','Данная команда копирует две папки на другой диск.','2025-02-24 13:16:39',NULL);
 INSERT INTO "cli" VALUES(232,'touch app.log','Создание файла app.log','2025-02-28 13:18:28',NULL);
 INSERT INTO "cli" VALUES(233,'source venv/Scripts/activate','Активация виртуального окружения в Bash','2025-03-03 08:20:34',NULL);
+INSERT INTO "cli" VALUES(234,'rm -rf .git','Команда удаляет папку git в проекте, тем самым оставляя только папку проекта, удаляется только вся связь с git','2025-03-06 12:46:25',NULL);
+INSERT INTO "cli" VALUES(235,'rm *.ipynb','Удаляет все файлы в текущей папке с расширением .ipynb','2025-03-20 07:08:34',NULL);
 CREATE TABLE "python" (
   [python_id] INTEGER PRIMARY KEY AUTOINCREMENT,
   [python_command] TEXT NOT NULL,
@@ -171,9 +174,10 @@ INSERT INTO "sql" VALUES(1167,'Создание таблицы в базе данных.','CREATE TABLE IF
 );','2024-11-19 13:58:50','2024-11-20 12:29:35');
 INSERT INTO "sql" VALUES(1170,'Выводит названия всех таблиц базы данных SQLite ','SELECT name FROM sqlite_master WHERE type=''table'' AND name NOT LIKE ''sqlite_%'';','2025-02-13 14:17:15',NULL);
 INSERT INTO "sql" VALUES(1171,'Вывести названия полей определенной таблицы SQLite','PRAGMA table_info(python);','2025-02-13 14:32:10',NULL);
+INSERT INTO "sql" VALUES(1180,'Объединение данных из нескольких таблиц.','SELECT columns FROM table1 INNER JOIN table2 ON table1.column = table2.column;','2025-03-04 06:57:17',NULL);
 DELETE FROM "sqlite_sequence";
 INSERT INTO "sqlite_sequence" VALUES('python',2131);
-INSERT INTO "sqlite_sequence" VALUES('cli',233);
-INSERT INTO "sqlite_sequence" VALUES('sql',1179);
-INSERT INTO "sqlite_sequence" VALUES('about',15);
+INSERT INTO "sqlite_sequence" VALUES('cli',236);
+INSERT INTO "sqlite_sequence" VALUES('sql',1181);
+INSERT INTO "sqlite_sequence" VALUES('about',16);
 COMMIT;
