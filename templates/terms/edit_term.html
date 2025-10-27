@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Редактировать запись{% endblock %}
+
+{% block content %}
+{% include 'errors.html' %}
+
+<form method="post">
+    <!-- Команда -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-dark text-white">
+            <label for="sql_command" class="h5 mb-0">Редактировать команду SQL</label>
+        </div>
+        <div class="card-body">
+            <textarea class="form-control bg-light text-dark" id="sql_command" name="sql_command" rows="3"
+                placeholder="Введите команду" required>{{ edit_sql_command_view.sql_command }}</textarea>
+        </div>
+    </div>
+
+    <!-- Описание команды -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-dark text-white">
+            <label for="sql_name" class="h5 mb-0">Описание команды</label>
+        </div>
+        <div class="card-body">
+            <textarea class="form-control bg-light text-dark" id="sql_name" name="sql_name" rows="3"
+                placeholder="Введите описание команды" required>{{ edit_sql_command_view.sql_name }}</textarea>
+        </div>
+    </div>
+
+    <!-- Операции -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-dark text-white">
+            <div class="h5 mb-0">Операции</div>
+        </div>
+        <div class="card-body">
+            <a href="{{ url_for('sql_list_commands.sql_list_commands') }}" class="btn btn-outline-dark">
+                     Вернуться к списку
+            </a>
+            <a href="{{ url_for('add_sql_command.add_sql_command') }}" class="btn btn-outline-dark">
+                    Добавить</a>
+            <button type="submit" class="btn btn-outline-dark"> Сохранить</button>
+        </div>
+    </div>
+</form>
+<div class="card mb-4 shadow-sm">
+    <div class="card-header bg-dark text-white">
+        <div class="h5 mb-0">Удаление записи</div>
+    </div>
+    <div class="card-body">
+        <form action="{{ url_for('delete_sql_command.delete_sql_command', sql_id=edit_sql_command_view['sql_id'])}}"
+            method="POST" class="mt-3">
+            <button type="submit" class="btn btn-outline-danger"
+                onclick="return confirm('Вы уверены что хотите удалить запись?')">
+                 Удалить запись?
+            </button>
+        </form>
+    </div>
+
+{% endblock %}
