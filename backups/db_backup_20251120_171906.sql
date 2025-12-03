@@ -111,6 +111,9 @@ INSERT INTO "cli" VALUES(232,'touch app.log','Создание файла app.log','2025-02-2
 INSERT INTO "cli" VALUES(233,'source venv/Scripts/activate','Активация виртуального окружения в Bash','2025-03-03 08:20:34',NULL);
 INSERT INTO "cli" VALUES(234,'rm -rf .git','Команда удаляет папку git в проекте, тем самым оставляя только папку проекта, удаляется только вся связь с git','2025-03-06 12:46:25',NULL);
 INSERT INTO "cli" VALUES(235,'rm *.ipynb','Удаляет все файлы в текущей папке с расширением .ipynb','2025-03-20 07:08:34',NULL);
+INSERT INTO "cli" VALUES(237,'pkill python','Убивает все процессы с именем python','2025-08-20 12:01:31',NULL);
+INSERT INTO "cli" VALUES(238,'Тестовый текст','Тестовый текст','2025-09-02 07:30:53',NULL);
+INSERT INTO "cli" VALUES(239,'Тестовый текст	1','Тестовый текст	1','2025-09-02 07:36:02',NULL);
 CREATE TABLE links (
   link_id INTEGER PRIMARY KEY AUTOINCREMENT,
   link_command TEXT NOT NULL,
@@ -183,9 +186,18 @@ INSERT INTO "sql" VALUES(1167,'Создание таблицы в базе данных.','CREATE TABLE IF
 INSERT INTO "sql" VALUES(1170,'Выводит названия всех таблиц базы данных SQLite ','SELECT name FROM sqlite_master WHERE type=''table'' AND name NOT LIKE ''sqlite_%'';','2025-02-13 14:17:15',NULL);
 INSERT INTO "sql" VALUES(1171,'Вывести названия полей определенной таблицы SQLite','PRAGMA table_info(python);','2025-02-13 14:32:10',NULL);
 INSERT INTO "sql" VALUES(1180,'Объединение данных из нескольких таблиц.','SELECT columns FROM table1 INNER JOIN table2 ON table1.column = table2.column;','2025-03-04 06:57:17',NULL);
+CREATE TABLE [terms] ( 
+  [term_id] INTEGER AUTO_INCREMENT NULL,
+  [term_name] TEXT NOT NULL,
+  [term_content] TEXT NOT NULL,
+  [term_cat] TEXT NOT NULL,
+  [term_date_add] TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  [term_date_edit] TEXT NULL,
+   PRIMARY KEY ([term_id])
+);
 DELETE FROM "sqlite_sequence";
 INSERT INTO "sqlite_sequence" VALUES('python',2131);
-INSERT INTO "sqlite_sequence" VALUES('cli',236);
+INSERT INTO "sqlite_sequence" VALUES('cli',239);
 INSERT INTO "sqlite_sequence" VALUES('sql',1181);
 INSERT INTO "sqlite_sequence" VALUES('about',16);
 INSERT INTO "sqlite_sequence" VALUES('links',5);
