@@ -2,7 +2,7 @@ from flask import Blueprint, redirect, url_for, render_template, request, flash
 
 from modules import connect
 import datetime
-bp = Blueprint('edit_python_command', __name__)
+bp = Blueprint('edit_wiki', __name__)
 
 
 @bp.route("/python/edit/<int:python_id>/", methods=("GET", "POST"))

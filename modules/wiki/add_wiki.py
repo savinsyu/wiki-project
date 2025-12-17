@@ -2,10 +2,10 @@ from flask import Blueprint, redirect, url_for, render_template, request, flash
 
 from modules import connect
 
-bp = Blueprint('add_python_command', __name__)
+bp = Blueprint('add_wiki', __name__)
 
 
-@bp.route("/python/new_python_command", methods=["GET", "POST"])
+@bp.route("/wiki/add_wiki", methods=["GET", "POST"])
 def add_python_command():
     if request.method == "POST":
         new_python_command = request.form["python_command"]
