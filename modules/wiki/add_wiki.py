@@ -6,26 +6,26 @@ bp = Blueprint('add_wiki', __name__)
 
 
 @bp.route("/wiki/add_wiki", methods=["GET", "POST"])
-def add_python_command():
+def add_wiki():
     if request.method == "POST":
-        new_python_command = request.form["python_command"]
-        new_python_name = request.form["python_name"]
-        if len(request.form['python_command']) > 4 and len(request.form['python_name']) > 10:
+        new_wiki_contenet = request.form["wiki_contenet"]
+        new_wiki_name = request.form["wiki_name"]
+        if len(request.form['wiki_contenet']) > 4 and len(request.form['wiki_name']) > 10:
             conn = connect.get_db_connection()
             conn.execute(
                 "INSERT INTO python (python_command, python_name) VALUES (?, ?)",
-                (new_python_command, new_python_name)
+                (new_wiki_contenet, new_wiki_name)
             )
             conn.commit()
             conn.close()
-            if not new_python_command:
+            if not new_wiki_contenet:
                 flash('Ошибка сохранения записи, вы ввели мало символов!', category='danger')
             else:
                 flash('Запись успешно добавлена!', category='success')
             # В случае соблюдения условий заполнения полей, произойдёт перенаправление
-            return redirect(url_for("python_list_commands.python_list_commands"))
+            return redirect(url_for("wiki_list.wiki_list"))
         else:
             flash('Ошибка сохранения записи, вы ввели мало символов!', category='danger')
 
     
-    return render_template("python/add_python_command.html")
+    return render_template("wiki/add_wiki.html")
