@@ -1,30 +1,30 @@
 {% extends "base.html" %}
 
-{% block title %}Команды Python{% endblock %}
+{% block title %}WIKI{% endblock %}
 
 {% block content %}
 
 <div class="card mb-4">
-    <div class="card-header h3">Список команд и скриптов на языке программирования Python</div>
+    <div class="card-header h3">Wiki</div>
     <div class="card-body">
-        <p class="card-text">Всего записей в разделе: <b>{{ python_list_count }}</b></p>
+        <p class="card-text">Всего записей в разделе: <b>{{ wiki_list_count }}</b></p>
         <p class="card-text">
-            <a href="{{ url_for('add_python_command.add_python_command') }}" class="btn btn-outline-dark">
+            <a href="{{ url_for('add_wiki.add_wiki') }}" class="btn btn-outline-dark">
                     Добавить новую запись</a>
         </p>
         <div class="pagination">
             {% if page > 1 %}
-            <a href="{{ url_for('python_list_commands.python_list_commands', page=page-1) }}"
+            <a href="{{ url_for('wiki_list_page.wiki_list_page', page=page-1) }}"
                 class="btn btn-outline-dark">Предыдущая</a>
             {% endif %}
 
             {% for p in range(1, total_pages + 1) %}
-            <a href="{{ url_for('python_list_commands.python_list_commands', page=p) }}"
+            <a href="{{ url_for('wiki_list_page.wiki_list_page', page=p) }}"
                 class="btn btn-outline-dark {% if p == page %}active{% endif %}">{{ p }}</a>
             {% endfor %}
 
             {% if page < total_pages %} <a
-                href="{{ url_for('python_list_commands.python_list_commands', page=page+1) }}"
+                href="{{ url_for('wiki_list_page.wiki_list_page', page=page+1) }}"
                 class="btn btn-outline-dark">Следующая</a>
                 {% endif %}
         </div>
@@ -38,17 +38,17 @@
             </tr>
         </thead>
         <tbody>
-            {% for python_list in python_list %}
+            {% for wiki_list in wiki_list %}
             <tr>
-                <td>{{ python_list['python_name'] }}</td>
-                <td>{{ python_list['python_command'] }}</td>
+                <td>{{ wiki_list['wiki_name'] }}</td>
+                <td>{{ wiki_list['wiki_content'] }}</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Действия">
-                        <a href="{{ url_for('get_post_python_command.get_post_python_command', python_id=python_list['python_id']) }}"
+                        <a href="{{ url_for('get_wiki.get_wiki', wiki_id=python_list['wiki_id']) }}"
                             class="btn btn-outline-dark btn-sm">
                             Посмотреть
                         </a>
-                        <a href="{{ url_for('edit_python_command.edit_python_command', python_id=python_list['python_id']) }}"
+                        <a href="{{ url_for('edit_wiki.edit_wiki', wiki_id=wiki_list['wiki_id']) }}"
                             class="btn btn-outline-dark btn-sm">
                             Редактировать
                         </a>
@@ -56,7 +56,7 @@
                 </td>
                 <td>
                     <form
-                        action="{{ url_for('delete_python_command.delete_python_command', python_id=python_list['python_id']) }}"
+                        action="{{ url_for('delete_wiki.delete_wiki', wiki_id=wiki_list['wiki_id']) }}"
                         method="POST" class="d-inline">
                         <button type="submit" class="btn btn-outline-danger btn-sm"
                             onclick="return confirm('Вы точно уверены что хотите удалить запись?')">

@@ -2,14 +2,14 @@ from flask import Blueprint, render_template
 
 from modules import connect
 
-bp = Blueprint('get_post_python_command', __name__)
+bp = Blueprint('get_wiki', __name__)
 
 
-@bp.route("/python/view/<int:python_id>")
-def get_post_python_command(python_id):
+@bp.route("/wiki/view/<int:wiki_id>")
+def get_wiki(wiki_id):
     conn = connect.get_db_connection()
-    python_view = conn.execute("SELECT * FROM python WHERE python_id = ?",
-                               (python_id,)).fetchone()
+    wiki_view = conn.execute("SELECT * FROM wiki WHERE wiki_id = ?",
+                               (wiki_id,)).fetchone()
     conn.close()
-    return render_template("python/python_view_command.html",
-                           python_view=python_view)
+    return render_template("wiki/wiki_view.html",
+                           wiki_view=wiki_view)

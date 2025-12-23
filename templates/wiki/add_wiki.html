@@ -8,20 +8,20 @@
     <form method="post">
         <div class="card mb-4 shadow-sm">
             <div class="card-header bg-dark text-white">
-                <label for="python_command">Добавить команду Python</label>
+                <label for="wiki_content">Добавить запись</label>
             </div>
             <div class="card-body">
-                <textarea class="form-control" id="python_command" name="python_command" rows="3"
+                <textarea class="form-control" id="wiki_content" name="wiki_content" rows="3"
                     placeholder="Введите команду" required></textarea>
             </div>
         </div>
 
         <div class="card mb-4 shadow-sm">
             <div class="card-header bg-dark text-white">
-                <label for="python_name">Описание команды</label>
+                <label for="wiki_name">Описание команды</label>
             </div>
             <div class="card-body">
-                <textarea class="form-control" id="python_name" name="python_name" rows="3"
+                <textarea class="form-control" id="wiki_name" name="wiki_name" rows="3"
                     placeholder="Введите описание команды" required></textarea>
             </div>
         </div>
@@ -33,10 +33,10 @@
             </div>
             <div class="card-body">
                 <div class="btn-group" role="group" aria-label="Действия">
-                <a href="{{ url_for('python_list_commands.python_list_commands') }}" class="btn btn-outline-dark">
+                <a href="{{ url_for('wiki_list_page.wiki_list_page') }}" class="btn btn-outline-dark">
                          Вернуться к списку
                 </a>
-                <a href="{{ url_for('add_python_command.add_python_command') }}" class="btn btn-outline-dark">
+                <a href="{{ url_for('add_wiki.add_wiki') }}" class="btn btn-outline-dark">
                         Добавить</a>
                 <button type="submit" class="btn btn-outline-dark"> Сохранить</button>
             </div>

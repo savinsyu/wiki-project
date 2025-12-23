@@ -8,17 +8,17 @@ bp = Blueprint('add_wiki', __name__)
 @bp.route("/wiki/add_wiki", methods=["GET", "POST"])
 def add_wiki():
     if request.method == "POST":
-        new_wiki_contenet = request.form["wiki_contenet"]
+        new_wiki_content = request.form["wiki_content"]
         new_wiki_name = request.form["wiki_name"]
-        if len(request.form['wiki_contenet']) > 4 and len(request.form['wiki_name']) > 10:
+        if len(request.form['wiki_content']) > 4 and len(request.form['wiki_name']) > 10:
             conn = connect.get_db_connection()
             conn.execute(
-                "INSERT INTO python (python_command, python_name) VALUES (?, ?)",
-                (new_wiki_contenet, new_wiki_name)
+                "INSERT INTO wiki (wiki_content, wiki_name) VALUES (?, ?)",
+                (new_wiki_content, new_wiki_name)
             )
             conn.commit()
             conn.close()
-            if not new_wiki_contenet:
+            if not new_wiki_content:
                 flash('Ошибка сохранения записи, вы ввели мало символов!', category='danger')
             else:
                 flash('Запись успешно добавлена!', category='success')
