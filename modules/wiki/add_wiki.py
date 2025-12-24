@@ -23,7 +23,7 @@ def add_wiki():
             else:
                 flash('Запись успешно добавлена!', category='success')
             # В случае соблюдения условий заполнения полей, произойдёт перенаправление
-            return redirect(url_for("wiki_list.wiki_list"))
+            return redirect(url_for("wiki_list_page.wiki_list_page"))
         else:
             flash('Ошибка сохранения записи, вы ввели мало символов!', category='danger')
 
