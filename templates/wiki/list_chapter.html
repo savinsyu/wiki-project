@@ -1,0 +1,24 @@
+                        <td>
+                    <div class="btn-group" role="group" aria-label="Действия">
+                        <a href="{{ url_for('edit_wiki.edit_wiki', wiki_id=wiki_list['wiki_id']) }}"
+                            class="btn btn-outline-dark btn-sm">
+                            Редактировать
+                        </a>
+
+                        <a href="{{ url_for('get_wiki.get_wiki', wiki_id=wiki_list['wiki_id']) }}"
+                            class="btn btn-outline-dark btn-sm">
+                            Посмотреть
+                        </a>
+
+                    </div>
+                </td>
+                <td>
+                    <form
+                        action="{{ url_for('delete_wiki.delete_wiki', wiki_id=wiki_list['wiki_id']) }}"
+                        method="POST" class="d-inline">
+                        <button type="submit" class="btn btn-outline-danger btn-sm"
+                            onclick="return confirm('Вы точно уверены что хотите удалить запись?')">
+                            Удалить</i>
+                        </button>
+                    </form>
+                </td>
