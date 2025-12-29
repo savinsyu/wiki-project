@@ -6,7 +6,7 @@ bp = Blueprint('edit_wiki', __name__)
 
 
 @bp.route("/wiki/edit/<int:wiki_id>/", methods=("GET", "POST"))
-def edit_python_command(wiki_id):
+def edit_wiki(wiki_id):
     conn = connect.get_db_connection()
     edit_wiki_view = conn.execute("SELECT * FROM wiki WHERE wiki_id = ?",
                                             (wiki_id,)).fetchone()
@@ -19,7 +19,7 @@ def edit_python_command(wiki_id):
         if len(request.form['wiki_content']) > 4 and len(request.form['wiki_name']) > 10:
             conn = connect.get_db_connection()
             conn.execute(
-                "UPDATE wiki SET python_command = ?, wiki_name = ?, wiki_date_edit = ? WHERE wiki_id = ?",
+                "UPDATE wiki SET wiki_content = ?, wiki_name = ?, wiki_date_edit = ? WHERE wiki_id = ?",
                 (wiki_content_edit, wiki_name_edit, wiki_date_edit, wiki_id),
             )
             conn.commit()

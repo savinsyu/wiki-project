@@ -18,14 +18,7 @@ then
   # Устанавливаем последние обновления модулей python
   ECHO "Проверяем последнюю версию pip и обновления библиотек Python"
   python -m pip install --upgrade -r requirements.txt
-  ECHO "Запускаем приложение"
   ./app.sh
-  # Делаем паузу 5 секунд для того чтобы приложение запустилось
-  sleep 5
-  python -m webbrowser -t "http://127.0.0.1:83"
-  # Делаем паузу 5 секунд для того чтобы приложение запустилось
-  sleep 5
-  ECHO "Приложение открываем в браузере"
 else
   ECHO -e "${ERROR_COLOR}Нет интернета!${RESET_COLOR}"
 fi
