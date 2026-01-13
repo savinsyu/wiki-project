@@ -16,7 +16,7 @@ def edit_wiki(wiki_id):
         # Объявляем переменную, в которой применяем метод now() для вывода текущей даты и времени, также переводим.
         # Также переводим сформированную дату и время в формат год, месяц, день, время без секунд.
         wiki_date_edit = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        if len(request.form['wiki_content']) > 4 and len(request.form['wiki_name']) > 10:
+        if len(request.form['wiki_content']) > 2 and len(request.form['wiki_name']) > 2:
             conn = connect.get_db_connection()
             conn.execute(
                 "UPDATE wiki SET wiki_content = ?, wiki_name = ?, wiki_date_edit = ? WHERE wiki_id = ?",

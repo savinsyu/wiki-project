@@ -21,12 +21,17 @@ def search():
         UNION
         SELECT * FROM sql 
         WHERE sql_command LIKE ? OR sql_name LIKE ?
+        UNION
+        SELECT * FROM wiki 
+        WHERE wiki_content LIKE ? OR wiki_name LIKE ?
         '''
         cursor.execute(query,(f'%{search_term}%', 
                               f'%{search_term}%', 
                               f'%{search_term}%', 
                               f'%{search_term}%', 
-                              f'%{search_term}%', 
+                              f'%{search_term}%',
+                              f'%{search_term}%',
+                              f'%{search_term}%',
                               f'%{search_term}%'))
         results = cursor.fetchall()
         return render_template('search.html', results=results)
