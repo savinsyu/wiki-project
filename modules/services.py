@@ -52,7 +52,7 @@ def backup():
     try:
         with sqlite3.connect('database.db') as conn:
             # Создаем дамп базы данных
-            with open(backup_path, 'w') as f:
+            with open(backup_path, 'w', encoding='utf-8') as f:
                 for line in conn.iterdump():
                     f.write(f'{line}\n')
 

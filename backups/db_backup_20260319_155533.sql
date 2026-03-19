@@ -112,16 +112,10 @@ INSERT INTO "cli" VALUES(233,'source venv/Scripts/activate','Активация виртуальн
 INSERT INTO "cli" VALUES(234,'rm -rf .git','Команда удаляет папку git в проекте, тем самым оставляя только папку проекта, удаляется только вся связь с git','2025-03-06 12:46:25',NULL);
 INSERT INTO "cli" VALUES(235,'rm *.ipynb','Удаляет все файлы в текущей папке с расширением .ipynb','2025-03-20 07:08:34',NULL);
 INSERT INTO "cli" VALUES(237,'pkill python','Убивает все процессы с именем python','2025-08-20 12:01:31',NULL);
-INSERT INTO "cli" VALUES(238,'Тестовый текст','Тестовый текст','2025-09-02 07:30:53',NULL);
-INSERT INTO "cli" VALUES(239,'Тестовый текст	1','Тестовый текст	1','2025-09-02 07:36:02',NULL);
-CREATE TABLE links (
-  link_id INTEGER PRIMARY KEY AUTOINCREMENT,
-  link_command TEXT NOT NULL,
-  link_name TEXT NOT NULL
-);
-INSERT INTO "links" VALUES(3,'https://htmlbook.ru/html/a/target','Атрибут target в HTML при формировании ссылки');
-INSERT INTO "links" VALUES(4,'https://skillbox.ru/media/code/yazyk-razmetki-markdown-shpargalka-po-sintaksisu-s-primerami/','Язык разметки Markdown: шпаргалка по синтаксису с примерами');
-INSERT INTO "links" VALUES(5,'https://pip.pypa.io/en/stable/','Документация pip');
+INSERT INTO "cli" VALUES(241,'mv * ..','Команда переносит все файлы из текущей директории в директорию выше.','2025-11-21 08:55:41',NULL);
+INSERT INTO "cli" VALUES(242,'pip --disable-pip-version-check list --outdated --format=json | python -c "import json, sys; print(''\n''.join([x[''name''] for x in json.load(sys.stdin)]))" | xargs -n1 pip install -U','Команда обновляет все пакеты pip ','2026-01-14 12:38:03',NULL);
+INSERT INTO "cli" VALUES(243,'history > history_for_print.txt
+','Сохраняет историю команд Bash в тестовый файл, в текущей директории.','2026-01-16 06:52:40','2026-01-16 09:53:43');
 CREATE TABLE "python" (
   [python_id] INTEGER PRIMARY KEY AUTOINCREMENT,
   [python_command] TEXT NOT NULL,
@@ -186,19 +180,26 @@ INSERT INTO "sql" VALUES(1167,'Создание таблицы в базе данных.','CREATE TABLE IF
 INSERT INTO "sql" VALUES(1170,'Выводит названия всех таблиц базы данных SQLite ','SELECT name FROM sqlite_master WHERE type=''table'' AND name NOT LIKE ''sqlite_%'';','2025-02-13 14:17:15',NULL);
 INSERT INTO "sql" VALUES(1171,'Вывести названия полей определенной таблицы SQLite','PRAGMA table_info(python);','2025-02-13 14:32:10',NULL);
 INSERT INTO "sql" VALUES(1180,'Объединение данных из нескольких таблиц.','SELECT columns FROM table1 INNER JOIN table2 ON table1.column = table2.column;','2025-03-04 06:57:17',NULL);
-CREATE TABLE [terms] ( 
-  [term_id] INTEGER AUTO_INCREMENT NULL,
-  [term_name] TEXT NOT NULL,
-  [term_content] TEXT NOT NULL,
-  [term_cat] TEXT NOT NULL,
-  [term_date_add] TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-  [term_date_edit] TEXT NULL,
-   PRIMARY KEY ([term_id])
-);
-DELETE FROM "sqlite_sequence";
-INSERT INTO "sqlite_sequence" VALUES('python',2131);
-INSERT INTO "sqlite_sequence" VALUES('cli',239);
-INSERT INTO "sqlite_sequence" VALUES('sql',1181);
-INSERT INTO "sqlite_sequence" VALUES('about',16);
-INSERT INTO "sqlite_sequence" VALUES('links',5);
-COMMIT;
+CREATE TABLE [wiki] (
+    [wiki_name] TEXT NOT NULL,
+    [wiki_content] TEXT NOT NULL,
+    [wiki_date_add] TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+    [wiki_date_edit] TEXT NULL,
+    [wiki_id] INTEGER PRIMARY KEY NOT NULL
+  );
+INSERT INTO "wiki" VALUES('Active Directory ','AD. Службы каталогов Microsoft для операционных систем семейства Windows Server. Позволяет администраторам использовать групповые политики для обеспечения единообразия настройки пользовательской рабочей среды, разворачивать программное обеспечение на множестве компьютеров через групповые политики или посредством специальных служб. eXpress поддерживает синхронизацию пользователей с Active Directory, подробнее тут.
+Дополнительная информация об Active Directiry на сайте Microsoft Learn.','2026-01-13 11:46:20','2026-01-13 14:50:20',2);
+INSERT INTO "wiki" VALUES('DNS','Domain Name System, система доменных имён. Компьютерная распределённая система для получения информации о доменах. Чаще всего используется для получения IP-адреса по имени хоста (компьютера или устройства).','2026-01-13 11:55:23',NULL,3);
+INSERT INTO "wiki" VALUES('WebSocket ','Протокол связи поверх TCP-соединения, предназначенный для двустороннего обмена сообщениями между браузером/веб-приложением и веб-сервером, используя постоянное соединение.','2026-01-13 14:14:17',NULL,4);
+INSERT INTO "wiki" VALUES('Бэклог ','Backlog. Перечень задач или требований продукта, которые необходимо выполнить в будущем.
+','2026-01-13 14:15:04',NULL,5);
+INSERT INTO "wiki" VALUES('ВКС ','Видеоконференцсвязь. Технология интерактивного взаимодействия трёх и более абонентов, обменивающихся аудио и видео (в eXpress для этого есть конференции).','2026-01-13 14:17:39',NULL,6);
+INSERT INTO "wiki" VALUES('SOAP (Simple Object Access Protocol) — протокол обмена структурированными сообщениями в распределённой вычислительной среде. Первоначально предназначался в основном для реализации удалённого вызова процедур (RPC), но сейчас используется для обмена произвольными сообщениями в формате XML, а не только для вызова процедур.','SOAP','2026-01-15 08:16:49',NULL,7);
+INSERT INTO "wiki" VALUES('REST API','REST API архитектурный подход, который устанавливает ограничения для API: как они должны быть устроены и какие функции поддерживать. Это позволяет стандартизировать работу программных интерфейсов, сделать их более удобными и производительными.
+
+Слово REST — акроним от Representational State Transfer, что переводится на русский как «передача состояния представления», «передача репрезентативного состояния» или «передача „самоописываемого“ состояния».','2026-01-15 08:19:00',NULL,8);
+INSERT INTO "wiki" VALUES('CI/CD','CI/CD (Continuous Integration/Continuous Delivery) – это набор практик, позволяющих автоматизировать сборку, тестирование и развертывание кода. Если говорить проще: это ваш верный робот-помощник, который берет на себя рутинные операции, освобождая время для творчества. ','2026-01-16 06:47:17',NULL,9);
+INSERT INTO "wiki" VALUES('CTS','Corporate Transport Server - компонент, отвечающий за
+маршрутизацию и хранение передаваемой информации,
+адресную книгу и интеграцию с внешними ИС по отноше-
+нию к Системе','2026-03-13 08:47:29',NULL,10);
