@@ -16,8 +16,13 @@
 
       <!-- Кнопка скачивания PDF -->
       <a href="{{ url_for('cli_posts.cli_download_pdf') }}" class="btn btn-outline-success">
-         <i class="bi bi-download"></i> Скачать PDF
+         <i class="bi bi-download"></i> Скачать все записи в PDF
       </a>
+
+      <a href="{{ url_for('static', filename='cheat_sheets/cheat_sheet_bash.pdf') }}" class="btn btn-outline-success">
+        <i class="bi bi-download"></i> Скачать Cheatsheet Bash
+      </a>
+
 
       <p class="card-text">{% include 'errors.html' %}</p>
 

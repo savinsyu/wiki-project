@@ -70,33 +70,41 @@ def cli_download_pdf():
     pdf.add_page()
 
     # Заголовок
-    pdf.set_font("DejaVu" if use_dejavu else "Helvetica", "B", size=16)
+    pdf.set_font("DejaVu" if use_dejavu else "Verdana", "B", size=16)
     pdf.cell(0, 10, "Список CLI команд", ln=True, align="C")
     pdf.ln(5)
 
     # Заголовки таблицы
-    pdf.set_font("DejaVu" if use_dejavu else "Helvetica", "B", size=12)
-    col_widths = [20, 40, 80, 40, 40]
-    headers = ["Имя", "Команда"]
+    pdf.set_font("DejaVu" if use_dejavu else "Verdana", "B", size=14)
+    col_widths = [80, 80]  # пересчитаем под 2 колонки
+    headers = ["Описание команды", "Команда"]
 
     for i, h in enumerate(headers):
-        pdf.cell(col_widths[i], 10, h, border=1, align="C")
+        pdf.cell(col_widths[i], 10, h, border=0, align="L", ln=False)
     pdf.ln()
 
     # Данные
     pdf.set_font("DejaVu" if use_dejavu else "Helvetica", "", size=10)
+    # Высота строки для multi_cell
+    line_height = 5 
+
     for row in cli_list:
-        r_name = str(row[0]) if row[0] is not None else "-"
-        r_command = str(row[1]) if row[1] is not None else "-"
-        pdf.cell(col_widths[1], 10, r_name, border=1)
-        pdf.cell(col_widths[2], 10, r_command, border=1)
+        r_name = str(row[1]) if row[1] is not None else "-"
+        r_command = str(row[0]) if row[0] is not None else "-"
+
+        # Для имени можно оставить cell (обычно короткое)
+        pdf.multi_cell(col_widths[0], line_height, r_name, border=0, align="L")
+
+        # Для команды используем multi_cell: он автоматически переносит текст
+        # ln=0 — не переходить на новую строку сразу, мы сделаем это вручную после пары ячеек
+        pdf.multi_cell(col_widths[1], line_height, r_command, border=0, align="L")
+
+        # После вывода пары ячеек переходим на новую строку
         pdf.ln()
 
-    # --- ИСПРАВЛЕНИЕ ЗДЕСЬ ---
-    pdf_data = pdf.output()      # bytes
+    pdf_data = pdf.output()
     buffer = BytesIO(pdf_data)
     buffer.seek(0)
-    # -------------------------
 
     return send_file(
         buffer,
@@ -104,4 +112,3 @@ def cli_download_pdf():
         download_name="cli_commands.pdf",
         mimetype="application/pdf",
     )
-
