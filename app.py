@@ -1,7 +1,7 @@
 import secrets
 
 import flask
-from modules import index, services, search, about
+from modules import index, services, search
 from modules.wiki import delete_wiki, wiki_list, edit_wiki, add_wiki, get_wiki
 from modules.cli import delete_cli_post, cli_posts, edit_cli_post, add_cli_post, get_view_cli_post
 from modules.sql import delete_sql_command, sql_list_commands, edit_sql_command, get_post_sql_command, add_sql_command
@@ -33,7 +33,6 @@ app.register_blueprint(delete_cli_post.bp)
 app.register_blueprint(edit_cli_post.bp)
 app.register_blueprint(add_cli_post.bp)
 app.register_blueprint(index.bp)
-app.register_blueprint(about.bp)
 app.register_blueprint(services.bp)
 app.register_blueprint(search.bp)
 
