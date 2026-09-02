@@ -6,25 +6,26 @@
 
     {% include 'errors.html' %}
     <form method="post">
+         <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-dark text-white">
+                <label for="wiki_name">Название термина</label>
+            </div>
+            <div class="card-body">
+                <textarea class="form-control" id="wiki_name" name="wiki_name" rows="3"
+                    placeholder="Введите текст" required></textarea>
+            </div>
+        </div>
         <div class="card mb-4 shadow-sm">
             <div class="card-header bg-dark text-white">
                 <label for="wiki_content">Описание термина</label>
             </div>
             <div class="card-body">
                 <textarea class="form-control" id="wiki_content" name="wiki_content" rows="3"
-                    placeholder="Введите название" required></textarea>
+                    placeholder="Введите текст" required></textarea>
             </div>
         </div>
 
-        <div class="card mb-4 shadow-sm">
-            <div class="card-header bg-dark text-white">
-                <label for="wiki_name">Название термина</label>
-            </div>
-            <div class="card-body">
-                <textarea class="form-control" id="wiki_name" name="wiki_name" rows="3"
-                    placeholder="Введите описание" required></textarea>
-            </div>
-        </div>
+
 
         <!-- Операции -->
         <div class="card mb-4 shadow-sm">
