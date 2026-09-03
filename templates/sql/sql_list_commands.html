@@ -4,15 +4,17 @@
 
 {% block content %}
 
-<div class="card shadow">
-    <div class="card-header bg-dark text-white">
-        <h4 class="card-title mb-0">Список команд и скриптов SQL</h4>
-    </div>
+<div class="card mb-4">
+    <div class="card-header h3">Список команд и скриптов SQL</div>
     <div class="card-body">
         <p class="card-text">Всего записей в разделе: <b>{{ sql_list_count }}</b></p>
         <p class="card-text">
             <a href="{{ url_for('add_sql_command.add_sql_command') }}" class="btn btn-outline-dark">
                     Добавить новую запись</a>
+                  <!-- Кнопка скачивания PDF -->
+          <a href="{{ url_for('sql_list_commands.sql_download_pdf') }}" class="btn btn-outline-success">
+             <i class="bi bi-download"></i> Скачать все записи в PDF
+          </a>
         </p>
         <div class="pagination">
             {% if page > 1 %}
@@ -39,24 +41,24 @@
             </tr>
         </thead>
         <tbody>
-            {% for sql_list in sql_list %}
+            {% for item in sql_list %}
             <tr>
-                <td>{{ sql_list['sql_name'] }}</td>
-                <td>{{ sql_list['sql_command'] }}</td>
+                <td>{{ item.sql_name }}</td>
+                <td>{{ item.sql_command }}</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Действия">
-                        <a href="{{ url_for('get_post_sql_command.get_post_sql_command', sql_id=sql_list['sql_id']) }}"
+                        <a href="{{ url_for('get_post_sql_command.get_post_sql_command', sql_id=item.sql_id) }}"
                             class="btn btn-outline-dark btn-sm">
                             Посмотреть
                         </a>
-                        <a href="{{ url_for('edit_sql_command.edit_sql_command', sql_id=sql_list['sql_id']) }}"
+                        <a href="{{ url_for('edit_sql_command.edit_sql_command', sql_id=item.sql_id) }}"
                             class="btn btn-outline-dark btn-sm">
                             Редактировать
                         </a>
                     </div>
                 </td>
                 <td>
-                    <form action="{{ url_for('delete_sql_command.delete_sql_command', sql_id=sql_list['sql_id']) }}"
+                    <form action="{{ url_for('delete_sql_command.delete_sql_command', sql_id=item.sql_id) }}"
                         method="POST" class="d-inline">
                         <button type="submit" class="btn btn-outline-danger btn-sm"
                             onclick="return confirm('Вы точно уверены что хотите удалить запись?')">
