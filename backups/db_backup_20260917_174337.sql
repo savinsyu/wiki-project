@@ -1,19 +1,4 @@
 BEGIN TRANSACTION;
-CREATE TABLE about (
-	about_id INTEGER PRIMARY KEY AUTOINCREMENT,
-	about_name TEXT NOT NULL,
-	about_date_add TIMESTAMP DEFAULT (CURRENT_TIMESTAMP)
-);
-INSERT INTO "about" VALUES(3,'Реализован поиск по всем разделам, которые имеют записи (разделы cli, sql, python);','2025-02-10 14:47:34');
-INSERT INTO "about" VALUES(4,'Реализована пагинация страниц с разбивкой по 10 записей на страницу(разделы cli, sql, python);','2025-02-10 14:47:34');
-INSERT INTO "about" VALUES(5,'В разделе "Сервисы" есть возможность сделать дамп базы данных;','2025-02-10 14:47:34');
-INSERT INTO "about" VALUES(6,'В разделе "Сервисы" реализован вывод списка файлов созданных бэкапов, а также возможность их удалить;','2025-02-10 14:47:34');
-INSERT INTO "about" VALUES(7,'В разделе "Сервисы" реализована возможность выгружать данные таблиц баз данных в файл excel;','2025-02-11 14:47:34');
-INSERT INTO "about" VALUES(8,'В разделе "Сервисы" реализована возможность скачать файлы бэкапа и excel;','2025-02-11 14:47:34');
-INSERT INTO "about" VALUES(12,'В разделе «О проекте» реализована логика добавления и удаления записей, создана таблица в базе данных, соответствующая;','2025-02-13 06:45:42');
-INSERT INTO "about" VALUES(14,'Добавлена возможность отправки коммита на репозиторий с кнопки в разделе "Сервисы";','2025-02-26 13:31:40');
-INSERT INTO "about" VALUES(15,'Добавлен сервис генерации пароля в разделе "Сервисы";','2025-02-28 12:19:51');
-INSERT INTO "about" VALUES(16,'Активировано виртуальное окружение, для изоляции от внешнего интерпретатора;','2025-03-03 08:38:57');
 CREATE TABLE "cli" (
   "cli_id" INTEGER PRIMARY KEY AUTOINCREMENT,
   "cli_command" TEXT NOT NULL,
@@ -116,6 +101,210 @@ INSERT INTO "cli" VALUES(241,'mv * ..','Команда переносит все
 INSERT INTO "cli" VALUES(242,'pip --disable-pip-version-check list --outdated --format=json | python -c "import json, sys; print(''\n''.join([x[''name''] for x in json.load(sys.stdin)]))" | xargs -n1 pip install -U','Команда обновляет все пакеты pip ','2026-01-14 12:38:03',NULL);
 INSERT INTO "cli" VALUES(243,'history > history_for_print.txt
 ','Сохраняет историю команд Bash в тестовый файл, в текущей директории.','2026-01-16 06:52:40','2026-01-16 09:53:43');
+INSERT INTO "cli" VALUES(244,'sudo bash','Запускает оболочку Bash от имени root.','2026-08-21 12:26:58',NULL);
+INSERT INTO "cli" VALUES(245,'sudo apt update && sudo apt upgrade -y','Обновление списка пакетов и самой системы.','2026-09-17 11:13:22',NULL);
+INSERT INTO "cli" VALUES(246,'sudo apt-add-repository --yes --update ppa:ansible/ansible','Добавление репозитория Ansible в Ubuntu','2026-09-17 11:53:07',NULL);
+INSERT INTO "cli" VALUES(247,'sudo apt install ansible -y','Установка Ansible','2026-09-17 11:53:39',NULL);
+INSERT INTO "cli" VALUES(248,'ansible --version','Проверка версии Ansible','2026-09-17 11:54:57',NULL);
+CREATE TABLE countries (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name_ru TEXT NOT NULL UNIQUE
+);
+INSERT INTO "countries" VALUES(1,'Австралия');
+INSERT INTO "countries" VALUES(2,'Австрия');
+INSERT INTO "countries" VALUES(3,'Азербайджан');
+INSERT INTO "countries" VALUES(4,'Албания');
+INSERT INTO "countries" VALUES(5,'Алжир');
+INSERT INTO "countries" VALUES(6,'Ангола');
+INSERT INTO "countries" VALUES(7,'Андорра');
+INSERT INTO "countries" VALUES(8,'Антигуа и Барбуда');
+INSERT INTO "countries" VALUES(9,'Аргентина');
+INSERT INTO "countries" VALUES(10,'Армения');
+INSERT INTO "countries" VALUES(11,'Афганистан');
+INSERT INTO "countries" VALUES(12,'Багамские Острова');
+INSERT INTO "countries" VALUES(13,'Бангладеш');
+INSERT INTO "countries" VALUES(14,'Барбадос');
+INSERT INTO "countries" VALUES(15,'Бахрейн');
+INSERT INTO "countries" VALUES(16,'Беларусь');
+INSERT INTO "countries" VALUES(17,'Белиз');
+INSERT INTO "countries" VALUES(18,'Бельгия');
+INSERT INTO "countries" VALUES(19,'Бенин');
+INSERT INTO "countries" VALUES(20,'Болгария');
+INSERT INTO "countries" VALUES(21,'Боливия');
+INSERT INTO "countries" VALUES(22,'Босния и Герцеговина');
+INSERT INTO "countries" VALUES(23,'Ботсвана');
+INSERT INTO "countries" VALUES(24,'Бразилия');
+INSERT INTO "countries" VALUES(25,'Бруней');
+INSERT INTO "countries" VALUES(26,'Буркина-Фасо');
+INSERT INTO "countries" VALUES(27,'Бурунди');
+INSERT INTO "countries" VALUES(28,'Бутан');
+INSERT INTO "countries" VALUES(29,'Вануату');
+INSERT INTO "countries" VALUES(30,'Ватикан');
+INSERT INTO "countries" VALUES(31,'Великобритания');
+INSERT INTO "countries" VALUES(32,'Венгрия');
+INSERT INTO "countries" VALUES(33,'Венесуэла');
+INSERT INTO "countries" VALUES(34,'Восточный Тимор');
+INSERT INTO "countries" VALUES(35,'Вьетнам');
+INSERT INTO "countries" VALUES(36,'Габон');
+INSERT INTO "countries" VALUES(37,'Гаити');
+INSERT INTO "countries" VALUES(38,'Гайана');
+INSERT INTO "countries" VALUES(39,'Гамбия');
+INSERT INTO "countries" VALUES(40,'Гана');
+INSERT INTO "countries" VALUES(41,'Гватемала');
+INSERT INTO "countries" VALUES(42,'Гвинея');
+INSERT INTO "countries" VALUES(43,'Гвинея-Бисау');
+INSERT INTO "countries" VALUES(44,'Германия');
+INSERT INTO "countries" VALUES(45,'Гондурас');
+INSERT INTO "countries" VALUES(46,'Государство Палестина');
+INSERT INTO "countries" VALUES(47,'Гренада');
+INSERT INTO "countries" VALUES(48,'Греция');
+INSERT INTO "countries" VALUES(49,'Грузия');
+INSERT INTO "countries" VALUES(50,'Дания');
+INSERT INTO "countries" VALUES(51,'Джибути');
+INSERT INTO "countries" VALUES(52,'Доминика');
+INSERT INTO "countries" VALUES(53,'Доминиканская Республика');
+INSERT INTO "countries" VALUES(54,'Египет');
+INSERT INTO "countries" VALUES(55,'Замбия');
+INSERT INTO "countries" VALUES(56,'Зимбабве');
+INSERT INTO "countries" VALUES(57,'Израиль');
+INSERT INTO "countries" VALUES(58,'Индия');
+INSERT INTO "countries" VALUES(59,'Индонезия');
+INSERT INTO "countries" VALUES(60,'Иордания');
+INSERT INTO "countries" VALUES(61,'Ирак');
+INSERT INTO "countries" VALUES(62,'Иран');
+INSERT INTO "countries" VALUES(63,'Ирландия');
+INSERT INTO "countries" VALUES(64,'Исландия');
+INSERT INTO "countries" VALUES(65,'Испания');
+INSERT INTO "countries" VALUES(66,'Италия');
+INSERT INTO "countries" VALUES(67,'Йемен');
+INSERT INTO "countries" VALUES(68,'Кабо-Верде');
+INSERT INTO "countries" VALUES(69,'Казахстан');
+INSERT INTO "countries" VALUES(70,'Камбоджа');
+INSERT INTO "countries" VALUES(71,'Камерун');
+INSERT INTO "countries" VALUES(72,'Канада');
+INSERT INTO "countries" VALUES(73,'Катар');
+INSERT INTO "countries" VALUES(74,'Кения');
+INSERT INTO "countries" VALUES(75,'Кипр');
+INSERT INTO "countries" VALUES(76,'Киргизия');
+INSERT INTO "countries" VALUES(77,'Кирибати');
+INSERT INTO "countries" VALUES(78,'Китай');
+INSERT INTO "countries" VALUES(79,'Колумбия');
+INSERT INTO "countries" VALUES(80,'Коморские Острова');
+INSERT INTO "countries" VALUES(81,'Конго');
+INSERT INTO "countries" VALUES(82,'Демократическая Республика Конго');
+INSERT INTO "countries" VALUES(83,'Республика Корея');
+INSERT INTO "countries" VALUES(84,'Корейская Народно-Демократическая Республика');
+INSERT INTO "countries" VALUES(85,'Коста-Рика');
+INSERT INTO "countries" VALUES(86,'Кот-д’Ивуар');
+INSERT INTO "countries" VALUES(87,'Куба');
+INSERT INTO "countries" VALUES(88,'Кувейт');
+INSERT INTO "countries" VALUES(89,'Лаос');
+INSERT INTO "countries" VALUES(90,'Латвия');
+INSERT INTO "countries" VALUES(91,'Лесото');
+INSERT INTO "countries" VALUES(92,'Либерия');
+INSERT INTO "countries" VALUES(93,'Ливан');
+INSERT INTO "countries" VALUES(94,'Ливия');
+INSERT INTO "countries" VALUES(95,'Литва');
+INSERT INTO "countries" VALUES(96,'Лихтенштейн');
+INSERT INTO "countries" VALUES(97,'Люксембург');
+INSERT INTO "countries" VALUES(98,'Маврикий');
+INSERT INTO "countries" VALUES(99,'Мавритания');
+INSERT INTO "countries" VALUES(100,'Мадагаскар');
+INSERT INTO "countries" VALUES(101,'Малави');
+INSERT INTO "countries" VALUES(102,'Малайзия');
+INSERT INTO "countries" VALUES(103,'Мали');
+INSERT INTO "countries" VALUES(104,'Мальдивы');
+INSERT INTO "countries" VALUES(105,'Мальта');
+INSERT INTO "countries" VALUES(106,'Марокко');
+INSERT INTO "countries" VALUES(107,'Маршалловы Острова');
+INSERT INTO "countries" VALUES(108,'Мексика');
+INSERT INTO "countries" VALUES(109,'Микронезия');
+INSERT INTO "countries" VALUES(110,'Мозамбик');
+INSERT INTO "countries" VALUES(111,'Молдова');
+INSERT INTO "countries" VALUES(112,'Монако');
+INSERT INTO "countries" VALUES(113,'Монголия');
+INSERT INTO "countries" VALUES(114,'Мьянма');
+INSERT INTO "countries" VALUES(115,'Намибия');
+INSERT INTO "countries" VALUES(116,'Науру');
+INSERT INTO "countries" VALUES(117,'Непал');
+INSERT INTO "countries" VALUES(118,'Нигер');
+INSERT INTO "countries" VALUES(119,'Нигерия');
+INSERT INTO "countries" VALUES(120,'Нидерланды');
+INSERT INTO "countries" VALUES(121,'Никарагуа');
+INSERT INTO "countries" VALUES(122,'Новая Зеландия');
+INSERT INTO "countries" VALUES(123,'Норвегия');
+INSERT INTO "countries" VALUES(124,'Объединённые Арабские Эмираты');
+INSERT INTO "countries" VALUES(125,'Оман');
+INSERT INTO "countries" VALUES(126,'Пакистан');
+INSERT INTO "countries" VALUES(127,'Палау');
+INSERT INTO "countries" VALUES(128,'Панама');
+INSERT INTO "countries" VALUES(129,'Папуа — Новая Гвинея');
+INSERT INTO "countries" VALUES(130,'Парагвай');
+INSERT INTO "countries" VALUES(131,'Перу');
+INSERT INTO "countries" VALUES(132,'Польша');
+INSERT INTO "countries" VALUES(133,'Португалия');
+INSERT INTO "countries" VALUES(134,'Россия');
+INSERT INTO "countries" VALUES(135,'Руанда');
+INSERT INTO "countries" VALUES(136,'Румыния');
+INSERT INTO "countries" VALUES(137,'Сальвадор');
+INSERT INTO "countries" VALUES(138,'Самоа');
+INSERT INTO "countries" VALUES(139,'Сан-Марино');
+INSERT INTO "countries" VALUES(140,'Сан-Томе и Принсипи');
+INSERT INTO "countries" VALUES(141,'Саудовская Аравия');
+INSERT INTO "countries" VALUES(142,'Северная Македония');
+INSERT INTO "countries" VALUES(143,'Сейшельские Острова');
+INSERT INTO "countries" VALUES(144,'Сенегал');
+INSERT INTO "countries" VALUES(145,'Сент-Винсент и Гренадины');
+INSERT INTO "countries" VALUES(146,'Сент-Китс и Невис');
+INSERT INTO "countries" VALUES(147,'Сент-Люсия');
+INSERT INTO "countries" VALUES(148,'Сербия');
+INSERT INTO "countries" VALUES(149,'Сингапур');
+INSERT INTO "countries" VALUES(150,'Сирия');
+INSERT INTO "countries" VALUES(151,'Словакия');
+INSERT INTO "countries" VALUES(152,'Словения');
+INSERT INTO "countries" VALUES(153,'Соломоновы Острова');
+INSERT INTO "countries" VALUES(154,'Сомали');
+INSERT INTO "countries" VALUES(155,'Судан');
+INSERT INTO "countries" VALUES(156,'Суринам');
+INSERT INTO "countries" VALUES(157,'Сьерра-Леоне');
+INSERT INTO "countries" VALUES(158,'Таджикистан');
+INSERT INTO "countries" VALUES(159,'Таиланд');
+INSERT INTO "countries" VALUES(160,'Танзания');
+INSERT INTO "countries" VALUES(161,'Того');
+INSERT INTO "countries" VALUES(162,'Тонга');
+INSERT INTO "countries" VALUES(163,'Тринидад и Тобаго');
+INSERT INTO "countries" VALUES(164,'Тувалу');
+INSERT INTO "countries" VALUES(165,'Тунис');
+INSERT INTO "countries" VALUES(166,'Туркменистан');
+INSERT INTO "countries" VALUES(167,'Турция');
+INSERT INTO "countries" VALUES(168,'Уганда');
+INSERT INTO "countries" VALUES(169,'Узбекистан');
+INSERT INTO "countries" VALUES(170,'Украина');
+INSERT INTO "countries" VALUES(171,'Уругвай');
+INSERT INTO "countries" VALUES(172,'Федеративные Штаты Микронезии');
+INSERT INTO "countries" VALUES(173,'Фиджи');
+INSERT INTO "countries" VALUES(174,'Филиппины');
+INSERT INTO "countries" VALUES(175,'Финляндия');
+INSERT INTO "countries" VALUES(176,'Франция');
+INSERT INTO "countries" VALUES(177,'Хорватия');
+INSERT INTO "countries" VALUES(178,'Центральноафриканская Республика');
+INSERT INTO "countries" VALUES(179,'Чад');
+INSERT INTO "countries" VALUES(180,'Черногория');
+INSERT INTO "countries" VALUES(181,'Чехия');
+INSERT INTO "countries" VALUES(182,'Чили');
+INSERT INTO "countries" VALUES(183,'Швейцария');
+INSERT INTO "countries" VALUES(184,'Швеция');
+INSERT INTO "countries" VALUES(185,'Шри-Ланка');
+INSERT INTO "countries" VALUES(186,'Эквадор');
+INSERT INTO "countries" VALUES(187,'Экваториальная Гвинея');
+INSERT INTO "countries" VALUES(188,'Эритрея');
+INSERT INTO "countries" VALUES(189,'Эстония');
+INSERT INTO "countries" VALUES(190,'Эсватини');
+INSERT INTO "countries" VALUES(191,'Эфиопия');
+INSERT INTO "countries" VALUES(192,'Южно-Африканская Республика');
+INSERT INTO "countries" VALUES(193,'Южный Судан');
+INSERT INTO "countries" VALUES(194,'Ямайка');
+INSERT INTO "countries" VALUES(195,'Япония');
 CREATE TABLE "python" (
   [python_id] INTEGER PRIMARY KEY AUTOINCREMENT,
   [python_command] TEXT NOT NULL,
@@ -194,7 +383,7 @@ INSERT INTO "wiki" VALUES('WebSocket ','Протокол связи поверх
 INSERT INTO "wiki" VALUES('Бэклог ','Backlog. Перечень задач или требований продукта, которые необходимо выполнить в будущем.
 ','2026-01-13 14:15:04',NULL,5);
 INSERT INTO "wiki" VALUES('ВКС ','Видеоконференцсвязь. Технология интерактивного взаимодействия трёх и более абонентов, обменивающихся аудио и видео (в eXpress для этого есть конференции).','2026-01-13 14:17:39',NULL,6);
-INSERT INTO "wiki" VALUES('SOAP (Simple Object Access Protocol) — протокол обмена структурированными сообщениями в распределённой вычислительной среде. Первоначально предназначался в основном для реализации удалённого вызова процедур (RPC), но сейчас используется для обмена произвольными сообщениями в формате XML, а не только для вызова процедур.','SOAP','2026-01-15 08:16:49',NULL,7);
+INSERT INTO "wiki" VALUES('SOAP','SOAP (Simple Object Access Protocol) — протокол обмена структурированными сообщениями в распределённой вычислительной среде. Первоначально предназначался в основном для реализации удалённого вызова процедур (RPC), но сейчас используется для обмена произвольными сообщениями в формате XML, а не только для вызова процедур.','2026-01-15 08:16:49','2026-09-02 17:26:30',7);
 INSERT INTO "wiki" VALUES('REST API','REST API архитектурный подход, который устанавливает ограничения для API: как они должны быть устроены и какие функции поддерживать. Это позволяет стандартизировать работу программных интерфейсов, сделать их более удобными и производительными.
 
 Слово REST — акроним от Representational State Transfer, что переводится на русский как «передача состояния представления», «передача репрезентативного состояния» или «передача „самоописываемого“ состояния».','2026-01-15 08:19:00',NULL,8);
@@ -217,10 +406,8 @@ IP с использованием сертификатов стандарта X
 INSERT INTO "wiki" VALUES('ICAP','Internet Content Adaptation Protocol (ICAP) — специализированный протокол, похожий на HTTP, который позволяет устройствам на краю сети передавать входящий контент для специализированного анализа.','2026-03-13 09:06:40',NULL,17);
 INSERT INTO "wiki" VALUES('SIEM','Security Information and Event Management. Система сбора и анализа событий безопасности.','2026-03-13 09:07:34',NULL,18);
 INSERT INTO "wiki" VALUES('KVM','Kernel-based Virtual Machine. Среда виртуализации с открытым исходным кодом.','2026-03-13 09:08:32',NULL,19);
-INSERT INTO "wiki" VALUES('Host-model — режим эмуляции процессора (CPU) в виртуализации, который описывает CPU гостя подобно хостовому. Это режим, который подбирается так, чтобы модель и набор дополнительных функций виртуального ЦП наиболее точно соответствовали модели и дополнительным функциям ЦП вычислительного сервера, на котором размещена виртуальная машина (полное соответствие не гарантируется). 
-habr.com
-techhaps.com
-Режим host-model — по умолчанию для гипервизоров KVM и QEMU на хостах x86-64.','Host-model','2026-03-13 09:31:52',NULL,20);
+INSERT INTO "wiki" VALUES('Host-model','Режим эмуляции процессора (CPU) в виртуализации, который описывает CPU гостя подобно хостовому. Это режим, который подбирается так, чтобы модель и набор дополнительных функций виртуального ЦП наиболее точно соответствовали модели и дополнительным функциям ЦП вычислительного сервера, на котором размещена виртуальная машина (полное соответствие не гарантируется). 
+Режим host-model — по умолчанию для гипервизоров KVM и QEMU на хостах x86-64.','2026-03-13 09:31:52','2026-09-02 17:32:06',20);
 INSERT INTO "wiki" VALUES('Host-passthrough','Host-passthrough — режим эмуляции процессора (CPU) в виртуализации, при котором виртуальной машине предоставляется виртуальный ЦП такой же модели и с такими же дополнительными функциями, как у ЦП вычислительного сервера, на котором размещена виртуальная машина. 
 habr.com
 docs.ispsystem.ru
@@ -271,9 +458,11 @@ INSERT INTO "wiki" VALUES('SQL форматтер','"https://bi-data.ru/tools/sq
 INSERT INTO "wiki" VALUES('Развертывание python-приложений','"https://timeweb.cloud/tutorials/python/razvertyvanie-prilozhenij-python"','2026-03-19 07:58:27',NULL,26);
 INSERT INTO "wiki" VALUES('Автоинкремент в SQLite','"https://www.sqlite.org/autoinc.html"','2026-03-19 12:47:10',NULL,27);
 INSERT INTO "wiki" VALUES('Markdown','Язык разметки Markdown: шпаргалка по синтаксису с примерами. https://skillbox.ru/media/code/yazyk-razmetki-markdown-shpargalka-po-sintaksisu-s-primerami/','2026-03-19 12:47:43',NULL,28);
+INSERT INTO "wiki" VALUES('CLI','Command Line Interface - Интерфейс командной строки','2026-08-21 12:30:03','2026-09-02 17:33:12',29);
+INSERT INTO "wiki" VALUES('Patroni ','Framework, разработанный на языке python, для построения кластера Postgres Pro высокой доступности на основе потоковой репликации.','2026-09-02 07:24:42','2026-09-02 17:32:36',30);
 DELETE FROM "sqlite_sequence";
 INSERT INTO "sqlite_sequence" VALUES('python',2131);
-INSERT INTO "sqlite_sequence" VALUES('cli',243);
+INSERT INTO "sqlite_sequence" VALUES('cli',248);
 INSERT INTO "sqlite_sequence" VALUES('sql',1181);
-INSERT INTO "sqlite_sequence" VALUES('about',16);
+INSERT INTO "sqlite_sequence" VALUES('countries',195);
 COMMIT;

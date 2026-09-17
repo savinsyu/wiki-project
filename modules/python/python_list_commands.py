@@ -99,6 +99,14 @@ def python_download_pdf():
     buffer = BytesIO(pdf_data)
     buffer.seek(0)
 
+
+    # buffer = BytesIO()
+    # pdf.output(buffer, dest='F')  # или dest='S' + .getvalue(), зависит от версии
+    # # либо для FPDF2:
+    # # pdf.output(buffer)
+    # buffer.seek(0)
+
+
     return send_file(
         buffer,
         as_attachment=True,

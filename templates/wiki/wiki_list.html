@@ -11,6 +11,9 @@
         <p class="card-text">
             <a href="{{ url_for('add_wiki.add_wiki') }}" class="btn btn-outline-dark">
                     Добавить новую запись</a>
+            <a href="{{ url_for('wiki_list_page.wiki_download_pdf') }}" class="btn btn-outline-success">
+             <i class="bi bi-download"></i> Скачать все записи в PDF
+          </a>
         </p>
         <div class="pagination">
             {% if page > 1 %}
