@@ -11,6 +11,9 @@
         <p class="card-text">
             <a href="{{ url_for('add_python_command.add_python_command') }}" class="btn btn-outline-dark">
                     Добавить новую запись</a>
+            <a href="{{ url_for('python_list_commands.python_download_pdf') }}" class="btn btn-outline-success">
+             <i class="bi bi-download"></i> Скачать все записи в PDF
+          </a>
         </p>
         <div class="pagination">
             {% if page > 1 %}
