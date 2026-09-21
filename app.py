@@ -2,7 +2,7 @@ import secrets
 
 import flask
 from modules import index, services, search
-from modules.lists import countries_list
+from modules.lists import countries_list, games_list
 from modules.wiki import delete_wiki, wiki_list, edit_wiki, add_wiki, get_wiki
 from modules.cli import delete_cli_post, cli_posts, edit_cli_post, add_cli_post, get_view_cli_post
 from modules.sql import delete_sql_command, sql_list_commands, edit_sql_command, get_post_sql_command, add_sql_command
@@ -14,6 +14,7 @@ secret = secrets.token_urlsafe(32)
 app = flask.Flask(__name__)
 app.secret_key = secret
 app.register_blueprint(countries_list.bp)
+app.register_blueprint(games_list.bp)
 app.register_blueprint(delete_wiki.bp)
 app.register_blueprint(wiki_list.bp)
 app.register_blueprint(add_wiki.bp)

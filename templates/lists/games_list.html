@@ -1,26 +1,26 @@
 {% extends "base.html" %}
 
-{% block title %}Страны{% endblock %}
+{% block title %}Игры{% endblock %}
 
 {% block content %}
 
 <div class="card mb-4">
-    <div class="card-header h3">Страны мира</div>
+    <div class="card-header h3">Игры</div>
     <div class="card-body">
-        <p class="card-text">Всего записей в разделе: <b>{{ countries_list_count }}</b></p>
+        <p class="card-text">Всего записей в разделе: <b>{{ games_list_count }}</b></p>
         <div class="pagination">
             {% if page > 1 %}
-            <a href="{{ url_for('countries_list_page.countries_list_page', page=page-1) }}"
+            <a href="{{ url_for('games_list_page.games_list_page', page=page-1) }}"
                 class="btn btn-outline-dark">Предыдущая</a>
             {% endif %}
 
             {% for p in range(1, total_pages + 1) %}
-            <a href="{{ url_for('countries_list_page.countries_list_page', page=p) }}"
+            <a href="{{ url_for('games_list_page.games_list_page', page=p) }}"
                 class="btn btn-outline-dark {% if p == page %}active{% endif %}">{{ p }}</a>
             {% endfor %}
 
             {% if page < total_pages %} <a
-                href="{{ url_for('countries_list_page.countries_list_page', page=page+1) }}"
+                href="{{ url_for('games_list_page.games_list_page', page=page+1) }}"
                 class="btn btn-outline-dark">Следующая</a>
                 {% endif %}
         </div>
@@ -29,12 +29,14 @@
         <thead>
             <tr>
                 <th>Страна</th>
+                <th>Жанр</th>
             </tr>
         </thead>
         <tbody>
-            {% for countries_list in countries_list %}
+            {% for games_list in games_list %}
             <tr>
-                <td>{{ countries_list['name_ru'] }}</td>
+                <td>{{ games_list['game_name'] }}</td>
+                <td>{{ games_list['game_genre'] }}</td>    
             </tr>
             {% endfor %}
         </tbody>
