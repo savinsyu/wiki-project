@@ -35,6 +35,7 @@ git clone https://github.com/savinsyu/wiki-project.git
 3. Переходим в папку wiki-project 
 4. Запускаем скрипт start_app.sh
 5. В браузере откроеткся страница приложения
+6. start_app.sh
 
 
 ## Описание файлов корневой директории
