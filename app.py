@@ -1,5 +1,5 @@
 import secrets
-
+import socket
 import flask
 from modules import index, services, search
 from modules.wiki import delete_wiki, wiki_list, edit_wiki, add_wiki, get_wiki
@@ -37,14 +37,24 @@ app.register_blueprint(services.bp)
 app.register_blueprint(search.bp)
 
 
-
-
-
-# RUS Пишем логику для отображения страницы с 404 ошибкой
-# ENG Handling 404 Error in Flask
 @app.errorhandler(404)
 def page_not_found(e):
     return flask.render_template('404.html'), 404
 
+
+def find_free_port(start_port=83, max_attempts=100):
+    port = start_port
+    for _ in range(max_attempts):
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            try:
+                s.bind(('0.0.0.0', port))
+                return port
+            except OSError:
+                port += 1
+    raise RuntimeError(f'Не удалось найти свободный порт в диапазоне {start_port}-{start_port + max_attempts - 1}')
+
+
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=83)
+    chosen_port = find_free_port(83)
+    print(f"Запуск на порту {chosen_port}")
+    app.run(debug=True, host='0.0.0.0', port=chosen_port)
