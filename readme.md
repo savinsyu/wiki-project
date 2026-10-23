@@ -13,11 +13,19 @@
 
 ## Установка и запуск приложения
 
-1. Открываем 
-2. Вводим команду 
+1. Открываем Powershell в Windows
+2. Вводим последовательно команды
 ```
 git clone https://github.com/savinsyu/wiki-project.git
 ```
-3. Переходим в папку wiki-project 
+```
+cd wiki-project/
+```
+```
+python -m venv venv
+```
+```
+.\venv\Scripts\Activate.ps1
+```
 4. Запускаем скрипт install_local_app.sh
 5. В браузере откроется страница приложения
