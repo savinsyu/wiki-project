@@ -2,7 +2,6 @@ import flask
 from flask import render_template, request
 from modules import connect
 
-
 bp = flask.Blueprint("search", __name__)
 
 
@@ -12,27 +11,20 @@ def search():
         search_term = request.form['search_term']
         conn = connect.get_db_connection()
         cursor = conn.cursor()
+
+        # Исправленный запрос: ищем по полям post_name и post_content в таблице posts
+        # Также подтягиваем имя категории с помощью JOIN
         query = '''
-        SELECT * FROM python 
-        WHERE python_command LIKE ? OR python_name LIKE ? 
-        UNION 
-        SELECT * FROM cli 
-        WHERE cli_command LIKE ? OR cli_name LIKE ?
-        UNION
-        SELECT * FROM sql 
-        WHERE sql_command LIKE ? OR sql_name LIKE ?
-        UNION
-        SELECT * FROM wiki 
-        WHERE wiki_content LIKE ? OR wiki_name LIKE ?
+        SELECT p.id_post, p.post_name, p.post_content, c.category_name, p.created_at
+        FROM posts p
+        JOIN post_categories c ON p.post_category_id = c.id_category
+        WHERE p.post_name LIKE %s OR p.post_content LIKE %s
         '''
-        cursor.execute(query,(f'%{search_term}%', 
-                              f'%{search_term}%', 
-                              f'%{search_term}%', 
-                              f'%{search_term}%', 
-                              f'%{search_term}%',
-                              f'%{search_term}%',
-                              f'%{search_term}%',
-                              f'%{search_term}%'))
+
+        # Для MySQL используем %s и передаем кортеж с параметрами
+        like_pattern = f'%{search_term}%'
+        cursor.execute(query, (like_pattern, like_pattern))
+
         results = cursor.fetchall()
         return render_template('search.html', results=results)
     return render_template('search.html')

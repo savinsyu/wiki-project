@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block title %}Редактировать запись{% endblock %}
+{% block content %}
+
+    <form method="post">
+        <!-- Название записи -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-dark text-white">
+                <label for="post_name" class="h5 mb-0">Название</label>
+            </div>
+            <div class="card-body">
+                {# Используем текстовое поле вместо textarea #}
+                <input type="text"
+                       class="form-control bg-light text-dark"
+                       id="post_name"
+                       name="post_name"
+                       placeholder="Введите название"
+                       value="{{ edit_post_view.post_name }}"
+                       required>
+            </div>
+        </div>
+
+        <!-- Содержание записи -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-dark text-white">
+                <label for="post_content" class="h5 mb-0">Содержание</label>
+            </div>
+            <div class="card-body">
+                <textarea class="form-control bg-light text-dark"
+                          id="post_content"
+                          name="post_content"
+                          rows="3"
+                          placeholder="Текст вашей статьи или заметки"
+                          required>{{ edit_post_view.post_content|default('') }}</textarea>
+            </div>
+        </div>
+
+        <!-- Категория 👇 Вот это самое важное изменение! -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-dark text-white">
+                <label for="category" class="h5 mb-0">Категория</label>
+            </div>
+            <div class="card-body">
+                <select name="category" id="category" class="form-select">
+                    {% for cat in categories %}
+                        <option value="{{ cat.id_category }}"
+                                {% if edit_post_view.category_id == cat.id_category %}selected{% endif -%}>
+                            {{ cat.category_name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <!-- Операции -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-dark text-white">
+                <div class="h5 mb-0">Операции</div>
+            </div>
+            <div class="card-body">
+                <a href="{{ url_for('posts.posts') }}" class="btn btn-outline-dark">
+                    Вернуться к списку записей
+                </a>
+                <button type="submit" class="btn btn-outline-dark float-end">Сохранить</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-dark text-white">
+            <div class="h5 mb-0">Удаление записи</div>
+        </div>
+        <div class="btn-group card-body">
+            <form action="{{ url_for('delete_post.delete_post', post_id=edit_post_view['id_post'])}}"
+                  method="POST" class="mt-3">
+                <button type="submit" class="btn btn-outline-danger"
+                        onclick="return confirm('Вы уверены что хотите удалить эту запись?')">
+                     Удалить запись?
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

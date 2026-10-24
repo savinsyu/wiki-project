@@ -1,16 +1,29 @@
-import sqlite3
-import os.path
+import pymysql
+import pymysql.cursors
 
-
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
+# Параметры подключения к MySQL (127.0.0.1:3306)
+DB_CONFIG = {
+    'host': '127.0.0.1',
+    'port': 3306,
+    'user': 'root',        # Укажите вашего пользователя MySQL
+    'password': '2V0n1I6S9a978',      # Укажите ваш пароль
+    'database': 'wiki-project',  # Укажите имя вашей базы данных
+    'charset': 'utf8mb4',
+    # DictCursor заменяет sqlite3.Row, позволяя обращаться к полям по именам: row['field']
+    'cursorclass': pymysql.cursors.DictCursor,
+    'connect_timeout': 30
+}
 
 def get_db_connection():
-    db_path = os.path.join(BASE_DIR, '../database.db')
-    conn = sqlite3.connect(db_path, timeout=30)
-    conn.row_factory = sqlite3.Row
+    """
+    Создает и возвращает подключение к базе данных MySQL.
+    """
+    conn = pymysql.connect(**DB_CONFIG)
     return conn
 
-
 def close_db_connection(conn):
-    conn.close()
+    """
+    Закрывает подключение к базе данных.
+    """
+    if conn:
+        conn.close()

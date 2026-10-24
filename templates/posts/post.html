@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}Страница записи{% endblock %}
+
+{% block content %}
+   <div class="card shadow">
+      <div class="card-header bg-dark text-white">
+         <h4 class="card-title mb-0">Детали записи</h4>
+      </div>
+      <div class="card-body">
+         {% set fields = [
+            {'title': 'ID', 'value': edit_post_view['id_post'], 'class': 'col-md-6'},
+            # 📝 Дата редактирования может быть NULL или отсутствовать в вашей таблице,
+            # поэтому используем фильтр |default('Не изменялась')
+            {'title': 'Дата редактирования записи',
+             'value': edit_post_view['date_edit']|default('Не изменялась'),
+             'class': 'col-md-6'
+            },
+            {'title': 'Дата добавления записи', 'value': edit_post_view['created_at'], 'class': 'col-md-6'},
+            {'title': 'Название', 'value': edit_post_view['post_name'], 'class': 'col-md-6'},
+            {'title': 'Текст записи', 'value': edit_post_view['post_content'], 'class': 'col-md-12'}
+         ] %}
+
+{#  ⚡️ Блок для вывода названия выбранной категории из списка #}
+         {% for cat in categories if cat.id_category == edit_post_view.category_id %}
+           <!-- Мы перебираем все категории, но выводим только ту, чей ID совпадает -->
+           <div class="row mb-3">
+              <div class="col-md-6">
+                 <h5 class="card-title">Категория</h5>
+                 <p class="card-text">{{ cat.category_name }}</p>
+              </div>
+           </div>
+         {% else %}
+           {# Если категория по какой-то причине не найдена #}
+           <div class="row mb-3">
+              <div class="col-md-6">
+                 <h5 class="card-title">Категория</h5>
+                 <p class="card-text text-danger">Категория не определена</p>
+              </div>
+           </div>
+         {% endfor %}
+
+         {% for field in fields %}
+         <div class="row mb-3">
+            <div class="{{ field.class }}">
+               <h5 class="card-title">{{ field.title }}</h5>
+               <p class="card-text">{{ field.value }}</p>
+            </div>
+         </div>
+         {% endfor %}
+      </div>
+   </div>
+
+   <div class="card mb-4 shadow-sm">
+      <div class="card-header bg-dark text-white">
+         <div class="h5 mb-0">Операции</div>
+      </div>
+      <div class="card-body">
+         <div class="btn-group" role="group" aria-label="Действия">
+            <a href="{{ url_for('posts.posts') }}" class="btn btn-outline-dark">
+               Вернуться к списку записей</a> {/* posts.posts вместо cli_posts.cli_posts */}
+            <a href="{{ url_for('add_post.add_post') }}" class="btn btn-outline-dark">
+               Добавить новую запись</a> {/* add_post.add_post вместо add_cli_post.*/}
+            <a href="{{ url_for('edit_post.edit_post', id_post=edit_post_view['id_post']) }}"
+               class="btn btn-outline-dark">Редактировать запись</a>
+         </div>
+         <form action="{{ url_for('delete_post.delete_post', post_id=edit_post_view['id_post'])}}"
+            method="POST" class="mt-3">
+            <button type="submit" class="btn btn-outline-danger"
+               onclick="return confirm('Вы уверены что хотите удалить запись?');">
+                Удалить запись?
+            </button>
+         </form>
+      </div>
+   </div>
+
+{% endblock %}
