@@ -13,7 +13,7 @@
 
 ## Установка и запуск приложения
 
-1. Открываем Powershell в Windows
+1. Открываем консоль Powershell в Windows
 2. Вводим последовательно команды
 ```
 git clone https://github.com/savinsyu/wiki-project.git
@@ -21,12 +21,9 @@ git clone https://github.com/savinsyu/wiki-project.git
 ```
 cd wiki-project/
 ```
+3. В файле скрипта запуска миграции и файле скрипта подключения к базе данных modules/connect.py, modules/migration.py меняем пароль на свой от базы данных ('password')
+4. Запускаем в консоли Powershell команду:
 ```
-python -m venv venv
+.\first_run.ps1
 ```
-```
-.\venv\Scripts\Activate.ps1
-```
-```
-.\first_install_and_start_app_migration.ps1
-```
+5. Приложение запущено в браузере и готово к работе
