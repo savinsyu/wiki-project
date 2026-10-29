@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Поиск{% endblock %}
+{% block content %}
+
+<div class="container mt-4">
+    <!-- Блок: Поиск записей -->
+    <div class="card mb-3">
+        <div class="card-header bg-dark text-white font-weight-bold">
+            Поиск записей
+        </div>
+        <div class="card-body p-2">
+            <form class="d-flex gap-2" action="/search" method="POST" role="search">
+                <input class="form-control border-0" type="text" placeholder="Введите поисковый запрос..." aria-label="Search" name="search_term" id="search_term" style="box-shadow: none;" required>
+                <button class="btn btn-outline-secondary btn-sm px-4" type="submit">Искать</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Блок: Результаты поиска -->
+    <div class="card mb-3">
+        <div class="card-header bg-dark text-white font-weight-bold">
+            Результаты поиска
+        </div>
+
+        {% if results %}
+        <div class="card-header bg-dark text-white p-0" style="opacity: 0.9;">
+            <div class="row m-0 font-weight-bold p-2 text-center text-md-left" style="font-size: 0.9rem;">
+                <div class="col-md-3">Название записи</div>
+                <div class="col-md-7">Содержание</div>
+                <div class="col-md-2 text-md-right">Действие</div>
+            </div>
+        </div>
+        <div class="list-group list-group-flush">
+            {% for result in results %}
+            <div class="list-group-item p-3">
+                <div class="row align-items-center">
+                    <!-- Название записи -->
+                    <div class="col-md-3 mb-2 mb-md-0 font-weight-bold">
+                        {{ result.post_name if result is mapping else result[1] }}
+                    </div>
+
+                    <!-- Содержание записи -->
+                    <div class="col-md-7 text-muted text-truncate mb-3 mb-md-0">
+                        {{ result.post_content if result is mapping else result[2] }}
+                    </div>
+
+                    <!-- Кнопка перехода к записи -->
+                    <div class="col-md-2 text-md-right">
+                        {% set res_id = result.id_post if result is mapping else result[0] %}
+                        <a href="{{ url_for('posts.post', id_post=res_id) }}" class="btn btn-outline-secondary btn-sm btn-block text-center">Перейти</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="card-body text-center text-muted p-4">
+            По вашему запросу ничего не найдено или поиск еще не производился.
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

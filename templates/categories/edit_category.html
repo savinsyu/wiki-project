@@ -1,0 +1,27 @@
+{% extends 'base.html' %} 
+{% block title %}Редактировать категорию{% endblock %} 
+
+{% block content %}
+<div class="container mt-4">
+    {% include 'errors.html' %}
+
+    <form method="POST">
+        <div class="card mb-3">
+            <div class="card-header bg-dark text-white font-weight-bold">Редактировать название</div>
+            <div class="card-body p-2">
+                <input type="text" name="category_name" class="form-control border-0" 
+                       value="{{ category_view.category_name if category_view is mapping else category_view[1] }}" 
+                       style="box-shadow: none;" required>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header bg-dark text-white font-weight-bold">Операции</div>
+            <div class="card-body p-2 d-flex gap-2">
+                <a href="{{ url_for('categories.list_categories') }}" class="btn btn-outline-secondary btn-sm">Вернуться к списку</a>
+                <button type="submit" class="btn btn-outline-secondary btn-sm">Сохранить</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

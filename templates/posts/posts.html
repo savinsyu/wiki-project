@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block title %}Посты{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <!-- Блок: Заголовок и добавление -->
+    <div class="card mb-3">
+        <div class="card-header bg-dark text-white font-weight-bold d-flex justify-content-between align-items-center flex-wrap">
+            <span>Посты (Всего записей: {{ posts_count }})</span>
+            <a href="{{ url_for('posts.add_post') }}" class="btn btn-outline-light btn-sm">Добавить запись</a>
+        </div>
+    </div>
+
+    <!-- НОВЫЙ БЛОК: Фильтрация по категориям -->
+    <div class="card mb-3">
+        <div class="card-body p-2 bg-light">
+            <form method="GET" action="{{ url_for('posts.posts') }}" class="form-inline m-0 d-flex align-items-center gap-2">
+                <label for="category_filter" class="mr-2 mb-0 font-weight-bold text-secondary text-sm">Фильтр по категориям:</label>
+                <select name="category_filter" id="category_filter" class="form-control form-control-sm border-secondary" style="max-width: 250px;" onchange="this.form.submit()">
+                    <option value="">Все категории</option>
+                    {% for cat in categories %}
+                        {% set cat_id = cat.id_category if cat is mapping else cat[0] %}
+                        {% set cat_name = cat.category_name if cat is mapping else cat[1] %}
+                        <option value="{{ cat_id }}" {% if cat_id == current_category %}selected{% endif %}>
+                            {{ cat_name }}
+                        </option>
+                    {% endfor %}
+                </select>
+                {% if current_category %}
+                    <a href="{{ url_for('posts.posts') }}" class="btn btn-outline-danger btn-sm">Сбросить</a>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+
+    {% include 'errors.html' %}
+
+    <!-- Блок: Пагинация (сохраняет выбранный фильтр при переходе по страницам) -->
+    {% if total_pages > 1 %}
+    <div class="card mb-3">
+        <div class="card-body p-2 d-flex justify-content-center align-items-center gap-2 flex-wrap">
+            {% if page > 1 %}
+                <a href="{{ url_for('posts.posts', page=page-1, category_filter=current_category) }}" class="btn btn-outline-secondary btn-sm">Предыдущая</a>
+            {% endif %}
+            {% for p in range(1, total_pages + 1) %}
+                <a href="{{ url_for('posts.posts', page=p, category_filter=current_category) }}" class="btn {% if p == page %}btn-dark{% else %}btn-outline-secondary{% endif %} btn-sm">{{ p }}</a>
+            {% endfor %}
+            {% if page < total_pages %}
+                <a href="{{ url_for('posts.posts', page=page+1, category_filter=current_category) }}" class="btn btn-outline-secondary btn-sm">Следующая</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Таблица со столбцом Категория -->
+    <div class="card mb-3">
+        <div class="card-header bg-dark text-white p-0">
+            <div class="row m-0 font-weight-bold p-2 text-center text-md-left">
+                <div class="col-md-3">Название поста</div>
+                <div class="col-md-2">Категория</div> <!-- Добавлен заголовок столбца -->
+                <div class="col-md-4">Содержание поста</div>
+                <div class="col-md-3 text-md-right">Действия</div>
+            </div>
+        </div>
+        <div class="list-group list-group-flush">
+            {% for item in posts_list %}
+            <div class="list-group-item p-3">
+                <div class="row align-items-center">
+                    <!-- Название -->
+                    <div class="col-md-3 mb-2 mb-md-0 font-weight-bold">
+                        {{ item.post_name if item is mapping else item[2] }}
+                    </div>
+
+                    <!-- НОВАЯ ЯЧЕЙКА: Вывод названия категории в виде бейджа -->
+                    <div class="col-md-2 mb-2 mb-md-0">
+                        <span class="badge badge-secondary py-1 px-2 text-wrap" style="font-size: 85%;">
+                            {{ (item.category_name if item is mapping else item[-1]) or 'Без категории' }}
+                        </span>
+                    </div>
+
+                    <!-- Содержание (адаптировано место под col-md-4) -->
+                    <div class="col-md-4 text-muted text-truncate mb-3 mb-md-0">
+                        {{ item.post_content if item is mapping else item[1] }}
+                    </div>
+
+                    <!-- Кнопки действий -->
+                    <div class="col-md-3 text-md-right">
+                        {% set item_id = item.id_post if item is mapping else item[0] %}
+                        <div class="d-flex justify-content-md-end gap-2 flex-wrap">
+                            <a href="{{ url_for('posts.post', id_post=item_id) }}" class="btn btn-outline-secondary btn-sm">Посмотреть</a>
+                            <a href="{{ url_for('posts.edit_post', id_post=item_id) }}" class="btn btn-outline-secondary btn-sm">Редактировать</a>
+                            <form action="{{ url_for('posts.delete_post', id_post=item_id) }}" method="POST" class="d-inline" onsubmit="return confirm('Вы уверены?');">
+                                <button type="submit" class="btn btn-outline-danger btn-sm">Удалить</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="list-group-item text-center text-muted p-4">Записи в данной категории отсутствуют.</div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

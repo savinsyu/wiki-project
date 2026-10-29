@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+
+<head>
+    <!-- Подключение CSS Bootstrap внутренних файлов -->
+    <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
+    <script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}"></script>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+    <!-- Подключаем меню -->
+    {% include 'navbar.html' %}
+    <div class="main">
+        {% block content %}
+        {% endblock %}
+     </div>
+</body>
+
+</html>

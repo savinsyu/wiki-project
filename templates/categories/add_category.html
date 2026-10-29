@@ -1,0 +1,25 @@
+{% extends 'base.html' %} 
+{% block title %}Добавить категорию{% endblock %} 
+
+{% block content %} 
+{% include 'errors.html' %}
+
+<div class="container mt-4">
+    <form method="POST">
+        <div class="card mb-3">
+            <div class="card-header bg-dark text-white font-weight-bold">Новая категория</div>
+            <div class="card-body p-2">
+                <input type="text" name="category_name" class="form-control border-0" placeholder="Введите название категории" style="box-shadow: none;" required>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header bg-dark text-white font-weight-bold">Операции</div>
+            <div class="card-body p-2 d-flex gap-2">
+                <a href="{{ url_for('categories.list_categories') }}" class="btn btn-outline-secondary btn-sm">Вернуться к списку</a>
+                <button type="submit" class="btn btn-outline-secondary btn-sm">Добавить</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

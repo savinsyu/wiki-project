@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}Страница записи{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <!-- Блок: Детали записи -->
+    <div class="card mb-3">
+        <div class="card-header bg-dark text-white font-weight-bold">
+            Детали записи
+        </div>
+        <div class="card-body">
+            {# Формируем структуру данных на основе переданного cli_view (переименовано из edit_post_view для соответствия роуту) #}
+            {% set current_view = cli_view %}
+            {% set fields = [
+                {'title': 'ID', 'value': current_view['id_post'] if current_view is mapping else current_view[0], 'class': 'col-md-6'},
+                {'title': 'Дата добавления записи', 'value': (current_view['created_at'] if current_view is mapping else current_view[4])|default('Не указана'), 'class': 'col-md-6'},
+                {'title': 'Название', 'value': current_view['post_name'] if current_view is mapping else current_view[2], 'class': 'col-md-12'},
+                {'title': 'Текст записи', 'value': current_view['post_content'] if current_view is mapping else current_view[1], 'class': 'col-md-12'}
+            ] %}
+
+            <div class="row">
+                <!-- Категория -->
+                <div class="col-md-12 mb-3">
+                    <h6 class="text-muted font-weight-bold mb-1">Категория</h6>
+                    <div class="p-2 bg-light rounded">
+                        {# Определение ID категории в зависимости от типа курсора #}
+                        {% set current_cat_id = current_view['category_id'] if current_view is mapping else current_view[3] %}
+                        {% set found_cat = namespace(name='') %}
+                        {% for cat in categories %}
+                            {% set cat_id = cat['id_category'] if cat is mapping else cat[0] %}
+                            {% set cat_name = cat['category_name'] if cat is mapping else cat[1] %}
+                            {% if cat_id == current_cat_id %}
+                                {% set found_cat.name = cat_name %}
+                            {% endif %}
+                        {% endfor %}
+                        {{ found_cat.name if found_cat.name else 'Категория не определена' }}
+                    </div>
+                </div>
+
+                <!-- Остальные поля -->
+                {% for field in fields %}
+                <div class="{{ field.class }} mb-3">
+                    <h6 class="text-muted font-weight-bold mb-1">{{ field.title }}</h6>
+                    <div class="p-2 bg-light rounded text-break" style="white-space: pre-line;">
+                        {{ field.value }}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Блок: Операции -->
+    <div class="card mb-3">
+        <div class="card-header bg-dark text-white font-weight-bold">
+            Операции
+        </div>
+        <div class="card-body p-2 d-flex gap-2 flex-wrap align-items-center">
+            {% set current_id = current_view['id_post'] if current_view is mapping else current_view[0] %}
+            <a href="{{ url_for('posts.posts') }}" class="btn btn-outline-secondary btn-sm">Вернуться к списку записей</a>
+            <a href="{{ url_for('posts.add_post') }}" class="btn btn-outline-secondary btn-sm">Добавить новую запись</a>
+            <a href="{{ url_for('posts.edit_post', id_post=current_id) }}" class="btn btn-outline-secondary btn-sm">Редактировать запись</a>
+
+            <form action="{{ url_for('posts.delete_post', id_post=current_id) }}" method="POST" class="d-inline" onsubmit="return confirm('Вы уверены, что хотите удалить эту запись?');">
+                <button type="submit" class="btn btn-outline-danger btn-sm">Удалить запись</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

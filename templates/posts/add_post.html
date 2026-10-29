@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}Добавить пост{% endblock %}
+
+{% block content %}
+{% include 'errors.html' %}
+
+<div class="container mt-4">
+    <form method="POST">
+        <!-- Блок: Название поста -->
+        <div class="card mb-3">
+            <div class="card-header bg-dark text-white font-weight-bold">
+                Добавить пост
+            </div>
+            <div class="card-body p-2">
+                <input type="text" name="post_name" class="form-control border-0" placeholder="Введите название поста" style="box-shadow: none;" required>
+            </div>
+        </div>
+
+        <!-- Блок: Содержание поста -->
+        <div class="card mb-3">
+            <div class="card-header bg-dark text-white font-weight-bold">
+                Содержание поста
+            </div>
+            <div class="card-body p-2">
+                <textarea name="post_content" class="form-control border-0" rows="4" placeholder="Введите содержание поста" style="box-shadow: none; resize: vertical;" required></textarea>
+            </div>
+        </div>
+
+        <!-- Блок: Категория -->
+        <div class="card mb-3">
+            <div class="card-header bg-dark text-white font-weight-bold">
+                Категория
+            </div>
+            <div class="card-body p-2">
+                <select name="category" class="form-control border-0" style="box-shadow: none;" required>
+                    <option value="" disabled selected hidden></option>
+                    {% for cat in categories %}
+                        {% if cat is mapping %}
+                            <option value="{{ cat.id_category }}">{{ cat.category_name }}</option>
+                        {% else %}
+                            <option value="{{ cat[0] }}">{{ cat[1] }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <!-- Блок: Операции с постом -->
+        <div class="card mb-3">
+            <div class="card-header bg-dark text-white font-weight-bold">
+                Операции с постом
+            </div>
+            <div class="card-body p-2 d-flex gap-2">
+                <a href="{{ url_for('posts.posts') }}" class="btn btn-outline-secondary btn-sm">Вернуться к списку</a>
+                <button type="submit" class="btn btn-outline-secondary btn-sm">Добавить</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
