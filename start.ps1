@@ -1,1 +1,1 @@
-python "$PSScriptRoot\app.py"
+& "$PSScriptRoot\venv\Scripts\python.exe" "$PSScriptRoot\app.py"

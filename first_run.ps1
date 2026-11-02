@@ -7,6 +7,7 @@ $ErrorColor = [ConsoleColor]::Red
 $SuccessColor = [ConsoleColor]::Green
 $InfoColor = [ConsoleColor]::Cyan
 
+# По умолчанию используем глобальный python для создания окружения
 $PythonExe = "python"
 
 # Automatically determine the script directory
@@ -34,6 +35,8 @@ if (-not (Test-Path $ActivationScript)) {
 if (Test-Path $ActivationScript) {
     & $ActivationScript
     Write-Success "Virtual environment activated."
+    # ЯВНО указываем путь к python внутри созданного venv
+    $PythonExe = "$ScriptDir\venv\Scripts\python.exe"
 } else {
     Write-Error "Activation script not found after environment creation."
     Read-Host "Press Enter to exit"
