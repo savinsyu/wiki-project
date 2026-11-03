@@ -1,19 +1,83 @@
+/* ===== Базовые стили ===== */
 body {
-    background-color: #f8f9fa;
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 16px;          /* было ~14px по умолчанию */
+  line-height: 1.6;
+  color: #333;
 }
+
+/* ===== Навигация ===== */
 .navbar {
-    margin-bottom: 20px;
-}
-.card {
-    border: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  background-color: #212529;
+  padding: 12px 20px;
+  font-size: 16px;          /* увеличили с дефолта */
 }
 
+.navbar a {
+  color: #f0f0f0;           /* светлее для контраста */
+  text-decoration: none;
+  margin-right: 20px;
+  transition: color 0.2s;
+}
+
+.navbar a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* ===== Поиск ===== */
 .form-control {
-    border-radius: 20px;
+  border-radius: 20px;
+  font-size: 15px;
+  padding: 8px 14px;
 }
 
+.navbar button {
+  font-size: 15px;
+  padding: 8px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.navbar button:hover {
+  opacity: 0.9;
+}
+
+/* ===== Карточка (объединили два правила) ===== */
 .card {
-    margin: 1rem;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 900px;         /* ограничение ширины */
+  margin-left: auto;
+  margin-right: auto;
 }
 
+.card-header {
+  background-color: #212529;
+  color: #fff;
+  font-size: 20px;          /* крупный заголовок */
+  font-weight: 600;
+  padding: 14px 20px;
+}
+
+.card-body {
+  padding: 20px;
+  font-size: 16px;
+  background: #fff;
+}
+
+/* ===== Ссылки в тексте ===== */
+a {
+  color: #0d6efd;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
