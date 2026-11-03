@@ -1,0 +1,1 @@
+   chmod +x kill.sh start.sh fix.sh first_run.sh
