@@ -55,9 +55,9 @@ git clone https://github.com/savinsyu/wiki-project.git
 ```
 cd wiki-project/
 ```
-Делаем файлы исполняемыми
+Делаем файлы исполняемыми одной командой
 ```
-./ubuntu_chmod_app.sh
+chmod +x *.sh
 ```
 В файле скрипта запуска миграции и файле скрипта подключения к базе данных modules/connect.py, modules/migration.py меняем пароль на свой от базы данных ('password')
 
